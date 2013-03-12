@@ -2,15 +2,15 @@ package fr.arpinum;
 
 public class Affirmations {
 
-	public static AffirmationBooléene alors(boolean valeur) {
-		return new AffirmationBooléene(valeur);
+	public static AffirmationBooleene alors(boolean valeur) {
+		return new AffirmationBooleene(valeur);
 	}
 
-	public static AffirmationBooléene alorsLe(boolean booléen) {
+	public static AffirmationBooleene alorsLe(boolean booléen) {
 		return alors(booléen);
 	}
 
-	public static AffirmationBooléene alorsLa(boolean booléen) {
+	public static AffirmationBooleene alorsLa(boolean booléen) {
 		return alors(booléen);
 	}
 
