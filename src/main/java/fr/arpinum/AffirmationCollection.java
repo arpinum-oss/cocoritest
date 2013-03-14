@@ -12,28 +12,28 @@ public class AffirmationCollection<T> {
 	}
 
 	public void sont(Collection<T> valeursAttendues) {
-		if (!estSatisfaite(valeursAttendues)) {
+		if (estInsatisfaite(valeursAttendues)) {
 			throw new ExceptionAssertion(String.format("Les éléments sont %s et non %s.", this.valeurs, valeursAttendues));
 		}
 	}
 
-	private boolean estSatisfaite(Collection<T> valeursAttendues) {
+	private boolean estInsatisfaite(Collection<T> valeursAttendues) {
 		if (valeurs == null || valeursAttendues == null) {
-			return valeurs == valeursAttendues;
+			return valeurs != valeursAttendues;
 		}
 		if (valeurs.size() != valeursAttendues.size()) {
-			return false;
+			return true;
 		}
-		return lesElementsSontEgaux(valeursAttendues);
+		return lesElementsSontDifférents(valeursAttendues);
 	}
 
-	private boolean lesElementsSontEgaux(Collection<T> valeursAttendues) {
+	private boolean lesElementsSontDifférents(Collection<T> valeursAttendues) {
 		for (Iterator<T> premierIterateur = valeurs.iterator(), secondIterateur = valeursAttendues.iterator(); premierIterateur.hasNext(); ) {
-			if (!Objets.egaux(premierIterateur.next(), secondIterateur.next())) {
-				return false;
+			if (Objets.différents(premierIterateur.next(), secondIterateur.next())) {
+				return true;
 			}
 		}
-		return true;
+		return false;
 	}
 
 	public void sontAuNombreDe(int nombre) {

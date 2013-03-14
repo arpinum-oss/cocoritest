@@ -8,4 +8,8 @@ public class Objets {
 		}
 		return gauche.equals(droite);
 	}
+
+	public static boolean différents(Object gauche, Object droite) {
+		return !egaux(gauche, droite);
+	}
 }

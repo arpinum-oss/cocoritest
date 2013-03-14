@@ -15,4 +15,10 @@ public class TestObjets {
 		assertFalse(Objets.egaux(null, 3));
 		assertFalse(Objets.egaux(3, null));
 	}
+
+	@Test
+	public void ilEstPossibleDeTesterLInegaliteDeDeuxObjets() {
+		assertTrue(Objets.différents("toto", "tutu"));
+		assertFalse(Objets.différents(13, 13));
+	}
 }
