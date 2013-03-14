@@ -1,13 +1,13 @@
-package fr.arpinum;
+package fr.arpinum.affirmations;
 
-import static fr.arpinum.Affirmations.*;
+import static fr.arpinum.affirmations.Affirmations.*;
 
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import fr.arpinum.outil.Listes;
+import fr.arpinum.outils.Listes;
 
 public class TestAffirmations {
 

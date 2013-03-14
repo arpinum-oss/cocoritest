@@ -1,4 +1,4 @@
-package fr.arpinum.outil;
+package fr.arpinum.outils;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.TestCase.assertNotNull;

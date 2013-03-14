@@ -1,4 +1,4 @@
-package fr.arpinum.outil;
+package fr.arpinum.outils;
 
 public class Objets {
 

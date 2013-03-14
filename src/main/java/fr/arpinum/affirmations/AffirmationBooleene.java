@@ -1,6 +1,6 @@
-package fr.arpinum;
+package fr.arpinum.affirmations;
 
-import fr.arpinum.outil.Objets;
+import fr.arpinum.outils.Objets;
 
 public class AffirmationBooleene {
 
@@ -10,13 +10,13 @@ public class AffirmationBooleene {
 
 	protected void estVraiInterne() {
 		if (!estSatisfaite()) {
-			throw new ExceptionAssertion("La valeur n'est pas vraie.");
+			throw new ExceptionAffirmation("La valeur n'est pas vraie.");
 		}
 	}
 
-	public void estFauxInterne() {
+	protected void estFauxInterne() {
 		if (estSatisfaite()) {
-			throw new ExceptionAssertion("La valeur n'est pas fausse.");
+			throw new ExceptionAffirmation("La valeur n'est pas fausse.");
 		}
 	}
 
@@ -24,5 +24,5 @@ public class AffirmationBooleene {
 		return Objets.egaux(booléen, true);
 	}
 
-	private Boolean booléen;
+	private final Boolean booléen;
 }

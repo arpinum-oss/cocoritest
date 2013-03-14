@@ -1,8 +1,10 @@
-package fr.arpinum;
+package fr.arpinum.affirmations;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
+import fr.arpinum.affirmations.AffirmationBooleeneAuFeminin;
 
 public class TestAffirmationBooleeneAuFeminin {
 
