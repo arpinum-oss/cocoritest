@@ -1,5 +1,7 @@
 package fr.arpinum;
 
+import java.util.Collection;
+
 public class Affirmations {
 
 	public static AffirmationBooleene alors(boolean valeur) {
@@ -24,5 +26,9 @@ public class Affirmations {
 
 	public static <T> AffirmationObjet alorsLa(T valeur) {
 		return alors(valeur);
+	}
+
+	public static <T> AffirmationCollection alors(Collection<T> valeurs) {
+		return new AffirmationCollection(valeurs);
 	}
 }

@@ -17,7 +17,7 @@ public class TestAffirmationObjet {
 	@Test
 	public void onNePeutPasAffirmerQuUnNombreEstUnNombreDifferent() {
 		politiqueException.expect(ExceptionAssertion.class);
-		politiqueException.expectMessage("attendu: <1>, obtenu: <2>");
+		politiqueException.expectMessage("attendu: <2>, obtenu: <1>");
 
 		new AffirmationObjet(1).est(2);
 	}
@@ -25,8 +25,24 @@ public class TestAffirmationObjet {
 	@Test
 	public void onNePeutPasAffirmerQuUneChaîneEstUneChaîneDifferente() {
 		politiqueException.expect(ExceptionAssertion.class);
-		politiqueException.expectMessage("attendu: <toto>, obtenu: <tutu>");
+		politiqueException.expectMessage("attendu: <tutu>, obtenu: <toto>");
 
 		new AffirmationObjet("toto").est("tutu");
+	}
+
+	@Test
+	public void onNePeutPasAffirmerQuUnObjetNonNullEstNull() {
+		politiqueException.expect(ExceptionAssertion.class);
+		politiqueException.expectMessage("attendu: <null>, obtenu: <toto>");
+
+		new AffirmationObjet("toto").est(null);
+	}
+
+	@Test
+	public void onNePeutPasAffirmerQuUnObjetNullEstNonNull() {
+		politiqueException.expect(ExceptionAssertion.class);
+		politiqueException.expectMessage("attendu: <tutu>, obtenu: <null>");
+
+		new AffirmationObjet(null).est("tutu");
 	}
 }

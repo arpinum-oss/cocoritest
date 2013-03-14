@@ -2,7 +2,11 @@ package fr.arpinum;
 
 import static fr.arpinum.Affirmations.*;
 
+import java.util.List;
+
 import org.junit.Test;
+
+import fr.arpinum.outil.Listes;
 
 public class TestAffirmations {
 
@@ -10,6 +14,7 @@ public class TestAffirmations {
 	public void peutConstruireLesDifférentesAffirmations() {
 		alors(booléen).estVrai();
 		alors(nombre).est(3);
+		alors(nombres).sont(Listes.cree(1, 5));
 	}
 
 	@Test
@@ -28,4 +33,6 @@ public class TestAffirmations {
 	private final boolean valeurBooléene = true;
 	private final int nombre = 3;
 	private final int valeurDuNombre = 3;
+	private List<Integer> nombres = Listes.cree(1, 5);
+	private String toto;
 }

@@ -2,12 +2,12 @@ package fr.arpinum;
 
 public class AffirmationBooleene {
 
-	public AffirmationBooleene(boolean valeur) {
+	public AffirmationBooleene(Boolean valeur) {
 		booléen = valeur;
 	}
 
 	public void estVrai() {
-		if (!booléen) {
+		if (!estSatisfaite()) {
 			throw new ExceptionAssertion("la valeur n'est pas vraie");
 		}
 	}
@@ -17,13 +17,17 @@ public class AffirmationBooleene {
 	}
 
 	public void estFaux() {
-		if (booléen) {
+		if (estSatisfaite()) {
 			throw new ExceptionAssertion("la valeur n'est pas fausse");
 		}
 	}
 
 	public void estFausse() {
 		estFaux();
+	}
+
+	private Boolean estSatisfaite() {
+		return booléen != null && booléen;
 	}
 
 	private Boolean booléen;
