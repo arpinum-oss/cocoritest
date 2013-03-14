@@ -11,12 +11,12 @@ public class TestAffirmationBooleene {
 
 	@Test
 	public void onPeutAffirmerQueVraiEstVrai() {
-		new AffirmationBooleene(true).estVrai();
+		new AffirmationBooleeneAuMasculin(true).estVrai();
 	}
 
 	@Test
 	public void onPeutAffirmerQuUneValeurVraieEstVraie() {
-		new AffirmationBooleene(true).estVraie();
+		new AffirmationBooleeneAuFeminin(true).estVraie();
 	}
 
 	@Test
@@ -24,23 +24,23 @@ public class TestAffirmationBooleene {
 		exception.expect(ExceptionAssertion.class);
 		exception.expectMessage("la valeur n'est pas vraie");
 
-		new AffirmationBooleene(false).estVrai();
+		new AffirmationBooleeneAuMasculin(false).estVrai();
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQueNullEstVrai() {
 		exception.expect(ExceptionAssertion.class);
 
-		new AffirmationBooleene(null).estVrai();
+		new AffirmationBooleeneAuMasculin(null).estVrai();
 	}
 
 	@Test
 	public void onPeutAffirmerQueFauxEstFaux() {
-		new AffirmationBooleene(false).estFaux();
+		new AffirmationBooleeneAuMasculin(false).estFaux();
 	}
 
 	@Test
 	public void onPeutAffirmerQuUneValeurFausseEstFausse() {
-		new AffirmationBooleene(false).estFausse();
+		new AffirmationBooleeneAuFeminin(false).estFausse();
 	}
 }

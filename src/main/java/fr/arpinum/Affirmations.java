@@ -4,16 +4,16 @@ import java.util.Collection;
 
 public class Affirmations {
 
-	public static AffirmationBooleene alors(boolean valeur) {
-		return new AffirmationBooleene(valeur);
+	public static AffirmationBooleeneAuMasculin alors(boolean valeur) {
+		return new AffirmationBooleeneAuMasculin(valeur);
 	}
 
-	public static AffirmationBooleene alorsLe(boolean booléen) {
+	public static AffirmationBooleeneAuMasculin alorsLe(boolean booléen) {
 		return alors(booléen);
 	}
 
-	public static AffirmationBooleene alorsLa(boolean booléen) {
-		return alors(booléen);
+	public static AffirmationBooleeneAuFeminin alorsLa(boolean booléen) {
+		return new AffirmationBooleeneAuFeminin(booléen);
 	}
 
 	public static <T> AffirmationObjet alors(T valeur) {
@@ -30,5 +30,9 @@ public class Affirmations {
 
 	public static <T> AffirmationCollection alors(Collection<T> valeurs) {
 		return new AffirmationCollection(valeurs);
+	}
+
+	public static <T> AffirmationCollection alorsLes(Collection<T> valeurs) {
+		return alors(valeurs);
 	}
 }

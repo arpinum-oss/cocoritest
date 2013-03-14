@@ -29,10 +29,14 @@ public class TestAffirmations {
 		alorsLa(valeurDuNombre).est(3);
 	}
 
+	@Test
+	public void peutConstrureLesDifférentesAffirmationsAuPluriel() {
+		alorsLes(nombres).sont(Listes.cree(1, 5));
+	}
+
 	private final boolean booléen = true;
 	private final boolean valeurBooléene = true;
 	private final int nombre = 3;
 	private final int valeurDuNombre = 3;
 	private List<Integer> nombres = Listes.cree(1, 5);
-	private String toto;
 }
