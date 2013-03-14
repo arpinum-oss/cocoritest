@@ -10,7 +10,7 @@ public class AffirmationObjet<T> {
 
 	public <T2> void est(T2 valeurAttendue) {
 		if (!estSatisfaite(valeurAttendue)) {
-			throw new ExceptionAssertion(String.format("attendu: <%s>, obtenu: <%s>", valeurAttendue, valeur));
+			throw new ExceptionAssertion(String.format("La valeur est %s et non %s.", valeur, valeurAttendue));
 		}
 	}
 
