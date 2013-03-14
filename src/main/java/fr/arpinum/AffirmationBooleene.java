@@ -8,7 +8,19 @@ public class AffirmationBooleene {
 		booléen = valeur;
 	}
 
-	protected Boolean estSatisfaite() {
+	protected void estVraiInterne() {
+		if (!estSatisfaite()) {
+			throw new ExceptionAssertion("La valeur n'est pas vraie.");
+		}
+	}
+
+	public void estFauxInterne() {
+		if (estSatisfaite()) {
+			throw new ExceptionAssertion("La valeur n'est pas fausse.");
+		}
+	}
+
+	private Boolean estSatisfaite() {
 		return Objets.egaux(booléen, true);
 	}
 

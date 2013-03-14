@@ -7,14 +7,10 @@ public class AffirmationBooleeneAuFeminin extends AffirmationBooleene {
 	}
 
 	public void estVraie() {
-		if (!estSatisfaite()) {
-			throw new ExceptionAssertion("la valeur n'est pas vraie");
-		}
+		estVraiInterne();
 	}
 
 	public void estFausse() {
-		if (estSatisfaite()) {
-			throw new ExceptionAssertion("la valeur n'est pas fausse");
-		}
+		estFauxInterne();
 	}
 }

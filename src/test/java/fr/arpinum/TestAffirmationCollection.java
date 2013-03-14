@@ -26,7 +26,7 @@ public class TestAffirmationCollection {
 		List<Integer> valeursTestées = Listes.cree(1, 2, 3);
 		List<Integer> valeursAttendues = Listes.cree(2, 3);
 		exception.expect(ExceptionAssertion.class);
-		exception.expectMessage("Les éléments sont <[1, 2, 3]> et non <[2, 3]>.");
+		exception.expectMessage("Les éléments sont [1, 2, 3] et non [2, 3].");
 
 		new AffirmationCollection(valeursTestées).sont(valeursAttendues);
 	}
@@ -51,7 +51,7 @@ public class TestAffirmationCollection {
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionNonNullEstEgaleAUneNull() {
 		exception.expect(ExceptionAssertion.class);
-		exception.expectMessage("Les éléments sont <[a, b]> et non <null>.");
+		exception.expectMessage("Les éléments sont [a, b] et non null.");
 
 		new AffirmationCollection(Listes.cree("a", "b")).sont(null);
 	}
@@ -64,7 +64,7 @@ public class TestAffirmationCollection {
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionPossedeUnNombreErroneDElements() {
 		exception.expect(ExceptionAssertion.class);
-		exception.expectMessage("Les éléments sont au nombre de <2> et non <10>.");
+		exception.expectMessage("Les éléments sont au nombre de 2 et non 10.");
 
 		new AffirmationCollection(Listes.cree("a", "b")).sontAuNombreDe(10);
 	}
@@ -72,7 +72,7 @@ public class TestAffirmationCollection {
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionNullPossedeUnNombreDElements() {
 		exception.expect(ExceptionAssertion.class);
-		exception.expectMessage("La collection est nulle et ne possède donc pas un nombre d'éléments de <10>.");
+		exception.expectMessage("La collection est nulle et ne possède donc pas un nombre d'éléments de 10.");
 
 		new AffirmationCollection(null).sontAuNombreDe(10);
 	}

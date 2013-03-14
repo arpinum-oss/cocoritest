@@ -4,7 +4,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-public class TestAffirmationBooleene {
+public class TestAffirmationBooleeneAuMasculin {
 
 	@Rule
 	public ExpectedException exception = ExpectedException.none();
@@ -15,14 +15,9 @@ public class TestAffirmationBooleene {
 	}
 
 	@Test
-	public void onPeutAffirmerQuUneValeurVraieEstVraie() {
-		new AffirmationBooleeneAuFeminin(true).estVraie();
-	}
-
-	@Test
 	public void onNePeutPasAffirmerQueFauxEstVrai() {
 		exception.expect(ExceptionAssertion.class);
-		exception.expectMessage("la valeur n'est pas vraie");
+		exception.expectMessage("La valeur n'est pas vraie.");
 
 		new AffirmationBooleeneAuMasculin(false).estVrai();
 	}
@@ -40,7 +35,11 @@ public class TestAffirmationBooleene {
 	}
 
 	@Test
-	public void onPeutAffirmerQuUneValeurFausseEstFausse() {
-		new AffirmationBooleeneAuFeminin(false).estFausse();
+	public void onNePeutPasAffirmerQueVraiEstFaux() {
+		exception.expect(ExceptionAssertion.class);
+		exception.expectMessage("La valeur n'est pas fausse.");
+
+		new AffirmationBooleeneAuMasculin(true).estFaux();
 	}
+
 }

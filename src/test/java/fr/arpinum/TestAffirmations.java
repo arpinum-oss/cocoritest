@@ -32,6 +32,7 @@ public class TestAffirmations {
 	@Test
 	public void peutConstrureLesDifférentesAffirmationsAuPluriel() {
 		alorsLes(nombres).sont(Listes.cree(1, 5));
+		alorsLes(nombres).sontAuNombreDe(2);
 	}
 
 	private final boolean booléen = true;
