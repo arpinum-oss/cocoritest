@@ -1,5 +1,7 @@
 package fr.arpinum;
 
+import fr.arpinum.outil.Objets;
+
 public class AffirmationBooleene {
 
 	protected AffirmationBooleene(Boolean valeur) {
@@ -7,7 +9,7 @@ public class AffirmationBooleene {
 	}
 
 	protected Boolean estSatisfaite() {
-		return booléen != null && booléen;
+		return Objets.egaux(booléen, true);
 	}
 
 	private Boolean booléen;

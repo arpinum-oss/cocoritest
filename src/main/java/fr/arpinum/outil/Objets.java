@@ -1,0 +1,11 @@
+package fr.arpinum.outil;
+
+public class Objets {
+
+	public static boolean egaux(Object gauche, Object droite) {
+		if (gauche == null) {
+			return droite == null;
+		}
+		return gauche.equals(droite);
+	}
+}

@@ -1,5 +1,7 @@
 package fr.arpinum;
 
+import fr.arpinum.outil.Objets;
+
 public class AffirmationObjet<T> {
 
 	public AffirmationObjet(T valeur) {
@@ -13,10 +15,7 @@ public class AffirmationObjet<T> {
 	}
 
 	private <T2> boolean estSatisfaite(T2 valeurAttendue) {
-		if (valeur == null) {
-			return valeurAttendue == null;
-		}
-		return valeur.equals(valeurAttendue);
+		return Objets.egaux(valeur, valeurAttendue);
 	}
 
 	private T valeur;
