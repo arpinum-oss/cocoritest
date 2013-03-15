@@ -1,8 +1,9 @@
-package fr.arpinum.affirmations;
+package fr.arpinum.affirmation.collection;
 
 import java.util.Collection;
 import java.util.Iterator;
 
+import fr.arpinum.affirmation.ExceptionAffirmation;
 import fr.arpinum.outils.Objets;
 
 public class AffirmationCollection<T> {

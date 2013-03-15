@@ -1,4 +1,4 @@
-package fr.arpinum.affirmations;
+package fr.arpinum.affirmation.booleene;
 
 public class AffirmationBooleeneAuMasculin extends AffirmationBooleene {
 

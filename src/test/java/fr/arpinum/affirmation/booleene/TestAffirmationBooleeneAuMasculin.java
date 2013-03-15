@@ -1,11 +1,11 @@
-package fr.arpinum.affirmations;
+package fr.arpinum.affirmation.booleene;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import fr.arpinum.affirmations.AffirmationBooleeneAuMasculin;
-import fr.arpinum.affirmations.ExceptionAffirmation;
+import fr.arpinum.affirmation.ExceptionAffirmation;
+import fr.arpinum.affirmation.booleene.AffirmationBooleeneAuMasculin;
 
 public class TestAffirmationBooleeneAuMasculin {
 

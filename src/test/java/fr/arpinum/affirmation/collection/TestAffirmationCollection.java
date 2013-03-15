@@ -1,4 +1,4 @@
-package fr.arpinum.affirmations;
+package fr.arpinum.affirmation.collection;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import fr.arpinum.affirmation.ExceptionAffirmation;
 import fr.arpinum.outils.Listes;
 
 public class TestAffirmationCollection {

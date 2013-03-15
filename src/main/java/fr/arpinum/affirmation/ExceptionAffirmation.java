@@ -1,4 +1,4 @@
-package fr.arpinum.affirmations;
+package fr.arpinum.affirmation;
 
 public class ExceptionAffirmation extends RuntimeException {
 

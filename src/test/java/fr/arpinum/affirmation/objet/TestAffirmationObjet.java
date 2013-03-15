@@ -1,8 +1,10 @@
-package fr.arpinum.affirmations;
+package fr.arpinum.affirmation.objet;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
+import fr.arpinum.affirmation.ExceptionAffirmation;
 
 public class TestAffirmationObjet {
 
@@ -11,7 +13,7 @@ public class TestAffirmationObjet {
 
 	@Test
 	public void onPeutAffirmerQuUnNombreEstLeMêmeNombre() {
-		new AffirmationObjet<Integer>(1).est(1);
+		creeAffirmation(1).est(1);
 	}
 
 	@Test
@@ -19,7 +21,20 @@ public class TestAffirmationObjet {
 		politiqueException.expect(ExceptionAffirmation.class);
 		politiqueException.expectMessage("La valeur est 1 et non 2.");
 
-		new AffirmationObjet<Integer>(1).est(2);
+		creeAffirmation(1).est(2);
+	}
+
+	@Test
+	public void onPeutAffirmerQuUnNombreNEstPasUnNombreDifférent() {
+		creeAffirmation(1).nEstPas(2);
+	}
+
+	@Test
+	public void onNePeutPasAffirmerQuUnNombreNEstPasLeMêmeNombre() {
+		politiqueException.expect(ExceptionAffirmation.class);
+		politiqueException.expectMessage("La valeur est 1 alors que ce n'était pas voulu.");
+
+		creeAffirmation(1).nEstPas(1);
 	}
 
 	@Test
@@ -27,7 +42,7 @@ public class TestAffirmationObjet {
 		politiqueException.expect(ExceptionAffirmation.class);
 		politiqueException.expectMessage("La valeur est toto et non tutu.");
 
-		new AffirmationObjet<String>("toto").est("tutu");
+		creeAffirmation("toto").est("tutu");
 	}
 
 	@Test
@@ -35,14 +50,19 @@ public class TestAffirmationObjet {
 		politiqueException.expect(ExceptionAffirmation.class);
 		politiqueException.expectMessage("La valeur est toto et non null.");
 
-		new AffirmationObjet<String>("toto").est(null);
+		creeAffirmation("toto").est(null);
 	}
 
 	@Test
-	public void onNePeutPasAffirmerQuUnObjetNullEstNonNull() {
+	public void onNePeutPasAffirmerQuUnObjetNulEstNonNul() {
 		politiqueException.expect(ExceptionAffirmation.class);
 		politiqueException.expectMessage("La valeur est null et non tutu.");
 
-		new AffirmationObjet<String>(null).est("tutu");
+		creeAffirmation((String) null).est("tutu");
+	}
+
+	private static <T> AffirmationObjet<T> creeAffirmation(T valeur) {
+		return new AffirmationObjet<T>(valeur) {
+		};
 	}
 }

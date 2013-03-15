@@ -1,8 +1,9 @@
-package fr.arpinum.affirmations;
+package fr.arpinum.affirmation.booleene;
 
+import fr.arpinum.affirmation.ExceptionAffirmation;
 import fr.arpinum.outils.Objets;
 
-public class AffirmationBooleene {
+public abstract class AffirmationBooleene {
 
 	protected AffirmationBooleene(Boolean valeur) {
 		booléen = valeur;

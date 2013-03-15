@@ -1,6 +1,6 @@
 package fr.arpinum.exemples;
 
-import static fr.arpinum.affirmations.Affirmations.*;
+import static fr.arpinum.affirmation.Affirmations.*;
 
 import java.util.List;
 
