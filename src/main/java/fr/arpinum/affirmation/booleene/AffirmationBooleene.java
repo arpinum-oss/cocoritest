@@ -10,19 +10,17 @@ abstract class AffirmationBooleene extends Affirmation {
 	}
 
 	void estVraiInterne() {
-		if (!estSatisfaite()) {
-			échoue("La valeur n'est pas vraie.");
-		}
+		satisfait(true);
 	}
 
 	void estFauxInterne() {
-		if (estSatisfaite()) {
-			échoue("La valeur n'est pas fausse.");
-		}
+		satisfait(false);
 	}
 
-	private Boolean estSatisfaite() {
-		return Objets.egaux(booléen, true);
+	private void satisfait(boolean attendue) {
+		if (Objets.différents(booléen, attendue)) {
+			échoue("La valeur n'est pas %s.", attendue ? "vraie" : "fausse");
+		}
 	}
 
 	private final Boolean booléen;
