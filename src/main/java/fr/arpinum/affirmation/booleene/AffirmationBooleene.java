@@ -1,23 +1,23 @@
 package fr.arpinum.affirmation.booleene;
 
-import fr.arpinum.affirmation.ExceptionAffirmation;
+import fr.arpinum.affirmation.Affirmation;
 import fr.arpinum.outils.Objets;
 
-public abstract class AffirmationBooleene {
+abstract class AffirmationBooleene extends Affirmation {
 
-	protected AffirmationBooleene(Boolean valeur) {
+	AffirmationBooleene(Boolean valeur) {
 		booléen = valeur;
 	}
 
-	protected void estVraiInterne() {
+	void estVraiInterne() {
 		if (!estSatisfaite()) {
-			throw new ExceptionAffirmation("La valeur n'est pas vraie.");
+			échoue("La valeur n'est pas vraie.");
 		}
 	}
 
-	protected void estFauxInterne() {
+	void estFauxInterne() {
 		if (estSatisfaite()) {
-			throw new ExceptionAffirmation("La valeur n'est pas fausse.");
+			échoue("La valeur n'est pas fausse.");
 		}
 	}
 
