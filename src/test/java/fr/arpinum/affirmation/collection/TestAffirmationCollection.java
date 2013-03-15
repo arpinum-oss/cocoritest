@@ -33,31 +33,6 @@ public class TestAffirmationCollection {
 	}
 
 	@Test
-	public void onNePeutPasAffirmerQUneCollectionEstEgaleAUneCollectionDifférenteBienQueLesTaillesSontIdentiques() {
-		List<Integer> valeursTestées = Listes.cree(1, 2, 3);
-		List<Integer> valeursAttendues = Listes.cree(1, 2, 4);
-		exception.expect(ExceptionAffirmation.class);
-
-		new AffirmationCollection<Integer>(valeursTestées).sont(valeursAttendues);
-	}
-
-	@Test
-	public void onPeutAffirmerQueDeuxCollectionsNullesSontEgales() {
-		List<String> valeursTestées = null;
-		List<String> valeursAttendues = null;
-
-		new AffirmationCollection<String>(valeursTestées).sont(valeursAttendues);
-	}
-
-	@Test
-	public void onNePeutPasAffirmerQuUneCollectionNonNulleEstEgaleAUneNulle() {
-		exception.expect(ExceptionAffirmation.class);
-		exception.expectMessage("Les éléments sont [a, b] et non null.");
-
-		new AffirmationCollection<String>(Listes.cree("a", "b")).sont(null);
-	}
-
-	@Test
 	public void onPeutAffirmerQuUneCollectionPossèdeUnCertainsNombreDElements() {
 		new AffirmationCollection<Integer>(Listes.cree(1, 2)).sontAuNombreDe(2);
 	}

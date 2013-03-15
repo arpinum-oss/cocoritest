@@ -1,10 +1,9 @@
 package fr.arpinum.affirmation.collection;
 
 import java.util.Collection;
-import java.util.Iterator;
 
 import fr.arpinum.affirmation.ExceptionAffirmation;
-import fr.arpinum.outils.Objets;
+import fr.arpinum.outils.Collections;
 
 public class AffirmationCollection<T> {
 
@@ -13,33 +12,13 @@ public class AffirmationCollection<T> {
 	}
 
 	public void sont(Collection<T> valeursAttendues) {
-		if (lesCollectionsSontDifférentes(valeursAttendues)) {
+		if (!Collections.egales(valeurs, valeursAttendues)) {
 			throw new ExceptionAffirmation(String.format("Les éléments sont %s et non %s.", this.valeurs, valeursAttendues));
 		}
 	}
 
-	private boolean lesCollectionsSontDifférentes(Collection<T> valeursAttendues) {
-		if (valeurs == null || valeursAttendues == null) {
-			return valeurs != valeursAttendues;
-		}
-		return lesTaillesSontDifférentes(valeursAttendues) || lesCollectionsDeMêmeTailleSontDifférentes(valeursAttendues);
-	}
-
-	private boolean lesTaillesSontDifférentes(Collection<T> valeursAttendues) {
-		return valeurs.size() != valeursAttendues.size();
-	}
-
-	private boolean lesCollectionsDeMêmeTailleSontDifférentes(Collection<T> valeursAttendues) {
-		for (Iterator<T> premierIterateur = valeurs.iterator(), secondIterateur = valeursAttendues.iterator(); premierIterateur.hasNext(); ) {
-			if (Objets.différents(premierIterateur.next(), secondIterateur.next())) {
-				return true;
-			}
-		}
-		return false;
-	}
-
 	public void sontAuNombreDe(int nombre) {
-		if(valeurs == null) {
+		if (valeurs == null) {
 			throw new ExceptionAffirmation(String.format("La collection est nulle et ne possède donc pas un nombre d'éléments de %s.", nombre));
 		}
 		if (valeurs.size() != nombre) {
