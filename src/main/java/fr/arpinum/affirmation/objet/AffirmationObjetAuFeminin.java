@@ -9,4 +9,8 @@ public class AffirmationObjetAuFeminin<T> extends AffirmationObjet<T> {
 	public void estNulle() {
 		est(null);
 	}
+
+	public void nEstPasNulle() {
+		nEstPas(null);
+	}
 }

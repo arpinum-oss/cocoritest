@@ -13,40 +13,47 @@ public class TestAffirmations {
 
 	@Before
 	public void avantChaqueTest() {
-		booléen = true;
-		valeurVraie = true;
-		valeurNulle = null;
-		champNul = null;
+		résultat = true;
+		mensonge = false;
+		vérité = true;
 		nombre = 3;
-		valeurDuNombre = 3;
+		valeur = 3;
 		nombres = Listes.cree(1, 5);
+		réponse = null;
+		champ = null;
+		trahison = false;
+		remarque = false;
 	}
 
 	@Test
 	public void peutConstruireLesDifférentesAffirmations() {
-		alors(booléen).estVrai();
+		alors(résultat).estVrai();
+		alors(mensonge).estFaux();
 		alors(nombre).est(3);
 		alors(nombre).nEstPas(4);
 		alors(nombres).sont(Listes.cree(1, 5));
-		alors(champNul).estNul();
+		alors(champ).estNul();
 		alors(nombre).nEstPasNul();
 	}
 
 	@Test
 	public void peutConstruireLesDifférentesAffirmationsAuMasculin() {
-		alorsLe(booléen).estVrai();
+		alorsLe(résultat).estVrai();
+		alorsLe(mensonge).estFaux();
 		alorsLe(nombre).est(3);
 		alorsLe(nombre).nEstPas(4);
+		alorsLe(champ).estNul();
 		alorsLe(nombre).nEstPasNul();
-		alorsLe(champNul).estNul();
 	}
 
 	@Test
 	public void peutConstruireLesDifférentesAffirmationsAuFéminin() {
-		alorsLa(valeurVraie).estVraie();
-		alorsLa(valeurDuNombre).est(3);
-		alorsLa(valeurDuNombre).nEstPas(4);
-		alorsLa(valeurNulle).estNulle();
+		alorsLa(vérité).estVraie();
+		alorsLa(trahison).estFausse();
+		alorsLa(valeur).est(3);
+		alorsLa(valeur).nEstPas(4);
+		alorsLa(réponse).estNulle();
+		alorsLa(remarque).nEstPasNulle();
 	}
 
 	@Test
@@ -55,11 +62,14 @@ public class TestAffirmations {
 		alorsLes(nombres).sontAuNombreDe(2);
 	}
 
-	private boolean booléen = true;
-	private boolean valeurVraie = true;
-	private int nombre = 3;
-	private int valeurDuNombre = 3;
-	private List<Integer> nombres = Listes.cree(1, 5);
-	private Object valeurNulle;
-	private Object champNul;
+	private boolean résultat;
+	private boolean mensonge;
+	private boolean vérité;
+	private boolean trahison;
+	private int nombre;
+	private int valeur;
+	private List<Integer> nombres;
+	private Object réponse;
+	private Object remarque;
+	private Object champ;
 }

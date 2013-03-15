@@ -23,4 +23,17 @@ public class TestAffirmationObjetAuFeminin {
 
 		new AffirmationObjetAuFeminin<String>("toto").estNulle();
 	}
+
+	@Test
+	public void onPeutAffirmerQuUneValeurNEstPasNulle() {
+		new AffirmationObjetAuFeminin<String>("toto").nEstPasNulle();
+	}
+
+	@Test
+	public void onNePeutPasAffirmerQuUnObjetNulNEstPasNul() {
+		politiqueException.expect(ExceptionAffirmation.class);
+		politiqueException.expectMessage("La valeur est null alors que ce n'était pas voulu.");
+
+		new AffirmationObjetAuFeminin<String>(null).nEstPasNulle();
+	}
 }
