@@ -5,16 +5,15 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import fr.arpinum.affirmation.ExceptionAffirmation;
-import fr.arpinum.affirmation.booleene.AffirmationBooleeneAuMasculin;
 
-public class TestAffirmationBooleeneAuMasculin {
+public class TestAffirmationBooleeneDeBase {
 
 	@Rule
 	public ExpectedException exception = ExpectedException.none();
 
 	@Test
 	public void onPeutAffirmerQueVraiEstVrai() {
-		new AffirmationBooleeneAuMasculin(true).estVrai();
+		new AffirmationBooleeneDeBase(true).estVrai();
 	}
 
 	@Test
@@ -22,19 +21,19 @@ public class TestAffirmationBooleeneAuMasculin {
 		exception.expect(ExceptionAffirmation.class);
 		exception.expectMessage("La valeur n'est pas vraie.");
 
-		new AffirmationBooleeneAuMasculin(false).estVrai();
+		new AffirmationBooleeneDeBase(false).estVrai();
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQueNullEstVrai() {
 		exception.expect(ExceptionAffirmation.class);
 
-		new AffirmationBooleeneAuMasculin(null).estVrai();
+		new AffirmationBooleeneDeBase(null).estVrai();
 	}
 
 	@Test
 	public void onPeutAffirmerQueFauxEstFaux() {
-		new AffirmationBooleeneAuMasculin(false).estFaux();
+		new AffirmationBooleeneDeBase(false).estFaux();
 	}
 
 	@Test
@@ -42,7 +41,16 @@ public class TestAffirmationBooleeneAuMasculin {
 		exception.expect(ExceptionAffirmation.class);
 		exception.expectMessage("La valeur n'est pas fausse.");
 
-		new AffirmationBooleeneAuMasculin(true).estFaux();
+		new AffirmationBooleeneDeBase(true).estFaux();
 	}
 
+	@Test
+	public void onPeutAffirmerQuUneValeurVraieEstVraie() {
+		new AffirmationBooleeneDeBase(true).estVraie();
+	}
+
+	@Test
+	public void onPeutAffirmerQuUneValeurFausseEstFausse() {
+		new AffirmationBooleeneDeBase(false).estFausse();
+	}
 }

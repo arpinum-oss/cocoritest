@@ -1,27 +1,8 @@
 package fr.arpinum.affirmation.booleene;
 
-import fr.arpinum.affirmation.Affirmation;
-import fr.arpinum.outils.Objets;
+public interface AffirmationBooleene {
 
-abstract class AffirmationBooleene extends Affirmation {
+	void estVrai();
 
-	AffirmationBooleene(Boolean valeur) {
-		booléen = valeur;
-	}
-
-	void estVraiInterne() {
-		satisfait(true);
-	}
-
-	void estFauxInterne() {
-		satisfait(false);
-	}
-
-	private void satisfait(boolean attendue) {
-		if (Objets.différents(booléen, attendue)) {
-			échoue("La valeur n'est pas %s.", attendue ? "vraie" : "fausse");
-		}
-	}
-
-	private final Boolean booléen;
+	void estFaux();
 }

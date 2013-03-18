@@ -1,16 +1,12 @@
 package fr.arpinum.affirmation.objet;
 
-public class AffirmationObjetAuFeminin<T> extends AffirmationObjet<T> {
+public interface AffirmationObjetAuFeminin<T> {
 
-	public AffirmationObjetAuFeminin(T valeur) {
-		super(valeur);
-	}
+	void est(T valeurAttendue);
 
-	public void estNulle() {
-		est(null);
-	}
+	void nEstPas(T valeurAttendue);
 
-	public void nEstPasNulle() {
-		nEstPas(null);
-	}
+	void estNulle();
+
+	void nEstPasNulle();
 }

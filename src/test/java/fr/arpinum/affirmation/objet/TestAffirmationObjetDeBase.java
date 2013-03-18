@@ -6,7 +6,7 @@ import org.junit.rules.ExpectedException;
 
 import fr.arpinum.affirmation.ExceptionAffirmation;
 
-public class TestAffirmationObjet {
+public class TestAffirmationObjetDeBase {
 
 	@Rule
 	public ExpectedException politiqueException = ExpectedException.none();
@@ -46,23 +46,50 @@ public class TestAffirmationObjet {
 	}
 
 	@Test
+	public void onPeutAffirmerQuUnObjetEstNul() {
+		creeAffirmation(null).estNul();
+		creeAffirmation(null).estNulle();
+	}
+
+	@Test
+	public void onPeutAffirmerQuUnObjetNEstPasNul() {
+		creeAffirmation("toto").nEstPasNul();
+		creeAffirmation("toto").nEstPasNulle();
+	}
+
+	@Test
 	public void onNePeutPasAffirmerQuUnObjetNonNulEstNul() {
 		politiqueException.expect(ExceptionAffirmation.class);
 		politiqueException.expectMessage("La valeur est toto et non null.");
 
-		creeAffirmation("toto").est(null);
+		creeAffirmation("toto").estNul();
 	}
 
 	@Test
-	public void onNePeutPasAffirmerQuUnObjetNulEstNonNul() {
+	public void onNePeutPasAffirmerAuFémininQuUnObjetNonNulEstNul() {
 		politiqueException.expect(ExceptionAffirmation.class);
-		politiqueException.expectMessage("La valeur est null et non tutu.");
+		politiqueException.expectMessage("La valeur est toto et non null.");
 
-		creeAffirmation((String) null).est("tutu");
+		creeAffirmation("toto").estNulle();
 	}
 
-	private static <T> AffirmationObjet<T> creeAffirmation(T valeur) {
-		return new AffirmationObjet<T>(valeur) {
-		};
+	@Test
+	public void onNePeutPasAffirmerQuUnObjetNulNEstPasNul() {
+		politiqueException.expect(ExceptionAffirmation.class);
+		politiqueException.expectMessage("La valeur est null alors que ce n'était pas voulu.");
+
+		creeAffirmation(null).nEstPasNul();
+	}
+
+	@Test
+	public void onNePeutPasAffirmerAuFémininQuUnObjetNulNEstPasNul() {
+		politiqueException.expect(ExceptionAffirmation.class);
+		politiqueException.expectMessage("La valeur est null alors que ce n'était pas voulu.");
+
+		creeAffirmation(null).nEstPasNulle();
+	}
+
+	private static <T> AffirmationObjetDeBase<T> creeAffirmation(T valeur) {
+		return new AffirmationObjetDeBase<T>(valeur);
 	}
 }

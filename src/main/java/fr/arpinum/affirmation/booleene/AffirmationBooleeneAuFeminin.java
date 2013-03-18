@@ -1,16 +1,8 @@
 package fr.arpinum.affirmation.booleene;
 
-public class AffirmationBooleeneAuFeminin extends AffirmationBooleene {
+public interface AffirmationBooleeneAuFeminin {
 
-	public AffirmationBooleeneAuFeminin(Boolean valeur) {
-		super(valeur);
-	}
+	void estVraie();
 
-	public void estVraie() {
-		estVraiInterne();
-	}
-
-	public void estFausse() {
-		estFauxInterne();
-	}
+	void estFausse();
 }
