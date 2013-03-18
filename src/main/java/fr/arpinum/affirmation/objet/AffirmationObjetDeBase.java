@@ -35,7 +35,7 @@ public class AffirmationObjetDeBase<T> extends Affirmation implements Affirmatio
 
 	@Override
 	public void estNulle() {
-		est(null);
+		estNul();
 	}
 
 	@Override

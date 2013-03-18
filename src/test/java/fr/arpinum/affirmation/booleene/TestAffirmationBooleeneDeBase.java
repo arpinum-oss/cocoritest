@@ -14,6 +14,7 @@ public class TestAffirmationBooleeneDeBase {
 	@Test
 	public void onPeutAffirmerQueVraiEstVrai() {
 		new AffirmationBooleeneDeBase(true).estVrai();
+		new AffirmationBooleeneDeBase(true).estVraie();
 	}
 
 	@Test
@@ -22,6 +23,14 @@ public class TestAffirmationBooleeneDeBase {
 		exception.expectMessage("La valeur n'est pas vraie.");
 
 		new AffirmationBooleeneDeBase(false).estVrai();
+	}
+
+	@Test
+	public void onNePeutPasAffirmerAuFémininQueFauxEstVrai() {
+		exception.expect(ExceptionAffirmation.class);
+		exception.expectMessage("La valeur n'est pas vraie.");
+
+		new AffirmationBooleeneDeBase(false).estVraie();
 	}
 
 	@Test
@@ -34,6 +43,7 @@ public class TestAffirmationBooleeneDeBase {
 	@Test
 	public void onPeutAffirmerQueFauxEstFaux() {
 		new AffirmationBooleeneDeBase(false).estFaux();
+		new AffirmationBooleeneDeBase(false).estFausse();
 	}
 
 	@Test
@@ -45,12 +55,10 @@ public class TestAffirmationBooleeneDeBase {
 	}
 
 	@Test
-	public void onPeutAffirmerQuUneValeurVraieEstVraie() {
-		new AffirmationBooleeneDeBase(true).estVraie();
-	}
+	public void onNePeutPasAffirmerAuFémininQueVraiEstFaux() {
+		exception.expect(ExceptionAffirmation.class);
+		exception.expectMessage("La valeur n'est pas fausse.");
 
-	@Test
-	public void onPeutAffirmerQuUneValeurFausseEstFausse() {
-		new AffirmationBooleeneDeBase(false).estFausse();
+		new AffirmationBooleeneDeBase(true).estFausse();
 	}
 }

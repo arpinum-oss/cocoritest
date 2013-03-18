@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import fr.arpinum.affirmation.Affirmation;
 import fr.arpinum.outils.Collections;
+import fr.arpinum.outils.Listes;
 
 public class AffirmationCollection<T> extends Affirmation {
 
@@ -15,6 +16,10 @@ public class AffirmationCollection<T> extends Affirmation {
 		if (!Collections.egales(valeurs, valeursAttendues)) {
 			échoue("Les éléments sont %s et non %s.", this.valeurs, valeursAttendues);
 		}
+	}
+
+	public void sont(T... valeursAttendues) {
+		sont(Listes.cree(valeursAttendues));
 	}
 
 	public void sontAuNombreDe(int nombre) {

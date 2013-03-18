@@ -1,5 +1,6 @@
 package fr.arpinum.affirmation.collection;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.junit.Rule;
@@ -19,7 +20,8 @@ public class TestAffirmationCollection {
 		List<Integer> valeursTestées = Listes.cree(1, 2, 3);
 		List<Integer> valeursAttendues = Listes.cree(1, 2, 3);
 
-		new AffirmationCollection<Integer>(valeursTestées).sont(valeursAttendues);
+		creeAffirmation(valeursTestées).sont(valeursAttendues);
+		creeAffirmation(valeursTestées).sont(1, 2, 3);
 	}
 
 	@Test
@@ -29,12 +31,21 @@ public class TestAffirmationCollection {
 		exception.expect(ExceptionAffirmation.class);
 		exception.expectMessage("Les éléments sont [1, 2, 3] et non [2, 3].");
 
-		new AffirmationCollection<Integer>(valeursTestées).sont(valeursAttendues);
+		creeAffirmation(valeursTestées).sont(valeursAttendues);
+	}
+
+	@Test
+	public void onNePeutPasAffirmerQUneCollectionEstEgaleADesElémentsNonContenus() {
+		List<Integer> valeursTestées = Listes.cree(1, 2, 3);
+		exception.expect(ExceptionAffirmation.class);
+		exception.expectMessage("Les éléments sont [1, 2, 3] et non [2, 3].");
+
+		creeAffirmation(valeursTestées).sont(2, 3);
 	}
 
 	@Test
 	public void onPeutAffirmerQuUneCollectionPossèdeUnCertainsNombreDElements() {
-		new AffirmationCollection<Integer>(Listes.cree(1, 2)).sontAuNombreDe(2);
+		creeAffirmation(Listes.cree(1, 2)).sontAuNombreDe(2);
 	}
 
 	@Test
@@ -42,7 +53,7 @@ public class TestAffirmationCollection {
 		exception.expect(ExceptionAffirmation.class);
 		exception.expectMessage("Les éléments sont au nombre de 2 et non 10.");
 
-		new AffirmationCollection<String>(Listes.cree("a", "b")).sontAuNombreDe(10);
+		creeAffirmation(Listes.cree("a", "b")).sontAuNombreDe(10);
 	}
 
 	@Test
@@ -50,6 +61,10 @@ public class TestAffirmationCollection {
 		exception.expect(ExceptionAffirmation.class);
 		exception.expectMessage("La collection est nulle et ne possède donc pas un nombre d'éléments de 10.");
 
-		new AffirmationCollection<Integer>(null).sontAuNombreDe(10);
+		creeAffirmation(null).sontAuNombreDe(10);
+	}
+
+	private static <T> AffirmationCollection<T> creeAffirmation(Collection<T> valeurs) {
+		return new AffirmationCollection<T>(valeurs);
 	}
 }
