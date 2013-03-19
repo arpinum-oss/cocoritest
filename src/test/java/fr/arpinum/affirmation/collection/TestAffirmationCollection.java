@@ -64,6 +64,32 @@ public class TestAffirmationCollection {
 		creeAffirmation(null).sontAuNombreDe(10);
 	}
 
+	@Test
+	public void onPeutAffirmerQuUneCollectionAUnElément() {
+		creeAffirmation(Listes.cree(1, 3, 13)).ont(13);
+	}
+
+	@Test
+	public void onPeutAffirmerQuUneCollectionADesEléments() {
+		creeAffirmation(Listes.cree(1, 3, 13)).ont(13, 3);
+	}
+
+	@Test
+	public void onNePeutPasAffirmerQuUneCollectionAUnElémentQuElleNAPas() {
+		exception.expect(ExceptionAffirmation.class);
+		exception.expectMessage("[13, 12] ne sont pas présents dans [1, 2].");
+
+		creeAffirmation(Listes.cree(1, 2)).ont(13, 12);
+	}
+
+	@Test
+	public void onNePeutPasAffirmerQuUneCollectionNullAUnElément() {
+		exception.expect(ExceptionAffirmation.class);
+		exception.expectMessage("La collection est nulle, [13, 12] ne sont donc pas présents dedans.");
+
+		creeAffirmation(null).ont(13, 12);
+	}
+
 	private static <T> AffirmationCollection<T> creeAffirmation(Collection<T> valeurs) {
 		return new AffirmationCollection<T>(valeurs);
 	}

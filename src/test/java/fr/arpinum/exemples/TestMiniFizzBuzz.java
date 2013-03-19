@@ -21,15 +21,19 @@ public class TestMiniFizzBuzz {
 		List<String> valeurs = fizzBuzz.énonce();
 
 		alorsLes(valeurs).sontAuNombreDe(100);
-		alors(valeurs.get(0)).est("1");
+		alorsLa(valeur(valeurs, 0)).est("1");
 	}
 
 	@Test
 	public void fizzBuzzDitFizzPourUnMultipleDe3() {
 		List<String> valeurs = fizzBuzz.énonce();
 
-		alors(valeurs.get(2)).est("Fizz");
-		alors(valeurs.get(5)).est("Fizz");
+		alorsLa(valeur(valeurs, 2)).est("Fizz");
+		alorsLa(valeur(valeurs, 5)).est("Fizz");
+	}
+
+	private String valeur(List<String> valeurs, int indice) {
+		return valeurs.get(indice);
 	}
 
 	private static class MiniFizzBuzz {

@@ -13,27 +13,12 @@ public class TestAffirmations {
 
 	@Before
 	public void avantChaqueTest() {
-		résultat = true;
-		mensonge = false;
-		vérité = true;
-		nombre = 3;
-		valeur = 3;
-		nombres = Listes.cree(1, 5);
-		réponse = null;
-		champ = null;
-		trahison = false;
-		remarque = false;
-	}
-
-	@Test
-	public void peutConstruireLesDifférentesAffirmations() {
-		alors(résultat).estVrai();
-		alors(mensonge).estFaux();
-		alors(nombre).est(3);
-		alors(nombre).nEstPas(4);
-		alors(nombres).sont(Listes.cree(1, 5));
-		alors(champ).estNul();
-		alors(nombre).nEstPasNul();
+		résultat = vérité = true;
+		mensonge = trahison = false;
+		nombre = valeur = 3;
+		nombres = Listes.cree(1, 5, 12);
+		réponse = champ = null;
+		remarque = new Object();
 	}
 
 	@Test
@@ -58,9 +43,10 @@ public class TestAffirmations {
 
 	@Test
 	public void peutConstrureLesDifférentesAffirmationsAuPluriel() {
-		alorsLes(nombres).sont(Listes.cree(1, 5));
-		alorsLes(nombres).sont(1, 5);
+		alorsLes(nombres).sont(Listes.cree(1, 5, 12));
+		alorsLes(nombres).sont(1, 5, 12);
 		alorsLes(nombres).sontAuNombreDe(2);
+		alorsLes(nombres).ont(1, 12);
 	}
 
 	private boolean résultat;
