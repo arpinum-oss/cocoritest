@@ -45,7 +45,7 @@ public class TestAffirmations {
 	public void peutConstrureLesDifférentesAffirmationsAuPluriel() {
 		alorsLes(nombres).sont(Listes.cree(1, 5, 12));
 		alorsLes(nombres).sont(1, 5, 12);
-		alorsLes(nombres).sontAuNombreDe(2);
+		alorsLes(nombres).sontAuNombreDe(3);
 		alorsLes(nombres).ont(1, 12);
 	}
 
