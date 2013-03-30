@@ -29,6 +29,6 @@ public class Affirmations {
 	}
 
 	public static <T> AffirmationCollection<T> alorsLes(Collection<T> valeurs) {
-		return new AffirmationCollection<T>(valeurs);
+		return AffirmationCollection.cree(valeurs);
 	}
 }

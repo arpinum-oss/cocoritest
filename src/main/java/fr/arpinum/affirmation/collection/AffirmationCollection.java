@@ -8,7 +8,14 @@ import fr.arpinum.outils.Listes;
 
 public class AffirmationCollection<T> extends Affirmation {
 
-	public AffirmationCollection(Collection<T> éléments) {
+	public static <T> AffirmationCollection<T> cree(Collection<T> éléments) {
+		if (éléments == null) {
+			return new AffirmationCollectionNulle<T>();
+		}
+		return new AffirmationCollection<T>(éléments);
+	}
+
+	AffirmationCollection(Collection<T> éléments) {
 		this.éléments = éléments;
 	}
 
@@ -23,20 +30,18 @@ public class AffirmationCollection<T> extends Affirmation {
 	}
 
 	public void sontAuNombreDe(int nombre) {
-		if (éléments == null) {
-			échoue("La collection est nulle et ne possède donc pas un nombre d'éléments de %s.", nombre);
-		}
-		assert éléments != null;
+		assureInvariant();
 		if (éléments.size() != nombre) {
 			échoue("Les éléments sont au nombre de %s et non %s.", éléments.size(), nombre);
 		}
 	}
 
+	public void nExistentPas() {
+		sontAuNombreDe(0);
+	}
+
 	public void ont(Collection<T> élémentsAttendus) {
-		if (éléments == null) {
-			échoue("La collection est nulle, %s ne sont donc pas présents dedans.", élémentsAttendus);
-		}
-		assert éléments != null;
+		assureInvariant();
 		if (!éléments.containsAll(élémentsAttendus)) {
 			échoue("%s ne sont pas présents dans %s.", élémentsAttendus, éléments);
 		}
@@ -46,14 +51,8 @@ public class AffirmationCollection<T> extends Affirmation {
 		ont(Listes.cree(élémentsAttendus));
 	}
 
-	public void sontAbsentes() {
-		if (éléments == null) {
-			échoue("La collection est nulle, les éléments ne sont donc pas absents.");
-		}
+	private void assureInvariant() {
 		assert éléments != null;
-		if (!éléments.isEmpty()) {
-			échoue("Les éléments sont %s et ne sont pas absents.", éléments);
-		}
 	}
 
 	private final Collection<T> éléments;

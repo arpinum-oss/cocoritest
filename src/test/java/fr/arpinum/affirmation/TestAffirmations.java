@@ -48,7 +48,8 @@ public class TestAffirmations {
 		alorsLes(nombres).sont(1, 5, 12);
 		alorsLes(nombres).sontAuNombreDe(3);
 		alorsLes(nombres).ont(1, 12);
-		alorsLes(valeurs).sontAbsentes();
+		alorsLes(nombres).ont(Listes.cree(1, 12));
+		alorsLes(valeurs).nExistentPas();
 	}
 
 	private boolean résultat;
