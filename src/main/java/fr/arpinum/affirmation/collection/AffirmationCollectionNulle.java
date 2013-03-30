@@ -2,7 +2,7 @@ package fr.arpinum.affirmation.collection;
 
 import java.util.Collection;
 
-public class AffirmationCollectionNulle<T> extends AffirmationCollection<T> {
+public class AffirmationCollectionNulle<T> extends AffirmationCollectionDeBase<T> {
 
 	AffirmationCollectionNulle() {
 		super(null);

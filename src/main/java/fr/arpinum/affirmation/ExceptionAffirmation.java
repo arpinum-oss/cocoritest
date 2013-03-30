@@ -1,6 +1,9 @@
 package fr.arpinum.affirmation;
 
-public class ExceptionAffirmation extends RuntimeException {
+/**
+ * Exception levée pour indiquer qu'une affirmation est fausse.
+ */
+public class ExceptionAffirmation extends AssertionError {
 
 	public ExceptionAffirmation(String message) {
 		super(message);

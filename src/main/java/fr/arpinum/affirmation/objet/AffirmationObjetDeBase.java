@@ -17,8 +17,8 @@ public class AffirmationObjetDeBase<T> extends Affirmation implements Affirmatio
 	}
 
 	@Override
-	public void nEstPas(T valeurAttendue) {
-		if (Objets.egaux(valeur, valeurAttendue)) {
+	public void nEstPas(T valeurNonAttendue) {
+		if (Objets.egaux(valeur, valeurNonAttendue)) {
 			échoue("La valeur est %s alors que ce n'était pas voulu.", valeur);
 		}
 	}

@@ -18,7 +18,7 @@ public class TestsAffirmationCollectionNulle {
 		exception.expect(ExceptionAffirmation.class);
 		exception.expectMessage("La collection est nulle et ne possède donc pas un nombre d'éléments de 10.");
 
-		AffirmationCollection.cree(null).sontAuNombreDe(10);
+		AffirmationCollectionDeBase.cree(null).sontAuNombreDe(10);
 	}
 
 	@Test
@@ -26,7 +26,7 @@ public class TestsAffirmationCollectionNulle {
 		exception.expect(ExceptionAffirmation.class);
 		exception.expectMessage("La collection est nulle et ne possède donc pas un nombre d'éléments de 0.");
 
-		AffirmationCollection.cree(null).nExistentPas();
+		AffirmationCollectionDeBase.cree(null).nExistentPas();
 	}
 
 	@Test
@@ -34,11 +34,11 @@ public class TestsAffirmationCollectionNulle {
 		exception.expect(ExceptionAffirmation.class);
 		exception.expectMessage("La collection est nulle, [13, 12] ne sont donc pas présents dedans.");
 
-		AffirmationCollection.cree(null).ont(13, 12);
+		AffirmationCollectionDeBase.cree(null).ont(13, 12);
 	}
 
 	@Test
 	public void onPeutAffirmerQuUneCollectionEstVide() {
-		AffirmationCollection.cree(new ArrayList<Integer>()).nExistentPas();
+		AffirmationCollectionDeBase.cree(new ArrayList<Integer>()).nExistentPas();
 	}
 }
