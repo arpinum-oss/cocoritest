@@ -46,5 +46,15 @@ public class AffirmationCollection<T> extends Affirmation {
 		ont(Listes.cree(élémentsAttendus));
 	}
 
+	public void sontAbsentes() {
+		if (éléments == null) {
+			échoue("La collection est nulle, les éléments ne sont donc pas absents.");
+		}
+		assert éléments != null;
+		if (!éléments.isEmpty()) {
+			échoue("Les éléments sont %s et ne sont pas absents.", éléments);
+		}
+	}
+
 	private final Collection<T> éléments;
 }

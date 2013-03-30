@@ -17,6 +17,7 @@ public class TestAffirmations {
 		mensonge = trahison = false;
 		nombre = valeur = 3;
 		nombres = Listes.cree(1, 5, 12);
+		valeurs = Listes.cree();
 		réponse = champ = null;
 		remarque = new Object();
 	}
@@ -47,6 +48,7 @@ public class TestAffirmations {
 		alorsLes(nombres).sont(1, 5, 12);
 		alorsLes(nombres).sontAuNombreDe(3);
 		alorsLes(nombres).ont(1, 12);
+		alorsLes(valeurs).sontAbsentes();
 	}
 
 	private boolean résultat;
@@ -56,6 +58,7 @@ public class TestAffirmations {
 	private int nombre;
 	private int valeur;
 	private List<Integer> nombres;
+	private List<String> valeurs;
 	private Object réponse;
 	private Object remarque;
 	private Object champ;

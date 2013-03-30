@@ -1,5 +1,6 @@
 package fr.arpinum.affirmation.collection;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -83,11 +84,32 @@ public class TestAffirmationCollection {
 	}
 
 	@Test
-	public void onNePeutPasAffirmerQuUneCollectionNullAUnElément() {
+	public void onNePeutPasAffirmerQuUneCollectionNulleAUnElément() {
 		exception.expect(ExceptionAffirmation.class);
 		exception.expectMessage("La collection est nulle, [13, 12] ne sont donc pas présents dedans.");
 
 		creeAffirmation(null).ont(13, 12);
+	}
+
+	@Test
+	public void onPeutAffirmerQuUneCollectionEstVide() {
+		creeAffirmation(new ArrayList<Integer>()).sontAbsentes();
+	}
+
+	@Test
+	public void onNePeutPasAffirmerQuUneCollectionNonVideEstVide() {
+		exception.expect(ExceptionAffirmation.class);
+		exception.expectMessage("Les éléments sont [3] et ne sont pas absents.");
+
+		creeAffirmation(Listes.cree(3)).sontAbsentes();
+	}
+
+	@Test
+	public void onNePeutPasAffirmerQuUneCollectionNulleEstVide() {
+		exception.expect(ExceptionAffirmation.class);
+		exception.expectMessage("La collection est nulle, les éléments ne sont donc pas absents.");
+
+		creeAffirmation(null).sontAbsentes();
 	}
 
 	private static <T> AffirmationCollection<T> creeAffirmation(Collection<T> valeurs) {
