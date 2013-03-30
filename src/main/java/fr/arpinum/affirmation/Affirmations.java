@@ -16,16 +16,32 @@ public class Affirmations {
 		return new AffirmationBooleeneDeBase(booléen);
 	}
 
+	public static AffirmationBooleene alorsCet(boolean booléen) {
+		return alorsLe(booléen);
+	}
+
 	public static AffirmationBooleeneAuFeminin alorsLa(boolean booléen) {
 		return new AffirmationBooleeneDeBase(booléen);
+	}
+
+	public static AffirmationBooleeneAuFeminin alorsCette(boolean booléen) {
+		return alorsLa(booléen);
 	}
 
 	public static <T> AffirmationObjet<T> alorsLe(T valeur) {
 		return new AffirmationObjetDeBase<T>(valeur);
 	}
 
+	public static <T> AffirmationObjet<T> alorsCet(T valeur) {
+		return alorsLe(valeur);
+	}
+
 	public static <T> AffirmationObjetAuFeminin<T> alorsLa(T valeur) {
 		return new AffirmationObjetDeBase<T>(valeur);
+	}
+
+	public static <T> AffirmationObjetAuFeminin<T> alorsCette(T valeur) {
+		return alorsLa(valeur);
 	}
 
 	public static <T> AffirmationCollection<T> alorsLes(Collection<T> valeurs) {
