@@ -35,4 +35,13 @@ public interface AffirmationObjetAuFeminin<T> {
 	 *          si l'affirmation est erronée.
 	 */
 	void nEstPasNulle();
+
+	/**
+	 * Affirme que la valeur respecte la spécification.
+	 *
+	 * @param spécification la spécification à respecter.
+	 * @throws fr.arpinum.cocoritest.affirmation.ExceptionAffirmation
+	 *          si l'affirmation est erronée.
+	 */
+	void respecte(Specification<T> spécification);
 }

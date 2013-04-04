@@ -89,6 +89,37 @@ public class TestAffirmationObjetDeBase {
 		creeAffirmation(null).nEstPasNulle();
 	}
 
+	@Test
+	public void onPeutAffirmerQuUnObjetRespecteUneSpecification() {
+		creeAffirmation(1).respecte(créeSpecificationToujoursSatisfaite());
+	}
+
+	private Specification<Integer> créeSpecificationToujoursSatisfaite() {
+		return new Specification<Integer>() {
+			@Override
+			public boolean estSatisfaitPar(Integer objet) {
+				return true;
+			}
+		};
+	}
+
+	@Test
+	public void onNePeutPasAffirmerATortQuUnObjetRespecteUneSpecification() {
+		politiqueException.expect(ExceptionAffirmation.class);
+		politiqueException.expectMessage("La valeur ne respecte pas la spécification");
+
+		creeAffirmation(1).respecte(créeSpécificationJamaisSatisfaite());
+	}
+
+	private Specification<Integer> créeSpécificationJamaisSatisfaite() {
+		return new Specification<Integer>() {
+			@Override
+			public boolean estSatisfaitPar(Integer objet) {
+				return false;
+			}
+		};
+	}
+
 	private static <T> AffirmationObjetDeBase<T> creeAffirmation(T valeur) {
 		return new AffirmationObjetDeBase<T>(valeur);
 	}

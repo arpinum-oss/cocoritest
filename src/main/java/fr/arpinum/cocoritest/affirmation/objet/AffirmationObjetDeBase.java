@@ -43,5 +43,12 @@ public class AffirmationObjetDeBase<T> extends Affirmation implements Affirmatio
 		nEstPasNul();
 	}
 
+	@Override
+	public void respecte(Specification<T> spécification) {
+		if (!spécification.estSatisfaitPar(valeur)) {
+			échoue("La valeur ne respecte pas la spécification");
+		}
+	}
+
 	private final T valeur;
 }
