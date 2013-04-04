@@ -1,5 +1,10 @@
 package fr.arpinum.cocoritest.affirmation.objet;
 
+/**
+ * Représente une affirmation concernant un objet typé.
+ *
+ * @param <T> le type de l'objet concerné par l'affirmation.
+ */
 public interface AffirmationObjet<T> {
 
 	/**

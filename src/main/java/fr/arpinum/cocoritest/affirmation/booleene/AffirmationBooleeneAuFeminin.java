@@ -1,5 +1,8 @@
 package fr.arpinum.cocoritest.affirmation.booleene;
 
+/**
+ * Représente une affirmation concernant un booléen. L'affirmation est au féminin.
+ */
 public interface AffirmationBooleeneAuFeminin {
 
 	/**

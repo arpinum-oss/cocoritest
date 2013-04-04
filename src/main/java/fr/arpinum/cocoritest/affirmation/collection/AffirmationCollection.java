@@ -2,6 +2,11 @@ package fr.arpinum.cocoritest.affirmation.collection;
 
 import java.util.Collection;
 
+/**
+ * Représente une affirmation concernant une collection typée.
+ *
+ * @param <T> le type des éléments de la collection concernée par l'affirmation.
+ */
 public interface AffirmationCollection<T> {
 
 	/**
