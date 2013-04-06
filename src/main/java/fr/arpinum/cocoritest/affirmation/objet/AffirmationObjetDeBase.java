@@ -13,18 +13,12 @@ public class AffirmationObjetDeBase<T> extends Affirmation implements Affirmatio
 
 	@Override
 	public void est(T objetAttendu) {
-		Specification<T> spécification = new SpecificationObjet<T>(objet);
-		if (!spécification.estSatisfaitePar(objetAttendu)) {
-			échoue(spécification.messageInsatisfactionPour(objetAttendu));
-		}
+		respecte(new SpecificationObjet<T>(objetAttendu));
 	}
 
 	@Override
 	public void nEstPas(T objetNonAttendu) {
-		Specification<T> spécification = new SpecificationAutreObjet<T>(objet);
-		if (!spécification.estSatisfaitePar(objetNonAttendu)) {
-			échoue(spécification.messageInsatisfactionPour(objetNonAttendu));
-		}
+		respecte(new SpecificationAutreObjet<T>(objetNonAttendu));
 	}
 
 	@Override

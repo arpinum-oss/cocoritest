@@ -15,7 +15,7 @@ public class SpecificationObjet<T> implements Specification<T> {
 
 	@Override
 	public String messageInsatisfactionPour(T objet) {
-		return String.format("L'objet est %s au lieu de %s.", Objets.enChaîne(objetSpécifié), Objets.enChaîne(objet));
+		return String.format("L'objet est %s au lieu de %s.", Objets.enChaîne(objet), Objets.enChaîne(objetSpécifié));
 	}
 
 	private final T objetSpécifié;
