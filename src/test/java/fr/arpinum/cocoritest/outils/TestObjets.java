@@ -21,4 +21,22 @@ public class TestObjets {
 		assertTrue(Objets.différents("toto", "tutu"));
 		assertFalse(Objets.différents(13, 13));
 	}
+
+	@Test
+	public void unBooléenEnChaîneEstEnFrançais() {
+		assertEquals("vrai", Objets.enChaîne(true));
+		assertEquals("faux", Objets.enChaîne(false));
+	}
+
+	@Test
+	public void unObjetNulEnChaîneEstEnFrançais() {
+		assertEquals("nul", Objets.enChaîne(null));
+	}
+
+	@Test
+	public void unObjetNonNulEnChaîneEstSonToString() {
+		Object objet = new Object();
+
+		assertEquals(objet.toString(), Objets.enChaîne(objet));
+	}
 }

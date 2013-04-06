@@ -15,7 +15,7 @@ public class SpecificationAutreObjet<T> implements Specification<T> {
 
 	@Override
 	public String messageInsatisfactionPour(T objet) {
-		return String.format("L'objet est %s alors que ce n'était pas voulu.", objet);
+		return String.format("L'objet est %s alors que ce n'était pas voulu.", Objets.enChaîne(objet));
 	}
 
 	private T objetSpécifié;

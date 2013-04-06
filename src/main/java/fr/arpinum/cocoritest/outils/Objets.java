@@ -12,4 +12,14 @@ public class Objets {
 	public static boolean différents(Object gauche, Object droite) {
 		return !egaux(gauche, droite);
 	}
+
+	public static String enChaîne(Object objet) {
+		if (objet == null) {
+			return "nul";
+		}
+		if (objet instanceof Boolean) {
+			return ((Boolean) objet) ? "vrai" : "faux";
+		}
+		return objet.toString();
+	}
 }

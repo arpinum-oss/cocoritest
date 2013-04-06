@@ -61,7 +61,7 @@ public class TestAffirmationObjetDeBase {
 	@Test
 	public void onNePeutPasAffirmerQuUnObjetNonNulEstNul() {
 		politiqueException.expect(ExceptionAffirmation.class);
-		politiqueException.expectMessage("L'objet est toto au lieu de null.");
+		politiqueException.expectMessage("L'objet est toto au lieu de nul.");
 
 		creeAffirmation("toto").estNul();
 	}
@@ -69,7 +69,7 @@ public class TestAffirmationObjetDeBase {
 	@Test
 	public void onNePeutPasAffirmerAuFémininQuUnObjetNonNulEstNul() {
 		politiqueException.expect(ExceptionAffirmation.class);
-		politiqueException.expectMessage("L'objet est toto au lieu de null.");
+		politiqueException.expectMessage("L'objet est toto au lieu de nul.");
 
 		creeAffirmation("toto").estNulle();
 	}
@@ -77,7 +77,7 @@ public class TestAffirmationObjetDeBase {
 	@Test
 	public void onNePeutPasAffirmerQuUnObjetNulNEstPasNul() {
 		politiqueException.expect(ExceptionAffirmation.class);
-		politiqueException.expectMessage("L'objet est null alors que ce n'était pas voulu.");
+		politiqueException.expectMessage("L'objet est nul alors que ce n'était pas voulu.");
 
 		creeAffirmation(null).nEstPasNul();
 	}
@@ -85,7 +85,7 @@ public class TestAffirmationObjetDeBase {
 	@Test
 	public void onNePeutPasAffirmerAuFémininQuUnObjetNulNEstPasNul() {
 		politiqueException.expect(ExceptionAffirmation.class);
-		politiqueException.expectMessage("L'objet est null alors que ce n'était pas voulu.");
+		politiqueException.expectMessage("L'objet est nul alors que ce n'était pas voulu.");
 
 		creeAffirmation(null).nEstPasNulle();
 	}
