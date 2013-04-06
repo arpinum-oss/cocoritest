@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import fr.arpinum.cocoritest.affirmation.ExceptionAffirmation;
+import fr.arpinum.cocoritest.specification.Specification;
 
 public class TestAffirmationObjetDeBase {
 
@@ -100,13 +101,18 @@ public class TestAffirmationObjetDeBase {
 			public boolean estSatisfaitPar(Integer objet) {
 				return true;
 			}
+
+			@Override
+			public String messageInsatisfactionPour(Integer objet) {
+				return "non utilisé";
+			}
 		};
 	}
 
 	@Test
 	public void onNePeutPasAffirmerATortQuUnObjetRespecteUneSpecification() {
 		politiqueException.expect(ExceptionAffirmation.class);
-		politiqueException.expectMessage("La valeur ne respecte pas la spécification");
+		politiqueException.expectMessage("1 ne respecte pas la spécification");
 
 		creeAffirmation(1).respecte(créeSpécificationJamaisSatisfaite());
 	}
@@ -116,6 +122,11 @@ public class TestAffirmationObjetDeBase {
 			@Override
 			public boolean estSatisfaitPar(Integer objet) {
 				return false;
+			}
+
+			@Override
+			public String messageInsatisfactionPour(Integer objet) {
+				return objet + " ne respecte pas la spécification";
 			}
 		};
 	}

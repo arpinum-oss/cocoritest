@@ -1,7 +1,9 @@
 package fr.arpinum.cocoritest.affirmation.objet;
 
 import fr.arpinum.cocoritest.affirmation.Affirmation;
-import fr.arpinum.cocoritest.outils.Objets;
+import fr.arpinum.cocoritest.specification.Specification;
+import fr.arpinum.cocoritest.specification.SpecificationObjetsDifferents;
+import fr.arpinum.cocoritest.specification.SpecificationObjetsEgaux;
 
 public class AffirmationObjetDeBase<T> extends Affirmation implements AffirmationObjet<T>, AffirmationObjetAuFeminin<T> {
 
@@ -11,15 +13,17 @@ public class AffirmationObjetDeBase<T> extends Affirmation implements Affirmatio
 
 	@Override
 	public void est(T valeurAttendue) {
-		if (Objets.différents(valeur, valeurAttendue)) {
-			échoue("La valeur est %s et non %s.", valeur, valeurAttendue);
+		Specification<T> spécification = new SpecificationObjetsEgaux<T>(valeur);
+		if (!spécification.estSatisfaitPar(valeurAttendue)) {
+			échoue(spécification.messageInsatisfactionPour(valeurAttendue));
 		}
 	}
 
 	@Override
 	public void nEstPas(T valeurNonAttendue) {
-		if (Objets.egaux(valeur, valeurNonAttendue)) {
-			échoue("La valeur est %s alors que ce n'était pas voulu.", valeur);
+		Specification<T> spécification = new SpecificationObjetsDifferents<T>(valeur);
+		if (!spécification.estSatisfaitPar(valeurNonAttendue)) {
+			échoue(spécification.messageInsatisfactionPour(valeurNonAttendue));
 		}
 	}
 
@@ -46,7 +50,7 @@ public class AffirmationObjetDeBase<T> extends Affirmation implements Affirmatio
 	@Override
 	public void respecte(Specification<T> spécification) {
 		if (!spécification.estSatisfaitPar(valeur)) {
-			échoue("La valeur ne respecte pas la spécification");
+			échoue(spécification.messageInsatisfactionPour(valeur));
 		}
 	}
 

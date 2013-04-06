@@ -1,5 +1,7 @@
 package fr.arpinum.cocoritest.affirmation.objet;
 
+import fr.arpinum.cocoritest.specification.Specification;
+
 /**
  * Représente une affirmation concernant un objet typé. L'affirmation est au féminin.
  *
