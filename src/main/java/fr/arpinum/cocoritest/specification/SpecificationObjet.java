@@ -18,5 +18,5 @@ public class SpecificationObjet<T> implements Specification<T> {
 		return String.format("L'objet est %s au lieu de %s.", Objets.enChaîne(objetSpécifié), Objets.enChaîne(objet));
 	}
 
-	private T objetSpécifié;
+	private final T objetSpécifié;
 }

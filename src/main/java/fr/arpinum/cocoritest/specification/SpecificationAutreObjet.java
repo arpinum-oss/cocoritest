@@ -18,5 +18,5 @@ public class SpecificationAutreObjet<T> implements Specification<T> {
 		return String.format("L'objet est %s alors que ce n'était pas voulu.", Objets.enChaîne(objet));
 	}
 
-	private T objetSpécifié;
+	private final T objetSpécifié;
 }

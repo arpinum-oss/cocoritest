@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fr.arpinum.cocoritest.outils.Listes;
+import fr.arpinum.cocoritest.specification.Specification;
 
 public class TestAffirmations {
 
@@ -31,6 +32,7 @@ public class TestAffirmations {
 		alorsLe(nombre).nEstPas(4);
 		alorsLe(champ).estNul();
 		alorsLe(nombre).nEstPasNul();
+		alorsLe(nombre).respecte(laSpecification());
 	}
 
 	@Test
@@ -41,6 +43,7 @@ public class TestAffirmations {
 		alorsLa(valeur).nEstPas(4);
 		alorsLa(réponse).estNulle();
 		alorsLa(remarque).nEstPasNulle();
+		alorsLa(valeur).respecte(laSpecification());
 	}
 
 	@Test
@@ -59,6 +62,20 @@ public class TestAffirmations {
 		alorsLes(nombres).ont(1, 12);
 		alorsLes(nombres).ont(Listes.cree(1, 12));
 		alorsLes(valeurs).nExistentPas();
+	}
+
+	private static Specification<Integer> laSpecification() {
+		return new Specification<Integer>() {
+			@Override
+			public boolean estSatisfaitePar(Integer objet) {
+				return true;
+			}
+
+			@Override
+			public String messageInsatisfactionPour(Integer objet) {
+				return null;
+			}
+		};
 	}
 
 	private boolean résultat;
