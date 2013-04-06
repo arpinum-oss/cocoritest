@@ -2,20 +2,20 @@ package fr.arpinum.cocoritest.specification;
 
 import fr.arpinum.cocoritest.outils.Objets;
 
-public class SpecificationObjetsEgaux<T> implements Specification<T> {
+public class SpecificationObjet<T> implements Specification<T> {
 
-	public SpecificationObjetsEgaux(T objetSpécifié) {
+	public SpecificationObjet(T objetSpécifié) {
 		this.objetSpécifié = objetSpécifié;
 	}
 
 	@Override
-	public boolean estSatisfaitPar(T objet) {
+	public boolean estSatisfaitePar(T objet) {
 		return Objets.egaux(objetSpécifié, objet);
 	}
 
 	@Override
 	public String messageInsatisfactionPour(T objet) {
-		return String.format("La valeur est %s au lieu de %s.", objetSpécifié, objet);
+		return String.format("L'objet est %s au lieu de %s.", objetSpécifié, objet);
 	}
 
 	private T objetSpécifié;

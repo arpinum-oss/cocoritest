@@ -13,7 +13,7 @@ public interface Specification<T> {
 	 * @param objet l'objet sur lequel est vérifiée la satisfaction de la spécification.
 	 * @return true si la spécification est satisfaite par l'objet, faux sinon.
 	 */
-	boolean estSatisfaitPar(T objet);
+	boolean estSatisfaitePar(T objet);
 
 	/**
 	 * Le message décrivant pourquoi la spécification n'est pas satisfaite par l'objet.

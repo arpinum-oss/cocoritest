@@ -2,28 +2,28 @@ package fr.arpinum.cocoritest.affirmation.objet;
 
 import fr.arpinum.cocoritest.affirmation.Affirmation;
 import fr.arpinum.cocoritest.specification.Specification;
-import fr.arpinum.cocoritest.specification.SpecificationObjetsDifferents;
-import fr.arpinum.cocoritest.specification.SpecificationObjetsEgaux;
+import fr.arpinum.cocoritest.specification.SpecificationAutreObjet;
+import fr.arpinum.cocoritest.specification.SpecificationObjet;
 
 public class AffirmationObjetDeBase<T> extends Affirmation implements AffirmationObjet<T>, AffirmationObjetAuFeminin<T> {
 
-	public AffirmationObjetDeBase(T valeur) {
-		this.valeur = valeur;
+	public AffirmationObjetDeBase(T objet) {
+		this.objet = objet;
 	}
 
 	@Override
-	public void est(T valeurAttendue) {
-		Specification<T> spécification = new SpecificationObjetsEgaux<T>(valeur);
-		if (!spécification.estSatisfaitPar(valeurAttendue)) {
-			échoue(spécification.messageInsatisfactionPour(valeurAttendue));
+	public void est(T objetAttendu) {
+		Specification<T> spécification = new SpecificationObjet<T>(objet);
+		if (!spécification.estSatisfaitePar(objetAttendu)) {
+			échoue(spécification.messageInsatisfactionPour(objetAttendu));
 		}
 	}
 
 	@Override
-	public void nEstPas(T valeurNonAttendue) {
-		Specification<T> spécification = new SpecificationObjetsDifferents<T>(valeur);
-		if (!spécification.estSatisfaitPar(valeurNonAttendue)) {
-			échoue(spécification.messageInsatisfactionPour(valeurNonAttendue));
+	public void nEstPas(T objetNonAttendu) {
+		Specification<T> spécification = new SpecificationAutreObjet<T>(objet);
+		if (!spécification.estSatisfaitePar(objetNonAttendu)) {
+			échoue(spécification.messageInsatisfactionPour(objetNonAttendu));
 		}
 	}
 
@@ -49,10 +49,10 @@ public class AffirmationObjetDeBase<T> extends Affirmation implements Affirmatio
 
 	@Override
 	public void respecte(Specification<T> spécification) {
-		if (!spécification.estSatisfaitPar(valeur)) {
-			échoue(spécification.messageInsatisfactionPour(valeur));
+		if (!spécification.estSatisfaitePar(objet)) {
+			échoue(spécification.messageInsatisfactionPour(objet));
 		}
 	}
 
-	private final T valeur;
+	private final T objet;
 }

@@ -10,25 +10,25 @@ import fr.arpinum.cocoritest.specification.Specification;
 public interface AffirmationObjetAuFeminin<T> {
 
 	/**
-	 * Affirme que la valeur est la valeur attendue.
+	 * Affirme que l'objet est celui attendu.
 	 *
-	 * @param valeurAttendue la valeur attendue.
+	 * @param objetAttendu l'objet attendu.
 	 * @throws fr.arpinum.cocoritest.affirmation.ExceptionAffirmation
 	 *          si l'affirmation est erronée.
 	 */
-	void est(T valeurAttendue);
+	void est(T objetAttendu);
 
 	/**
-	 * Affirme que la valeur n'est pas la valeur attendue.
+	 * Affirme que l'objet n'est pas celui attendu.
 	 *
-	 * @param valeurNonAttendue la valeur non attendue.
+	 * @param objetNonAttendu l'objet non attendu.
 	 * @throws fr.arpinum.cocoritest.affirmation.ExceptionAffirmation
 	 *          si l'affirmation est erronée.
 	 */
-	void nEstPas(T valeurNonAttendue);
+	void nEstPas(T objetNonAttendu);
 
 	/**
-	 * Affirme que la valeur est nulle.
+	 * Affirme que l'objet est nul.
 	 *
 	 * @throws fr.arpinum.cocoritest.affirmation.ExceptionAffirmation
 	 *          si l'affirmation est erronée.
@@ -36,7 +36,7 @@ public interface AffirmationObjetAuFeminin<T> {
 	void estNulle();
 
 	/**
-	 * Affirme que la valeur n'est pas nulle.
+	 * Affirme que l'objet n'est pas nul.
 	 *
 	 * @throws fr.arpinum.cocoritest.affirmation.ExceptionAffirmation
 	 *          si l'affirmation est erronée.
@@ -44,7 +44,7 @@ public interface AffirmationObjetAuFeminin<T> {
 	void nEstPasNulle();
 
 	/**
-	 * Affirme que la valeur respecte la spécification.
+	 * Affirme que l'objet respecte la spécification.
 	 *
 	 * @param spécification la spécification à respecter.
 	 * @throws fr.arpinum.cocoritest.affirmation.ExceptionAffirmation

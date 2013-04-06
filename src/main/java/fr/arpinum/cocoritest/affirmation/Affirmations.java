@@ -67,50 +67,50 @@ public class Affirmations {
 	/**
 	 * Crée une nouvelle instance de <code>{@link AffirmationObjet}</code>.
 	 *
-	 * @param valeur la cible de l'affirmation.
+	 * @param objet la cible de l'affirmation.
 	 * @return l'affirmation créée.
 	 */
-	public static <T> AffirmationObjet<T> alorsLe(T valeur) {
-		return new AffirmationObjetDeBase<T>(valeur);
+	public static <T> AffirmationObjet<T> alorsLe(T objet) {
+		return new AffirmationObjetDeBase<T>(objet);
 	}
 
 	/**
 	 * Crée une nouvelle instance de <code>{@link AffirmationObjet}</code>.
 	 *
-	 * @param valeur la cible de l'affirmation.
+	 * @param objet la cible de l'affirmation.
 	 * @return l'affirmation créée.
 	 */
-	public static <T> AffirmationObjet<T> alorsCet(T valeur) {
-		return alorsLe(valeur);
+	public static <T> AffirmationObjet<T> alorsCet(T objet) {
+		return alorsLe(objet);
 	}
 
 	/**
 	 * Crée une nouvelle instance de <code>{@link AffirmationObjetAuFeminin}</code>.
 	 *
-	 * @param valeur la cible de l'affirmation.
+	 * @param objet la cible de l'affirmation.
 	 * @return l'affirmation créée.
 	 */
-	public static <T> AffirmationObjetAuFeminin<T> alorsLa(T valeur) {
-		return new AffirmationObjetDeBase<T>(valeur);
+	public static <T> AffirmationObjetAuFeminin<T> alorsLa(T objet) {
+		return new AffirmationObjetDeBase<T>(objet);
 	}
 
 	/**
 	 * Crée une nouvelle instance de <code>{@link AffirmationObjetAuFeminin}</code>.
 	 *
-	 * @param valeur la cible de l'affirmation.
+	 * @param objet la cible de l'affirmation.
 	 * @return l'affirmation créée.
 	 */
-	public static <T> AffirmationObjetAuFeminin<T> alorsCette(T valeur) {
-		return alorsLa(valeur);
+	public static <T> AffirmationObjetAuFeminin<T> alorsCette(T objet) {
+		return alorsLa(objet);
 	}
 
 	/**
 	 * Crée une nouvelle instance de <code>{@link AffirmationCollection}</code>.
 	 *
-	 * @param valeurs la cible de l'affirmation.
+	 * @param éléments les cibles de l'affirmation.
 	 * @return l'affirmation créée.
 	 */
-	public static <T> AffirmationCollection<T> alorsLes(Collection<T> valeurs) {
-		return AffirmationCollectionDeBase.cree(valeurs);
+	public static <T> AffirmationCollection<T> alorsLes(Collection<T> éléments) {
+		return AffirmationCollectionDeBase.cree(éléments);
 	}
 }
