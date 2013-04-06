@@ -1,7 +1,7 @@
 package fr.arpinum.cocoritest.affirmation.booleene;
 
 import fr.arpinum.cocoritest.affirmation.Affirmation;
-import fr.arpinum.cocoritest.outils.Objets;
+import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjetDeBase;
 
 public class AffirmationBooleeneDeBase extends Affirmation implements AffirmationBooleene, AffirmationBooleeneAuFeminin {
 
@@ -11,7 +11,7 @@ public class AffirmationBooleeneDeBase extends Affirmation implements Affirmatio
 
 	@Override
 	public void estVrai() {
-		satisfait(true);
+		affirmeQueLeBooléenEst(true);
 	}
 
 	@Override
@@ -21,7 +21,7 @@ public class AffirmationBooleeneDeBase extends Affirmation implements Affirmatio
 
 	@Override
 	public void estFaux() {
-		satisfait(false);
+		affirmeQueLeBooléenEst(false);
 	}
 
 	@Override
@@ -29,10 +29,8 @@ public class AffirmationBooleeneDeBase extends Affirmation implements Affirmatio
 		estFaux();
 	}
 
-	private void satisfait(boolean attendue) {
-		if (Objets.différents(booléen, attendue)) {
-			échoue("La valeur n'est pas %s.", attendue ? "vraie" : "fausse");
-		}
+	private void affirmeQueLeBooléenEst(boolean attendue) {
+		new AffirmationObjetDeBase<Boolean>(booléen).est(attendue);
 	}
 
 	private final Boolean booléen;

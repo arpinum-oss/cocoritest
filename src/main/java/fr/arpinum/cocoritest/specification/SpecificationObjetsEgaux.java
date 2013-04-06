@@ -15,7 +15,7 @@ public class SpecificationObjetsEgaux<T> implements Specification<T> {
 
 	@Override
 	public String messageInsatisfactionPour(T objet) {
-		return String.format("La valeur est %s et non %s.", objetSpécifié, objet);
+		return String.format("La valeur est %s au lieu de %s.", objetSpécifié, objet);
 	}
 
 	private T objetSpécifié;

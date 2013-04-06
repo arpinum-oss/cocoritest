@@ -20,7 +20,7 @@ public class TestAffirmationObjetDeBase {
 	@Test
 	public void onNePeutPasAffirmerQuUnNombreEstUnNombreDifférent() {
 		politiqueException.expect(ExceptionAffirmation.class);
-		politiqueException.expectMessage("La valeur est 1 et non 2.");
+		politiqueException.expectMessage("La valeur est 1 au lieu de 2.");
 
 		creeAffirmation(1).est(2);
 	}
@@ -41,7 +41,7 @@ public class TestAffirmationObjetDeBase {
 	@Test
 	public void onNePeutPasAffirmerQuUneChaîneEstUneChaîneDifférente() {
 		politiqueException.expect(ExceptionAffirmation.class);
-		politiqueException.expectMessage("La valeur est toto et non tutu.");
+		politiqueException.expectMessage("La valeur est toto au lieu de tutu.");
 
 		creeAffirmation("toto").est("tutu");
 	}
@@ -61,7 +61,7 @@ public class TestAffirmationObjetDeBase {
 	@Test
 	public void onNePeutPasAffirmerQuUnObjetNonNulEstNul() {
 		politiqueException.expect(ExceptionAffirmation.class);
-		politiqueException.expectMessage("La valeur est toto et non null.");
+		politiqueException.expectMessage("La valeur est toto au lieu de null.");
 
 		creeAffirmation("toto").estNul();
 	}
@@ -69,7 +69,7 @@ public class TestAffirmationObjetDeBase {
 	@Test
 	public void onNePeutPasAffirmerAuFémininQuUnObjetNonNulEstNul() {
 		politiqueException.expect(ExceptionAffirmation.class);
-		politiqueException.expectMessage("La valeur est toto et non null.");
+		politiqueException.expectMessage("La valeur est toto au lieu de null.");
 
 		creeAffirmation("toto").estNulle();
 	}
