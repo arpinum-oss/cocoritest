@@ -4,21 +4,21 @@ import java.util.Collection;
 
 import fr.arpinum.cocoritest.outils.Collections;
 
-public class SpecificationCollection<E, T extends Collection<E>> implements Specification<T> {
+public class SpecificationCollection<E> implements Specification<Collection<E>> {
 
-	public SpecificationCollection(T élémentsSpécifiés) {
+	public SpecificationCollection(Collection<E> élémentsSpécifiés) {
 		this.collectionSpécifiée = élémentsSpécifiés;
 	}
 
 	@Override
-	public boolean estSatisfaitePar(T éléments) {
+	public boolean estSatisfaitePar(Collection<E> éléments) {
 		return Collections.egales(collectionSpécifiée, éléments);
 	}
 
 	@Override
-	public String messageInsatisfactionPour(T éléments) {
+	public String messageInsatisfactionPour(Collection<E> éléments) {
 		return String.format("Les éléments sont %s et non %s.", éléments, collectionSpécifiée);
 	}
 
-	private final T collectionSpécifiée;
+	private final Collection<E> collectionSpécifiée;
 }

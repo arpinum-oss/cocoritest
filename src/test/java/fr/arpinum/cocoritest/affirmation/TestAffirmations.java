@@ -2,6 +2,7 @@ package fr.arpinum.cocoritest.affirmation;
 
 import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.junit.Before;
@@ -32,7 +33,7 @@ public class TestAffirmations {
 		alorsLe(nombre).nEstPas(4);
 		alorsLe(champ).estNul();
 		alorsLe(nombre).nEstPasNul();
-		alorsLe(nombre).respecte(laSpecification());
+		alorsLe(nombre).respecte(laSpécification());
 	}
 
 	@Test
@@ -43,7 +44,7 @@ public class TestAffirmations {
 		alorsLa(valeur).nEstPas(4);
 		alorsLa(réponse).estNulle();
 		alorsLa(remarque).nEstPasNulle();
-		alorsLa(valeur).respecte(laSpecification());
+		alorsLa(valeur).respecte(laSpécification());
 	}
 
 	@Test
@@ -62,9 +63,10 @@ public class TestAffirmations {
 		alorsLes(nombres).ont(1, 12);
 		alorsLes(nombres).ont(Listes.cree(1, 12));
 		alorsLes(valeurs).nExistentPas();
+		alorsLes(nombres).respectent(laSpécificationDeCollection());
 	}
 
-	private static Specification<Integer> laSpecification() {
+	private static Specification<Integer> laSpécification() {
 		return new Specification<Integer>() {
 			@Override
 			public boolean estSatisfaitePar(Integer objet) {
@@ -73,6 +75,20 @@ public class TestAffirmations {
 
 			@Override
 			public String messageInsatisfactionPour(Integer objet) {
+				return null;
+			}
+		};
+	}
+
+	private static Specification<Collection<Integer>> laSpécificationDeCollection() {
+		return new Specification<Collection<Integer>>() {
+			@Override
+			public boolean estSatisfaitePar(Collection<Integer> objet) {
+				return true;
+			}
+
+			@Override
+			public String messageInsatisfactionPour(Collection<Integer> objet) {
 				return null;
 			}
 		};

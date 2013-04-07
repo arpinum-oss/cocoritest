@@ -24,7 +24,7 @@ public class AffirmationCollectionDeBase<E> extends Affirmation implements Affir
 
 	@Override
 	public void sont(Collection<E> élémentsAttendus) {
-		respectent(new SpecificationCollection<E, Collection<E>>(élémentsAttendus));
+		respectent(new SpecificationCollection<E>(élémentsAttendus));
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class AffirmationCollectionDeBase<E> extends Affirmation implements Affir
 	@Override
 	public void sontAuNombreDe(int nombre) {
 		assureInvariant();
-		respectent(new SpecificationTailleDeCollection<E, Collection<E>>(nombre));
+		respectent(new SpecificationTailleDeCollection<E>(nombre));
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class AffirmationCollectionDeBase<E> extends Affirmation implements Affir
 	@Override
 	public void ont(Collection<E> élémentsAttendus) {
 		assureInvariant();
-		respectent(new SpecificationElementsDansLaCollection<E, Collection<E>>(élémentsAttendus));
+		respectent(new SpecificationElementsDansLaCollection<E>(élémentsAttendus));
 	}
 
 	@Override
