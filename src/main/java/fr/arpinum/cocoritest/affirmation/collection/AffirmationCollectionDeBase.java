@@ -6,6 +6,7 @@ import fr.arpinum.cocoritest.affirmation.Affirmation;
 import fr.arpinum.cocoritest.outils.Listes;
 import fr.arpinum.cocoritest.specification.Specification;
 import fr.arpinum.cocoritest.specification.SpecificationCollection;
+import fr.arpinum.cocoritest.specification.SpecificationElementsDansLaCollection;
 import fr.arpinum.cocoritest.specification.SpecificationTailleDeCollection;
 
 public class AffirmationCollectionDeBase<E> extends Affirmation implements AffirmationCollection<E> {
@@ -45,9 +46,7 @@ public class AffirmationCollectionDeBase<E> extends Affirmation implements Affir
 	@Override
 	public void ont(Collection<E> élémentsAttendus) {
 		assureInvariant();
-		if (!éléments.containsAll(élémentsAttendus)) {
-			échoue("%s ne sont pas présents dans %s.", élémentsAttendus, éléments);
-		}
+		respectent(new SpecificationElementsDansLaCollection<E, Collection<E>>(élémentsAttendus));
 	}
 
 	@Override
@@ -59,7 +58,8 @@ public class AffirmationCollectionDeBase<E> extends Affirmation implements Affir
 		assert éléments != null;
 	}
 
-	private void respectent(Specification<Collection<E>> spécification) {
+	@Override
+	public void respectent(Specification<Collection<E>> spécification) {
 		if (!spécification.estSatisfaitePar(éléments)) {
 			échoue(spécification.messageInsatisfactionPour(éléments));
 		}

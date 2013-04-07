@@ -1,5 +1,6 @@
 package fr.arpinum.cocoritest.affirmation.collection;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.junit.Rule;
@@ -8,6 +9,7 @@ import org.junit.rules.ExpectedException;
 
 import fr.arpinum.cocoritest.affirmation.ExceptionAffirmation;
 import fr.arpinum.cocoritest.outils.Listes;
+import fr.arpinum.cocoritest.specification.Specification;
 
 public class TestAffirmationCollectionDeBase {
 
@@ -79,5 +81,46 @@ public class TestAffirmationCollectionDeBase {
 		exception.expectMessage("[13, 12] ne sont pas présents dans [1, 2].");
 
 		AffirmationCollectionDeBase.cree(Listes.cree(1, 2)).ont(13, 12);
+	}
+
+	@Test
+	public void onPeutAffirmerQuUneCollectionRespecteUneSpécification() {
+		AffirmationCollectionDeBase.cree(Listes.cree(1, 2)).respectent(créeSpecificationToujoursSatisfaite());
+	}
+
+	private Specification<Collection<Integer>> créeSpecificationToujoursSatisfaite() {
+		return new Specification<Collection<Integer>>() {
+			@Override
+			public boolean estSatisfaitePar(Collection<Integer> objet) {
+				return true;
+			}
+
+			@Override
+			public String messageInsatisfactionPour(Collection<Integer> objet) {
+				return "non utilisé";
+			}
+		};
+	}
+
+	@Test
+	public void onNePeutPasAffirmerATortQuUneCollectionRespecteUneSpécification() {
+		exception.expect(ExceptionAffirmation.class);
+		exception.expectMessage("[1, 2] ne respectent pas la spécification.");
+
+		AffirmationCollectionDeBase.cree(Listes.cree(1, 2)).respectent(créeSpecificationJamaisSatisfaite());
+	}
+
+	private Specification<Collection<Integer>> créeSpecificationJamaisSatisfaite() {
+		return new Specification<Collection<Integer>>() {
+			@Override
+			public boolean estSatisfaitePar(Collection<Integer> objet) {
+				return false;
+			}
+
+			@Override
+			public String messageInsatisfactionPour(Collection<Integer> objet) {
+				return objet + " ne respectent pas la spécification.";
+			}
+		};
 	}
 }
