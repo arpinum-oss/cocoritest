@@ -2,12 +2,14 @@ package fr.arpinum.cocoritest.exemples;
 
 import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import fr.arpinum.cocoritest.outils.Listes;
+import fr.arpinum.cocoritest.specification.Specification;
 
 public class TestMiniFizzBuzz {
 
@@ -22,6 +24,7 @@ public class TestMiniFizzBuzz {
 
 		alorsLes(valeurs).sontAuNombreDe(100);
 		alorsLa(valeur(valeurs, 0)).est("1");
+		alorsLes(valeurs).respectent(aucunElémentNEstNul());
 	}
 
 	@Test
@@ -34,6 +37,25 @@ public class TestMiniFizzBuzz {
 
 	private String valeur(List<String> valeurs, int indice) {
 		return valeurs.get(indice);
+	}
+
+	private Specification<Collection<String>> aucunElémentNEstNul() {
+		return new Specification<Collection<String>>() {
+			@Override
+			public boolean estSatisfaitePar(Collection<String> objet) {
+				for (String s : objet) {
+					if (s == null) {
+						return false;
+					}
+				}
+				return true;
+			}
+
+			@Override
+			public String messageInsatisfactionPour(Collection<String> objet) {
+				return "Un élément est nul parmi " + objet;
+			}
+		};
 	}
 
 	private static class MiniFizzBuzz {
