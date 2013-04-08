@@ -7,7 +7,7 @@ import java.util.List;
 public class Listes {
 
 	public static <T> List<T> cree(T... éléments) {
-		List<T> liste = new ArrayList<T>();
+		List<T> liste = new ArrayList<>();
 		Collections.addAll(liste, éléments);
 		return liste;
 	}

@@ -30,7 +30,7 @@ public class AffirmationBooleeneDeBase extends Affirmation implements Affirmatio
 	}
 
 	private void affirmeQueLeBooléenEst(boolean attendue) {
-		new AffirmationObjetDeBase<Boolean>(booléen).est(attendue);
+		new AffirmationObjetDeBase<>(booléen).est(attendue);
 	}
 
 	private final Boolean booléen;

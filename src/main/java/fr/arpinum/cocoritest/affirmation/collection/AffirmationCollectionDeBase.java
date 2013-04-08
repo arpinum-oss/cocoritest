@@ -13,9 +13,9 @@ public class AffirmationCollectionDeBase<E> extends Affirmation implements Affir
 
 	public static <T> AffirmationCollection<T> cree(Collection<T> éléments) {
 		if (éléments == null) {
-			return new AffirmationCollectionNulle<T>();
+			return new AffirmationCollectionNulle<>();
 		}
-		return new AffirmationCollectionDeBase<T>(éléments);
+		return new AffirmationCollectionDeBase<>(éléments);
 	}
 
 	AffirmationCollectionDeBase(Collection<E> éléments) {
@@ -24,7 +24,7 @@ public class AffirmationCollectionDeBase<E> extends Affirmation implements Affir
 
 	@Override
 	public void sont(Collection<E> élémentsAttendus) {
-		respectent(new SpecificationCollection<E>(élémentsAttendus));
+		respectent(new SpecificationCollection<>(élémentsAttendus));
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class AffirmationCollectionDeBase<E> extends Affirmation implements Affir
 	@Override
 	public void ont(Collection<E> élémentsAttendus) {
 		assureInvariant();
-		respectent(new SpecificationElementsDansLaCollection<E>(élémentsAttendus));
+		respectent(new SpecificationElementsDansLaCollection<>(élémentsAttendus));
 	}
 
 	@Override

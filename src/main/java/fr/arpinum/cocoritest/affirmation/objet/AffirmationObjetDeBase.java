@@ -13,12 +13,12 @@ public class AffirmationObjetDeBase<T> extends Affirmation implements Affirmatio
 
 	@Override
 	public void est(T objetAttendu) {
-		respecte(new SpecificationObjet<T>(objetAttendu));
+		respecte(new SpecificationObjet<>(objetAttendu));
 	}
 
 	@Override
 	public void nEstPas(T objetNonAttendu) {
-		respecte(new SpecificationAutreObjet<T>(objetNonAttendu));
+		respecte(new SpecificationAutreObjet<>(objetNonAttendu));
 	}
 
 	@Override

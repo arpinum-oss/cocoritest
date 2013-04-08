@@ -71,7 +71,7 @@ public class Affirmations {
 	 * @return l'affirmation créée.
 	 */
 	public static <T> AffirmationObjet<T> alorsLe(T objet) {
-		return new AffirmationObjetDeBase<T>(objet);
+		return new AffirmationObjetDeBase<>(objet);
 	}
 
 	/**
@@ -91,7 +91,7 @@ public class Affirmations {
 	 * @return l'affirmation créée.
 	 */
 	public static <T> AffirmationObjetAuFeminin<T> alorsLa(T objet) {
-		return new AffirmationObjetDeBase<T>(objet);
+		return new AffirmationObjetDeBase<>(objet);
 	}
 
 	/**

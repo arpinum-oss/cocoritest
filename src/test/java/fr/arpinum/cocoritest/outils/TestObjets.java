@@ -1,7 +1,6 @@
 package fr.arpinum.cocoritest.outils;
 
 import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
-import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -9,24 +8,44 @@ public class TestObjets {
 
 	@Test
 	public void ilEstPossibleDeTesterLEgaliteDeDeuxObjets() {
-		assertTrue(Objets.egaux("toto", "toto"));
-		assertTrue(Objets.egaux(3, 3));
-		assertFalse(Objets.egaux("toto", 3));
-		assertTrue(Objets.egaux(null, null));
-		assertFalse(Objets.egaux(null, 3));
-		assertFalse(Objets.egaux(3, null));
+		alorsCette(égalitéEntre("toto", "toto")).estVraie();
+		alorsCette(égalitéEntre(3, 3)).estVraie();
+		alorsCette(égalitéEntre("toto", 3)).estFausse();
+		alorsCette(égalitéEntre(null, null)).estVraie();
+		alorsCette(égalitéEntre(null, 3)).estFausse();
+		alorsCette(égalitéEntre(3, null)).estFausse();
+	}
+
+	private boolean égalitéEntre(Object gauche, Object droite) {
+		return Objets.egaux(gauche, droite);
 	}
 
 	@Test
-	public void ilEstPossibleDeTesterLInegaliteDeDeuxObjets() {
-		assertTrue(Objets.différents("toto", "tutu"));
-		assertFalse(Objets.différents(13, 13));
+	public void deuxObjetsDifférentsLeSontVraiment() {
+		boolean inégalité = Objets.différents("toto", "tutu");
+
+		alorsCette(inégalité).estVraie();
 	}
 
 	@Test
-	public void unBooléenEnChaîneEstEnFrançais() {
-		assertEquals("vrai", Objets.enChaîne(true));
-		assertEquals("faux", Objets.enChaîne(false));
+	public void deuxObjetEgauxNeSontPasDifférents() {
+		boolean inégalité = Objets.différents(13, 13);
+
+		alorsCette(inégalité).estFausse();
+	}
+
+	@Test
+	public void unBooléenVraiEnChaîneEstEnFrançais() {
+		String chaîne = Objets.enChaîne(true);
+
+		alorsLa(chaîne).est("vrai");
+	}
+
+	@Test
+	public void unBooléenFauxEnChaîneEstEnFrançais() {
+		String chaîne = Objets.enChaîne(false);
+
+		alorsLa(chaîne).est("faux");
 	}
 
 	@Test
