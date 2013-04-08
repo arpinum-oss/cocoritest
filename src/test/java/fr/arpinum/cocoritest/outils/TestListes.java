@@ -1,7 +1,6 @@
 package fr.arpinum.cocoritest.outils;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.TestCase.assertNotNull;
+import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
 
 import java.util.List;
 
@@ -11,9 +10,8 @@ public class TestListes {
 
 	@Test
 	public void peutCréerUneListe() {
-		List<String> liste = Listes.cree("a", "b");
+		List<String> éléments = Listes.cree("a", "b");
 
-		assertNotNull(liste);
-		assertEquals(2, liste.size());
+		alorsLes(éléments).sont("a", "b");
 	}
 }

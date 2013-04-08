@@ -1,5 +1,6 @@
 package fr.arpinum.cocoritest.outils;
 
+import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -30,13 +31,17 @@ public class TestObjets {
 
 	@Test
 	public void unObjetNulEnChaîneEstEnFrançais() {
-		assertEquals("nul", Objets.enChaîne(null));
+		String chaîne = Objets.enChaîne(null);
+
+		alorsLa(chaîne).est("nul");
 	}
 
 	@Test
 	public void unObjetNonNulEnChaîneEstSonToString() {
 		Object objet = new Object();
 
-		assertEquals(objet.toString(), Objets.enChaîne(objet));
+		String chaîne = Objets.enChaîne(objet);
+
+		alorsLa(chaîne).est(objet.toString());
 	}
 }

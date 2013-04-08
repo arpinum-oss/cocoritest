@@ -1,7 +1,7 @@
 package fr.arpinum.cocoritest.outils;
 
-import static junit.framework.Assert.assertTrue;
-import static junit.framework.TestCase.assertFalse;
+import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
+import static junit.framework.TestCase.*;
 
 import java.util.List;
 
@@ -14,7 +14,9 @@ public class TestCollections {
 		List<Integer> première = Listes.cree(1, 2, 3);
 		List<Integer> seconde = Listes.cree(1, 2);
 
-		assertFalse(Collections.egales(première, seconde));
+		boolean égalité = Collections.egales(première, seconde);
+
+		alorsCette(égalité).estFausse();
 	}
 
 	@Test
@@ -22,7 +24,9 @@ public class TestCollections {
 		List<Integer> première = Listes.cree(1, 2, 3);
 		List<Integer> seconde = Listes.cree(1, 2, 3);
 
-		assertTrue(Collections.egales(première, seconde));
+		boolean égalité = Collections.egales(première, seconde);
+
+		alorsCette(égalité).estVraie();
 	}
 
 	@Test
@@ -30,17 +34,24 @@ public class TestCollections {
 		List<Integer> première = Listes.cree(1, 2, 3);
 		List<Integer> seconde = Listes.cree(1, 2, 4);
 
-		assertFalse(Collections.egales(première, seconde));
+		boolean égalité = Collections.egales(première, seconde);
+
+		alorsCette(égalité).estFausse();
 	}
 
 	@Test
 	public void deuxCollectionsNullesSontEgales() {
-		assertTrue(Collections.egales(null, null));
+		boolean égalité = Collections.egales(null, null);
+
+		alorsCette(égalité).estVraie();
 	}
 
 	@Test
 	public void uneCollectionNulleNEstJamaisEgaleAUneNonNulle() {
-		assertFalse(Collections.egales(null, Listes.cree(1)));
-		assertFalse(Collections.egales(Listes.cree(1), null));
+		boolean égalitéNulleNonNulle = Collections.egales(null, Listes.cree(1));
+		alorsCette(égalitéNulleNonNulle).estFausse();
+
+		boolean égalitéNonNulleNulle = Collections.egales(Listes.cree(1), null);
+		assertFalse(égalitéNonNulleNulle);
 	}
 }
