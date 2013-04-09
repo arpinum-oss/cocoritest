@@ -27,43 +27,43 @@ public class TestAffirmations {
 
 	@Test
 	public void peutConstruireLesDifférentesAffirmationsAuMasculin() {
-		alorsLe(résultat).estVrai();
-		alorsLe(mensonge).estFaux();
-		alorsLe(nombre).est(3);
-		alorsLe(nombre).nEstPas(4);
-		alorsLe(champ).estNul();
-		alorsLe(nombre).nEstPasNul();
-		alorsLe(nombre).respecte(laSpécification());
+		alors().le(résultat).estVrai();
+		alors().le(mensonge).estFaux();
+		alors().le(nombre).est(3);
+		alors().le(nombre).nEstPas(4);
+		alors().le(champ).estNul();
+		alors().le(nombre).nEstPasNul();
+		alors().le(nombre).respecte(laSpécification());
 	}
 
 	@Test
 	public void peutConstruireLesDifférentesAffirmationsAuFéminin() {
-		alorsLa(vérité).estVraie();
-		alorsLa(trahison).estFausse();
-		alorsLa(valeur).est(3);
-		alorsLa(valeur).nEstPas(4);
-		alorsLa(réponse).estNulle();
-		alorsLa(remarque).nEstPasNulle();
-		alorsLa(valeur).respecte(laSpécification());
+		alors().la(vérité).estVraie();
+		alors().la(trahison).estFausse();
+		alors().la(valeur).est(3);
+		alors().la(valeur).nEstPas(4);
+		alors().la(réponse).estNulle();
+		alors().la(remarque).nEstPasNulle();
+		alors().la(valeur).respecte(laSpécification());
 	}
 
 	@Test
 	public void peutConstruireLesDifférentesAffirmationsPourLesMotsCommençantParUneVoyelle() {
-		alorsCet(état).estVrai();
-		alorsCette(estimation).estVraie();
-		alorsCet(adverbe).est("tellement");
-		alorsCette(annonce).est("tellement");
+		alors().cet(état).estVrai();
+		alors().cette(estimation).estVraie();
+		alors().cet(adverbe).est("tellement");
+		alors().cette(annonce).est("tellement");
 	}
 
 	@Test
 	public void peutConstrureLesDifférentesAffirmationsAuPluriel() {
-		alorsLes(nombres).sont(Listes.cree(1, 5, 12));
-		alorsLes(nombres).sont(1, 5, 12);
-		alorsLes(nombres).sontAuNombreDe(3);
-		alorsLes(nombres).ont(1, 12);
-		alorsLes(nombres).ont(Listes.cree(1, 12));
-		alorsLes(valeurs).nExistentPas();
-		alorsLes(nombres).respectent(laSpécificationDeCollection());
+		alors().les(nombres).sont(Listes.cree(1, 5, 12));
+		alors().les(nombres).sont(1, 5, 12);
+		alors().les(nombres).sontAuNombreDe(3);
+		alors().les(nombres).ont(1, 12);
+		alors().les(nombres).ont(Listes.cree(1, 12));
+		alors().les(valeurs).nExistentPas();
+		alors().les(nombres).respectent(laSpécificationDeCollection());
 	}
 
 	private static Specification<Integer> laSpécification() {

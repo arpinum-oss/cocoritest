@@ -12,6 +12,6 @@ public class TestListes {
 	public void peutCréerUneListe() {
 		List<String> éléments = Listes.cree("a", "b");
 
-		alorsLes(éléments).sont("a", "b");
+		alors().les(éléments).sont("a", "b");
 	}
 }

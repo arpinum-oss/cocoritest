@@ -8,12 +8,12 @@ public class TestObjets {
 
 	@Test
 	public void ilEstPossibleDeTesterLEgaliteDeDeuxObjets() {
-		alorsCette(égalitéEntre("toto", "toto")).estVraie();
-		alorsCette(égalitéEntre(3, 3)).estVraie();
-		alorsCette(égalitéEntre("toto", 3)).estFausse();
-		alorsCette(égalitéEntre(null, null)).estVraie();
-		alorsCette(égalitéEntre(null, 3)).estFausse();
-		alorsCette(égalitéEntre(3, null)).estFausse();
+		alors().cette(égalitéEntre("toto", "toto")).estVraie();
+		alors().cette(égalitéEntre(3, 3)).estVraie();
+		alors().cette(égalitéEntre("toto", 3)).estFausse();
+		alors().cette(égalitéEntre(null, null)).estVraie();
+		alors().cette(égalitéEntre(null, 3)).estFausse();
+		alors().cette(égalitéEntre(3, null)).estFausse();
 	}
 
 	private boolean égalitéEntre(Object gauche, Object droite) {
@@ -24,35 +24,35 @@ public class TestObjets {
 	public void deuxObjetsDifférentsLeSontVraiment() {
 		boolean inégalité = Objets.différents("toto", "tutu");
 
-		alorsCette(inégalité).estVraie();
+		alors().cette(inégalité).estVraie();
 	}
 
 	@Test
 	public void deuxObjetEgauxNeSontPasDifférents() {
 		boolean inégalité = Objets.différents(13, 13);
 
-		alorsCette(inégalité).estFausse();
+		alors().cette(inégalité).estFausse();
 	}
 
 	@Test
 	public void unBooléenVraiEnChaîneEstEnFrançais() {
 		String chaîne = Objets.enChaîne(true);
 
-		alorsLa(chaîne).est("vrai");
+		alors().la(chaîne).est("vrai");
 	}
 
 	@Test
 	public void unBooléenFauxEnChaîneEstEnFrançais() {
 		String chaîne = Objets.enChaîne(false);
 
-		alorsLa(chaîne).est("faux");
+		alors().la(chaîne).est("faux");
 	}
 
 	@Test
 	public void unObjetNulEnChaîneEstEnFrançais() {
 		String chaîne = Objets.enChaîne(null);
 
-		alorsLa(chaîne).est("nul");
+		alors().la(chaîne).est("nul");
 	}
 
 	@Test
@@ -61,6 +61,6 @@ public class TestObjets {
 
 		String chaîne = Objets.enChaîne(objet);
 
-		alorsLa(chaîne).est(objet.toString());
+		alors().la(chaîne).est(objet.toString());
 	}
 }
