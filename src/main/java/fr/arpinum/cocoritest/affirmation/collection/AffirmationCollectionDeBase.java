@@ -11,11 +11,11 @@ import fr.arpinum.cocoritest.specification.SpecificationTailleDeCollection;
 
 public class AffirmationCollectionDeBase<E> extends Affirmation implements AffirmationCollection<E> {
 
-	public static <T> AffirmationCollection<T> cree(Collection<T> éléments) {
+	public static <E> AffirmationCollection<E> cree(Collection<E> éléments) {
 		if (éléments == null) {
-			return new AffirmationCollectionNulle<>();
+			return new AffirmationCollectionNulle<E>();
 		}
-		return new AffirmationCollectionDeBase<>(éléments);
+		return new AffirmationCollectionDeBase<E>(éléments);
 	}
 
 	AffirmationCollectionDeBase(Collection<E> éléments) {
@@ -24,7 +24,7 @@ public class AffirmationCollectionDeBase<E> extends Affirmation implements Affir
 
 	@Override
 	public void sont(Collection<E> élémentsAttendus) {
-		respectent(new SpecificationCollection<>(élémentsAttendus));
+		respectent(new SpecificationCollection<E>(élémentsAttendus));
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class AffirmationCollectionDeBase<E> extends Affirmation implements Affir
 	@Override
 	public void ont(Collection<E> élémentsAttendus) {
 		assureInvariant();
-		respectent(new SpecificationElementsDansLaCollection<>(élémentsAttendus));
+		respectent(new SpecificationElementsDansLaCollection<E>(élémentsAttendus));
 	}
 
 	@Override

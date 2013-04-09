@@ -132,6 +132,6 @@ public class TestAffirmationObjetDeBase {
 	}
 
 	private static <T> AffirmationObjetDeBase<T> creeAffirmation(T valeur) {
-		return new AffirmationObjetDeBase<>(valeur);
+		return new AffirmationObjetDeBase<T>(valeur);
 	}
 }
