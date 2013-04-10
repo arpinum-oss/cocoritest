@@ -9,7 +9,7 @@ Elle s'inspire des excellents et complets [Hamcrest] ou [FEST] et n'a pas pour p
 
 ## Exemples ##
 
-### Affirmation sur un objet ###
+### Affirmations sur un objet ###
 ```java
 @Test
 public void unBooleenVraiEnChaineEstEnFrancais() {
@@ -20,7 +20,7 @@ public void unBooleenVraiEnChaineEstEnFrancais() {
 }
 ```
 
-### Affirmation sur un booléen ###
+### Affirmations sur un booléen ###
 ```java
 @Test
 public void deuxCollectionsNullesSontEgales() {
@@ -30,7 +30,7 @@ public void deuxCollectionsNullesSontEgales() {
 }
 ```
 
-### Affirmation sur une collection ###
+### Affirmations sur une collection ###
 ```java
 @Test
 public void peutCreerUneListe() {
