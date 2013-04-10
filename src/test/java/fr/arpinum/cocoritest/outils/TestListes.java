@@ -12,6 +12,7 @@ public class TestListes {
 	public void peutCréerUneListe() {
 		List<String> éléments = Listes.cree("a", "b");
 
+		alors().les(éléments).sontAuNombreDe(2);
 		alors().les(éléments).sont("a", "b");
 	}
 }

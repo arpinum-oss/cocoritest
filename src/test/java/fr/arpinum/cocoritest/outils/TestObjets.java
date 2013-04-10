@@ -38,6 +38,7 @@ public class TestObjets {
 	public void unBooléenVraiEnChaîneEstEnFrançais() {
 		String chaîne = Objets.enChaîne(true);
 
+		alors().la(chaîne).nEstPasNulle();
 		alors().la(chaîne).est("vrai");
 	}
 
