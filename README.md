@@ -40,6 +40,8 @@ public void peutCreerUneListe() {
     alors().les(elements).sont("a", "b");
 }
 ```
+## Cartographie de l'api ##
+![alt text](http://www.arpinum.fr/images/cocoritest/cartographie.jpg "Cartographie de Cocoritest")
 
 [Hamcrest]: http://hamcrest.org/
 [FEST]: https://code.google.com/p/fest/
