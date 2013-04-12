@@ -7,7 +7,10 @@
     <packaging>jar</packaging>
 
     <name>Cocoritest</name>
-    <url>http://www.arpinum.fr</url>
+    <description>Cocoritest est une api Java permettant d'écrire des affirmations de test unitaire dans une syntaxe
+        proche du français
+    </description>
+    <url>http://github.com/arpinum/cocoritest</url>
 
     <dependencies>
         <dependency>
