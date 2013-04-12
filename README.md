@@ -41,6 +41,21 @@ public void peutCreerUneListe() {
     alors().les(elements).sont("a", "b");
 }
 ```
+
+Les affirmations concernant les collections sont accessibles depuis la fabrique `les(...)` ce qui sous-entend que vos collections ne doivent pas être nommées `listeChaine` ou `entierList` mais en plaçant les éléments au pluriel comme `chaines` ou `entiers`.
+D'une façon général en français nous disons *j'ai acheté des bonbons à mes enfants* et non *j'ai acheté une liste de bonbons à ma liste d'enfants*.
+
+## Utilisation ##
+### Au niveau d'un pom.xml de Maven ###
+```
+todo
+```
+
+### Au niveau des imports Java ###
+```java
+import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
+```
+
 ## Cartographie de l'api ##
 ![alt text](http://www.arpinum.fr/images/cocoritest/cartographie.jpg "Cartographie de Cocoritest")
 
