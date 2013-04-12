@@ -10,7 +10,7 @@ Elle s'inspire des excellents et complets [Hamcrest] ou [FEST] et n'a pas pour p
 ## Exemples ##
 *(les accents ou cédilles sont retirés des exemples car ils sont mal gérés par le moteur de rendu de code utilisé par Github)*
 
-### Affirmations sur un objet ###
+* Affirmations sur un objet :
 ```java
 @Test
 public void unBooleenVraiEnChaineEstEnFrancais() {
@@ -21,7 +21,7 @@ public void unBooleenVraiEnChaineEstEnFrancais() {
 }
 ```
 
-### Affirmations sur un booléen ###
+* Affirmations sur un booléen :
 ```java
 @Test
 public void deuxCollectionsNullesSontEgales() {
@@ -31,7 +31,7 @@ public void deuxCollectionsNullesSontEgales() {
 }
 ```
 
-### Affirmations sur une collection ###
+* Affirmations sur une collection :
 ```java
 @Test
 public void peutCreerUneListe() {
@@ -46,12 +46,12 @@ Les affirmations concernant les collections sont accessibles depuis la fabrique 
 D'une façon général en français nous disons *j'ai acheté des bonbons à mes enfants* et non *j'ai acheté une liste de bonbons à ma liste d'enfants*.
 
 ## Utilisation ##
-### Au niveau d'un pom.xml de Maven ###
+* Au niveau d'un pom.xml de Maven :
 ```
 todo
 ```
 
-### Au niveau des imports Java ###
+* Au niveau des imports Java :
 ```java
 import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
 ```
