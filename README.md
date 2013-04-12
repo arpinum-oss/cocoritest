@@ -8,6 +8,7 @@
 Elle s'inspire des excellents et complets [Hamcrest] ou [FEST] et n'a pas pour prétention d'être une quelconque alternative. Toutefois, **Cocoritest** convient parfaitement pour s'exercer en TDD sur des Katas.
 
 ## Exemples ##
+*(les accents ou cédilles sont retirés des exemples car ils sont mal gérés par le moteur de rendu de code utilisé par Github)*
 
 ### Affirmations sur un objet ###
 ```java
@@ -24,9 +25,9 @@ public void unBooleenVraiEnChaineEstEnFrancais() {
 ```java
 @Test
 public void deuxCollectionsNullesSontEgales() {
-    boolean comparaison = Collections.egales(null, null);
+    boolean resultat = Collections.egales(null, null);
 
-    alors().cette(comparaison).estVraie();
+    alors().le(resultat).estVrai();
 }
 ```
 
