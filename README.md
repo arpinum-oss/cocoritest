@@ -70,7 +70,7 @@ N'hésitez pas à consulter la [cartographie] de l'api.
 
 ## Licence ##
 
-Copyright 2013, Arpinum
+Copyright (C) 2013, Arpinum
 
 **Cocoritest** est un logiciel libre ; vous pouvez le redistribuer ou le modifier suivant les termes de la GNU Lesser General Public License telle que publiée par la Free Software Foundation ; soit la version 3 de la licence, soit (à votre gré) toute version ultérieure.
 
@@ -81,4 +81,4 @@ Vous devez avoir reçu une copie de la GNU Lesser General Public License en mêm
 [Hamcrest]: http://hamcrest.org/
 [FEST]: https://code.google.com/p/fest/
 [cartographie]: http://www.arpinum.fr/images/cocoritest/cartographie.jpg
-[http://www.gnu.org/licenses]: http://www.gnu.org/licenses
+[http://www.gnu.org/licenses/lgpl.html]: http://www.gnu.org/licenses/lgpl.html
