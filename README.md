@@ -10,7 +10,7 @@ Elle s'inspire des excellents et complets [Hamcrest] ou [FEST] et n'a pas pour p
 ## Exemples ##
 *(les accents ou cédilles sont retirés des exemples car ils sont mal gérés par le moteur de rendu de code utilisé par Github)*
 
-* Affirmations sur un objet :
+### Affirmations sur un objet ###
 
 ```java
 @Test
@@ -22,8 +22,7 @@ public void unBooleenVraiEnChaineEstEnFrancais() {
 }
 ```
 
-
-* Affirmations sur un booléen :
+### Affirmations sur un booléen ###
 
 ```java
 @Test
@@ -34,8 +33,10 @@ public void deuxCollectionsNullesSontEgales() {
 }
 ```
 
+### Affirmations sur une collection ###
 
-* Affirmations sur une collection :
+Les affirmations concernant les collections sont accessibles depuis la fabrique `les(...)` ce qui sous-entend que vos collections ne doivent pas être nommées `listeChaine` ou `entierList` mais en plaçant les éléments au pluriel comme `chaines` ou `entiers`.
+D'une façon général en français nous disons *j'ai acheté des bonbons à mes enfants* et non *j'ai acheté une liste de bonbons à ma liste d'enfants*.
 
 ```java
 @Test
@@ -47,8 +48,31 @@ public void peutCreerUneListe() {
 }
 ```
 
-Les affirmations concernant les collections sont accessibles depuis la fabrique `les(...)` ce qui sous-entend que vos collections ne doivent pas être nommées `listeChaine` ou `entierList` mais en plaçant les éléments au pluriel comme `chaines` ou `entiers`.
-D'une façon général en français nous disons *j'ai acheté des bonbons à mes enfants* et non *j'ai acheté une liste de bonbons à ma liste d'enfants*.
+### Affirmations sur une instruction ###
+
+Pour toutes les autres situations où il ne semble pas possible de construire une phrase syntaxiquement correcte il reste possible d'utiliser la fabrique `ceci(...)`.
+
+```java
+@Test
+public void ilEstPossibleDeTesterLEgaliteDeDeuxObjets() {
+    alors().ceci(Objets.egaux("toto", "toto")).estVrai();
+    alors().ceci(Objets.egaux("toto", 3)).estFaux();
+}
+```
+
+Notez qu'une extraction de méthode ou variable peut dans la plupart des cas aider à retrouver une phrase correcte et permettre d'utiliser un `le(...)` ou `la(...)`.
+
+```java
+@Test
+public void ilEstPossibleDeTesterLEgaliteDeDeuxObjets() {
+    alors().cette(egaliteEntre("toto", "toto")).estVraie();
+	alors().cette(egaliteEntre("toto", 3)).estFausse();
+}
+
+private boolean egaliteEntre(Object gauche, Object droite) {
+    return Objets.egaux(gauche, droite);
+}
+```
 
 ## Utilisation ##
 
