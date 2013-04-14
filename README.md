@@ -5,21 +5,26 @@
 
 **Cocoritest** est une api Java permettant d'écrire des affirmations de test unitaire dans une syntaxe proche du **français**. 
 
-Elle s'inspire des excellents et complets [Hamcrest] ou [FEST] et n'a pas pour prétention d'être une quelconque alternative. Toutefois, **Cocoritest** convient parfaitement pour s'exercer en TDD sur des Katas.
+Elle s'inspire des excellents et complets [Hamcrest] ou [FEST] et n'a pas pour prétention d'être une quelconque alternative. Toutefois, **Cocoritest** convient parfaitement pour s'exercer en TDD sur des katas.
 
+Avec **Cocoritest** vous pouvez :
+* affirmer sur des booléens,
+* affirmer sur des objets,
+* affirmer sur des collections,
+* capturer des exceptions pour affirmer dessus.
 
 ## Exemples ##
-*(les accents ou cédilles sont retirés des exemples car ils sont mal gérés par le moteur de rendu de code utilisé par Github)*
+*(certains caractères qui font la richesse du français sont mal gérés par le moteur de rendu de code utilisé par Github... une fée vient de s'éteindre quelque part dans le monde...)*
 
 ### Affirmations sur un objet ###
 
 ```java
 @Test
-public void unBooleenVraiEnChaineEstEnFrancais() {
-    String chaine = Objets.enChaine(true);
+public void unBooleenVraiEnChaîneEstEnFrancais() {
+    String chaîne = Objets.enChaine(true);
 
-    alors().la(chaine).nEstPasNulle();
-    alors().la(chaine).est("vrai");
+    alors().la(chaîne).nEstPasNulle();
+    alors().la(chaîne).est("vrai");
 }
 ```
 
@@ -28,9 +33,9 @@ public void unBooleenVraiEnChaineEstEnFrancais() {
 ```java
 @Test
 public void deuxCollectionsNullesSontEgales() {
-    boolean resultat = Collections.egales(null, null);
+    boolean résultat = Collections.égales(null, null);
 
-    alors().le(resultat).estVrai();
+    alors().le(résultat).estVrai();
 }
 ```
 
@@ -41,11 +46,11 @@ D'une façon général en français nous disons *j'ai acheté des bonbons à mes
 
 ```java
 @Test
-public void peutCreerUneListe() {
-    List<String> elements = Listes.cree("a", "b");
+public void peutCréerUneListe() {
+    List<String> éléments = Listes.crée("a", "b");
  
-    alors().les(elements).sontAuNombreDe(2); 
-    alors().les(elements).sont("a", "b");
+    alors().les(éléments).sontAuNombreDe(2); 
+    alors().les(éléments).sont("a", "b");
 }
 ```
 
@@ -55,9 +60,9 @@ Pour toutes les autres situations où il ne semble pas possible de construire un
 
 ```java
 @Test
-public void ilEstPossibleDeTesterLEgaliteDeDeuxObjets() {
-    alors().ceci(Objets.egaux("toto", "toto")).estVrai();
-    alors().ceci(Objets.egaux("toto", 3)).estFaux();
+public void ilEstPossibleDeTesterLEgalitéDeDeuxObjets() {
+    alors().ceci(Objets.égaux("toto", "toto")).estVrai();
+    alors().ceci(Objets.égaux("toto", 3)).estFaux();
 }
 ```
 
@@ -65,15 +70,41 @@ Notez qu'une extraction de méthode ou variable peut dans la plupart des cas aid
 
 ```java
 @Test
-public void ilEstPossibleDeTesterLEgaliteDeDeuxObjets() {
-    alors().cette(egaliteEntre("toto", "toto")).estVraie();
-	alors().cette(egaliteEntre("toto", 3)).estFausse();
+public void ilEstPossibleDeTesterLEgalitéDeDeuxObjets() {
+	alors().cette(égalitéEntre("toto", "toto")).estVraie();
+	alors().cette(égalitéEntre("toto", 3)).estFausse();
 }
 
-private boolean egaliteEntre(Object gauche, Object droite) {
-    return Objets.egaux(gauche, droite);
+private boolean égalitéEntre(Object gauche, Object droite) {
+    return Objets.égaux(gauche, droite);
 }
 ```
+
+### Affirmations sur une exception ###
+
+```java
+@Test
+public void peutCapturerUneException() {
+	CapteurException capteur = new CapteurException();
+
+	Exception exception = capteur.capte(actionLevantUneException());
+
+	alors().cette(exception).nEstPasNulle();
+	alors().ceci(exception.getMessage()).est("le message");
+	alors().ceci(exception instanceof RuntimeException).estVrai();
+}
+
+private Action actionLevantUneException() {
+	return new Action() {
+		@Override
+		public void démarre() throws Exception {
+			throw new RuntimeException("le message");
+		}
+	};
+}
+```
+
+Les affirmations sur l'exception capturée se font en fin de test. **Cocoritest** respecte donc la disposition standard **A**rrange **A**ct **A**ssert (AAA) des tests. \o/
 
 ## Utilisation ##
 
