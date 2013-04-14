@@ -47,6 +47,12 @@ public class FabriqueAffirmation {
 
 	/**
 	 * Crée une nouvelle instance de <code>{@link AffirmationBooleene}</code>.
+	 * <p>
+	 * A utiliser quand le mot commence par une voyelle :
+	 * <pre>
+	 * 		alors().cet(objet).estVrai();
+	 *  </pre>
+	 * </p>
 	 *
 	 * @param booléen la cible de l'affirmation.
 	 * @return l'affirmation créée.
@@ -56,8 +62,23 @@ public class FabriqueAffirmation {
 	}
 
 	/**
-	 * Crée une nouvelle instance de <code>{@link fr.arpinum.cocoritest.affirmation.booleene
-	 * .AffirmationBooleeneAuFeminin}</code>.
+	 * Crée une nouvelle instance de <code>{@link AffirmationBooleene}</code>.
+	 * <p>
+	 * A utiliser pour une instruction entière :
+	 * <pre>
+	 * 		alors().ceci(maVariable.estSuper()).estVrai();
+	 *  </pre>
+	 * </p>
+	 *
+	 * @param booléen la cible de l'affirmation.
+	 * @return l'affirmation créée.
+	 */
+	public AffirmationBooleene ceci(boolean booléen) {
+		return le(booléen);
+	}
+
+	/**
+	 * Crée une nouvelle instance de <code>{@link AffirmationBooleeneAuFeminin}</code>.
 	 *
 	 * @param booléen la cible de l'affirmation.
 	 * @return l'affirmation créée.
@@ -68,6 +89,12 @@ public class FabriqueAffirmation {
 
 	/**
 	 * Crée une nouvelle instance de <code>{@link AffirmationBooleeneAuFeminin}</code>.
+	 * <p>
+	 * A utiliser quand le mot commence par une voyelle :
+	 * <pre>
+	 * 		alors().cette(histoire).estVraie();
+	 *  </pre>
+	 * </p>
 	 *
 	 * @param booléen la cible de l'affirmation.
 	 * @return l'affirmation créée.
@@ -77,7 +104,7 @@ public class FabriqueAffirmation {
 	}
 
 	/**
-	 * Crée une nouvelle instance de <code>{@link fr.arpinum.cocoritest.affirmation.objet.AffirmationObjet}</code>.
+	 * Crée une nouvelle instance de <code>{@link AffirmationObjet}</code>.
 	 *
 	 * @param objet la cible de l'affirmation.
 	 * @return l'affirmation créée.
@@ -88,6 +115,12 @@ public class FabriqueAffirmation {
 
 	/**
 	 * Crée une nouvelle instance de <code>{@link AffirmationObjet}</code>.
+	 * <p>
+	 * A utiliser quand le mot commence par une voyelle :
+	 * <pre>
+	 * 		alors().cet(objet).est(autreObjet);
+	 *  </pre>
+	 * </p>
 	 *
 	 * @param objet la cible de l'affirmation.
 	 * @return l'affirmation créée.
@@ -97,8 +130,23 @@ public class FabriqueAffirmation {
 	}
 
 	/**
-	 * Crée une nouvelle instance de <code>{@link fr.arpinum.cocoritest.affirmation.objet
-	 * .AffirmationObjetAuFeminin}</code>.
+	 * Crée une nouvelle instance de <code>{@link AffirmationObjet}</code>.
+	 * <p>
+	 * A utiliser pour une instruction entière :
+	 * <pre>
+	 * 		alors().ceci(maVariable.getPropriété()).est(objet);
+	 *  </pre>
+	 * </p>
+	 *
+	 * @param objet la cible de l'affirmation.
+	 * @return l'affirmation créée.
+	 */
+	public <T> AffirmationObjet<T> ceci(T objet) {
+		return le(objet);
+	}
+
+	/**
+	 * Crée une nouvelle instance de <code>{@link AffirmationObjetAuFeminin}</code>.
 	 *
 	 * @param objet la cible de l'affirmation.
 	 * @return l'affirmation créée.
@@ -109,6 +157,12 @@ public class FabriqueAffirmation {
 
 	/**
 	 * Crée une nouvelle instance de <code>{@link AffirmationObjetAuFeminin}</code>.
+	 * <p>
+	 * A utiliser quand le mot commence par une voyelle :
+	 * <pre>
+	 * 		alors().cette(annonce).est("annonce");
+	 *  </pre>
+	 * </p>
 	 *
 	 * @param objet la cible de l'affirmation.
 	 * @return l'affirmation créée.
@@ -118,8 +172,7 @@ public class FabriqueAffirmation {
 	}
 
 	/**
-	 * Crée une nouvelle instance de <code>{@link fr.arpinum.cocoritest.affirmation.collection
-	 * .AffirmationCollection}</code>.
+	 * Crée une nouvelle instance de <code>{@link AffirmationCollection}</code>.
 	 *
 	 * @param éléments les cibles de l'affirmation.
 	 * @return l'affirmation créée.

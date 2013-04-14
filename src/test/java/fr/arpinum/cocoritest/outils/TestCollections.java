@@ -62,10 +62,7 @@ public class TestCollections {
 
 	@Test
 	public void uneCollectionNulleNEstJamaisEgaleAUneNonNulle() {
-		boolean égalitéNulleNonNulle = Collections.egales(null, Listes.cree(1));
-		alors().cette(égalitéNulleNonNulle).estFausse();
-
-		boolean égalitéNonNulleNulle = Collections.egales(Listes.cree(1), null);
-		alors().cette(égalitéNonNulleNulle).estFausse();
+		alors().ceci(Collections.egales(null, Listes.cree(1))).estFaux();
+		alors().ceci(Collections.egales(Listes.cree(1), null)).estFaux();
 	}
 }

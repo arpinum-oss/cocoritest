@@ -71,6 +71,12 @@ public class TestAffirmations {
 	}
 
 	@Test
+	public void peutConstruireDesAffirmationsAuMasculinPourDesInstructionsEntieres() {
+		alors().ceci(new ClasseInterne().getRésultat()).estVrai();
+		alors().ceci(new ClasseInterne().getMessage()).est("message");
+	}
+
+	@Test
 	public void peutConstrureLesDifférentesAffirmationsAuPluriel() {
 		alors().les(nombres).sont(Listes.cree(1, 5, 12));
 		alors().les(nombres).sont(1, 5, 12);
@@ -107,6 +113,18 @@ public class TestAffirmations {
 				return null;
 			}
 		};
+	}
+
+
+	private class ClasseInterne {
+
+		private boolean getRésultat() {
+			return true;
+		}
+
+		private String getMessage() {
+			return "message";
+		}
 	}
 
 	private boolean résultat;
