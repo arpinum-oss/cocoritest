@@ -57,13 +57,13 @@ public class TestMiniFizzBuzz {
 	private Specification<Collection<String>> aucunElémentNEstNul() {
 		return new Specification<Collection<String>>() {
 			@Override
-			public boolean estSatisfaitePar(Collection<String> objet) {
+			public boolean estInsatisfaitePar(Collection<String> objet) {
 				for (String s : objet) {
 					if (s == null) {
-						return false;
+						return true;
 					}
 				}
-				return true;
+				return false;
 			}
 
 			@Override

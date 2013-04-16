@@ -24,8 +24,8 @@ public class SpecificationAutreObjet<T> implements Specification<T> {
 	}
 
 	@Override
-	public boolean estSatisfaitePar(T objet) {
-		return Objets.différents(objetSpécifié, objet);
+	public boolean estInsatisfaitePar(T objet) {
+		return Objets.egaux(objetSpécifié, objet);
 	}
 
 	@Override

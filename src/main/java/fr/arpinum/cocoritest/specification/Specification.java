@@ -23,12 +23,12 @@ package fr.arpinum.cocoritest.specification;
 public interface Specification<T> {
 
 	/**
-	 * Informe si la spécification est satisfaite par l'objet.
+	 * Informe si la spécification n'est pas satisfaite par l'objet.
 	 *
-	 * @param objet l'objet sur lequel est vérifiée la satisfaction de la spécification.
-	 * @return true si la spécification est satisfaite par l'objet, faux sinon.
+	 * @param objet l'objet sur lequel est vérifiée l'insatisfaction de la spécification.
+	 * @return true si la spécification n'est pas satisfaite par l'objet, faux sinon.
 	 */
-	boolean estSatisfaitePar(T objet);
+	boolean estInsatisfaitePar(T objet);
 
 	/**
 	 * Le message décrivant pourquoi la spécification n'est pas satisfaite par l'objet.

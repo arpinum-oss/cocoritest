@@ -158,8 +158,8 @@ public class TestAffirmationCollectionDeBase {
 	private Specification<Collection<Integer>> créeSpecificationToujoursSatisfaite() {
 		return new Specification<Collection<Integer>>() {
 			@Override
-			public boolean estSatisfaitePar(Collection<Integer> objet) {
-				return true;
+			public boolean estInsatisfaitePar(Collection<Integer> objet) {
+				return false;
 			}
 
 			@Override
@@ -180,8 +180,8 @@ public class TestAffirmationCollectionDeBase {
 	private Specification<Collection<Integer>> créeSpecificationJamaisSatisfaite() {
 		return new Specification<Collection<Integer>>() {
 			@Override
-			public boolean estSatisfaitePar(Collection<Integer> objet) {
-				return false;
+			public boolean estInsatisfaitePar(Collection<Integer> objet) {
+				return true;
 			}
 
 			@Override

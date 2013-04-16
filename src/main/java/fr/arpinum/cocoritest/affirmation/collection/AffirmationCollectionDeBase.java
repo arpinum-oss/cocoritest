@@ -68,7 +68,7 @@ public class AffirmationCollectionDeBase<E> extends Affirmation implements Affir
 
 	@Override
 	public void respectent(Specification<Collection<E>> spécification) {
-		if (!spécification.estSatisfaitePar(éléments)) {
+		if (spécification.estInsatisfaitePar(éléments)) {
 			échoue(spécification.messageInsatisfactionPour(éléments));
 		}
 	}

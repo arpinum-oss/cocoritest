@@ -24,8 +24,8 @@ public class SpecificationElementsDansLaCollection<E> implements Specification<C
 	}
 
 	@Override
-	public boolean estSatisfaitePar(Collection<E> éléments) {
-		return éléments != null && éléments.containsAll(élémentsSpécifiés);
+	public boolean estInsatisfaitePar(Collection<E> éléments) {
+		return éléments == null || !éléments.containsAll(élémentsSpécifiés);
 	}
 
 	@Override

@@ -113,8 +113,8 @@ public class TestAffirmationObjetDeBase {
 	private Specification<Integer> créeSpecificationToujoursSatisfaite() {
 		return new Specification<Integer>() {
 			@Override
-			public boolean estSatisfaitePar(Integer objet) {
-				return true;
+			public boolean estInsatisfaitePar(Integer objet) {
+				return false;
 			}
 
 			@Override
@@ -135,8 +135,8 @@ public class TestAffirmationObjetDeBase {
 	private Specification<Integer> créeSpécificationJamaisSatisfaite() {
 		return new Specification<Integer>() {
 			@Override
-			public boolean estSatisfaitePar(Integer objet) {
-				return false;
+			public boolean estInsatisfaitePar(Integer objet) {
+				return true;
 			}
 
 			@Override

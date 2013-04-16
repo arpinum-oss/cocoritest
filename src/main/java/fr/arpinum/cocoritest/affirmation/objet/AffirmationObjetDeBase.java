@@ -59,7 +59,7 @@ public class AffirmationObjetDeBase<T> extends Affirmation implements Affirmatio
 
 	@Override
 	public void respecte(Specification<T> spécification) {
-		if (!spécification.estSatisfaitePar(objet)) {
+		if (spécification.estInsatisfaitePar(objet)) {
 			échoue(spécification.messageInsatisfactionPour(objet));
 		}
 	}
