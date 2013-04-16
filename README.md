@@ -114,15 +114,11 @@ Les affirmations sur l'exception capturée se font en fin de test. **Cocoritest*
 todo
 ```
 
-
 * Au niveau des imports Java :
 
 ```java
 import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
 ```
-
-## Plus d'informations ##
-N'hésitez pas à consulter la [cartographie] de l'api.
 
 ## Licence ##
 
