@@ -25,11 +25,14 @@ public class SpecificationElementsDansLaCollection<E> implements Specification<C
 
 	@Override
 	public boolean estSatisfaitePar(Collection<E> éléments) {
-		return éléments.containsAll(élémentsSpécifiés);
+		return éléments != null && éléments.containsAll(élémentsSpécifiés);
 	}
 
 	@Override
 	public String messageInsatisfactionPour(Collection<E> éléments) {
+		if (éléments == null) {
+			return String.format("La collection est nulle, %s ne sont donc pas présents dedans.", élémentsSpécifiés);
+		}
 		return String.format("%s ne sont pas présents dans %s.", élémentsSpécifiés, éléments);
 	}
 

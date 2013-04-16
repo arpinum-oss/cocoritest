@@ -83,6 +83,7 @@ public class TestAffirmations {
 		alors().les(nombres).sontAuNombreDe(3);
 		alors().les(nombres).ont(1, 12);
 		alors().les(nombres).ont(Listes.cree(1, 12));
+		alors().les(nombres).existent();
 		alors().les(valeurs).nExistentPas();
 		alors().les(nombres).respectent(laSpécificationDeCollection());
 	}

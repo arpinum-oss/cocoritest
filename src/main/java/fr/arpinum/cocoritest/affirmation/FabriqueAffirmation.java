@@ -178,6 +178,6 @@ public class FabriqueAffirmation {
 	 * @return l'affirmation créée.
 	 */
 	public <T> AffirmationCollection<T> les(Collection<T> éléments) {
-		return AffirmationCollectionDeBase.cree(éléments);
+		return new AffirmationCollectionDeBase<T>(éléments);
 	}
 }

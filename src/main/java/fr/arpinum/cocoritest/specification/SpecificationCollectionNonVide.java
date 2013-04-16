@@ -13,21 +13,22 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.affirmation.specification;
+package fr.arpinum.cocoritest.specification;
 
 import java.util.Collection;
-
-import fr.arpinum.cocoritest.specification.Specification;
 
 public class SpecificationCollectionNonVide<E> implements Specification<Collection<E>> {
 
 	@Override
 	public boolean estSatisfaitePar(Collection<E> éléments) {
-		return éléments.size() > 0;
+		return éléments != null && éléments.size() > 0;
 	}
 
 	@Override
 	public String messageInsatisfactionPour(Collection<E> éléments) {
+		if (éléments == null) {
+			return "La collection est nulle et ne possède donc pas d'éléments.";
+		}
 		return "Il n'y a aucun élément.";
 	}
 }

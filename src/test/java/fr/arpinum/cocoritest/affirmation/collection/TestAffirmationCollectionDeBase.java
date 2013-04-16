@@ -37,8 +37,8 @@ public class TestAffirmationCollectionDeBase {
 		List<Integer> valeursTestées = Listes.cree(1, 2, 3);
 		List<Integer> valeursAttendues = Listes.cree(1, 2, 3);
 
-		AffirmationCollectionDeBase.cree(valeursTestées).sont(valeursAttendues);
-		AffirmationCollectionDeBase.cree(valeursTestées).sont(1, 2, 3);
+		new AffirmationCollectionDeBase<Integer>(valeursTestées).sont(valeursAttendues);
+		new AffirmationCollectionDeBase<Integer>(valeursTestées).sont(1, 2, 3);
 	}
 
 	@Test
@@ -48,7 +48,7 @@ public class TestAffirmationCollectionDeBase {
 		exception.expect(ExceptionAffirmation.class);
 		exception.expectMessage("Les éléments sont [1, 2, 3] et non [2, 3].");
 
-		AffirmationCollectionDeBase.cree(valeursTestées).sont(valeursAttendues);
+		new AffirmationCollectionDeBase<Integer>(valeursTestées).sont(valeursAttendues);
 	}
 
 	@Test
@@ -57,12 +57,12 @@ public class TestAffirmationCollectionDeBase {
 		exception.expect(ExceptionAffirmation.class);
 		exception.expectMessage("Les éléments sont [1, 2, 3] et non [2, 3].");
 
-		AffirmationCollectionDeBase.cree(valeursTestées).sont(2, 3);
+		new AffirmationCollectionDeBase<Integer>(valeursTestées).sont(2, 3);
 	}
 
 	@Test
 	public void onPeutAffirmerQuUneCollectionPossèdeUnCertainsNombreDElements() {
-		AffirmationCollectionDeBase.cree(Listes.cree(1, 2)).sontAuNombreDe(2);
+		new AffirmationCollectionDeBase<Integer>(Listes.cree(1, 2)).sontAuNombreDe(2);
 	}
 
 	@Test
@@ -70,12 +70,20 @@ public class TestAffirmationCollectionDeBase {
 		exception.expect(ExceptionAffirmation.class);
 		exception.expectMessage("Les éléments sont au nombre de 2 et non 10.");
 
-		AffirmationCollectionDeBase.cree(Listes.cree("a", "b")).sontAuNombreDe(10);
+		new AffirmationCollectionDeBase<String>(Listes.cree("a", "b")).sontAuNombreDe(10);
+	}
+
+	@Test
+	public void onNePeutPasAffirmerQuUneCollectionNullePossedeUnQuelconqueNombreDEléments() {
+		exception.expect(ExceptionAffirmation.class);
+		exception.expectMessage("La collection est nulle et ne possède donc pas un nombre d'éléments de 10.");
+
+		new AffirmationCollectionDeBase<Object>(null).sontAuNombreDe(10);
 	}
 
 	@Test
 	public void onPeutAffirmerQuUneCollectionNonVideEstNonVide() {
-		AffirmationCollectionDeBase.cree(Listes.cree(3)).existent();
+		new AffirmationCollectionDeBase<Integer>(Listes.cree(3)).existent();
 	}
 
 	@Test
@@ -83,13 +91,21 @@ public class TestAffirmationCollectionDeBase {
 		exception.expect(ExceptionAffirmation.class);
 		exception.expectMessage("Il n'y a aucun élément.");
 
-		AffirmationCollectionDeBase.cree(new ArrayList<Object>()).existent();
+		new AffirmationCollectionDeBase<Object>(new ArrayList<Object>()).existent();
+	}
+
+
+	@Test
+	public void onNePeutPasAffirmerQuUneCollectionNulleEstNonVide() {
+		exception.expect(ExceptionAffirmation.class);
+		exception.expectMessage("La collection est nulle et ne possède donc pas d'éléments.");
+
+		new AffirmationCollectionDeBase<Object>(null).existent();
 	}
 
 	@Test
 	public void onPeutAffirmerQuUneCollectionVideEstVide() {
-		AffirmationCollectionDeBase.cree(new ArrayList<Object>()).nExistentPas();
-
+		new AffirmationCollectionDeBase<Object>(new ArrayList<Object>()).nExistentPas();
 	}
 
 	@Test
@@ -97,17 +113,25 @@ public class TestAffirmationCollectionDeBase {
 		exception.expect(ExceptionAffirmation.class);
 		exception.expectMessage("Les éléments sont au nombre de 1 et non 0.");
 
-		AffirmationCollectionDeBase.cree(Listes.cree(3)).nExistentPas();
+		new AffirmationCollectionDeBase<Integer>(Listes.cree(3)).nExistentPas();
+	}
+
+	@Test
+	public void onNePeutPasAffirmerQuUneCollectionNulleEstVide() {
+		exception.expect(ExceptionAffirmation.class);
+		exception.expectMessage("La collection est nulle et ne possède donc pas un nombre d'éléments de 0.");
+
+		new AffirmationCollectionDeBase<Object>(null).nExistentPas();
 	}
 
 	@Test
 	public void onPeutAffirmerQuUneCollectionAUnElément() {
-		AffirmationCollectionDeBase.cree(Listes.cree(1, 3, 13)).ont(13);
+		new AffirmationCollectionDeBase<Integer>(Listes.cree(1, 3, 13)).ont(13);
 	}
 
 	@Test
 	public void onPeutAffirmerQuUneCollectionADesEléments() {
-		AffirmationCollectionDeBase.cree(Listes.cree(1, 3, 13)).ont(13, 3);
+		new AffirmationCollectionDeBase<Integer>(Listes.cree(1, 3, 13)).ont(13, 3);
 	}
 
 	@Test
@@ -115,12 +139,20 @@ public class TestAffirmationCollectionDeBase {
 		exception.expect(ExceptionAffirmation.class);
 		exception.expectMessage("[13, 12] ne sont pas présents dans [1, 2].");
 
-		AffirmationCollectionDeBase.cree(Listes.cree(1, 2)).ont(13, 12);
+		new AffirmationCollectionDeBase<Integer>(Listes.cree(1, 2)).ont(13, 12);
+	}
+
+	@Test
+	public void onNePeutPasAffirmerQuUneCollectionNulleAUnElément() {
+		exception.expect(ExceptionAffirmation.class);
+		exception.expectMessage("La collection est nulle, [13, 12] ne sont donc pas présents dedans.");
+
+		new AffirmationCollectionDeBase<Object>(null).ont(13, 12);
 	}
 
 	@Test
 	public void onPeutAffirmerQuUneCollectionRespecteUneSpécification() {
-		AffirmationCollectionDeBase.cree(Listes.cree(1, 2)).respectent(créeSpecificationToujoursSatisfaite());
+		new AffirmationCollectionDeBase<Integer>(Listes.cree(1, 2)).respectent(créeSpecificationToujoursSatisfaite());
 	}
 
 	private Specification<Collection<Integer>> créeSpecificationToujoursSatisfaite() {
@@ -142,7 +174,7 @@ public class TestAffirmationCollectionDeBase {
 		exception.expect(ExceptionAffirmation.class);
 		exception.expectMessage("[1, 2] ne respectent pas la spécification.");
 
-		AffirmationCollectionDeBase.cree(Listes.cree(1, 2)).respectent(créeSpecificationJamaisSatisfaite());
+		new AffirmationCollectionDeBase<Integer>(Listes.cree(1, 2)).respectent(créeSpecificationJamaisSatisfaite());
 	}
 
 	private Specification<Collection<Integer>> créeSpecificationJamaisSatisfaite() {

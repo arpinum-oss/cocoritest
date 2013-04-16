@@ -18,23 +18,16 @@ package fr.arpinum.cocoritest.affirmation.collection;
 import java.util.Collection;
 
 import fr.arpinum.cocoritest.affirmation.Affirmation;
-import fr.arpinum.cocoritest.affirmation.specification.SpecificationCollectionNonVide;
 import fr.arpinum.cocoritest.outils.Listes;
 import fr.arpinum.cocoritest.specification.Specification;
 import fr.arpinum.cocoritest.specification.SpecificationCollection;
+import fr.arpinum.cocoritest.specification.SpecificationCollectionNonVide;
 import fr.arpinum.cocoritest.specification.SpecificationElementsDansLaCollection;
 import fr.arpinum.cocoritest.specification.SpecificationTailleDeCollection;
 
 public class AffirmationCollectionDeBase<E> extends Affirmation implements AffirmationCollection<E> {
 
-	public static <E> AffirmationCollection<E> cree(Collection<E> éléments) {
-		if (éléments == null) {
-			return new AffirmationCollectionNulle<E>();
-		}
-		return new AffirmationCollectionDeBase<E>(éléments);
-	}
-
-	AffirmationCollectionDeBase(Collection<E> éléments) {
+	public AffirmationCollectionDeBase(Collection<E> éléments) {
 		this.éléments = éléments;
 	}
 
