@@ -30,4 +30,9 @@ public class AffirmationCollectionNulle<T> extends AffirmationCollectionDeBase<T
 	public void ont(Collection<T> élémentsAttendus) {
 		échoue("La collection est nulle, %s ne sont donc pas présents dedans.", élémentsAttendus);
 	}
+
+	@Override
+	public void existent() {
+		échoue("La collection est nulle et ne possède donc pas d'éléments.");
+	}
 }

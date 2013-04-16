@@ -15,6 +15,7 @@
 
 package fr.arpinum.cocoritest.affirmation.collection;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -70,6 +71,25 @@ public class TestAffirmationCollectionDeBase {
 		exception.expectMessage("Les éléments sont au nombre de 2 et non 10.");
 
 		AffirmationCollectionDeBase.cree(Listes.cree("a", "b")).sontAuNombreDe(10);
+	}
+
+	@Test
+	public void onPeutAffirmerQuUneCollectionNonVideEstNonVide() {
+		AffirmationCollectionDeBase.cree(Listes.cree(3)).existent();
+	}
+
+	@Test
+	public void onNePeutPasAffirmerQuUneCollectionVideEstNonVide() {
+		exception.expect(ExceptionAffirmation.class);
+		exception.expectMessage("Il n'y a aucun élément.");
+
+		AffirmationCollectionDeBase.cree(new ArrayList<Object>()).existent();
+	}
+
+	@Test
+	public void onPeutAffirmerQuUneCollectionVideEstVide() {
+		AffirmationCollectionDeBase.cree(new ArrayList<Object>()).nExistentPas();
+
 	}
 
 	@Test

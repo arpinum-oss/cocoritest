@@ -37,6 +37,14 @@ public class TestsAffirmationCollectionNulle {
 	}
 
 	@Test
+	public void onNePeutPasAffirmerQuUneCollectionNulleEstNonVide() {
+		exception.expect(ExceptionAffirmation.class);
+		exception.expectMessage("La collection est nulle et ne possède donc pas d'éléments.");
+
+		AffirmationCollectionDeBase.cree(null).existent();
+	}
+
+	@Test
 	public void onNePeutPasAffirmerQuUneCollectionNulleEstVide() {
 		exception.expect(ExceptionAffirmation.class);
 		exception.expectMessage("La collection est nulle et ne possède donc pas un nombre d'éléments de 0.");

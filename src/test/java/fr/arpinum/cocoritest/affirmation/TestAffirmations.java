@@ -116,6 +116,7 @@ public class TestAffirmations {
 	}
 
 
+	@SuppressWarnings("ALL")
 	private class ClasseInterne {
 
 		private boolean getRésultat() {

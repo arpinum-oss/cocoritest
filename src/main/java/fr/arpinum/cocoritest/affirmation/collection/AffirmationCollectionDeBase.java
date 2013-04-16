@@ -18,6 +18,7 @@ package fr.arpinum.cocoritest.affirmation.collection;
 import java.util.Collection;
 
 import fr.arpinum.cocoritest.affirmation.Affirmation;
+import fr.arpinum.cocoritest.affirmation.specification.SpecificationCollectionNonVide;
 import fr.arpinum.cocoritest.outils.Listes;
 import fr.arpinum.cocoritest.specification.Specification;
 import fr.arpinum.cocoritest.specification.SpecificationCollection;
@@ -49,8 +50,12 @@ public class AffirmationCollectionDeBase<E> extends Affirmation implements Affir
 
 	@Override
 	public void sontAuNombreDe(int nombre) {
-		assureInvariant();
 		respectent(new SpecificationTailleDeCollection<E>(nombre));
+	}
+
+	@Override
+	public void existent() {
+		respectent(new SpecificationCollectionNonVide<E>());
 	}
 
 	@Override
@@ -60,17 +65,12 @@ public class AffirmationCollectionDeBase<E> extends Affirmation implements Affir
 
 	@Override
 	public void ont(Collection<E> élémentsAttendus) {
-		assureInvariant();
 		respectent(new SpecificationElementsDansLaCollection<E>(élémentsAttendus));
 	}
 
 	@Override
 	public void ont(E... élémentsAttendus) {
 		ont(Listes.cree(élémentsAttendus));
-	}
-
-	private void assureInvariant() {
-		assert éléments != null;
 	}
 
 	@Override

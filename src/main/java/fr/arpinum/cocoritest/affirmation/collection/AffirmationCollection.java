@@ -54,12 +54,21 @@ public interface AffirmationCollection<E> {
 	void sontAuNombreDe(int nombre);
 
 	/**
+	 * Affirme qu'au moins un élément existe.
+	 *
+	 * @throws fr.arpinum.cocoritest.affirmation.ExceptionAffirmation
+	 *          si l'affirmation est erronée.
+	 */
+	void existent();
+
+	/**
 	 * Affirme qu'aucun élément n'existe.
 	 *
 	 * @throws fr.arpinum.cocoritest.affirmation.ExceptionAffirmation
 	 *          si l'affirmation est erronée.
 	 */
 	void nExistentPas();
+
 
 	/**
 	 * Affirme que les éléments ont les éléments attendus.
@@ -69,7 +78,6 @@ public interface AffirmationCollection<E> {
 	 *          si l'affirmation est erronée.
 	 */
 	void ont(Collection<E> élémentsAttendus);
-
 
 	/**
 	 * Affirme que les éléments ont les éléments attendus.
