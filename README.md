@@ -108,13 +108,26 @@ Les affirmations sur l'exception capturée se font en fin de test. **Cocoritest*
 
 ## Utilisation ##
 
-* Au niveau d'un pom.xml de Maven :
+Pour le moment **Cocoritest** n'est pas publiée. Il est nécessaire de l'installer dans l'entrepôt local de maven :
 
 ```
-todo
+git clone git@github.com:arpinum/cocoritest.git
+cd cocoritest
+maven install
 ```
 
-* Au niveau des imports Java :
+Ajouter **Cocoritest** dans les dépendances d'un pom.xml :
+
+```
+<dependency>
+	<groupId>fr.arpinum</groupId>
+	<artifactId>cocoritest</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<scope>test</scope>
+</dependency>
+```
+
+Ajouter **Cocoritest** au niveau des imports Java :
 
 ```java
 import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
