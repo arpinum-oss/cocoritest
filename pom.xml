@@ -69,4 +69,12 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+    
+    <developers>
+        <developer>
+            <id>michael</id>
+            <name>Michael</name>
+            <email>michael.borde@arpinum.fr</email>
+        </developer>
+    </developers>
 </project>
