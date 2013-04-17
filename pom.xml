@@ -55,6 +55,12 @@
             </plugins>
         </pluginManagement>
     </build>
+    
+    <scm>
+  		<connection>scm:git:git://github.com/arpinum/cocoritest.git</connection>
+		<developerConnection>scm:git:git@github.com:arpinum/cocoritest.git</developerConnection>
+		<url>http://github.com/cocoritest/cocoritest</url>
+	</scm>
 
     <licenses>
         <license>
