@@ -67,7 +67,7 @@
     <scm>
         <connection>scm:git:git://github.com/arpinum/cocoritest.git</connection>
         <developerConnection>scm:git:git@github.com:arpinum/cocoritest.git</developerConnection>
-        <url>http://github.com/cocoritest/cocoritest</url>
+        <url>https://github.com/arpinum/cocoritest</url>
     </scm>
 
     <licenses>
