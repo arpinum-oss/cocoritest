@@ -34,7 +34,7 @@ public class SpecificationTailleDeCollection<E> implements Specification<Collect
 			return String.format("La collection est <nulle> et ne possède donc pas un nombre d'éléments de <%s>.",
 					tailleSpécifiée);
 		}
-		return String.format("Les éléments sont au nombre de <%s> et non <%s>.", éléments.size(), tailleSpécifiée);
+		return String.format("Les éléments sont au nombre de <%s> au lieu de <%s>.", éléments.size(), tailleSpécifiée);
 	}
 
 	private final int tailleSpécifiée;

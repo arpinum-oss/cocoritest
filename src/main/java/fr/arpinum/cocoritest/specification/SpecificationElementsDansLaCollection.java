@@ -33,7 +33,7 @@ public class SpecificationElementsDansLaCollection<E> implements Specification<C
 		if (éléments == null) {
 			return String.format("La collection est <nulle>, <%s> ne sont donc pas présents dedans.", élémentsSpécifiés);
 		}
-		return String.format("<%s> ne sont pas présents dans <%s>.", élémentsSpécifiés, éléments);
+		return String.format("Les éléments sont <%s> et ne contiennent pas <%s>.", éléments, élémentsSpécifiés);
 	}
 
 	private final Collection<E> élémentsSpécifiés;

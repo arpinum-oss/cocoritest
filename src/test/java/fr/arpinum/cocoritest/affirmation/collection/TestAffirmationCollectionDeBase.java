@@ -46,7 +46,7 @@ public class TestAffirmationCollectionDeBase {
 		List<Integer> valeursTestées = Listes.cree(1, 2, 3);
 		List<Integer> valeursAttendues = Listes.cree(2, 3);
 		exception.expect(ExceptionAffirmation.class);
-		exception.expectMessage("Les éléments sont <[1, 2, 3]> et non <[2, 3]>.");
+		exception.expectMessage("Les éléments sont <[1, 2, 3]> au lieu de <[2, 3]>.");
 
 		new AffirmationCollectionDeBase<Integer>(valeursTestées).sont(valeursAttendues);
 	}
@@ -55,7 +55,7 @@ public class TestAffirmationCollectionDeBase {
 	public void onNePeutPasAffirmerQUneCollectionEstEgaleADesElémentsNonContenus() {
 		List<Integer> valeursTestées = Listes.cree(1, 2, 3);
 		exception.expect(ExceptionAffirmation.class);
-		exception.expectMessage("Les éléments sont <[1, 2, 3]> et non <[2, 3]>.");
+		exception.expectMessage("Les éléments sont <[1, 2, 3]> au lieu de <[2, 3]>.");
 
 		new AffirmationCollectionDeBase<Integer>(valeursTestées).sont(2, 3);
 	}
@@ -68,7 +68,7 @@ public class TestAffirmationCollectionDeBase {
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionPossèdeUnNombreErronéDElements() {
 		exception.expect(ExceptionAffirmation.class);
-		exception.expectMessage("Les éléments sont au nombre de <2> et non <10>.");
+		exception.expectMessage("Les éléments sont au nombre de <2> au lieu de <10>.");
 
 		new AffirmationCollectionDeBase<String>(Listes.cree("a", "b")).sontAuNombreDe(10);
 	}
@@ -111,7 +111,7 @@ public class TestAffirmationCollectionDeBase {
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionNonVideEstVide() {
 		exception.expect(ExceptionAffirmation.class);
-		exception.expectMessage("Les éléments sont au nombre de <1> et non <0>.");
+		exception.expectMessage("Les éléments sont au nombre de <1> au lieu de <0>.");
 
 		new AffirmationCollectionDeBase<Integer>(Listes.cree(3)).nExistentPas();
 	}
@@ -137,7 +137,7 @@ public class TestAffirmationCollectionDeBase {
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionAUnElémentQuElleNAPas() {
 		exception.expect(ExceptionAffirmation.class);
-		exception.expectMessage("<[13, 12]> ne sont pas présents dans <[1, 2]>.");
+		exception.expectMessage("Les éléments sont <[1, 2]> et ne contiennent pas <[13, 12]>.");
 
 		new AffirmationCollectionDeBase<Integer>(Listes.cree(1, 2)).ont(13, 12);
 	}

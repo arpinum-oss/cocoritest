@@ -32,7 +32,7 @@ public class SpecificationCollection<E> implements Specification<Collection<E>> 
 
 	@Override
 	public String messageInsatisfactionPour(Collection<E> éléments) {
-		return String.format("Les éléments sont <%s> et non <%s>.", éléments, collectionSpécifiée);
+		return String.format("Les éléments sont <%s> au lieu de <%s>.", éléments, collectionSpécifiée);
 	}
 
 	private final Collection<E> collectionSpécifiée;
