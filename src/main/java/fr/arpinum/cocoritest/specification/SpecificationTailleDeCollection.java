@@ -31,10 +31,10 @@ public class SpecificationTailleDeCollection<E> implements Specification<Collect
 	@Override
 	public String messageInsatisfactionPour(Collection<E> éléments) {
 		if (éléments == null) {
-			return String.format("La collection est nulle et ne possède donc pas un nombre d'éléments de %s.",
+			return String.format("La collection est <nulle> et ne possède donc pas un nombre d'éléments de <%s>.",
 					tailleSpécifiée);
 		}
-		return String.format("Les éléments sont au nombre de %s et non %s.", éléments.size(), tailleSpécifiée);
+		return String.format("Les éléments sont au nombre de <%s> et non <%s>.", éléments.size(), tailleSpécifiée);
 	}
 
 	private final int tailleSpécifiée;

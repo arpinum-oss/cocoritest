@@ -27,7 +27,7 @@ public class SpecificationCollectionNonVide<E> implements Specification<Collecti
 	@Override
 	public String messageInsatisfactionPour(Collection<E> éléments) {
 		if (éléments == null) {
-			return "La collection est nulle et ne possède donc pas d'éléments.";
+			return "La collection est <nulle> et ne possède donc pas d'éléments.";
 		}
 		return "Il n'y a aucun élément.";
 	}
