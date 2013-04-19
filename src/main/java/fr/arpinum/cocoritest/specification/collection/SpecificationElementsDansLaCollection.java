@@ -13,9 +13,11 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.specification;
+package fr.arpinum.cocoritest.specification.collection;
 
 import java.util.Collection;
+
+import fr.arpinum.cocoritest.specification.Specification;
 
 public class SpecificationElementsDansLaCollection<E> implements Specification<Collection<E>> {
 

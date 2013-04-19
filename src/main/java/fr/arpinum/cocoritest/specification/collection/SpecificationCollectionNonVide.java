@@ -13,29 +13,24 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.specification;
+package fr.arpinum.cocoritest.specification.collection;
 
 import java.util.Collection;
 
-public class SpecificationTailleDeCollection<E> implements Specification<Collection<E>> {
+import fr.arpinum.cocoritest.specification.Specification;
 
-	public SpecificationTailleDeCollection(int tailleSpécifiée) {
-		this.tailleSpécifiée = tailleSpécifiée;
-	}
+public class SpecificationCollectionNonVide<E> implements Specification<Collection<E>> {
 
 	@Override
 	public boolean estInsatisfaitePar(Collection<E> éléments) {
-		return éléments == null || éléments.size() != tailleSpécifiée;
+		return éléments == null || éléments.size() == 0;
 	}
 
 	@Override
 	public String messageInsatisfactionPour(Collection<E> éléments) {
 		if (éléments == null) {
-			return String.format("La collection est <nulle> et ne possède donc pas un nombre d'éléments de <%s>.",
-					tailleSpécifiée);
+			return "La collection est <nulle> et ne possède donc pas d'éléments.";
 		}
-		return String.format("Les éléments sont au nombre de <%s> au lieu de <%s>.", éléments.size(), tailleSpécifiée);
+		return "Il n'y a aucun élément.";
 	}
-
-	private final int tailleSpécifiée;
 }

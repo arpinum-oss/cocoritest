@@ -17,8 +17,8 @@ package fr.arpinum.cocoritest.affirmation.objet;
 
 import fr.arpinum.cocoritest.affirmation.Affirmation;
 import fr.arpinum.cocoritest.specification.Specification;
-import fr.arpinum.cocoritest.specification.SpecificationAutreObjet;
-import fr.arpinum.cocoritest.specification.SpecificationObjet;
+import fr.arpinum.cocoritest.specification.objet.SpecificationAutreObjet;
+import fr.arpinum.cocoritest.specification.objet.SpecificationObjet;
 
 public class AffirmationObjetDeBase<T> extends Affirmation implements AffirmationObjet<T>,
 		AffirmationObjetAuFeminin<T> {

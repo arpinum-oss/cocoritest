@@ -20,10 +20,10 @@ import java.util.Collection;
 import fr.arpinum.cocoritest.affirmation.Affirmation;
 import fr.arpinum.cocoritest.outils.Listes;
 import fr.arpinum.cocoritest.specification.Specification;
-import fr.arpinum.cocoritest.specification.SpecificationCollection;
-import fr.arpinum.cocoritest.specification.SpecificationCollectionNonVide;
-import fr.arpinum.cocoritest.specification.SpecificationElementsDansLaCollection;
-import fr.arpinum.cocoritest.specification.SpecificationTailleDeCollection;
+import fr.arpinum.cocoritest.specification.collection.SpecificationCollection;
+import fr.arpinum.cocoritest.specification.collection.SpecificationCollectionNonVide;
+import fr.arpinum.cocoritest.specification.collection.SpecificationElementsDansLaCollection;
+import fr.arpinum.cocoritest.specification.collection.SpecificationTailleDeCollection;
 
 public class AffirmationCollectionDeBase<E> extends Affirmation implements AffirmationCollection<E> {
 

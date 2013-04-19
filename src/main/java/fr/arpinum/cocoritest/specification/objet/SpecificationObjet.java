@@ -13,24 +13,25 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.specification;
+package fr.arpinum.cocoritest.specification.objet;
 
 import fr.arpinum.cocoritest.outils.Objets;
+import fr.arpinum.cocoritest.specification.Specification;
 
-public class SpecificationAutreObjet<T> implements Specification<T> {
+public class SpecificationObjet<T> implements Specification<T> {
 
-	public SpecificationAutreObjet(T objetSpécifié) {
+	public SpecificationObjet(T objetSpécifié) {
 		this.objetSpécifié = objetSpécifié;
 	}
 
 	@Override
 	public boolean estInsatisfaitePar(T objet) {
-		return Objets.egaux(objetSpécifié, objet);
+		return Objets.différents(objetSpécifié, objet);
 	}
 
 	@Override
 	public String messageInsatisfactionPour(T objet) {
-		return String.format("L'objet est <%s> alors que ce n'était pas voulu.", Objets.enChaîne(objet));
+		return String.format("L'objet est <%s> au lieu de <%s>.", Objets.enChaîne(objet), Objets.enChaîne(objetSpécifié));
 	}
 
 	private final T objetSpécifié;

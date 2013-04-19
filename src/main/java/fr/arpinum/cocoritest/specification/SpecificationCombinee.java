@@ -15,23 +15,33 @@
 
 package fr.arpinum.cocoritest.specification;
 
-import fr.arpinum.cocoritest.outils.Objets;
+import java.util.Collection;
 
-public class SpecificationObjet<T> implements Specification<T> {
+class SpecificationCombinee<T> implements Specification<T> {
 
-	public SpecificationObjet(T objetSpécifié) {
-		this.objetSpécifié = objetSpécifié;
+	SpecificationCombinee(Collection<Specification<T>> spécifications) {
+		this.spécifications = spécifications;
 	}
 
 	@Override
 	public boolean estInsatisfaitePar(T objet) {
-		return Objets.différents(objetSpécifié, objet);
+		for (Specification<T> spécification : spécifications) {
+			if (spécification.estInsatisfaitePar(objet)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	@Override
 	public String messageInsatisfactionPour(T objet) {
-		return String.format("L'objet est <%s> au lieu de <%s>.", Objets.enChaîne(objet), Objets.enChaîne(objetSpécifié));
+		for (Specification<T> spécification : spécifications) {
+			if (spécification.estInsatisfaitePar(objet)) {
+				return spécification.messageInsatisfactionPour(objet);
+			}
+		}
+		return null;
 	}
 
-	private final T objetSpécifié;
+	private final Collection<Specification<T>> spécifications;
 }
