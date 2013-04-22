@@ -15,22 +15,28 @@
 
 package fr.arpinum.cocoritest.affirmation.collection;
 
+import static fr.arpinum.cocoritest.Fabrique.*;
+import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.junit.Rule;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
-import fr.arpinum.cocoritest.affirmation.ExceptionAffirmation;
+import fr.arpinum.cocoritest.Fabrique;
+import fr.arpinum.cocoritest.exception.Action;
+import fr.arpinum.cocoritest.exception.CapteurException;
 import fr.arpinum.cocoritest.outils.Listes;
 import fr.arpinum.cocoritest.specification.Specification;
 
 public class TestAffirmationCollectionDeBase {
 
-	@Rule
-	public ExpectedException exception = ExpectedException.none();
+	@Before
+	public void avantChaqueTest() {
+		capteur = new CapteurException();
+	}
 
 	@Test
 	public void onPeutAffirmerQuUneCollectionEstEgaleAUneAutre() {
@@ -43,21 +49,33 @@ public class TestAffirmationCollectionDeBase {
 
 	@Test
 	public void onNePeutPasAffirmerQUneCollectionEstEgaleAUneCollectionDifférente() {
-		List<Integer> valeursTestées = Listes.cree(1, 2, 3);
-		List<Integer> valeursAttendues = Listes.cree(2, 3);
-		exception.expect(ExceptionAffirmation.class);
-		exception.expectMessage("Les éléments sont <[1, 2, 3]> au lieu de <[2, 3]>.");
+		final List<Integer> valeursTestées = Listes.cree(1, 2, 3);
+		final List<Integer> valeursAttendues = Listes.cree(2, 3);
 
-		new AffirmationCollectionDeBase<Integer>(valeursTestées).sont(valeursAttendues);
+		Exception exception = capteur.capte(new Action() {
+			@Override
+			public void démarre() {
+				new AffirmationCollectionDeBase<Integer>(valeursTestées).sont(valeursAttendues);
+			}
+		});
+
+		String messageAttendu = "Les éléments sont <[1, 2, 3]> au lieu de <[2, 3]>.";
+		alors().cette(exception).respecte(spécificationException(messageAttendu));
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQUneCollectionEstEgaleADesElémentsNonContenus() {
-		List<Integer> valeursTestées = Listes.cree(1, 2, 3);
-		exception.expect(ExceptionAffirmation.class);
-		exception.expectMessage("Les éléments sont <[1, 2, 3]> au lieu de <[2, 3]>.");
+		final List<Integer> valeursTestées = Listes.cree(1, 2, 3);
 
-		new AffirmationCollectionDeBase<Integer>(valeursTestées).sont(2, 3);
+		Exception exception = capteur.capte(new Action() {
+			@Override
+			public void démarre() {
+				new AffirmationCollectionDeBase<Integer>(valeursTestées).sont(2, 3);
+			}
+		});
+
+		String messageAttendu = "Les éléments sont <[1, 2, 3]> au lieu de <[2, 3]>.";
+		alors().cette(exception).respecte(spécificationException(messageAttendu));
 	}
 
 	@Test
@@ -67,18 +85,28 @@ public class TestAffirmationCollectionDeBase {
 
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionPossèdeUnNombreErronéDElements() {
-		exception.expect(ExceptionAffirmation.class);
-		exception.expectMessage("Les éléments sont au nombre de <2> au lieu de <10>.");
+		Exception exception = capteur.capte(new Action() {
+			@Override
+			public void démarre() {
+				new AffirmationCollectionDeBase<String>(Listes.cree("a", "b")).sontAuNombreDe(10);
+			}
+		});
 
-		new AffirmationCollectionDeBase<String>(Listes.cree("a", "b")).sontAuNombreDe(10);
+		String messageAttendu = "Les éléments sont au nombre de <2> au lieu de <10>.";
+		alors().cette(exception).respecte(spécificationException(messageAttendu));
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionNullePossedeUnQuelconqueNombreDEléments() {
-		exception.expect(ExceptionAffirmation.class);
-		exception.expectMessage("La collection est <nulle> et ne possède donc pas un nombre d'éléments de <10>.");
+		Exception exception = capteur.capte(new Action() {
+			@Override
+			public void démarre() {
+				new AffirmationCollectionDeBase<Object>(null).sontAuNombreDe(10);
+			}
+		});
 
-		new AffirmationCollectionDeBase<Object>(null).sontAuNombreDe(10);
+		String messageAttendu = "La collection est <nulle> et ne possède donc pas un nombre d'éléments de <10>.";
+		alors().cette(exception).respecte(spécificationException(messageAttendu));
 	}
 
 	@Test
@@ -88,19 +116,28 @@ public class TestAffirmationCollectionDeBase {
 
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionVideEstNonVide() {
-		exception.expect(ExceptionAffirmation.class);
-		exception.expectMessage("Il n'y a aucun élément.");
+		Exception exception = capteur.capte(new Action() {
+			@Override
+			public void démarre() {
+				new AffirmationCollectionDeBase<Object>(new ArrayList<Object>()).existent();
+			}
+		});
 
-		new AffirmationCollectionDeBase<Object>(new ArrayList<Object>()).existent();
+		alors().cette(exception).respecte(spécificationException("Il n'y a aucun élément."));
 	}
 
 
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionNulleEstNonVide() {
-		exception.expect(ExceptionAffirmation.class);
-		exception.expectMessage("La collection est <nulle> et ne possède donc pas d'éléments.");
+		Exception exception = capteur.capte(new Action() {
+			@Override
+			public void démarre() {
+				new AffirmationCollectionDeBase<Object>(null).existent();
+			}
+		});
 
-		new AffirmationCollectionDeBase<Object>(null).existent();
+		String messageAttendu = "La collection est <nulle> et ne possède donc pas d'éléments.";
+		alors().cette(exception).respecte(spécificationException(messageAttendu));
 	}
 
 	@Test
@@ -110,18 +147,28 @@ public class TestAffirmationCollectionDeBase {
 
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionNonVideEstVide() {
-		exception.expect(ExceptionAffirmation.class);
-		exception.expectMessage("Les éléments sont au nombre de <1> au lieu de <0>.");
+		Exception exception = capteur.capte(new Action() {
+			@Override
+			public void démarre() {
+				new AffirmationCollectionDeBase<Integer>(Listes.cree(3)).nExistentPas();
+			}
+		});
 
-		new AffirmationCollectionDeBase<Integer>(Listes.cree(3)).nExistentPas();
+		String messageAttendu = "Les éléments sont au nombre de <1> au lieu de <0>.";
+		alors().cette(exception).respecte(spécificationException(messageAttendu));
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionNulleEstVide() {
-		exception.expect(ExceptionAffirmation.class);
-		exception.expectMessage("La collection est <nulle> et ne possède donc pas un nombre d'éléments de <0>.");
+		Exception exception = capteur.capte(new Action() {
+			@Override
+			public void démarre() {
+				new AffirmationCollectionDeBase<Object>(null).nExistentPas();
+			}
+		});
 
-		new AffirmationCollectionDeBase<Object>(null).nExistentPas();
+		String messageAttendu = "La collection est <nulle> et ne possède donc pas un nombre d'éléments de <0>.";
+		alors().cette(exception).respecte(spécificationException(messageAttendu));
 	}
 
 	@Test
@@ -136,58 +183,50 @@ public class TestAffirmationCollectionDeBase {
 
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionAUnElémentQuElleNAPas() {
-		exception.expect(ExceptionAffirmation.class);
-		exception.expectMessage("Les éléments sont <[1, 2]> et ne contiennent pas <[13, 12]>.");
+		Exception exception = capteur.capte(new Action() {
+			@Override
+			public void démarre() {
+				new AffirmationCollectionDeBase<Integer>(Listes.cree(1, 2)).ont(13, 12);
+			}
+		});
 
-		new AffirmationCollectionDeBase<Integer>(Listes.cree(1, 2)).ont(13, 12);
+		String messageAttendu = "Les éléments sont <[1, 2]> et ne contiennent pas <[13, 12]>.";
+		alors().cette(exception).respecte(spécificationException(messageAttendu));
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionNulleAUnElément() {
-		exception.expect(ExceptionAffirmation.class);
-		exception.expectMessage("La collection est <nulle>, <[13, 12]> ne sont donc pas présents dedans.");
+		Exception exception = capteur.capte(new Action() {
+			@Override
+			public void démarre() {
+				new AffirmationCollectionDeBase<Object>(null).ont(13, 12);
+			}
+		});
 
-		new AffirmationCollectionDeBase<Object>(null).ont(13, 12);
+		String messageAttendu = "La collection est <nulle>, <[13, 12]> ne sont donc pas présents dedans.";
+		alors().cette(exception).respecte(spécificationException(messageAttendu));
 	}
 
 	@Test
 	public void onPeutAffirmerQuUneCollectionRespecteUneSpécification() {
-		new AffirmationCollectionDeBase<Integer>(Listes.cree(1, 2)).respectent(créeSpecificationToujoursSatisfaite());
-	}
+		Specification<Collection<Integer>> spécification = Fabrique.spécificationSatisfaite();
 
-	private Specification<Collection<Integer>> créeSpecificationToujoursSatisfaite() {
-		return new Specification<Collection<Integer>>() {
-			@Override
-			public boolean estInsatisfaitePar(Collection<Integer> objet) {
-				return false;
-			}
-
-			@Override
-			public String messageInsatisfactionPour(Collection<Integer> objet) {
-				return "non utilisé";
-			}
-		};
+		new AffirmationCollectionDeBase<Integer>(Listes.cree(1, 2)).respectent(spécification);
 	}
 
 	@Test
 	public void onNePeutPasAffirmerATortQuUneCollectionRespecteUneSpécification() {
-		exception.expect(ExceptionAffirmation.class);
-		exception.expectMessage("[1, 2] ne respectent pas la spécification.");
+		final Specification<Collection<Integer>> spécification = Fabrique.spécificationInsatisfaite();
 
-		new AffirmationCollectionDeBase<Integer>(Listes.cree(1, 2)).respectent(créeSpecificationJamaisSatisfaite());
+		Exception exception = capteur.capte(new Action() {
+			@Override
+			public void démarre() {
+				new AffirmationCollectionDeBase<Integer>(Listes.cree(1, 2)).respectent(spécification);
+			}
+		});
+
+		alors().cette(exception).respecte(spécificationException("[1, 2] ne respecte pas la spécification."));
 	}
 
-	private Specification<Collection<Integer>> créeSpecificationJamaisSatisfaite() {
-		return new Specification<Collection<Integer>>() {
-			@Override
-			public boolean estInsatisfaitePar(Collection<Integer> objet) {
-				return true;
-			}
-
-			@Override
-			public String messageInsatisfactionPour(Collection<Integer> objet) {
-				return objet + " ne respectent pas la spécification.";
-			}
-		};
-	}
+	private CapteurException capteur;
 }

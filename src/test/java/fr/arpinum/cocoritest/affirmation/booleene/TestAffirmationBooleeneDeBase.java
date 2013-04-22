@@ -15,22 +15,16 @@
 
 package fr.arpinum.cocoritest.affirmation.booleene;
 
-import static fr.arpinum.cocoritest.FabriquePourTest.*;
+import static fr.arpinum.cocoritest.Fabrique.*;
 import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
 
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
-import fr.arpinum.cocoritest.affirmation.ExceptionAffirmation;
 import fr.arpinum.cocoritest.exception.Action;
 import fr.arpinum.cocoritest.exception.CapteurException;
 
 public class TestAffirmationBooleeneDeBase {
-
-	@Rule
-	public ExpectedException exception = ExpectedException.none();
 
 	@Before
 	public void avantChaqueTest() {
@@ -52,7 +46,7 @@ public class TestAffirmationBooleeneDeBase {
 			}
 		});
 
-		alors().cette(exception).respecte(exceptionAffirmation("L'objet est <faux> au lieu de <vrai>."));
+		alors().cette(exception).respecte(spécificationException("L'objet est <faux> au lieu de <vrai>."));
 	}
 
 	@Test
@@ -64,14 +58,19 @@ public class TestAffirmationBooleeneDeBase {
 			}
 		});
 
-		alors().cette(exception).respecte(exceptionAffirmation("L'objet est <faux> au lieu de <vrai>."));
+		alors().cette(exception).respecte(spécificationException("L'objet est <faux> au lieu de <vrai>."));
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQueNullEstVrai() {
-		exception.expect(ExceptionAffirmation.class);
+		Exception exception = capteur.capte(new Action() {
+			@Override
+			public void démarre() {
+				new AffirmationBooleeneDeBase(null).estVrai();
+			}
+		});
 
-		new AffirmationBooleeneDeBase(null).estVrai();
+		alors().cette(exception).respecte(spécificationException("L'objet est <nul> au lieu de <vrai>."));
 	}
 
 	@Test
@@ -89,7 +88,7 @@ public class TestAffirmationBooleeneDeBase {
 			}
 		});
 
-		alors().cette(exception).respecte(exceptionAffirmation("L'objet est <vrai> au lieu de <faux>."));
+		alors().cette(exception).respecte(spécificationException("L'objet est <vrai> au lieu de <faux>."));
 	}
 
 	@Test
@@ -101,7 +100,7 @@ public class TestAffirmationBooleeneDeBase {
 			}
 		});
 
-		alors().cette(exception).respecte(exceptionAffirmation("L'objet est <vrai> au lieu de <faux>."));
+		alors().cette(exception).respecte(spécificationException("L'objet est <vrai> au lieu de <faux>."));
 	}
 
 	private CapteurException capteur;

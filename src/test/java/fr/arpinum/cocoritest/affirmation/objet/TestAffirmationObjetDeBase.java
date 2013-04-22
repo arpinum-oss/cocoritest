@@ -15,17 +15,22 @@
 
 package fr.arpinum.cocoritest.affirmation.objet;
 
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import static fr.arpinum.cocoritest.Fabrique.*;
+import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
 
-import fr.arpinum.cocoritest.affirmation.ExceptionAffirmation;
+import org.junit.Before;
+import org.junit.Test;
+
+import fr.arpinum.cocoritest.exception.Action;
+import fr.arpinum.cocoritest.exception.CapteurException;
 import fr.arpinum.cocoritest.specification.Specification;
 
 public class TestAffirmationObjetDeBase {
 
-	@Rule
-	public ExpectedException politiqueException = ExpectedException.none();
+	@Before
+	public void avantChaqueTest() {
+		capteur = new CapteurException();
+	}
 
 	@Test
 	public void onPeutAffirmerQuUnNombreEstLeMêmeNombre() {
@@ -34,10 +39,14 @@ public class TestAffirmationObjetDeBase {
 
 	@Test
 	public void onNePeutPasAffirmerQuUnNombreEstUnNombreDifférent() {
-		politiqueException.expect(ExceptionAffirmation.class);
-		politiqueException.expectMessage("L'objet est <1> au lieu de <2>.");
+		Exception exception = capteur.capte(new Action() {
+			@Override
+			public void démarre() {
+				creeAffirmation(1).est(2);
+			}
+		});
 
-		creeAffirmation(1).est(2);
+		alors().cette(exception).respecte(spécificationException("L'objet est <1> au lieu de <2>."));
 	}
 
 	@Test
@@ -47,18 +56,26 @@ public class TestAffirmationObjetDeBase {
 
 	@Test
 	public void onNePeutPasAffirmerQuUnNombreNEstPasLeMêmeNombre() {
-		politiqueException.expect(ExceptionAffirmation.class);
-		politiqueException.expectMessage("L'objet est <1> alors que ce n'était pas voulu.");
+		Exception exception = capteur.capte(new Action() {
+			@Override
+			public void démarre() {
+				creeAffirmation(1).nEstPas(1);
+			}
+		});
 
-		creeAffirmation(1).nEstPas(1);
+		alors().cette(exception).respecte(spécificationException("L'objet est <1> alors que ce n'était pas voulu."));
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQuUneChaîneEstUneChaîneDifférente() {
-		politiqueException.expect(ExceptionAffirmation.class);
-		politiqueException.expectMessage("L'objet est <toto> au lieu de <tutu>.");
+		Exception exception = capteur.capte(new Action() {
+			@Override
+			public void démarre() {
+				creeAffirmation("toto").est("tutu");
+			}
+		});
 
-		creeAffirmation("toto").est("tutu");
+		alors().cette(exception).respecte(spécificationException("L'objet est <toto> au lieu de <tutu>."));
 	}
 
 	@Test
@@ -75,78 +92,76 @@ public class TestAffirmationObjetDeBase {
 
 	@Test
 	public void onNePeutPasAffirmerQuUnObjetNonNulEstNul() {
-		politiqueException.expect(ExceptionAffirmation.class);
-		politiqueException.expectMessage("L'objet est <toto> au lieu de <nul>.");
+		Exception exception = capteur.capte(new Action() {
+			@Override
+			public void démarre() {
+				creeAffirmation("toto").estNul();
+			}
+		});
 
-		creeAffirmation("toto").estNul();
+		alors().cette(exception).respecte(spécificationException("L'objet est <toto> au lieu de <nul>."));
 	}
 
 	@Test
 	public void onNePeutPasAffirmerAuFémininQuUnObjetNonNulEstNul() {
-		politiqueException.expect(ExceptionAffirmation.class);
-		politiqueException.expectMessage("L'objet est <toto> au lieu de <nul>.");
+		Exception exception = capteur.capte(new Action() {
+			@Override
+			public void démarre() {
+				creeAffirmation("toto").estNulle();
+			}
+		});
 
-		creeAffirmation("toto").estNulle();
+		alors().cette(exception).respecte(spécificationException("L'objet est <toto> au lieu de <nul>."));
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQuUnObjetNulNEstPasNul() {
-		politiqueException.expect(ExceptionAffirmation.class);
-		politiqueException.expectMessage("L'objet est <nul> alors que ce n'était pas voulu.");
+		Exception exception = capteur.capte(new Action() {
+			@Override
+			public void démarre() {
+				creeAffirmation(null).nEstPasNul();
+			}
+		});
 
-		creeAffirmation(null).nEstPasNul();
+		alors().cette(exception).respecte(spécificationException("L'objet est <nul> alors que ce n'était pas voulu."));
 	}
 
 	@Test
 	public void onNePeutPasAffirmerAuFémininQuUnObjetNulNEstPasNul() {
-		politiqueException.expect(ExceptionAffirmation.class);
-		politiqueException.expectMessage("L'objet est <nul> alors que ce n'était pas voulu.");
+		Exception exception = capteur.capte(new Action() {
+			@Override
+			public void démarre() {
+				creeAffirmation(null).nEstPasNulle();
+			}
+		});
 
-		creeAffirmation(null).nEstPasNulle();
+		alors().cette(exception).respecte(spécificationException("L'objet est <nul> alors que ce n'était pas voulu."));
 	}
 
 	@Test
 	public void onPeutAffirmerQuUnObjetRespecteUneSpecification() {
-		creeAffirmation(1).respecte(créeSpecificationToujoursSatisfaite());
-	}
+		Specification<Integer> spécification = spécificationSatisfaite();
 
-	private Specification<Integer> créeSpecificationToujoursSatisfaite() {
-		return new Specification<Integer>() {
-			@Override
-			public boolean estInsatisfaitePar(Integer objet) {
-				return false;
-			}
-
-			@Override
-			public String messageInsatisfactionPour(Integer objet) {
-				return "non utilisé";
-			}
-		};
+		creeAffirmation(1).respecte(spécification);
 	}
 
 	@Test
 	public void onNePeutPasAffirmerATortQuUnObjetRespecteUneSpecification() {
-		politiqueException.expect(ExceptionAffirmation.class);
-		politiqueException.expectMessage("1 ne respecte pas la spécification");
+		final Specification<Integer> spécification = spécificationInsatisfaite();
 
-		creeAffirmation(1).respecte(créeSpécificationJamaisSatisfaite());
-	}
-
-	private Specification<Integer> créeSpécificationJamaisSatisfaite() {
-		return new Specification<Integer>() {
+		Exception exception = capteur.capte(new Action() {
 			@Override
-			public boolean estInsatisfaitePar(Integer objet) {
-				return true;
+			public void démarre() {
+				creeAffirmation(1).respecte(spécification);
 			}
+		});
 
-			@Override
-			public String messageInsatisfactionPour(Integer objet) {
-				return objet + " ne respecte pas la spécification";
-			}
-		};
+		alors().cette(exception).respecte(spécificationException("1 ne respecte pas la spécification."));
 	}
 
 	private static <T> AffirmationObjetDeBase<T> creeAffirmation(T valeur) {
 		return new AffirmationObjetDeBase<T>(valeur);
 	}
+
+	private CapteurException capteur;
 }

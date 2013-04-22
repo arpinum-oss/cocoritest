@@ -21,9 +21,9 @@ import fr.arpinum.cocoritest.specification.FabriqueSpecification;
 import fr.arpinum.cocoritest.specification.Specification;
 import fr.arpinum.cocoritest.specification.objet.SpecificationAutreObjet;
 
-public abstract class FabriquePourTest {
+public abstract class Fabrique {
 
-	public static Specification<Exception> exceptionAffirmation(String messageAttendu) {
+	public static Specification<Exception> spécificationException(String messageAttendu) {
 		SpecificationAutreObjet<Exception> nonNulle = new SpecificationAutreObjet<Exception>(null);
 		Specification<Exception> deTypeAffirmation = créeSpécificationObjetDeType(ExceptionAffirmation.class);
 		Specification<Exception> avecMessage = créeSpécificationMessageException(messageAttendu);
@@ -54,6 +54,34 @@ public abstract class FabriquePourTest {
 			@Override
 			public String messageInsatisfactionPour(Exception objet) {
 				return String.format("Le type est <%s> au lieu de <%s>", objet.getClass(), classe);
+			}
+		};
+	}
+
+	public static <T> Specification<T> spécificationSatisfaite() {
+		return new Specification<T>() {
+			@Override
+			public boolean estInsatisfaitePar(T objet) {
+				return false;
+			}
+
+			@Override
+			public String messageInsatisfactionPour(T objet) {
+				return "non utilisé";
+			}
+		};
+	}
+
+	public static <T> Specification<T> spécificationInsatisfaite() {
+		return new Specification<T>() {
+			@Override
+			public boolean estInsatisfaitePar(T objet) {
+				return true;
+			}
+
+			@Override
+			public String messageInsatisfactionPour(T objet) {
+				return objet + " ne respecte pas la spécification.";
 			}
 		};
 	}
