@@ -108,21 +108,13 @@ Les affirmations sur l'exception capturée se font en fin de test. **Cocoritest*
 
 ## Utilisation ##
 
-Pour le moment **Cocoritest** n'est pas publiée. Il est nécessaire de l'installer dans l'entrepôt local de maven :
-
-```
-git clone git@github.com:arpinum/cocoritest.git
-cd cocoritest
-maven install
-```
-
 Ajouter **Cocoritest** dans les dépendances d'un pom.xml :
 
 ```
 <dependency>
 	<groupId>fr.arpinum</groupId>
 	<artifactId>cocoritest</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 	<scope>test</scope>
 </dependency>
 ```
@@ -141,7 +133,7 @@ Copyright (C) 2013, Arpinum
 
 **Cocoritest** est distribué dans l'espoir qu'il sera utile, mais SANS AUCUNE GARANTIE ; pas même la garantie implicite de COMMERCIABILISABILITÉ ni d'ADÉQUATION à UN OBJECTIF PARTICULIER. Consultez la GNU Lesser General Public License pour plus de détails.
 
-Vous devez avoir reçu une copie de la GNU Lesser General Public License en même temps que **Cocoritest** ; si ce n'est pas le cas, consultez [http://www.gnu.org/licenses].
+Vous devez avoir reçu une copie de la GNU Lesser General Public License en même temps que **Cocoritest** ; si ce n'est pas le cas, consultez [http://www.gnu.org/licenses/lgpl.html].
 
 [Hamcrest]: http://hamcrest.org/
 [FEST]: https://code.google.com/p/fest/
