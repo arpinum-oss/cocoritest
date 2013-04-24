@@ -25,6 +25,7 @@ import fr.arpinum.cocoritest.affirmation.collection.AffirmationCollectionDeBase;
 import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjet;
 import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjetAuFeminin;
 import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjetDeBase;
+import fr.arpinum.cocoritest.outils.Listes;
 
 /**
  * Fabrique qui permet de construire les différentes affirmations.
@@ -179,5 +180,15 @@ public class FabriqueAffirmation {
 	 */
 	public <T> AffirmationCollection<T> les(Collection<T> éléments) {
 		return new AffirmationCollectionDeBase<T>(éléments);
+	}
+
+	/**
+	 * Crée une nouvelle instance de <code>{@link AffirmationCollection}</code>.
+	 *
+	 * @param éléments les cibles de l'affirmation.
+	 * @return l'affirmation créée.
+	 */
+	public <T> AffirmationCollection<T> les(T[] éléments) {
+		return new AffirmationCollectionDeBase<T>(Listes.cree(éléments));
 	}
 }

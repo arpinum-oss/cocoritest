@@ -12,7 +12,6 @@ public class TestFabriqueSpecification {
 		fabrique = new FabriqueSpecification();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Test
 	public void laFabriquePeutCombinerPlusieursSpécifications() {
 		Specification<String> spécificationCréée = fabrique.combine(créeContient(""), créeContient(""));
@@ -20,7 +19,6 @@ public class TestFabriqueSpecification {
 		alors().la(spécificationCréée).nEstPasNulle();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Test
 	public void uneSpécificationCombinéeEstInsatisfaiteSiUneSpécificationDeSaCombinaisonEstInsatisfaite() {
 		Specification<String> spécificationCréée = fabrique.combine(créeContient("a"), créeContient("b"));
@@ -29,7 +27,6 @@ public class TestFabriqueSpecification {
 		alors().ceci(spécificationCréée.estInsatisfaitePar("bbeeeebb")).estVrai();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Test
 	public void uneSpécificatonCombinéeALeMessageDInsatisfactionDeLaPremiereInsatisfaiteDeSaCombinaison() {
 		Specification<String> spécificationCréée = fabrique.combine(créeContient("a"), créeContient("b"));

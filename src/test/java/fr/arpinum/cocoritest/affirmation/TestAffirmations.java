@@ -36,6 +36,7 @@ public class TestAffirmations {
 		adverbe = annonce = "tellement";
 		nombres = Listes.cree(1, 5, 12);
 		valeurs = Listes.cree();
+		données = new Object[]{};
 		réponse = champ = null;
 		remarque = new Object();
 	}
@@ -86,6 +87,11 @@ public class TestAffirmations {
 		alors().les(nombres).existent();
 		alors().les(valeurs).nExistentPas();
 		alors().les(nombres).respectent(laSpécificationDeCollection());
+	}
+
+	@Test
+	public void peutConstruireLesAffirmationsAuPlurielPourUnTableau() {
+		alors().les(données).nExistentPas();
 	}
 
 	private static Specification<Integer> laSpécification() {
@@ -141,6 +147,7 @@ public class TestAffirmations {
 	private String annonce;
 	private List<Integer> nombres;
 	private List<String> valeurs;
+	private Object[] données;
 	private Object réponse;
 	private Object remarque;
 	private Object champ;
