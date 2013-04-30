@@ -16,14 +16,35 @@
 package fr.arpinum.cocoritest.outils;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Listes {
 
-	public static <E> List<E> cree(E... éléments) {
+	public static <E> List<E> cree() {
+		return new ArrayList<E>();
+	}
+
+	public static <E> List<E> cree(E élément) {
+		List<E> liste = cree();
+		liste.add(élément);
+		return liste;
+	}
+
+	public static <E> List<E> cree(E élément, E élémentBis) {
+		List<E> liste = cree(élément);
+		liste.add(élémentBis);
+		return liste;
+	}
+
+	public static <E> List<E> cree(E élément, E élémentBis, E élémentTer) {
+		List<E> liste = cree(élément, élémentBis);
+		liste.add(élémentTer);
+		return liste;
+	}
+
+	public static <E> List<E> cree(E[] éléments) {
 		List<E> liste = new ArrayList<E>();
-		Collections.addAll(liste, éléments);
+		java.util.Collections.addAll(liste, éléments);
 		return liste;
 	}
 }

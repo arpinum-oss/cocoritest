@@ -15,7 +15,10 @@
 
 package fr.arpinum.cocoritest;
 
+import java.util.List;
+
 import fr.arpinum.cocoritest.affirmation.ExceptionAffirmation;
+import fr.arpinum.cocoritest.outils.Listes;
 import fr.arpinum.cocoritest.outils.Objets;
 import fr.arpinum.cocoritest.specification.FabriqueSpecification;
 import fr.arpinum.cocoritest.specification.Specification;
@@ -24,10 +27,15 @@ import fr.arpinum.cocoritest.specification.objet.SpecificationAutreObjet;
 public abstract class Fabrique {
 
 	public static Specification<Exception> spécificationException(String messageAttendu) {
+		List<Specification<Exception>> specifications = creeSpécificationsException(messageAttendu);
+		return new FabriqueSpecification().combine(specifications);
+	}
+
+	private static List<Specification<Exception>> creeSpécificationsException(String messageAttendu) {
 		SpecificationAutreObjet<Exception> nonNulle = new SpecificationAutreObjet<Exception>(null);
 		Specification<Exception> deTypeAffirmation = créeSpécificationObjetDeType(ExceptionAffirmation.class);
 		Specification<Exception> avecMessage = créeSpécificationMessageException(messageAttendu);
-		return new FabriqueSpecification().combine(nonNulle, deTypeAffirmation, avecMessage);
+		return Listes.cree(nonNulle, deTypeAffirmation, avecMessage);
 	}
 
 	private static Specification<Exception> créeSpécificationMessageException(final String messageAttendu) {

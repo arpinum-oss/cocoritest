@@ -15,11 +15,11 @@
 
 package fr.arpinum.cocoritest.specification;
 
-import fr.arpinum.cocoritest.outils.Listes;
+import java.util.List;
 
 public class FabriqueSpecification {
 
-	public <T> Specification<T> combine(final Specification<T>... spécifications) {
-		return new SpecificationCombinee<T>(Listes.cree(spécifications));
+	public <T> Specification<T> combine(final List<Specification<T>> spécifications) {
+		return new SpecificationCombinee<T>(spécifications);
 	}
 }
