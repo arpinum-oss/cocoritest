@@ -15,21 +15,21 @@
 
 package fr.arpinum.cocoritest.affirmation.objet;
 
+import static fr.arpinum.cocoritest.Affirmations.*;
 import static fr.arpinum.cocoritest.Fabrique.*;
-import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import fr.arpinum.cocoritest.exception.Action;
-import fr.arpinum.cocoritest.exception.CapteurException;
+import fr.arpinum.cocoritest.exception.CapteurExceptionDeBase;
 import fr.arpinum.cocoritest.specification.Specification;
 
 public class TestAffirmationObjetDeBase {
 
 	@Before
 	public void avantChaqueTest() {
-		capteur = new CapteurException();
+		capteur = new CapteurExceptionDeBase();
 	}
 
 	@Test
@@ -163,5 +163,5 @@ public class TestAffirmationObjetDeBase {
 		return new AffirmationObjetDeBase<T>(valeur);
 	}
 
-	private CapteurException capteur;
+	private CapteurExceptionDeBase capteur;
 }

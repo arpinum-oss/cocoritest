@@ -13,21 +13,24 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.extensionlangage;
+package fr.arpinum.cocoritest;
 
-import static fr.arpinum.cocoritest.Affirmations.*;
+import fr.arpinum.cocoritest.affirmation.FabriqueAffirmation;
 
-import java.util.List;
+/**
+ * Le point d'entrée qui permet d'avoir accès à la fabrique d'affirmations.
+ * <p>
+ * Exemples :
+ * <pre>
+ * 		alors().le(résultat).estVrai();
+ * 		alors().la(chaîne).est("toto");
+ * 		alors().les(valeurs).sont("a", "b");
+ * 	</pre>
+ * </p>
+ */
+public abstract class Affirmations {
 
-import org.junit.Test;
-
-public class TestListes {
-
-	@Test
-	public void peutCréerUneListe() {
-		List<String> éléments = Listes.cree("a", "b");
-
-		alors().les(éléments).sontAuNombreDe(2);
-		alors().les(éléments).sont("a", "b");
+	public static FabriqueAffirmation alors() {
+		return new FabriqueAffirmation();
 	}
 }

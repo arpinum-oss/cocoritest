@@ -13,21 +13,28 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.extensionlangage;
+package fr.arpinum.cocoritest;
 
 import static fr.arpinum.cocoritest.Affirmations.*;
 
-import java.util.List;
-
 import org.junit.Test;
 
-public class TestListes {
+import fr.arpinum.cocoritest.exception.CapteurException;
+import fr.arpinum.cocoritest.injection.Injecteur;
+
+public class TestOutils {
 
 	@Test
-	public void peutCréerUneListe() {
-		List<String> éléments = Listes.cree("a", "b");
+	public void peutCréerUnCapteurDException() {
+		CapteurException capteur = Outils.créeCapteur();
 
-		alors().les(éléments).sontAuNombreDe(2);
-		alors().les(éléments).sont("a", "b");
+		alors().le(capteur).nEstPasNul();
+	}
+
+	@Test
+	public void peutCréerUnInjecteur() {
+		Injecteur injecteur = Outils.créeInjecteur(new Object());
+
+		alors().cet(injecteur).nEstPasNul();
 	}
 }

@@ -122,7 +122,7 @@ Ajouter **Cocoritest** dans les dépendances d'un pom.xml :
 Ajouter **Cocoritest** au niveau des imports Java :
 
 ```java
-import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
+import static fr.arpinum.cocoritest.Affirmations.*;
 ```
 
 ## Licence ##

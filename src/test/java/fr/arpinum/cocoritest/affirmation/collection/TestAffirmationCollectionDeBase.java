@@ -15,8 +15,8 @@
 
 package fr.arpinum.cocoritest.affirmation.collection;
 
+import static fr.arpinum.cocoritest.Affirmations.*;
 import static fr.arpinum.cocoritest.Fabrique.*;
-import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,7 +27,7 @@ import org.junit.Test;
 
 import fr.arpinum.cocoritest.Fabrique;
 import fr.arpinum.cocoritest.exception.Action;
-import fr.arpinum.cocoritest.exception.CapteurException;
+import fr.arpinum.cocoritest.exception.CapteurExceptionDeBase;
 import fr.arpinum.cocoritest.extensionlangage.Listes;
 import fr.arpinum.cocoritest.specification.Specification;
 
@@ -35,7 +35,7 @@ public class TestAffirmationCollectionDeBase {
 
 	@Before
 	public void avantChaqueTest() {
-		capteur = new CapteurException();
+		capteur = new CapteurExceptionDeBase();
 	}
 
 	@Test
@@ -228,5 +228,5 @@ public class TestAffirmationCollectionDeBase {
 		alors().cette(exception).respecte(spécificationException("[1, 2] ne respecte pas la spécification."));
 	}
 
-	private CapteurException capteur;
+	private CapteurExceptionDeBase capteur;
 }

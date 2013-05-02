@@ -1,6 +1,6 @@
 package fr.arpinum.cocoritest.specification;
 
-import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
+import static fr.arpinum.cocoritest.Affirmations.*;
 
 import org.junit.Before;
 import org.junit.Test;

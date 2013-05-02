@@ -15,7 +15,7 @@
 
 package fr.arpinum.cocoritest.injection;
 
-import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
+import static fr.arpinum.cocoritest.Affirmations.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,14 +24,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fr.arpinum.cocoritest.exception.Action;
-import fr.arpinum.cocoritest.exception.CapteurException;
+import fr.arpinum.cocoritest.exception.CapteurExceptionDeBase;
 
 public class TestInjecteur {
 
 	@Before
 	public void avantChaqueTest() {
 		client = new Client();
-		injecteur = new Injecteur(client);
+		injecteur = new InjecteurDeBase(client);
 	}
 
 	@Test
@@ -57,7 +57,7 @@ public class TestInjecteur {
 
 	@Test
 	public void uneErreurEstLevéeSiLaDépendanceNePeutPasEtreInjectée() {
-		CapteurException capteur = new CapteurException();
+		CapteurExceptionDeBase capteur = new CapteurExceptionDeBase();
 		final List<String> dépendance = new ArrayList<String>();
 
 		Exception exception = capteur.capte(new Action() {
@@ -97,6 +97,6 @@ public class TestInjecteur {
 	private static class AutreDependanceSimple implements AutreDependance {
 	}
 
-	private Injecteur injecteur;
+	private InjecteurDeBase injecteur;
 	private Client client;
 }

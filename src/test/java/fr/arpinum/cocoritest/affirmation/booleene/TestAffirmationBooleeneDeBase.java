@@ -15,20 +15,20 @@
 
 package fr.arpinum.cocoritest.affirmation.booleene;
 
+import static fr.arpinum.cocoritest.Affirmations.*;
 import static fr.arpinum.cocoritest.Fabrique.*;
-import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import fr.arpinum.cocoritest.exception.Action;
-import fr.arpinum.cocoritest.exception.CapteurException;
+import fr.arpinum.cocoritest.exception.CapteurExceptionDeBase;
 
 public class TestAffirmationBooleeneDeBase {
 
 	@Before
 	public void avantChaqueTest() {
-		capteur = new CapteurException();
+		capteur = new CapteurExceptionDeBase();
 	}
 
 	@Test
@@ -103,5 +103,5 @@ public class TestAffirmationBooleeneDeBase {
 		alors().cette(exception).respecte(spécificationException("L'objet est <vrai> au lieu de <faux>."));
 	}
 
-	private CapteurException capteur;
+	private CapteurExceptionDeBase capteur;
 }

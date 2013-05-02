@@ -18,7 +18,7 @@ package fr.arpinum.cocoritest.exception;
 /**
  * Capture une éventuelle exception dans une action.
  */
-public class CapteurException {
+public interface CapteurException {
 
 	/**
 	 * Capture une éventuelle exception dans l'action et la retourne.
@@ -26,12 +26,5 @@ public class CapteurException {
 	 * @param action l'action succeptible de lever une exception.
 	 * @return l'exception capturée ou null si aucune exception.
 	 */
-	public Exception capte(Action action) {
-		try {
-			action.démarre();
-		} catch (Exception e) {
-			return e;
-		}
-		return null;
-	}
+	Exception capte(Action action);
 }

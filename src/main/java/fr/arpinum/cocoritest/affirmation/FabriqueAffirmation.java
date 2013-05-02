@@ -29,11 +29,11 @@ import fr.arpinum.cocoritest.extensionlangage.Listes;
 
 /**
  * Fabrique qui permet de construire les différentes affirmations.
- * Ne pas utiliser cette classe directement mais via <code>{@link Affirmations}</code>.
+ * Ne pas utiliser cette classe directement mais via <code>{@link fr.arpinum.cocoritest.Affirmations}</code>.
  */
 public class FabriqueAffirmation {
 
-	FabriqueAffirmation() {
+	public FabriqueAffirmation() {
 	}
 
 	/**

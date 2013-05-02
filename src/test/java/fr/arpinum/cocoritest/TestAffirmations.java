@@ -13,9 +13,9 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.affirmation;
+package fr.arpinum.cocoritest;
 
-import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
+import static fr.arpinum.cocoritest.Affirmations.*;
 
 import java.util.Collection;
 import java.util.List;
@@ -42,7 +42,7 @@ public class TestAffirmations {
 	}
 
 	@Test
-	public void peutConstruireLesDifférentesAffirmationsAuMasculin() {
+	public void peutCréerLesDifférentesAffirmationsAuMasculin() {
 		alors().le(résultat).estVrai();
 		alors().le(mensonge).estFaux();
 		alors().le(nombre).est(3);
@@ -53,7 +53,7 @@ public class TestAffirmations {
 	}
 
 	@Test
-	public void peutConstruireLesDifférentesAffirmationsAuFéminin() {
+	public void peutCréerLesDifférentesAffirmationsAuFéminin() {
 		alors().la(vérité).estVraie();
 		alors().la(trahison).estFausse();
 		alors().la(valeur).est(3);
@@ -64,7 +64,7 @@ public class TestAffirmations {
 	}
 
 	@Test
-	public void peutConstruireLesDifférentesAffirmationsPourLesMotsCommençantParUneVoyelle() {
+	public void peutCréerLesDifférentesAffirmationsPourLesMotsCommençantParUneVoyelle() {
 		alors().cet(état).estVrai();
 		alors().cette(estimation).estVraie();
 		alors().cet(adverbe).est("tellement");
@@ -72,7 +72,7 @@ public class TestAffirmations {
 	}
 
 	@Test
-	public void peutConstruireDesAffirmationsAuMasculinPourDesInstructionsEntieres() {
+	public void peutCréerDesAffirmationsAuMasculinPourDesInstructionsEntieres() {
 		alors().ceci(new ClasseInterne().getRésultat()).estVrai();
 		alors().ceci(new ClasseInterne().getMessage()).est("message");
 	}
@@ -90,7 +90,7 @@ public class TestAffirmations {
 	}
 
 	@Test
-	public void peutConstruireLesAffirmationsAuPlurielPourUnTableau() {
+	public void peutCréerLesAffirmationsAuPlurielPourUnTableau() {
 		alors().les(données).nExistentPas();
 	}
 

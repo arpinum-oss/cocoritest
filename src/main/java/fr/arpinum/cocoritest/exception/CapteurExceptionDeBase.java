@@ -13,22 +13,17 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.affirmation;
+package fr.arpinum.cocoritest.exception;
 
-/**
- * Le point d'entrée qui permet d'avoir accès à la fabrique d'affirmations.
- * <p>
- * Exemples :
- * <pre>
- * 		alors().le(résultat).estVrai();
- * 		alors().la(chaîne).est("toto");
- * 		alors().les(valeurs).sont("a", "b");
- * 	</pre>
- * </p>
- */
-public abstract class Affirmations {
+public class CapteurExceptionDeBase implements CapteurException {
 
-	public static FabriqueAffirmation alors() {
-		return new FabriqueAffirmation();
+	@Override
+	public Exception capte(Action action) {
+		try {
+			action.démarre();
+		} catch (Exception e) {
+			return e;
+		}
+		return null;
 	}
 }

@@ -15,50 +15,6 @@
 
 package fr.arpinum.cocoritest.injection;
 
-import java.lang.reflect.Field;
-import java.util.List;
-
-import fr.arpinum.cocoritest.extensionlangage.Listes;
-
-public class Injecteur {
-
-	public Injecteur(Object objet) {
-		this.objet = objet;
-	}
-
-	public void injecte(Object dépendance) {
-		List<Field> champsAssignables = récupèreChampsAssignables(dépendance);
-		if (champsAssignables.size() == 0) {
-			throw new IllegalArgumentException(String.format("Impossible d'assigner la dépendance %s", dépendance));
-		}
-		assigneLesChampsAssignables(dépendance, champsAssignables);
-	}
-
-	private void assigneLesChampsAssignables(Object dépendance, List<Field> champsAssignables) {
-		for (Field champ : champsAssignables) {
-			champ.setAccessible(true);
-			try {
-				champ.set(objet, dépendance);
-			} catch (IllegalAccessException e) {
-				throw new RuntimeException(e);
-			}
-		}
-	}
-
-	private List<Field> récupèreChampsAssignables(Object dépendance) {
-		List<Field> champsAssignables = Listes.cree();
-		for (Field champ : récupèreTousLesChamps()) {
-			if (champ.getType().isAssignableFrom(dépendance.getClass())) {
-				champsAssignables.add(champ);
-			}
-		}
-		return champsAssignables;
-	}
-
-	private Field[] récupèreTousLesChamps() {
-		Class<?> classe = objet.getClass();
-		return classe.getDeclaredFields();
-	}
-
-	private Object objet;
+public interface Injecteur {
+	void injecte(Object dépendance);
 }

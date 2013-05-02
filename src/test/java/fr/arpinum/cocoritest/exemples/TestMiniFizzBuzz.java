@@ -15,7 +15,7 @@
 
 package fr.arpinum.cocoritest.exemples;
 
-import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
+import static fr.arpinum.cocoritest.Affirmations.*;
 
 import java.util.Collection;
 import java.util.List;
