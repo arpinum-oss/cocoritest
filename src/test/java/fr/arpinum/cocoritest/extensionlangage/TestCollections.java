@@ -13,7 +13,7 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.outils;
+package fr.arpinum.cocoritest.extensionlangage;
 
 import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
 

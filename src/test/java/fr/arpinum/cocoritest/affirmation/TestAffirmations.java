@@ -23,7 +23,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import fr.arpinum.cocoritest.outils.Listes;
+import fr.arpinum.cocoritest.extensionlangage.Listes;
 import fr.arpinum.cocoritest.specification.Specification;
 
 public class TestAffirmations {

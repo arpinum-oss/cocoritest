@@ -17,7 +17,7 @@ package fr.arpinum.cocoritest.specification.collection;
 
 import java.util.Collection;
 
-import fr.arpinum.cocoritest.outils.Collections;
+import fr.arpinum.cocoritest.extensionlangage.Collections;
 import fr.arpinum.cocoritest.specification.Specification;
 
 public class SpecificationCollection<E> implements Specification<Collection<E>> {

@@ -15,7 +15,7 @@
 
 package fr.arpinum.cocoritest.specification.objet;
 
-import fr.arpinum.cocoritest.outils.Objets;
+import fr.arpinum.cocoritest.extensionlangage.Objets;
 import fr.arpinum.cocoritest.specification.Specification;
 
 public class SpecificationAutreObjet<T> implements Specification<T> {

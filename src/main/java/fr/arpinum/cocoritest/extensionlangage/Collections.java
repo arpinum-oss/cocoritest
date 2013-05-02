@@ -13,7 +13,7 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.outils;
+package fr.arpinum.cocoritest.extensionlangage;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -32,9 +32,10 @@ public class Collections {
 	}
 
 	private static <T> boolean lesCollectionsDeMêmeTailleSontEgales(Collection<T> gauche, Collection<T> droite) {
-		for (Iterator<T> premierIterateur = gauche.iterator(), secondIterateur = droite.iterator(); premierIterateur.hasNext
-				(); ) {
-			if (Objets.différents(premierIterateur.next(), secondIterateur.next())) {
+		Iterator<T> premierItérateur = gauche.iterator();
+		Iterator<T> secondItérateur = droite.iterator();
+		while (premierItérateur.hasNext()) {
+			if (Objets.différents(premierItérateur.next(), secondItérateur.next())) {
 				return false;
 			}
 		}

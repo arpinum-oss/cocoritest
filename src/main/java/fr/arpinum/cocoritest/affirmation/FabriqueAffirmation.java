@@ -25,7 +25,7 @@ import fr.arpinum.cocoritest.affirmation.collection.AffirmationCollectionDeBase;
 import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjet;
 import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjetAuFeminin;
 import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjetDeBase;
-import fr.arpinum.cocoritest.outils.Listes;
+import fr.arpinum.cocoritest.extensionlangage.Listes;
 
 /**
  * Fabrique qui permet de construire les différentes affirmations.

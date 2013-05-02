@@ -18,7 +18,7 @@ package fr.arpinum.cocoritest.affirmation.collection;
 import java.util.Collection;
 
 import fr.arpinum.cocoritest.affirmation.Affirmation;
-import fr.arpinum.cocoritest.outils.Listes;
+import fr.arpinum.cocoritest.extensionlangage.Listes;
 import fr.arpinum.cocoritest.specification.Specification;
 import fr.arpinum.cocoritest.specification.collection.SpecificationCollection;
 import fr.arpinum.cocoritest.specification.collection.SpecificationCollectionNonVide;

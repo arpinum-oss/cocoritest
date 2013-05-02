@@ -18,8 +18,8 @@ package fr.arpinum.cocoritest;
 import java.util.List;
 
 import fr.arpinum.cocoritest.affirmation.ExceptionAffirmation;
-import fr.arpinum.cocoritest.outils.Listes;
-import fr.arpinum.cocoritest.outils.Objets;
+import fr.arpinum.cocoritest.extensionlangage.Listes;
+import fr.arpinum.cocoritest.extensionlangage.Objets;
 import fr.arpinum.cocoritest.specification.FabriqueSpecification;
 import fr.arpinum.cocoritest.specification.Specification;
 import fr.arpinum.cocoritest.specification.objet.SpecificationAutreObjet;

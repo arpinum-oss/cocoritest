@@ -13,21 +13,38 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.outils;
+package fr.arpinum.cocoritest.extensionlangage;
 
-import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
-
+import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
+public class Listes {
 
-public class TestListes {
+	public static <E> List<E> cree() {
+		return new ArrayList<E>();
+	}
 
-	@Test
-	public void peutCréerUneListe() {
-		List<String> éléments = Listes.cree("a", "b");
+	public static <E> List<E> cree(E élément) {
+		List<E> liste = cree();
+		liste.add(élément);
+		return liste;
+	}
 
-		alors().les(éléments).sontAuNombreDe(2);
-		alors().les(éléments).sont("a", "b");
+	public static <E> List<E> cree(E élément, E élémentBis) {
+		List<E> liste = cree(élément);
+		liste.add(élémentBis);
+		return liste;
+	}
+
+	public static <E> List<E> cree(E élément, E élémentBis, E élémentTer) {
+		List<E> liste = cree(élément, élémentBis);
+		liste.add(élémentTer);
+		return liste;
+	}
+
+	public static <E> List<E> cree(E[] éléments) {
+		List<E> liste = new ArrayList<E>();
+		java.util.Collections.addAll(liste, éléments);
+		return liste;
 	}
 }

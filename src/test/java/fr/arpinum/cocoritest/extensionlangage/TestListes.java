@@ -13,28 +13,21 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.outils;
+package fr.arpinum.cocoritest.extensionlangage;
 
-public class Objets {
+import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
 
-	public static boolean egaux(Object gauche, Object droite) {
-		if (gauche == null) {
-			return droite == null;
-		}
-		return gauche.equals(droite);
-	}
+import java.util.List;
 
-	public static boolean différents(Object gauche, Object droite) {
-		return !egaux(gauche, droite);
-	}
+import org.junit.Test;
 
-	public static String enChaîne(Object objet) {
-		if (objet == null) {
-			return "nul";
-		}
-		if (objet instanceof Boolean) {
-			return ((Boolean) objet) ? "vrai" : "faux";
-		}
-		return objet.toString();
+public class TestListes {
+
+	@Test
+	public void peutCréerUneListe() {
+		List<String> éléments = Listes.cree("a", "b");
+
+		alors().les(éléments).sontAuNombreDe(2);
+		alors().les(éléments).sont("a", "b");
 	}
 }

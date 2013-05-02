@@ -18,7 +18,7 @@ package fr.arpinum.cocoritest.injection;
 import java.lang.reflect.Field;
 import java.util.List;
 
-import fr.arpinum.cocoritest.outils.Listes;
+import fr.arpinum.cocoritest.extensionlangage.Listes;
 
 public class Injecteur {
 

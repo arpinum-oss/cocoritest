@@ -13,38 +13,28 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.outils;
+package fr.arpinum.cocoritest.extensionlangage;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Objets {
 
-public class Listes {
-
-	public static <E> List<E> cree() {
-		return new ArrayList<E>();
+	public static boolean egaux(Object gauche, Object droite) {
+		if (gauche == null) {
+			return droite == null;
+		}
+		return gauche.equals(droite);
 	}
 
-	public static <E> List<E> cree(E élément) {
-		List<E> liste = cree();
-		liste.add(élément);
-		return liste;
+	public static boolean différents(Object gauche, Object droite) {
+		return !egaux(gauche, droite);
 	}
 
-	public static <E> List<E> cree(E élément, E élémentBis) {
-		List<E> liste = cree(élément);
-		liste.add(élémentBis);
-		return liste;
-	}
-
-	public static <E> List<E> cree(E élément, E élémentBis, E élémentTer) {
-		List<E> liste = cree(élément, élémentBis);
-		liste.add(élémentTer);
-		return liste;
-	}
-
-	public static <E> List<E> cree(E[] éléments) {
-		List<E> liste = new ArrayList<E>();
-		java.util.Collections.addAll(liste, éléments);
-		return liste;
+	public static String enChaîne(Object objet) {
+		if (objet == null) {
+			return "nul";
+		}
+		if (objet instanceof Boolean) {
+			return ((Boolean) objet) ? "vrai" : "faux";
+		}
+		return objet.toString();
 	}
 }
