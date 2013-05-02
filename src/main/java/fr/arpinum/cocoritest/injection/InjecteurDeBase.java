@@ -61,5 +61,5 @@ public class InjecteurDeBase implements Injecteur {
 		return classe.getDeclaredFields();
 	}
 
-	private Object objet;
+	private final Object objet;
 }

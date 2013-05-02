@@ -24,6 +24,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fr.arpinum.cocoritest.exception.Action;
+import fr.arpinum.cocoritest.exception.CapteurException;
 import fr.arpinum.cocoritest.exception.CapteurExceptionDeBase;
 
 public class TestInjecteur {
@@ -57,7 +58,7 @@ public class TestInjecteur {
 
 	@Test
 	public void uneErreurEstLevéeSiLaDépendanceNePeutPasEtreInjectée() {
-		CapteurExceptionDeBase capteur = new CapteurExceptionDeBase();
+		CapteurException capteur = new CapteurExceptionDeBase();
 		final List<String> dépendance = new ArrayList<String>();
 
 		Exception exception = capteur.capte(new Action() {
@@ -73,8 +74,8 @@ public class TestInjecteur {
 	}
 
 	private static class Client {
-		private Dependance dépendance = null;
-		private AutreDependance autreDépendance = null;
+		private final Dependance dépendance = null;
+		private final AutreDependance autreDépendance = null;
 
 		public Dependance dépendance() {
 			return dépendance;
@@ -97,6 +98,6 @@ public class TestInjecteur {
 	private static class AutreDependanceSimple implements AutreDependance {
 	}
 
-	private InjecteurDeBase injecteur;
+	private Injecteur injecteur;
 	private Client client;
 }

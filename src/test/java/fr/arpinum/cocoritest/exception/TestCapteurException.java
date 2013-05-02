@@ -8,7 +8,7 @@ public class TestCapteurException {
 
 	@Test
 	public void peutCapturerUneException() {
-		CapteurExceptionDeBase capteur = new CapteurExceptionDeBase();
+		CapteurException capteur = new CapteurExceptionDeBase();
 
 		Exception exception = capteur.capte(actionLevantUneException());
 
