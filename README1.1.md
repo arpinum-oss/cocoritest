@@ -11,7 +11,8 @@ Avec **Cocoritest** vous pouvez :
 * affirmer sur des booléens,
 * affirmer sur des objets,
 * affirmer sur des collections,
-* capturer des exceptions pour affirmer dessus.
+* capturer des exceptions pour affirmer dessus,
+* injecter des dépendances à un objet.
 
 ## Exemples ##
 *(certains caractères qui font la richesse du français sont mal gérés par le moteur de rendu de code utilisé par Github... une fée vient de s'éteindre quelque part dans le monde...)*
@@ -97,7 +98,7 @@ public void peutCapturerUneException() {
 private Action actionLevantUneException() {
 	return new Action() {
 		@Override
-		public void démarre() throws Exception {
+		public void exécute() throws Exception {
 			throw new RuntimeException("le message");
 		}
 	};
@@ -114,7 +115,7 @@ Ajouter **Cocoritest** dans les dépendances d'un pom.xml :
 <dependency>
 	<groupId>fr.arpinum</groupId>
 	<artifactId>cocoritest</artifactId>
-	<version>1.0</version>
+	<version>1.1</version>
 	<scope>test</scope>
 </dependency>
 ```
@@ -122,7 +123,8 @@ Ajouter **Cocoritest** dans les dépendances d'un pom.xml :
 Ajouter **Cocoritest** au niveau des imports Java :
 
 ```java
-import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
+import static fr.arpinum.cocoritest.Affirmations.*;
+import static fr.arpinum.cocoritest.Outils.*;
 ```
 
 ## Licence ##
