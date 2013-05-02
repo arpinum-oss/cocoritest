@@ -41,7 +41,7 @@ public class TestAffirmationBooleeneDeBase {
 	public void onNePeutPasAffirmerQueFauxEstVrai() {
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				new AffirmationBooleeneDeBase(false).estVrai();
 			}
 		});
@@ -53,7 +53,7 @@ public class TestAffirmationBooleeneDeBase {
 	public void onNePeutPasAffirmerAuFémininQueFauxEstVrai() {
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				new AffirmationBooleeneDeBase(false).estVraie();
 			}
 		});
@@ -65,7 +65,7 @@ public class TestAffirmationBooleeneDeBase {
 	public void onNePeutPasAffirmerQueNullEstVrai() {
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				new AffirmationBooleeneDeBase(null).estVrai();
 			}
 		});
@@ -83,7 +83,7 @@ public class TestAffirmationBooleeneDeBase {
 	public void onNePeutPasAffirmerQueVraiEstFaux() {
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				new AffirmationBooleeneDeBase(true).estFaux();
 			}
 		});
@@ -95,7 +95,7 @@ public class TestAffirmationBooleeneDeBase {
 	public void onNePeutPasAffirmerAuFémininQueVraiEstFaux() {
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				new AffirmationBooleeneDeBase(true).estFausse();
 			}
 		});

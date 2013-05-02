@@ -15,6 +15,15 @@
 
 package fr.arpinum.cocoritest.exception;
 
+/**
+ * Représente une action exécutable.
+ */
 public interface Action {
-	void démarre();
+	/**
+	 * Exécute l'action.
+	 * <p>
+	 * Permet aux implémentations d'héberger l'ensemble des instructions à exécuter.
+	 * </p>
+	 */
+	void exécute();
 }

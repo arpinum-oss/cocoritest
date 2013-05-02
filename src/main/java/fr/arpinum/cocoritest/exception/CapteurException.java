@@ -16,7 +16,7 @@
 package fr.arpinum.cocoritest.exception;
 
 /**
- * Capture une éventuelle exception dans une action.
+ * Représente un capteur qui capture une exception.
  */
 public interface CapteurException {
 

@@ -15,6 +15,15 @@
 
 package fr.arpinum.cocoritest.injection;
 
+/**
+ * Représente un injecteur qui injecte des dépendances dans un objet.
+ */
 public interface Injecteur {
+
+	/**
+	 * Injecte une dépendance à un objet.
+	 *
+	 * @param dépendance la dépendance à injecter.
+	 */
 	void injecte(Object dépendance);
 }

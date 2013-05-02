@@ -20,7 +20,7 @@ public class TestCapteurException {
 	private Action actionLevantUneException() {
 		return new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				throw new RuntimeException("le message");
 			}
 		};

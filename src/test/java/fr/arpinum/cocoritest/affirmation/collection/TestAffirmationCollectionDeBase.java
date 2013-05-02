@@ -54,7 +54,7 @@ public class TestAffirmationCollectionDeBase {
 
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				new AffirmationCollectionDeBase<Integer>(valeursTestées).sont(valeursAttendues);
 			}
 		});
@@ -69,7 +69,7 @@ public class TestAffirmationCollectionDeBase {
 
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				new AffirmationCollectionDeBase<Integer>(valeursTestées).sont(2, 3);
 			}
 		});
@@ -87,7 +87,7 @@ public class TestAffirmationCollectionDeBase {
 	public void onNePeutPasAffirmerQuUneCollectionPossèdeUnNombreErronéDElements() {
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				new AffirmationCollectionDeBase<String>(Listes.cree("a", "b")).sontAuNombreDe(10);
 			}
 		});
@@ -100,7 +100,7 @@ public class TestAffirmationCollectionDeBase {
 	public void onNePeutPasAffirmerQuUneCollectionNullePossedeUnQuelconqueNombreDEléments() {
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				new AffirmationCollectionDeBase<Object>(null).sontAuNombreDe(10);
 			}
 		});
@@ -118,7 +118,7 @@ public class TestAffirmationCollectionDeBase {
 	public void onNePeutPasAffirmerQuUneCollectionVideEstNonVide() {
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				new AffirmationCollectionDeBase<Object>(new ArrayList<Object>()).existent();
 			}
 		});
@@ -131,7 +131,7 @@ public class TestAffirmationCollectionDeBase {
 	public void onNePeutPasAffirmerQuUneCollectionNulleEstNonVide() {
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				new AffirmationCollectionDeBase<Object>(null).existent();
 			}
 		});
@@ -149,7 +149,7 @@ public class TestAffirmationCollectionDeBase {
 	public void onNePeutPasAffirmerQuUneCollectionNonVideEstVide() {
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				new AffirmationCollectionDeBase<Integer>(Listes.cree(3)).nExistentPas();
 			}
 		});
@@ -162,7 +162,7 @@ public class TestAffirmationCollectionDeBase {
 	public void onNePeutPasAffirmerQuUneCollectionNulleEstVide() {
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				new AffirmationCollectionDeBase<Object>(null).nExistentPas();
 			}
 		});
@@ -185,7 +185,7 @@ public class TestAffirmationCollectionDeBase {
 	public void onNePeutPasAffirmerQuUneCollectionAUnElémentQuElleNAPas() {
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				new AffirmationCollectionDeBase<Integer>(Listes.cree(1, 2)).ont(13, 12);
 			}
 		});
@@ -198,7 +198,7 @@ public class TestAffirmationCollectionDeBase {
 	public void onNePeutPasAffirmerQuUneCollectionNulleAUnElément() {
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				new AffirmationCollectionDeBase<Object>(null).ont(13, 12);
 			}
 		});
@@ -220,7 +220,7 @@ public class TestAffirmationCollectionDeBase {
 
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				new AffirmationCollectionDeBase<Integer>(Listes.cree(1, 2)).respectent(spécification);
 			}
 		});

@@ -41,7 +41,7 @@ public class TestAffirmationObjetDeBase {
 	public void onNePeutPasAffirmerQuUnNombreEstUnNombreDifférent() {
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				creeAffirmation(1).est(2);
 			}
 		});
@@ -58,7 +58,7 @@ public class TestAffirmationObjetDeBase {
 	public void onNePeutPasAffirmerQuUnNombreNEstPasLeMêmeNombre() {
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				creeAffirmation(1).nEstPas(1);
 			}
 		});
@@ -70,7 +70,7 @@ public class TestAffirmationObjetDeBase {
 	public void onNePeutPasAffirmerQuUneChaîneEstUneChaîneDifférente() {
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				creeAffirmation("toto").est("tutu");
 			}
 		});
@@ -94,7 +94,7 @@ public class TestAffirmationObjetDeBase {
 	public void onNePeutPasAffirmerQuUnObjetNonNulEstNul() {
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				creeAffirmation("toto").estNul();
 			}
 		});
@@ -106,7 +106,7 @@ public class TestAffirmationObjetDeBase {
 	public void onNePeutPasAffirmerAuFémininQuUnObjetNonNulEstNul() {
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				creeAffirmation("toto").estNulle();
 			}
 		});
@@ -118,7 +118,7 @@ public class TestAffirmationObjetDeBase {
 	public void onNePeutPasAffirmerQuUnObjetNulNEstPasNul() {
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				creeAffirmation(null).nEstPasNul();
 			}
 		});
@@ -130,7 +130,7 @@ public class TestAffirmationObjetDeBase {
 	public void onNePeutPasAffirmerAuFémininQuUnObjetNulNEstPasNul() {
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				creeAffirmation(null).nEstPasNulle();
 			}
 		});
@@ -151,7 +151,7 @@ public class TestAffirmationObjetDeBase {
 
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				creeAffirmation(1).respecte(spécification);
 			}
 		});

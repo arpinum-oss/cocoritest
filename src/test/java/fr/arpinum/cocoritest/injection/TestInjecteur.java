@@ -62,7 +62,7 @@ public class TestInjecteur {
 
 		Exception exception = capteur.capte(new Action() {
 			@Override
-			public void démarre() {
+			public void exécute() {
 				injecteur.injecte(dépendance);
 			}
 		});

@@ -20,7 +20,7 @@ public class CapteurExceptionDeBase implements CapteurException {
 	@Override
 	public Exception capte(Action action) {
 		try {
-			action.démarre();
+			action.exécute();
 		} catch (Exception e) {
 			return e;
 		}
