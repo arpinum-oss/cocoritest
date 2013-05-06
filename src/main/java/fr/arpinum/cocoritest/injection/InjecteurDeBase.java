@@ -56,9 +56,17 @@ public class InjecteurDeBase implements Injecteur {
 		return champsAssignables;
 	}
 
-	private Field[] récupèreTousLesChamps() {
+	private List<Field> récupèreTousLesChamps() {
 		Class<?> classe = objet.getClass();
-		return classe.getDeclaredFields();
+		List<Field> résultat = récupèreTousLesChamps(classe);
+		if (classe.getSuperclass() != null) {
+			résultat.addAll(récupèreTousLesChamps(classe.getSuperclass()));
+		}
+		return résultat;
+	}
+
+	private List<Field> récupèreTousLesChamps(Class<?> classe) {
+		return Listes.cree(classe.getDeclaredFields());
 	}
 
 	private final Object objet;

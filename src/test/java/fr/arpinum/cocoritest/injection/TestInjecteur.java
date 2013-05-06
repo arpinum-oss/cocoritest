@@ -57,6 +57,17 @@ public class TestInjecteur {
 	}
 
 	@Test
+	public void peutInjecterUneDépendanceDansUneClasseMère() {
+		DependanceSimple dépendance = new DependanceSimple();
+		SpecialisationClient autreClient = new SpecialisationClient();
+		Injecteur autreInjecteur = new InjecteurDeBase(autreClient);
+
+		autreInjecteur.injecte(dépendance);
+
+		alors().la(autreClient.dépendance()).est(dépendance);
+	}
+
+	@Test
 	public void uneErreurEstLevéeSiLaDépendanceNePeutPasEtreInjectée() {
 		CapteurException capteur = new CapteurExceptionDeBase();
 		final List<String> dépendance = new ArrayList<String>();
@@ -84,6 +95,9 @@ public class TestInjecteur {
 		public AutreDependance autreDépendance() {
 			return autreDépendance;
 		}
+	}
+
+	private static class SpecialisationClient extends Client {
 	}
 
 	private static interface Dependance {
