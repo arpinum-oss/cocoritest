@@ -27,7 +27,7 @@ import fr.arpinum.cocoritest.injection.InjecteurDeBase;
 public class Outils {
 
 	/**
-	 * Crée une nouvelle instance de <code>{@link fr.arpinum.cocoritest.exception.CapteurException}</code>.
+	 * Crée une nouvelle instance d'un capteur d'exception.
 	 *
 	 * @return le capteur créé.
 	 */
@@ -36,7 +36,7 @@ public class Outils {
 	}
 
 	/**
-	 * Crée une nouvelle instance de <code>{@link fr.arpinum.cocoritest.injection.Injecteur}</code>.
+	 * Crée une nouvelle instance de l'injecteur de dépendance.
 	 *
 	 * @param objet la cible de l'injection.
 	 * @return l'injecteur créé.
