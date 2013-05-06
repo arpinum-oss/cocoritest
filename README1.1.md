@@ -107,6 +107,18 @@ private Action actionLevantUneException() {
 
 Les affirmations sur l'exception capturée se font en fin de test. **Cocoritest** respecte donc la disposition standard **A**rrange **A**ct **A**ssert (AAA) des tests. \o/
 
+### Injecter des dépendances de test ###
+
+Utiliser de l'injection de dépendance dans le code de production est très courant. Certains frameworks peuvent fonctionner directement sur les champs et les objets n'exposent donc aucun accesseur pour modifier les dépendances. De fait, il est très difficile d'utiliser des doublures (mocks ou stubs) dans les tests. 
+
+Quelques solutions existent avec leurs avantages et inconvénients :
+
+* créer des constructeurs ou setter en visibilité package private pour les tests,
+* utiliser le moteur d'injection de production pour les tests,
+* assigner les dépendances par réflexion.
+
+**Cocoritest** propose un injecteur qui s'appuie sur la dernière solution. Il se base sur les types et non des chaînes de caractères. Bien que violant quelque peu l'encapsulation il reste plus tendre avec le refactoring que d'autres approches.
+
 ## Utilisation ##
 
 Ajouter **Cocoritest** dans les dépendances d'un pom.xml :
@@ -126,6 +138,9 @@ Ajouter **Cocoritest** au niveau des imports Java :
 import static fr.arpinum.cocoritest.Affirmations.*;
 import static fr.arpinum.cocoritest.Outils.*;
 ```
+`Affirmations` permet d'accéder à tous les affirmations.
+`Outils` est optionnelle, elle contient le capteur d'exception et l'injecteur.
+
 
 ## Licence ##
 
