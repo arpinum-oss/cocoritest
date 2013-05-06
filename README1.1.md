@@ -119,6 +119,22 @@ Quelques solutions existent avec leurs avantages et inconvénients :
 
 **Cocoritest** propose un injecteur qui s'appuie sur la dernière solution. Il se base sur les types et non des chaînes de caractères. Bien que violant quelque peu l'encapsulation il reste plus tendre avec le refactoring que d'autres approches.
 
+```java
+@Test
+public void leServicePeutDonnerUnMotDePasseAléatoireSur8Caractères() {
+	ServiceMotDePasse service = new ServiceMotDePasse();
+	Injecteur injecteur = créeInjecteur(service);
+	injecteur.injecte(new DoublureServiceCaractereAleatoire('X'));
+
+	String motDePasse = service.creeMotDePasse();
+
+	alors().le(motDePasse).nEstPasNul();
+	alors().le(motDePasse).est("XXXXXXXX");
+}
+```
+
+L'exemple complet ici : [TestInjection.java]
+
 ## Utilisation ##
 
 Ajouter **Cocoritest** dans les dépendances d'un pom.xml :
@@ -154,5 +170,5 @@ Vous devez avoir reçu une copie de la GNU Lesser General Public License en mêm
 
 [Hamcrest]: http://hamcrest.org/
 [FEST]: https://code.google.com/p/fest/
-[cartographie]: http://www.arpinum.fr/images/cocoritest/cartographie.jpg
 [http://www.gnu.org/licenses/lgpl.html]: http://www.gnu.org/licenses/lgpl.html
+[TestInjection.java]: src/test/java/fr/arpinum/cocoritest/exemples/TestInjection.java
