@@ -1,6 +1,7 @@
 package fr.arpinum.cocoritest.exception;
 
 import static fr.arpinum.cocoritest.Affirmations.*;
+import static fr.arpinum.cocoritest.Outils.*;
 
 import org.junit.Test;
 
@@ -8,7 +9,7 @@ public class TestCapteurException {
 
 	@Test
 	public void peutCapturerUneException() {
-		CapteurException capteur = new CapteurExceptionDeBase();
+		CapteurException capteur = créeCapteur();
 
 		Exception exception = capteur.capte(actionLevantUneException());
 
