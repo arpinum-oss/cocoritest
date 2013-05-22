@@ -28,7 +28,7 @@ public class TestInjection {
 	public void leServicePeutDonnerUnMotDePasseAléatoireSur8Caractères() {
 		ServiceMotDePasse service = new ServiceMotDePasse();
 		Injecteur injecteur = créeInjecteur(service);
-		injecteur.injecte(new DoublureServiceCaractereAleatoire('X'));
+		injecteur.injecte(new DoublureServiceCaractereAleatoire());
 
 		String motDePasse = service.creeMotDePasse();
 
@@ -46,7 +46,7 @@ public class TestInjection {
 			return builder.toString();
 		}
 
-		private ServiceCaractereAleatoire serviceCaractereAleatoire = null;
+		private final ServiceCaractereAleatoire serviceCaractereAleatoire = null;
 	}
 
 	private static interface ServiceCaractereAleatoire {
@@ -54,15 +54,9 @@ public class TestInjection {
 	}
 
 	private static class DoublureServiceCaractereAleatoire implements ServiceCaractereAleatoire {
-		public DoublureServiceCaractereAleatoire(char valeur) {
-			this.valeur = valeur;
-		}
-
 		@Override
 		public char crée() {
-			return valeur;
+			return 'X';
 		}
-
-		private char valeur;
 	}
 }

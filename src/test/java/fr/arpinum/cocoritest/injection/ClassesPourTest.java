@@ -15,7 +15,7 @@
 
 package fr.arpinum.cocoritest.injection;
 
-public class ClassesPourTest {
+public abstract class ClassesPourTest {
 	static interface PremiereDependance {
 	}
 
