@@ -5,7 +5,7 @@ import static fr.arpinum.cocoritest.Affirmations.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import fr.arpinum.cocoritest.extensionlangage.Listes;
+import fr.arpinum.cocoritest.interne.extensionlangage.Listes;
 
 public class TestFabriqueSpecification {
 

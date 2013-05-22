@@ -13,28 +13,17 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest;
+package fr.arpinum.cocoritest.interne.exception;
 
-import static fr.arpinum.cocoritest.Affirmations.*;
+public class CapteurExceptionDeBase implements CapteurException {
 
-import org.junit.Test;
-
-import fr.arpinum.cocoritest.injection.Injecteur;
-import fr.arpinum.cocoritest.interne.exception.CapteurException;
-
-public class TestOutils {
-
-	@Test
-	public void peutCréerUnCapteurDException() {
-		CapteurException capteur = Outils.créeCapteur();
-
-		alors().le(capteur).nEstPasNul();
-	}
-
-	@Test
-	public void peutCréerUnInjecteur() {
-		Injecteur injecteur = Outils.créeInjecteur(new Object());
-
-		alors().cet(injecteur).nEstPasNul();
+	@Override
+	public Exception capte(Action action) {
+		try {
+			action.exécute();
+		} catch (Exception e) {
+			return e;
+		}
+		return null;
 	}
 }

@@ -13,28 +13,38 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest;
+package fr.arpinum.cocoritest.interne.extensionlangage;
 
-import static fr.arpinum.cocoritest.Affirmations.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.junit.Test;
+public class Listes {
 
-import fr.arpinum.cocoritest.injection.Injecteur;
-import fr.arpinum.cocoritest.interne.exception.CapteurException;
-
-public class TestOutils {
-
-	@Test
-	public void peutCréerUnCapteurDException() {
-		CapteurException capteur = Outils.créeCapteur();
-
-		alors().le(capteur).nEstPasNul();
+	public static <E> List<E> cree() {
+		return new ArrayList<E>();
 	}
 
-	@Test
-	public void peutCréerUnInjecteur() {
-		Injecteur injecteur = Outils.créeInjecteur(new Object());
+	public static <E> List<E> cree(E élément) {
+		List<E> liste = cree();
+		liste.add(élément);
+		return liste;
+	}
 
-		alors().cet(injecteur).nEstPasNul();
+	public static <E> List<E> cree(E élément, E élémentBis) {
+		List<E> liste = cree(élément);
+		liste.add(élémentBis);
+		return liste;
+	}
+
+	public static <E> List<E> cree(E élément, E élémentBis, E élémentTer) {
+		List<E> liste = cree(élément, élémentBis);
+		liste.add(élémentTer);
+		return liste;
+	}
+
+	public static <E> List<E> cree(E[] éléments) {
+		List<E> liste = new ArrayList<E>();
+		java.util.Collections.addAll(liste, éléments);
+		return liste;
 	}
 }

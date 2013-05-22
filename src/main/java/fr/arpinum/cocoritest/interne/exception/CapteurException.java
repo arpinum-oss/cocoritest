@@ -13,35 +13,18 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest;
-
-import fr.arpinum.cocoritest.injection.Injecteur;
-import fr.arpinum.cocoritest.interne.exception.CapteurException;
-import fr.arpinum.cocoritest.interne.exception.CapteurExceptionDeBase;
-import fr.arpinum.cocoritest.interne.injection.InjecteurDeBase;
-
+package fr.arpinum.cocoritest.interne.exception;
 
 /**
- * Fabrique qui permet de construire les différents outils.
+ * Représente un capteur qui capture une exception.
  */
-public class Outils {
+public interface CapteurException {
 
 	/**
-	 * Crée une nouvelle instance d'un capteur d'exception.
+	 * Capture une éventuelle exception dans l'action et la retourne.
 	 *
-	 * @return le capteur créé.
+	 * @param action l'action succeptible de lever une exception.
+	 * @return l'exception capturée ou null si aucune exception.
 	 */
-	public static CapteurException créeCapteur() {
-		return new CapteurExceptionDeBase();
-	}
-
-	/**
-	 * Crée une nouvelle instance de l'injecteur de dépendance.
-	 *
-	 * @param objet la cible de l'injection.
-	 * @return l'injecteur créé.
-	 */
-	public static Injecteur créeInjecteur(Object objet) {
-		return new InjecteurDeBase(objet);
-	}
+	Exception capte(Action action);
 }

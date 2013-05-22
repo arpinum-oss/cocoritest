@@ -13,35 +13,26 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest;
-
-import fr.arpinum.cocoritest.injection.Injecteur;
-import fr.arpinum.cocoritest.interne.exception.CapteurException;
-import fr.arpinum.cocoritest.interne.exception.CapteurExceptionDeBase;
-import fr.arpinum.cocoritest.interne.injection.InjecteurDeBase;
-
+package fr.arpinum.cocoritest.interne.affirmation.booleene;
 
 /**
- * Fabrique qui permet de construire les différents outils.
+ * Représente une affirmation concernant un booléen.
  */
-public class Outils {
+public interface AffirmationBooleene {
 
 	/**
-	 * Crée une nouvelle instance d'un capteur d'exception.
+	 * Affirme que c'est vrai.
 	 *
-	 * @return le capteur créé.
+	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation
+	 *          si l'affirmation est erronée.
 	 */
-	public static CapteurException créeCapteur() {
-		return new CapteurExceptionDeBase();
-	}
+	void estVrai();
 
 	/**
-	 * Crée une nouvelle instance de l'injecteur de dépendance.
+	 * Affirme que c'est faux.
 	 *
-	 * @param objet la cible de l'injection.
-	 * @return l'injecteur créé.
+	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation
+	 *          si l'affirmation est erronée.
 	 */
-	public static Injecteur créeInjecteur(Object objet) {
-		return new InjecteurDeBase(objet);
-	}
+	void estFaux();
 }

@@ -17,15 +17,15 @@ package fr.arpinum.cocoritest;
 
 import java.util.Collection;
 
-import fr.arpinum.cocoritest.affirmation.booleene.AffirmationBooleene;
-import fr.arpinum.cocoritest.affirmation.booleene.AffirmationBooleeneAuFeminin;
-import fr.arpinum.cocoritest.affirmation.booleene.AffirmationBooleeneDeBase;
-import fr.arpinum.cocoritest.affirmation.collection.AffirmationCollection;
-import fr.arpinum.cocoritest.affirmation.collection.AffirmationCollectionDeBase;
-import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjet;
-import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjetAuFeminin;
-import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjetDeBase;
-import fr.arpinum.cocoritest.extensionlangage.Listes;
+import fr.arpinum.cocoritest.interne.affirmation.booleene.AffirmationBooleene;
+import fr.arpinum.cocoritest.interne.affirmation.booleene.AffirmationBooleeneAuFeminin;
+import fr.arpinum.cocoritest.interne.affirmation.booleene.AffirmationBooleeneDeBase;
+import fr.arpinum.cocoritest.interne.affirmation.collection.AffirmationCollection;
+import fr.arpinum.cocoritest.interne.affirmation.collection.AffirmationCollectionDeBase;
+import fr.arpinum.cocoritest.interne.affirmation.objet.AffirmationObjet;
+import fr.arpinum.cocoritest.interne.affirmation.objet.AffirmationObjetAuFeminin;
+import fr.arpinum.cocoritest.interne.affirmation.objet.AffirmationObjetDeBase;
+import fr.arpinum.cocoritest.interne.extensionlangage.Listes;
 
 /**
  * Le point d'entrée qui permet de créer les différentes affirmations.

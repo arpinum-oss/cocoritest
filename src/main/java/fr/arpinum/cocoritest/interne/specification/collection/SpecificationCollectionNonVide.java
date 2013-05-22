@@ -13,28 +13,24 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest;
+package fr.arpinum.cocoritest.interne.specification.collection;
 
-import static fr.arpinum.cocoritest.Affirmations.*;
+import java.util.Collection;
 
-import org.junit.Test;
+import fr.arpinum.cocoritest.specification.Specification;
 
-import fr.arpinum.cocoritest.injection.Injecteur;
-import fr.arpinum.cocoritest.interne.exception.CapteurException;
+public class SpecificationCollectionNonVide<E> implements Specification<Collection<E>> {
 
-public class TestOutils {
-
-	@Test
-	public void peutCréerUnCapteurDException() {
-		CapteurException capteur = Outils.créeCapteur();
-
-		alors().le(capteur).nEstPasNul();
+	@Override
+	public boolean estInsatisfaitePar(Collection<E> éléments) {
+		return éléments == null || éléments.size() == 0;
 	}
 
-	@Test
-	public void peutCréerUnInjecteur() {
-		Injecteur injecteur = Outils.créeInjecteur(new Object());
-
-		alors().cet(injecteur).nEstPasNul();
+	@Override
+	public String messageInsatisfactionPour(Collection<E> éléments) {
+		if (éléments == null) {
+			return "La collection est <nulle> et ne possède donc pas d'éléments.";
+		}
+		return "Il n'y a aucun élément.";
 	}
 }

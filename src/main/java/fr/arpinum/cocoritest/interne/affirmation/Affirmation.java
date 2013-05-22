@@ -13,28 +13,11 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest;
+package fr.arpinum.cocoritest.interne.affirmation;
 
-import static fr.arpinum.cocoritest.Affirmations.*;
+public class Affirmation {
 
-import org.junit.Test;
-
-import fr.arpinum.cocoritest.injection.Injecteur;
-import fr.arpinum.cocoritest.interne.exception.CapteurException;
-
-public class TestOutils {
-
-	@Test
-	public void peutCréerUnCapteurDException() {
-		CapteurException capteur = Outils.créeCapteur();
-
-		alors().le(capteur).nEstPasNul();
-	}
-
-	@Test
-	public void peutCréerUnInjecteur() {
-		Injecteur injecteur = Outils.créeInjecteur(new Object());
-
-		alors().cet(injecteur).nEstPasNul();
+	protected void échoue(String raison, Object... supplément) {
+		throw new ExceptionAffirmation(String.format(raison, supplément));
 	}
 }

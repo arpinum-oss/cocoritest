@@ -13,28 +13,26 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest;
+package fr.arpinum.cocoritest.interne.specification.objet;
 
-import static fr.arpinum.cocoritest.Affirmations.*;
+import fr.arpinum.cocoritest.interne.extensionlangage.Objets;
+import fr.arpinum.cocoritest.specification.Specification;
 
-import org.junit.Test;
+public class SpecificationAutreObjet<T> implements Specification<T> {
 
-import fr.arpinum.cocoritest.injection.Injecteur;
-import fr.arpinum.cocoritest.interne.exception.CapteurException;
-
-public class TestOutils {
-
-	@Test
-	public void peutCréerUnCapteurDException() {
-		CapteurException capteur = Outils.créeCapteur();
-
-		alors().le(capteur).nEstPasNul();
+	public SpecificationAutreObjet(T objetSpécifié) {
+		this.objetSpécifié = objetSpécifié;
 	}
 
-	@Test
-	public void peutCréerUnInjecteur() {
-		Injecteur injecteur = Outils.créeInjecteur(new Object());
-
-		alors().cet(injecteur).nEstPasNul();
+	@Override
+	public boolean estInsatisfaitePar(T objet) {
+		return Objets.egaux(objetSpécifié, objet);
 	}
+
+	@Override
+	public String messageInsatisfactionPour(T objet) {
+		return String.format("L'objet est <%s> alors que ce n'était pas voulu.", Objets.enChaîne(objet));
+	}
+
+	private final T objetSpécifié;
 }

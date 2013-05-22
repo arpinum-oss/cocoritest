@@ -13,28 +13,18 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest;
+package fr.arpinum.cocoritest.interne.exception;
 
-import static fr.arpinum.cocoritest.Affirmations.*;
+/**
+ * Représente une action exécutable.
+ */
+public interface Action {
 
-import org.junit.Test;
-
-import fr.arpinum.cocoritest.injection.Injecteur;
-import fr.arpinum.cocoritest.interne.exception.CapteurException;
-
-public class TestOutils {
-
-	@Test
-	public void peutCréerUnCapteurDException() {
-		CapteurException capteur = Outils.créeCapteur();
-
-		alors().le(capteur).nEstPasNul();
-	}
-
-	@Test
-	public void peutCréerUnInjecteur() {
-		Injecteur injecteur = Outils.créeInjecteur(new Object());
-
-		alors().cet(injecteur).nEstPasNul();
-	}
+	/**
+	 * Exécute l'action.
+	 * <p>
+	 * Permet aux implémentations d'héberger l'ensemble des instructions à exécuter.
+	 * </p>
+	 */
+	void exécute();
 }
