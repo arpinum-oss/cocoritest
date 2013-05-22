@@ -24,6 +24,24 @@ public interface Injecteur {
 	 * Injecte une dépendance à un objet.
 	 *
 	 * @param dépendance la dépendance à injecter.
+	 * @return l'injecteur pour pouvoir chaîner les injections.
 	 */
-	void injecte(Object dépendance);
+	Injecteur injecte(Object dépendance);
+
+	/**
+	 * Injecte des dépendances à un objet.
+	 *
+	 * @param première          la première dépendance à injecter.
+	 * @param secondeDépendance la seconde dépendance à injecter.
+	 */
+	void injecte(Object première, Object secondeDépendance);
+
+	/**
+	 * Injecte des dépendances à un objet.
+	 *
+	 * @param premièreDépendance la première dépendance à injecter.
+	 * @param deuxièmeDépendance la seconde dépendance à injecter.
+	 * @param troisèmeDépendance la seconde dépendance à injecter.
+	 */
+	void injecte(Object premièreDépendance, Object deuxièmeDépendance, Object troisèmeDépendance);
 }

@@ -27,12 +27,25 @@ public class InjecteurDeBase implements Injecteur {
 	}
 
 	@Override
-	public void injecte(Object dépendance) {
+	public Injecteur injecte(Object dépendance) {
 		List<Field> champsAssignables = récupèreChampsAssignables(dépendance);
 		if (champsAssignables.size() == 0) {
 			throw new IllegalArgumentException(String.format("Impossible d'assigner la dépendance %s", dépendance));
 		}
 		assigneLesChampsAssignables(dépendance, champsAssignables);
+		return this;
+	}
+
+	@Override
+	public void injecte(Object première, Object secondeDépendance) {
+		injecte(première);
+		injecte(secondeDépendance);
+	}
+
+	@Override
+	public void injecte(Object premièreDépendance, Object deuxièmeDépendance, Object troisèmeDépendance) {
+		injecte(premièreDépendance, deuxièmeDépendance);
+		injecte(troisèmeDépendance);
 	}
 
 	private void assigneLesChampsAssignables(Object dépendance, List<Field> champsAssignables) {
