@@ -13,13 +13,15 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.specification;
+package fr.arpinum.cocoritest.interne.specification;
 
 import java.util.Collection;
 
-class SpecificationCombinee<T> implements Specification<T> {
+import fr.arpinum.cocoritest.specification.Specification;
 
-	SpecificationCombinee(Collection<Specification<T>> spécifications) {
+public class SpecificationCombinee<T> implements Specification<T> {
+
+	public SpecificationCombinee(Collection<Specification<T>> spécifications) {
 		this.spécifications = spécifications;
 	}
 

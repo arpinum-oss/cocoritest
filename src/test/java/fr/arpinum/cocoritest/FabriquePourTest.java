@@ -21,14 +21,16 @@ import fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation;
 import fr.arpinum.cocoritest.interne.extensionlangage.Listes;
 import fr.arpinum.cocoritest.interne.extensionlangage.Objets;
 import fr.arpinum.cocoritest.interne.specification.objet.SpecificationAutreObjet;
-import fr.arpinum.cocoritest.specification.FabriqueSpecification;
 import fr.arpinum.cocoritest.specification.Specification;
 
-public abstract class FabriquePourTest {
+public class FabriquePourTest {
+
+	private FabriquePourTest() {
+	}
 
 	public static Specification<Exception> créeSpécificationException(String messageAttendu) {
 		List<Specification<Exception>> specifications = creeSpécificationsException(messageAttendu);
-		return new FabriqueSpecification().combine(specifications);
+		return Outils.combine(specifications);
 	}
 
 	private static List<Specification<Exception>> creeSpécificationsException(String messageAttendu) {

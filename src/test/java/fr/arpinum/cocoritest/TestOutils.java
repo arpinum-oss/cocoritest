@@ -19,8 +19,8 @@ import static fr.arpinum.cocoritest.Affirmations.*;
 
 import org.junit.Test;
 
+import fr.arpinum.cocoritest.exception.CapteurException;
 import fr.arpinum.cocoritest.injection.Injecteur;
-import fr.arpinum.cocoritest.interne.exception.CapteurException;
 
 public class TestOutils {
 

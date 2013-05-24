@@ -22,8 +22,8 @@ import static fr.arpinum.cocoritest.Outils.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import fr.arpinum.cocoritest.interne.exception.Action;
-import fr.arpinum.cocoritest.interne.exception.CapteurException;
+import fr.arpinum.cocoritest.exception.Action;
+import fr.arpinum.cocoritest.exception.CapteurException;
 
 public class TestAffirmationBooleeneDeBase {
 

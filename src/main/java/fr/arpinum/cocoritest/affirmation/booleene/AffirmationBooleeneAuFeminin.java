@@ -13,13 +13,26 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.specification;
+package fr.arpinum.cocoritest.affirmation.booleene;
 
-import java.util.List;
+/**
+ * Représente une affirmation concernant un booléen. L'affirmation est au féminin.
+ */
+public interface AffirmationBooleeneAuFeminin {
 
-public class FabriqueSpecification {
+	/**
+	 * Affirme que c'est vrai.
+	 *
+	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation
+	 *          si l'affirmation est erronée.
+	 */
+	void estVraie();
 
-	public <T> Specification<T> combine(final List<Specification<T>> spécifications) {
-		return new SpecificationCombinee<T>(spécifications);
-	}
+	/**
+	 * Affirme que c'est faux.
+	 *
+	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation
+	 *          si l'affirmation est erronée.
+	 */
+	void estFausse();
 }

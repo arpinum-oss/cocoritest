@@ -25,7 +25,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import fr.arpinum.cocoritest.interne.exception.Action;
+import fr.arpinum.cocoritest.exception.Action;
 import fr.arpinum.cocoritest.interne.exception.CapteurExceptionDeBase;
 import fr.arpinum.cocoritest.interne.extensionlangage.Listes;
 import fr.arpinum.cocoritest.specification.Specification;

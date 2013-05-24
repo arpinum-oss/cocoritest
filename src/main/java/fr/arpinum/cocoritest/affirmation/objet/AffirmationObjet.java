@@ -13,7 +13,7 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.interne.affirmation.objet;
+package fr.arpinum.cocoritest.affirmation.objet;
 
 import fr.arpinum.cocoritest.specification.Specification;
 

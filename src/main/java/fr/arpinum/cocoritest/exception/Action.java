@@ -13,18 +13,18 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.interne.exception;
+package fr.arpinum.cocoritest.exception;
 
 /**
- * Représente un capteur qui capture une exception.
+ * Représente une action exécutable.
  */
-public interface CapteurException {
+public interface Action {
 
 	/**
-	 * Capture une éventuelle exception dans l'action et la retourne.
-	 *
-	 * @param action l'action succeptible de lever une exception.
-	 * @return l'exception capturée ou null si aucune exception.
+	 * Exécute l'action.
+	 * <p>
+	 * Permet aux implémentations d'héberger l'ensemble des instructions à exécuter.
+	 * </p>
 	 */
-	Exception capte(Action action);
+	void exécute();
 }

@@ -15,10 +15,14 @@
 
 package fr.arpinum.cocoritest;
 
+import java.util.List;
+
+import fr.arpinum.cocoritest.exception.CapteurException;
 import fr.arpinum.cocoritest.injection.Injecteur;
-import fr.arpinum.cocoritest.interne.exception.CapteurException;
 import fr.arpinum.cocoritest.interne.exception.CapteurExceptionDeBase;
 import fr.arpinum.cocoritest.interne.injection.InjecteurDeBase;
+import fr.arpinum.cocoritest.interne.specification.SpecificationCombinee;
+import fr.arpinum.cocoritest.specification.Specification;
 
 
 /**
@@ -43,5 +47,16 @@ public class Outils {
 	 */
 	public static Injecteur créeInjecteur(Object objet) {
 		return new InjecteurDeBase(objet);
+	}
+
+	/**
+	 * Crée une spécification qui combine un ensemble de spécifications.
+	 *
+	 * @param spécifications les spécifications à combiner.
+	 * @param <T>            le type de l'objet concerné par la spécification.
+	 * @return la spécification créée.
+	 */
+	public static <T> Specification<T> combine(final List<Specification<T>> spécifications) {
+		return new SpecificationCombinee<T>(spécifications);
 	}
 }

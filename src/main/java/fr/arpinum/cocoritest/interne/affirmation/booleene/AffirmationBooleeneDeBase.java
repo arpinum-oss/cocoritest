@@ -15,6 +15,8 @@
 
 package fr.arpinum.cocoritest.interne.affirmation.booleene;
 
+import fr.arpinum.cocoritest.affirmation.booleene.AffirmationBooleene;
+import fr.arpinum.cocoritest.affirmation.booleene.AffirmationBooleeneAuFeminin;
 import fr.arpinum.cocoritest.interne.affirmation.Affirmation;
 import fr.arpinum.cocoritest.interne.affirmation.objet.AffirmationObjetDeBase;
 

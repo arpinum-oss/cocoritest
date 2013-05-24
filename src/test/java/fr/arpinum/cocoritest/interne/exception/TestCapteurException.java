@@ -5,6 +5,9 @@ import static fr.arpinum.cocoritest.Outils.*;
 
 import org.junit.Test;
 
+import fr.arpinum.cocoritest.exception.Action;
+import fr.arpinum.cocoritest.exception.CapteurException;
+
 public class TestCapteurException {
 
 	@Test

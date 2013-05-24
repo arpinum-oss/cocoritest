@@ -13,7 +13,7 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.interne.affirmation.collection;
+package fr.arpinum.cocoritest.affirmation.collection;
 
 import java.util.Collection;
 

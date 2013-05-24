@@ -13,12 +13,12 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.interne.affirmation.booleene;
+package fr.arpinum.cocoritest.affirmation.booleene;
 
 /**
- * Représente une affirmation concernant un booléen. L'affirmation est au féminin.
+ * Représente une affirmation concernant un booléen.
  */
-public interface AffirmationBooleeneAuFeminin {
+public interface AffirmationBooleene {
 
 	/**
 	 * Affirme que c'est vrai.
@@ -26,7 +26,7 @@ public interface AffirmationBooleeneAuFeminin {
 	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation
 	 *          si l'affirmation est erronée.
 	 */
-	void estVraie();
+	void estVrai();
 
 	/**
 	 * Affirme que c'est faux.
@@ -34,5 +34,5 @@ public interface AffirmationBooleeneAuFeminin {
 	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation
 	 *          si l'affirmation est erronée.
 	 */
-	void estFausse();
+	void estFaux();
 }

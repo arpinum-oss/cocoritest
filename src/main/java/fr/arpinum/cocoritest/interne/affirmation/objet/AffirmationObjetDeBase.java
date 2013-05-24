@@ -15,6 +15,8 @@
 
 package fr.arpinum.cocoritest.interne.affirmation.objet;
 
+import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjet;
+import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjetAuFeminin;
 import fr.arpinum.cocoritest.interne.affirmation.Affirmation;
 import fr.arpinum.cocoritest.interne.specification.objet.SpecificationAutreObjet;
 import fr.arpinum.cocoritest.interne.specification.objet.SpecificationObjet;

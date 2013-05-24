@@ -15,6 +15,9 @@
 
 package fr.arpinum.cocoritest.interne.exception;
 
+import fr.arpinum.cocoritest.exception.Action;
+import fr.arpinum.cocoritest.exception.CapteurException;
+
 public class CapteurExceptionDeBase implements CapteurException {
 
 	@Override

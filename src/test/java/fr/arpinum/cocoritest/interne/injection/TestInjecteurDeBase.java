@@ -25,9 +25,9 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import fr.arpinum.cocoritest.exception.Action;
+import fr.arpinum.cocoritest.exception.CapteurException;
 import fr.arpinum.cocoritest.injection.Injecteur;
-import fr.arpinum.cocoritest.interne.exception.Action;
-import fr.arpinum.cocoritest.interne.exception.CapteurException;
 
 public class TestInjecteurDeBase {
 
