@@ -11,7 +11,8 @@ Avec **Cocoritest** vous pouvez :
 * affirmer sur des booléens,
 * affirmer sur des objets,
 * affirmer sur des collections,
-* capturer des exceptions pour affirmer dessus.
+* capturer des exceptions pour affirmer dessus,
+* injecter des dépendances à un objet.
 
 ## Exemples ##
 *(certains caractères qui font la richesse du français sont mal gérés par le moteur de rendu de code utilisé par Github... une fée vient de s'éteindre quelque part dans le monde...)*
@@ -20,8 +21,8 @@ Avec **Cocoritest** vous pouvez :
 
 ```java
 @Test
-public void unBooleenVraiEnChaîneEstEnFrancais() {
-    String chaîne = Objets.enChaine(true);
+public void unBooléenVraiEnChaîneEstEnFrancais() {
+    String chaîne = Objets.enChaîne(true);
 
     alors().la(chaîne).nEstPasNulle();
     alors().la(chaîne).est("vrai");
@@ -42,7 +43,7 @@ public void deuxCollectionsNullesSontEgales() {
 ### Affirmations sur une collection ###
 
 Les affirmations concernant les collections sont accessibles depuis la fabrique `les(...)` ce qui sous-entend que vos collections ne doivent pas être nommées `listeChaine` ou `entierList` mais en plaçant les éléments au pluriel comme `chaines` ou `entiers`.
-D'une façon général en français nous disons *j'ai acheté des bonbons à mes enfants* et non *j'ai acheté une liste de bonbons à ma liste d'enfants*.
+D'une façon général en français nous disons *j'ai acheté des bonbons à mes enfants* et non *j'ai acheté une collection de bonbons à ma liste d'enfants*.
 
 ```java
 @Test
@@ -97,7 +98,7 @@ public void peutCapturerUneException() {
 private Action actionLevantUneException() {
 	return new Action() {
 		@Override
-		public void démarre() throws Exception {
+		public void exécute() throws Exception {
 			throw new RuntimeException("le message");
 		}
 	};
@@ -105,6 +106,34 @@ private Action actionLevantUneException() {
 ```
 
 Les affirmations sur l'exception capturée se font en fin de test. **Cocoritest** respecte donc la disposition standard **A**rrange **A**ct **A**ssert (AAA) des tests. \o/
+
+### Injecter des dépendances de test ###
+
+Utiliser de l'injection de dépendance dans le code de production est très courant. Certains frameworks peuvent fonctionner directement sur les champs et les objets n'exposent donc aucun accesseur pour modifier les dépendances. De fait, il est très difficile d'utiliser des doublures (mocks ou stubs) dans les tests. 
+
+Quelques solutions existent avec leurs avantages et inconvénients :
+
+* créer des constructeurs ou setter en visibilité package private pour les tests,
+* utiliser le moteur d'injection de production pour les tests,
+* assigner les dépendances par réflexion.
+
+**Cocoritest** propose un injecteur qui s'appuie sur la dernière solution. Il se base sur les types et non des chaînes de caractères. Bien que violant quelque peu l'encapsulation il reste plus tendre avec le refactoring que d'autres approches.
+
+```java
+@Test
+public void leServicePeutDonnerUnMotDePasseAléatoireSur8Caractères() {
+	ServiceMotDePasse service = new ServiceMotDePasse();
+	Injecteur injecteur = créeInjecteur(service);
+	injecteur.injecte(new DoublureServiceCaractereAleatoire('X'));
+
+	String motDePasse = service.créeMotDePasse();
+
+	alors().le(motDePasse).nEstPasNul();
+	alors().le(motDePasse).est("XXXXXXXX");
+}
+```
+
+L'exemple complet ici : [TestInjection.java]
 
 ## Utilisation ##
 
@@ -114,7 +143,7 @@ Ajouter **Cocoritest** dans les dépendances d'un pom.xml :
 <dependency>
 	<groupId>fr.arpinum</groupId>
 	<artifactId>cocoritest</artifactId>
-	<version>1.0</version>
+	<version>1.1</version>
 	<scope>test</scope>
 </dependency>
 ```
@@ -122,8 +151,12 @@ Ajouter **Cocoritest** dans les dépendances d'un pom.xml :
 Ajouter **Cocoritest** au niveau des imports Java :
 
 ```java
-import static fr.arpinum.cocoritest.affirmation.Affirmations.*;
+import static fr.arpinum.cocoritest.Affirmations.*;
+import static fr.arpinum.cocoritest.Outils.*;
 ```
+`Affirmations` permet d'accéder à tous les affirmations.
+`Outils` est optionnelle, elle contient, entre autre, le capteur d'exception et l'injecteur.
+
 
 ## Licence ##
 
@@ -137,5 +170,5 @@ Vous devez avoir reçu une copie de la GNU Lesser General Public License en mêm
 
 [Hamcrest]: http://hamcrest.org/
 [FEST]: https://code.google.com/p/fest/
-[cartographie]: http://www.arpinum.fr/images/cocoritest/cartographie.jpg
 [http://www.gnu.org/licenses/lgpl.html]: http://www.gnu.org/licenses/lgpl.html
+[TestInjection.java]: src/test/java/fr/arpinum/cocoritest/exemples/TestInjection.java
