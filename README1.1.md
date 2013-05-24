@@ -21,8 +21,8 @@ Avec **Cocoritest** vous pouvez :
 
 ```java
 @Test
-public void unBooleenVraiEnChaîneEstEnFrancais() {
-    String chaîne = Objets.enChaine(true);
+public void unBooléenVraiEnChaîneEstEnFrancais() {
+    String chaîne = Objets.enChaîne(true);
 
     alors().la(chaîne).nEstPasNulle();
     alors().la(chaîne).est("vrai");
@@ -43,7 +43,7 @@ public void deuxCollectionsNullesSontEgales() {
 ### Affirmations sur une collection ###
 
 Les affirmations concernant les collections sont accessibles depuis la fabrique `les(...)` ce qui sous-entend que vos collections ne doivent pas être nommées `listeChaine` ou `entierList` mais en plaçant les éléments au pluriel comme `chaines` ou `entiers`.
-D'une façon général en français nous disons *j'ai acheté des bonbons à mes enfants* et non *j'ai acheté une liste de bonbons à ma liste d'enfants*.
+D'une façon général en français nous disons *j'ai acheté des bonbons à mes enfants* et non *j'ai acheté une collection de bonbons à ma liste d'enfants*.
 
 ```java
 @Test
@@ -126,7 +126,7 @@ public void leServicePeutDonnerUnMotDePasseAléatoireSur8Caractères() {
 	Injecteur injecteur = créeInjecteur(service);
 	injecteur.injecte(new DoublureServiceCaractereAleatoire('X'));
 
-	String motDePasse = service.creeMotDePasse();
+	String motDePasse = service.créeMotDePasse();
 
 	alors().le(motDePasse).nEstPasNul();
 	alors().le(motDePasse).est("XXXXXXXX");
@@ -155,7 +155,7 @@ import static fr.arpinum.cocoritest.Affirmations.*;
 import static fr.arpinum.cocoritest.Outils.*;
 ```
 `Affirmations` permet d'accéder à tous les affirmations.
-`Outils` est optionnelle, elle contient le capteur d'exception et l'injecteur.
+`Outils` est optionnelle, elle contient, entre autre, le capteur d'exception et l'injecteur.
 
 
 ## Licence ##

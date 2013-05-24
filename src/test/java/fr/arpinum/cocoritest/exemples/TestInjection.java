@@ -30,7 +30,7 @@ public class TestInjection {
 		Injecteur injecteur = créeInjecteur(service);
 		injecteur.injecte(new DoublureServiceCaractereAleatoire('X'));
 
-		String motDePasse = service.creeMotDePasse();
+		String motDePasse = service.créeMotDePasse();
 
 		alors().le(motDePasse).nEstPasNul();
 		alors().le(motDePasse).est("XXXXXXXX");
@@ -38,7 +38,7 @@ public class TestInjection {
 
 	private static class ServiceMotDePasse {
 
-		public String creeMotDePasse() {
+		public String créeMotDePasse() {
 			StringBuilder builder = new StringBuilder(8);
 			for (int i = 0; i < 8; i++) {
 				builder.append(serviceCaractereAleatoire.crée());
