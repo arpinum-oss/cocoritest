@@ -137,7 +137,9 @@ L'exemple complet ici : [TestInjection.java]
 
 ## Utilisation ##
 
-Ajouter **Cocoritest** dans les dépendances d'un pom.xml :
+Télécharger la dépendance ici : [cocoritest-1.1.jar].
+
+Ou ajouter **Cocoritest** dans les dépendances d'un pom.xml :
 
 ```
 <dependency>
@@ -148,6 +150,8 @@ Ajouter **Cocoritest** dans les dépendances d'un pom.xml :
 </dependency>
 ```
 
+Ou consulter la configuration des autres gestionnaires de dépendances sur [l'entrepôt Maven].
+
 Ajouter **Cocoritest** au niveau des imports Java :
 
 ```java
@@ -156,7 +160,6 @@ import static fr.arpinum.cocoritest.Outils.*;
 ```
 `Affirmations` permet d'accéder à tous les affirmations.
 `Outils` est optionnelle, elle contient, entre autre, le capteur d'exception et l'injecteur.
-
 
 ## Licence ##
 
@@ -172,3 +175,5 @@ Vous devez avoir reçu une copie de la GNU Lesser General Public License en mêm
 [FEST]: https://code.google.com/p/fest/
 [http://www.gnu.org/licenses/lgpl.html]: http://www.gnu.org/licenses/lgpl.html
 [TestInjection.java]: src/test/java/fr/arpinum/cocoritest/exemples/TestInjection.java
+[cocoritest-1.1.jar]: http://repo1.maven.org/maven2/fr/arpinum/cocoritest/1.1/cocoritest-1.1.jar
+[l'entrepôt Maven]: http://mvnrepository.com/artifact/fr.arpinum/cocoritest/1.1
