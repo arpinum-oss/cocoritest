@@ -1,4 +1,4 @@
-# Cocoritest
+# Cocoritest [![Build Status](https://travis-ci.org/arpinum/cocoritest.png?branch=master)](https://travis-ci.org/arpinum/cocoritest)
 
 > Mal nommer les choses c'est ajouter au malheur du monde.
 > <cite>(Albert Camus)</cite>
