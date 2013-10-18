@@ -24,7 +24,6 @@ import fr.arpinum.cocoritest.interne.injection.InjecteurDeBase;
 import fr.arpinum.cocoritest.interne.specification.SpecificationCombinee;
 import fr.arpinum.cocoritest.specification.Specification;
 
-
 /**
  * Fabrique qui permet de construire les différents outils.
  */

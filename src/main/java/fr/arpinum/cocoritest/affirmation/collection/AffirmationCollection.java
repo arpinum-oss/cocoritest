@@ -69,7 +69,6 @@ public interface AffirmationCollection<E> {
 	 */
 	void nExistentPas();
 
-
 	/**
 	 * Affirme que les éléments ont les éléments attendus.
 	 *

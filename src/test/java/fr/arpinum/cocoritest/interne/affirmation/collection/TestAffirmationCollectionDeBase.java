@@ -125,7 +125,6 @@ public class TestAffirmationCollectionDeBase {
 		alors().cette(exception).respecte(créeSpécificationException("Il n'y a aucun élément."));
 	}
 
-
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionNulleEstNonVide() {
 		Exception exception = capteur.capte(new Action() {

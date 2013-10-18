@@ -122,7 +122,6 @@ public class TestAffirmations {
 		};
 	}
 
-
 	@SuppressWarnings("ALL")
 	private class ClasseInterne {
 

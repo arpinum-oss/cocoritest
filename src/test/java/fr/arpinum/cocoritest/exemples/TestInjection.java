@@ -50,10 +50,12 @@ public class TestInjection {
 	}
 
 	private static interface ServiceCaractereAleatoire {
+
 		char crée();
 	}
 
 	private static class DoublureServiceCaractereAleatoire implements ServiceCaractereAleatoire {
+
 		@SuppressWarnings("SameParameterValue")
 		public DoublureServiceCaractereAleatoire(char valeur) {
 			this.valeur = valeur;
