@@ -1,4 +1,4 @@
-# Cocoritest [![Build Status](https://travis-ci.org/arpinum/cocoritest.png?branch=master)](https://travis-ci.org/arpinum/cocoritest)
+# Cocoritest [![Etat build]](https://travis-ci.org/arpinum/cocoritest)
 
 > Mal nommer les choses c'est ajouter au malheur du monde.
 > <cite>(Albert Camus)</cite>
@@ -177,3 +177,4 @@ Vous devez avoir reçu une copie de la GNU Lesser General Public License en mêm
 [TestInjection.java]: src/test/java/fr/arpinum/cocoritest/exemples/TestInjection.java
 [cocoritest-1.1.jar]: http://repo1.maven.org/maven2/fr/arpinum/cocoritest/1.1/cocoritest-1.1.jar
 [l'entrepôt Maven]: http://mvnrepository.com/artifact/fr.arpinum/cocoritest/1.1
+[Etat build]: https://travis-ci.org/arpinum/cocoritest.png?branch=master
