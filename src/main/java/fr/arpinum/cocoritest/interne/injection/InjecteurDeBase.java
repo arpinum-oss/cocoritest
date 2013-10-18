@@ -52,11 +52,15 @@ public class InjecteurDeBase implements Injecteur {
 	private void assigneLesChampsAssignables(Object dépendance, List<Field> champsAssignables) {
 		for (Field champ : champsAssignables) {
 			champ.setAccessible(true);
-			try {
-				champ.set(objet, dépendance);
-			} catch (IllegalAccessException e) {
-				throw new RuntimeException(e);
-			}
+			assigne(dépendance, champ);
+		}
+	}
+
+	private void assigne(Object dépendance, Field champ) {
+		try {
+			champ.set(objet, dépendance);
+		} catch (IllegalAccessException e) {
+			throw new RuntimeException(e);
 		}
 	}
 
@@ -71,15 +75,18 @@ public class InjecteurDeBase implements Injecteur {
 	}
 
 	private List<Field> récupèreTousLesChamps() {
-		Class<?> classe = objet.getClass();
-		List<Field> résultat = récupèreTousLesChamps(classe);
+		return récupèreTousLesChampsPour(objet.getClass());
+	}
+
+	private List<Field> récupèreTousLesChampsPour(Class<?> classe) {
+		List<Field> résultat = récupèreTousLesChampsDéclarés(classe);
 		if (classe.getSuperclass() != null) {
-			résultat.addAll(récupèreTousLesChamps(classe.getSuperclass()));
+			résultat.addAll(récupèreTousLesChampsPour(classe.getSuperclass()));
 		}
 		return résultat;
 	}
 
-	private List<Field> récupèreTousLesChamps(Class<?> classe) {
+	private List<Field> récupèreTousLesChampsDéclarés(Class<?> classe) {
 		return Listes.cree(classe.getDeclaredFields());
 	}
 

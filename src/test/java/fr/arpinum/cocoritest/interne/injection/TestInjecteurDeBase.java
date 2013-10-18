@@ -33,8 +33,8 @@ public class TestInjecteurDeBase {
 
 	@Before
 	public void avantChaqueTest() {
-		client = new Client();
-		injecteur = créeInjecteur(client);
+		classe = new Classe();
+		injecteur = créeInjecteur(classe);
 		premièreDépendance = new PremiereDependanceSimple();
 		deuxièmeDépendance = new DeuxiemeDependanceSimple();
 	}
@@ -43,7 +43,7 @@ public class TestInjecteurDeBase {
 	public void peutInjecterUneDépendance() {
 		injecteur.injecte(premièreDépendance);
 
-		alors().la(client.premièreDépendance()).est(premièreDépendance);
+		alors().la(classe.premièreDépendance()).est(premièreDépendance);
 	}
 
 	@Test
@@ -51,24 +51,24 @@ public class TestInjecteurDeBase {
 		injecteur.injecte(premièreDépendance);
 		injecteur.injecte(deuxièmeDépendance);
 
-		alors().la(client.premièreDépendance()).est(premièreDépendance);
-		alors().la(client.deuxièmeDépendance()).est(deuxièmeDépendance);
+		alors().la(classe.premièreDépendance()).est(premièreDépendance);
+		alors().la(classe.deuxièmeDépendance()).est(deuxièmeDépendance);
 	}
 
 	@Test
 	public void peutInjecterPlusieursDépendancesDeFaçonFluide() {
 		injecteur.injecte(premièreDépendance).injecte(deuxièmeDépendance);
 
-		alors().la(client.premièreDépendance()).est(premièreDépendance);
-		alors().la(client.deuxièmeDépendance()).est(deuxièmeDépendance);
+		alors().la(classe.premièreDépendance()).est(premièreDépendance);
+		alors().la(classe.deuxièmeDépendance()).est(deuxièmeDépendance);
 	}
 
 	@Test
 	public void peutInjecterDeuxDépendancesEnUneSeuleFois() {
 		injecteur.injecte(premièreDépendance, deuxièmeDépendance);
 
-		alors().la(client.premièreDépendance()).est(premièreDépendance);
-		alors().la(client.deuxièmeDépendance()).est(deuxièmeDépendance);
+		alors().la(classe.premièreDépendance()).est(premièreDépendance);
+		alors().la(classe.deuxièmeDépendance()).est(deuxièmeDépendance);
 	}
 
 	@Test
@@ -77,19 +77,29 @@ public class TestInjecteurDeBase {
 
 		injecteur.injecte(premièreDépendance, deuxièmeDépendance, troisièmeDépendance);
 
-		alors().la(client.premièreDépendance()).est(premièreDépendance);
-		alors().la(client.deuxièmeDépendance()).est(deuxièmeDépendance);
-		alors().la(client.troisièmeDépendance()).est(troisièmeDépendance);
+		alors().la(classe.premièreDépendance()).est(premièreDépendance);
+		alors().la(classe.deuxièmeDépendance()).est(deuxièmeDépendance);
+		alors().la(classe.troisièmeDépendance()).est(troisièmeDépendance);
 	}
 
 	@Test
-	public void peutInjecterUneDépendanceDansUneClasseMère() {
-		SpecialisationClient autreClient = new SpecialisationClient();
-		Injecteur autreInjecteur = new InjecteurDeBase(autreClient);
+	public void peutInjecterUneDépendanceDansUneSousClasse() {
+		SousClasse sousClasse = new SousClasse();
+		Injecteur autreInjecteur = new InjecteurDeBase(sousClasse);
 
 		autreInjecteur.injecte(premièreDépendance);
 
-		alors().la(autreClient.premièreDépendance()).est(premièreDépendance);
+		alors().la(sousClasse.premièreDépendance()).est(premièreDépendance);
+	}
+
+	@Test
+	public void peutInjecterUneDépendanceDansUneSousSousClasse() {
+		SousSousClasse sousSousClasse = new SousSousClasse();
+		Injecteur autreInjecteur = new InjecteurDeBase(sousSousClasse);
+
+		autreInjecteur.injecte(premièreDépendance);
+
+		alors().la(sousSousClasse.premièreDépendance()).est(premièreDépendance);
 	}
 
 	@Test
@@ -109,9 +119,8 @@ public class TestInjecteurDeBase {
 		alors().le(exception.getMessage()).est("Impossible d'assigner la dépendance " + liste);
 	}
 
-
 	private Injecteur injecteur;
-	private Client client;
+	private Classe classe;
 	private PremiereDependanceSimple premièreDépendance;
 	private DeuxiemeDependanceSimple deuxièmeDépendance;
 }

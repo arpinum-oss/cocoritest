@@ -21,15 +21,19 @@ public abstract class ClassesPourTest {
 	}
 
 	static interface PremiereDependance {
+
 	}
 
 	static interface DeuxiemeDependance {
+
 	}
 
 	static interface TroisiemeDependance {
+
 	}
 
-	static class Client {
+	static class Classe {
+
 		private final PremiereDependance premiereDépendance = null;
 		private final DeuxiemeDependance deuxièmeDépendance = null;
 		private final TroisiemeDependance troisièmeDépendance = null;
@@ -47,15 +51,23 @@ public abstract class ClassesPourTest {
 		}
 	}
 
-	static class SpecialisationClient extends Client {
+	static class SousClasse extends Classe {
+
+	}
+
+	static class SousSousClasse extends SousClasse {
+
 	}
 
 	static class PremiereDependanceSimple implements PremiereDependance {
+
 	}
 
 	static class DeuxiemeDependanceSimple implements DeuxiemeDependance {
+
 	}
 
 	static class TroisiemeDependanceSimple implements TroisiemeDependance {
+
 	}
 }
