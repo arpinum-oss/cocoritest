@@ -137,7 +137,7 @@ L'exemple complet ici : [TestInjection.java]
 
 ## Utilisation ##
 
-Télécharger la dépendance ici : [cocoritest-1.1.jar].
+Télécharger la dépendance ici : [cocoritest-1.2.jar].
 
 Ou ajouter **Cocoritest** dans les dépendances d'un pom.xml :
 
@@ -145,7 +145,7 @@ Ou ajouter **Cocoritest** dans les dépendances d'un pom.xml :
 <dependency>
 	<groupId>fr.arpinum</groupId>
 	<artifactId>cocoritest</artifactId>
-	<version>1.1</version>
+	<version>1.2</version>
 	<scope>test</scope>
 </dependency>
 ```
@@ -175,6 +175,6 @@ Vous devez avoir reçu une copie de la GNU Lesser General Public License en mêm
 [FEST]: https://code.google.com/p/fest/
 [http://www.gnu.org/licenses/lgpl.html]: http://www.gnu.org/licenses/lgpl.html
 [TestInjection.java]: src/test/java/fr/arpinum/cocoritest/exemples/TestInjection.java
-[cocoritest-1.1.jar]: http://repo1.maven.org/maven2/fr/arpinum/cocoritest/1.1/cocoritest-1.1.jar
-[l'entrepôt Maven]: http://mvnrepository.com/artifact/fr.arpinum/cocoritest/1.1
+[cocoritest-1.2.jar]: http://repo1.maven.org/maven2/fr/arpinum/cocoritest/1.2/cocoritest-1.2.jar
+[l'entrepôt Maven]: http://mvnrepository.com/artifact/fr.arpinum/cocoritest/1.2
 [Etat build]: https://travis-ci.org/arpinum/cocoritest.png?branch=master
