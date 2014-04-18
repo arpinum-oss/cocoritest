@@ -105,7 +105,7 @@ private Action actionLevantUneException() {
 }
 ```
 
-Les affirmations sur l'exception capturée se font en fin de test. **Cocoritest** respecte donc la disposition standard **A**rrange **A**ct **A**ssert (AAA) des tests. \o/
+Les affirmations sur l'exception capturée se font en fin de test. **Cocoritest** respecte donc la disposition standard Arrange Act Assert (AAA) des tests. \o/
 
 ### Injecter des dépendances de test
 
