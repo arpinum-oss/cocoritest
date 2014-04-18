@@ -15,19 +15,19 @@
 
 package fr.arpinum.cocoritest.interne.extensionlangage;
 
-import static fr.arpinum.cocoritest.Affirmations.*;
+import org.junit.Test;
 
 import java.util.List;
 
-import org.junit.Test;
+import static fr.arpinum.cocoritest.Affirmations.alors;
 
 public class TestListes {
 
-	@Test
-	public void peutCréerUneListe() {
-		List<String> éléments = Listes.cree("a", "b");
+    @Test
+    public void peutCréerUneListe() {
+        List<String> éléments = Listes.cree("a", "b");
 
-		alors().les(éléments).sontAuNombreDe(2);
-		alors().les(éléments).sont("a", "b");
-	}
+        alors().les(éléments).sontAuNombreDe(2);
+        alors().les(éléments).sont("a", "b");
+    }
 }

@@ -15,26 +15,26 @@
 
 package fr.arpinum.cocoritest.interne.specification.collection;
 
-import java.util.Collection;
-
 import fr.arpinum.cocoritest.interne.extensionlangage.Collections;
 import fr.arpinum.cocoritest.specification.Specification;
 
+import java.util.Collection;
+
 public class SpecificationCollection<E> implements Specification<Collection<E>> {
 
-	public SpecificationCollection(Collection<E> élémentsSpécifiés) {
-		this.collectionSpécifiée = élémentsSpécifiés;
-	}
+    public SpecificationCollection(Collection<E> élémentsSpécifiés) {
+        this.collectionSpécifiée = élémentsSpécifiés;
+    }
 
-	@Override
-	public boolean estInsatisfaitePar(Collection<E> éléments) {
-		return !Collections.egales(collectionSpécifiée, éléments);
-	}
+    @Override
+    public boolean estInsatisfaitePar(Collection<E> éléments) {
+        return !Collections.egales(collectionSpécifiée, éléments);
+    }
 
-	@Override
-	public String messageInsatisfactionPour(Collection<E> éléments) {
-		return String.format("Les éléments sont <%s> au lieu de <%s>.", éléments, collectionSpécifiée);
-	}
+    @Override
+    public String messageInsatisfactionPour(Collection<E> éléments) {
+        return String.format("Les éléments sont <%s> au lieu de <%s>.", éléments, collectionSpécifiée);
+    }
 
-	private final Collection<E> collectionSpécifiée;
+    private final Collection<E> collectionSpécifiée;
 }

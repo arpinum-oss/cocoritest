@@ -15,26 +15,25 @@
 
 package fr.arpinum.cocoritest;
 
-import static fr.arpinum.cocoritest.Affirmations.*;
-
-import org.junit.Test;
-
 import fr.arpinum.cocoritest.exception.CapteurException;
 import fr.arpinum.cocoritest.injection.Injecteur;
+import org.junit.Test;
+
+import static fr.arpinum.cocoritest.Affirmations.alors;
 
 public class TestOutils {
 
-	@Test
-	public void peutCréerUnCapteurDException() {
-		CapteurException capteur = Outils.créeCapteur();
+    @Test
+    public void peutCréerUnCapteurDException() {
+        CapteurException capteur = Outils.créeCapteur();
 
-		alors().le(capteur).nEstPasNul();
-	}
+        alors().le(capteur).nEstPasNul();
+    }
 
-	@Test
-	public void peutCréerUnInjecteur() {
-		Injecteur injecteur = Outils.créeInjecteur(new Object());
+    @Test
+    public void peutCréerUnInjecteur() {
+        Injecteur injecteur = Outils.créeInjecteur(new Object());
 
-		alors().cet(injecteur).nEstPasNul();
-	}
+        alors().cet(injecteur).nEstPasNul();
+    }
 }

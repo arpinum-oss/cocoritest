@@ -18,6 +18,7 @@ package fr.arpinum.cocoritest.exception;
 /**
  * Représente une action exécutable.
  */
+@FunctionalInterface
 public interface Action {
 
 	/**

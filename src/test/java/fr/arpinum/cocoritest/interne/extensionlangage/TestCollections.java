@@ -15,54 +15,54 @@
 
 package fr.arpinum.cocoritest.interne.extensionlangage;
 
-import static fr.arpinum.cocoritest.Affirmations.*;
+import org.junit.Test;
 
 import java.util.List;
 
-import org.junit.Test;
+import static fr.arpinum.cocoritest.Affirmations.alors;
 
 public class TestCollections {
 
-	@Test
-	public void deuxCollectionsDeTaillesDifférentesSontDifférentes() {
-		List<Integer> première = Listes.cree(1, 2, 3);
-		List<Integer> seconde = Listes.cree(1, 2);
+    @Test
+    public void deuxCollectionsDeTaillesDifférentesSontDifférentes() {
+        List<Integer> première = Listes.cree(1, 2, 3);
+        List<Integer> seconde = Listes.cree(1, 2);
 
-		boolean égalité = Collections.egales(première, seconde);
+        boolean égalité = Collections.egales(première, seconde);
 
-		alors().cette(égalité).estFausse();
-	}
+        alors().cette(égalité).estFausse();
+    }
 
-	@Test
-	public void deuxCollectionsAvecLesMêmesElémentsSontEgales() {
-		List<Integer> première = Listes.cree(1, 2, 3);
-		List<Integer> seconde = Listes.cree(1, 2, 3);
+    @Test
+    public void deuxCollectionsAvecLesMêmesElémentsSontEgales() {
+        List<Integer> première = Listes.cree(1, 2, 3);
+        List<Integer> seconde = Listes.cree(1, 2, 3);
 
-		boolean égalité = Collections.egales(première, seconde);
+        boolean égalité = Collections.egales(première, seconde);
 
-		alors().cette(égalité).estVraie();
-	}
+        alors().cette(égalité).estVraie();
+    }
 
-	@Test
-	public void deuxCollectionsAvecDesElémentsDifférentsSontDifférentes() {
-		List<Integer> première = Listes.cree(1, 2, 3);
-		List<Integer> seconde = Listes.cree(1, 2, 4);
+    @Test
+    public void deuxCollectionsAvecDesElémentsDifférentsSontDifférentes() {
+        List<Integer> première = Listes.cree(1, 2, 3);
+        List<Integer> seconde = Listes.cree(1, 2, 4);
 
-		boolean égalité = Collections.egales(première, seconde);
+        boolean égalité = Collections.egales(première, seconde);
 
-		alors().cette(égalité).estFausse();
-	}
+        alors().cette(égalité).estFausse();
+    }
 
-	@Test
-	public void deuxCollectionsNullesSontEgales() {
-		boolean égalité = Collections.egales(null, null);
+    @Test
+    public void deuxCollectionsNullesSontEgales() {
+        boolean égalité = Collections.egales(null, null);
 
-		alors().cette(égalité).estVraie();
-	}
+        alors().cette(égalité).estVraie();
+    }
 
-	@Test
-	public void uneCollectionNulleNEstJamaisEgaleAUneNonNulle() {
-		alors().ceci(Collections.egales(null, Listes.cree(1))).estFaux();
-		alors().ceci(Collections.egales(Listes.cree(1), null)).estFaux();
-	}
+    @Test
+    public void uneCollectionNulleNEstJamaisEgaleAUneNonNulle() {
+        alors().ceci(Collections.egales(null, Listes.cree(1))).estFaux();
+        alors().ceci(Collections.egales(Listes.cree(1), null)).estFaux();
+    }
 }
