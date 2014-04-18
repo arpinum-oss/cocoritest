@@ -165,6 +165,8 @@ import static fr.arpinum.cocoritest.Outils.*;
 
 Une belle [javadoc] est disponible!
 
+Seules les classes manipulées par l'utilisateur sont documentées. Le package `fr.arpinum.cocoritest.interne.*` qui représente la popote interne ne contient aucune documentation.
+
 ## Licence
 
 Copyright (C) 2013, Arpinum
