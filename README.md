@@ -14,10 +14,10 @@ Avec **Cocoritest** vous pouvez :
 * capturer des exceptions pour affirmer dessus,
 * injecter des dépendances à un objet.
 
-## Exemples ##
+## Exemples
 *(certains caractères qui font la richesse du français sont mal gérés par le moteur de rendu de code utilisé par Github... une fée vient de s'éteindre quelque part dans le monde...)*
 
-### Affirmations sur un objet ###
+### Affirmations sur un objet
 
 ```java
 @Test
@@ -29,7 +29,7 @@ public void unBooléenVraiEnChaîneEstEnFrancais() {
 }
 ```
 
-### Affirmations sur un booléen ###
+### Affirmations sur un booléen
 
 ```java
 @Test
@@ -40,7 +40,7 @@ public void deuxCollectionsNullesSontEgales() {
 }
 ```
 
-### Affirmations sur une collection ###
+### Affirmations sur une collection
 
 Les affirmations concernant les collections sont accessibles depuis la fabrique `les(...)` ce qui sous-entend que vos collections ne doivent pas être nommées `listeChaine` ou `entierList` mais en plaçant les éléments au pluriel comme `chaines` ou `entiers`.
 D'une façon général en français nous disons *j'ai acheté des bonbons à mes enfants* et non *j'ai acheté une collection de bonbons à ma liste d'enfants*.
@@ -55,7 +55,7 @@ public void peutCréerUneListe() {
 }
 ```
 
-### Affirmations sur une instruction ###
+### Affirmations sur une instruction
 
 Pour toutes les autres situations où il ne semble pas possible de construire une phrase syntaxiquement correcte il reste possible d'utiliser la fabrique `ceci(...)`.
 
@@ -81,7 +81,7 @@ private boolean égalitéEntre(Object gauche, Object droite) {
 }
 ```
 
-### Affirmations sur une exception ###
+### Affirmations sur une exception
 
 ```java
 @Test
@@ -107,7 +107,7 @@ private Action actionLevantUneException() {
 
 Les affirmations sur l'exception capturée se font en fin de test. **Cocoritest** respecte donc la disposition standard **A**rrange **A**ct **A**ssert (AAA) des tests. \o/
 
-### Injecter des dépendances de test ###
+### Injecter des dépendances de test
 
 Utiliser de l'injection de dépendance dans le code de production est très courant. Certains frameworks peuvent fonctionner directement sur les champs et les objets n'exposent donc aucun accesseur pour modifier les dépendances. De fait, il est très difficile d'utiliser des doublures (mocks ou stubs) dans les tests. 
 
@@ -135,7 +135,7 @@ public void leServicePeutDonnerUnMotDePasseAléatoireSur8Caractères() {
 
 L'exemple complet ici : [TestInjection.java]
 
-## Utilisation ##
+## Utilisation
 
 Télécharger la dépendance ici : [cocoritest-1.2.jar].
 
@@ -161,7 +161,7 @@ import static fr.arpinum.cocoritest.Outils.*;
 `Affirmations` permet d'accéder à tous les affirmations.
 `Outils` est optionnelle, elle contient, entre autre, le capteur d'exception et l'injecteur.
 
-## Licence ##
+## Licence
 
 Copyright (C) 2013, Arpinum
 
