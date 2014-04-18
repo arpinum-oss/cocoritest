@@ -1,0 +1,17 @@
+fr.arpinum.cocoritest
+fr.arpinum.cocoritest.affirmation.booleene
+fr.arpinum.cocoritest.affirmation.collection
+fr.arpinum.cocoritest.affirmation.objet
+fr.arpinum.cocoritest.exception
+fr.arpinum.cocoritest.injection
+fr.arpinum.cocoritest.interne.affirmation
+fr.arpinum.cocoritest.interne.affirmation.booleene
+fr.arpinum.cocoritest.interne.affirmation.collection
+fr.arpinum.cocoritest.interne.affirmation.objet
+fr.arpinum.cocoritest.interne.exception
+fr.arpinum.cocoritest.interne.extensionlangage
+fr.arpinum.cocoritest.interne.injection
+fr.arpinum.cocoritest.interne.specification
+fr.arpinum.cocoritest.interne.specification.collection
+fr.arpinum.cocoritest.interne.specification.objet
+fr.arpinum.cocoritest.specification
