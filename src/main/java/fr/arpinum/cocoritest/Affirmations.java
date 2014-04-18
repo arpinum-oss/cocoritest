@@ -28,15 +28,12 @@ import fr.arpinum.cocoritest.interne.extensionlangage.Listes;
 import java.util.Collection;
 
 /**
- * Le point d'entrée qui permet de créer les différentes affirmations.
- * <p>
- * Exemples :
- * <pre>
- * 		alors().le(résultat).estVrai();
- * 		alors().la(chaîne).est("toto");
- * 		alors().les(valeurs).sont("a", "b");
- * 	</pre>
- * </p>
+ * Le point d'entrée qui permet de créer les différentes affirmations. Exemples :
+ * <blockquote><pre>
+ * alors().le(résultat).estVrai();
+ * alors().la(chaîne).est("toto");
+ * alors().les(valeurs).sont("a", "b");
+ * </pre></blockquote>
  */
 public class Affirmations {
 
@@ -63,13 +60,10 @@ public class Affirmations {
     }
 
     /**
-     * Crée une affirmation concernant un booléen.
-     * <p>
-     * A utiliser quand le mot commence par une voyelle :
-     * <pre>
-     * 		alors().cet(objet).estVrai();
-     *  </pre>
-     * </p>
+     * Crée une affirmation concernant un booléen. A utiliser quand le mot commence par une voyelle :
+     * <blockquote><pre>
+     * alors().cet(objet).estVrai();
+     * </pre></blockquote>
      *
      * @param booléen la cible de l'affirmation.
      * @return l'affirmation créée.
@@ -79,13 +73,10 @@ public class Affirmations {
     }
 
     /**
-     * Crée une affirmation concernant un booléen.
-     * <p>
-     * A utiliser pour une instruction entière :
-     * <pre>
-     * 		alors().ceci(maVariable.estSuper()).estVrai();
-     *  </pre>
-     * </p>
+     * Crée une affirmation concernant un booléen. A utiliser pour une instruction entière :
+     * <blockquote><pre>
+     * alors().ceci(maVariable.estSuper()).estVrai();
+     * </pre></blockquote>
      *
      * @param booléen la cible de l'affirmation.
      * @return l'affirmation créée.
@@ -105,13 +96,10 @@ public class Affirmations {
     }
 
     /**
-     * Crée une affirmation concernant un booléen. L'affirmation est au féminin.
-     * <p>
-     * A utiliser quand le mot commence par une voyelle :
-     * <pre>
-     * 		alors().cette(histoire).estVraie();
-     *  </pre>
-     * </p>
+     * Crée une affirmation concernant un booléen. L'affirmation est au féminin. A utiliser quand le mot commence par une voyelle :
+     * <blockquote><pre>
+     * alors().cette(histoire).estVraie();
+     * </pre></blockquote>
      *
      * @param booléen la cible de l'affirmation.
      * @return l'affirmation créée.
@@ -123,6 +111,7 @@ public class Affirmations {
     /**
      * Crée une affirmation concernant un objet.
      *
+     * @param <T>   le type de l'objet
      * @param objet la cible de l'affirmation.
      * @return l'affirmation créée.
      */
@@ -131,14 +120,12 @@ public class Affirmations {
     }
 
     /**
-     * Crée une affirmation concernant un objet.
-     * <p>
-     * A utiliser quand le mot commence par une voyelle :
-     * <pre>
-     * 		alors().cet(objet).est(autreObjet);
-     *  </pre>
-     * </p>
+     * Crée une affirmation concernant un objet. A utiliser quand le mot commence par une voyelle :
+     * <blockquote><pre>
+     * alors().cet(objet).est(autreObjet);
+     * </pre></blockquote>
      *
+     * @param <T>   le type de l'objet
      * @param objet la cible de l'affirmation.
      * @return l'affirmation créée.
      */
@@ -147,14 +134,12 @@ public class Affirmations {
     }
 
     /**
-     * Crée une affirmation concernant un objet.
-     * <p>
-     * A utiliser pour une instruction entière :
-     * <pre>
-     * 		alors().ceci(maVariable.getPropriété()).est(objet);
-     *  </pre>
-     * </p>
+     * Crée une affirmation concernant un objet. A utiliser pour une instruction entière :
+     * <blockquote><pre>
+     * alors().ceci(maVariable.getPropriété()).est(objet);
+     * </pre></blockquote>
      *
+     * @param <T>   le type de l'objet
      * @param objet la cible de l'affirmation.
      * @return l'affirmation créée.
      */
@@ -165,6 +150,7 @@ public class Affirmations {
     /**
      * Crée une affirmation concernant un objet. L'affirmation est au féminin.
      *
+     * @param <T>   le type de l'objet
      * @param objet la cible de l'affirmation.
      * @return l'affirmation créée.
      */
@@ -173,14 +159,12 @@ public class Affirmations {
     }
 
     /**
-     * Crée une affirmation concernant un objet. L'affirmation est au féminin.
-     * <p>
-     * A utiliser quand le mot commence par une voyelle :
-     * <pre>
-     * 		alors().cette(annonce).est("annonce");
-     *  </pre>
-     * </p>
+     * Crée une affirmation concernant un objet. L'affirmation est au féminin. A utiliser quand le mot commence par une voyelle :
+     * <blockquote><pre>
+     * alors().cette(annonce).est("annonce");
+     * </pre></blockquote>
      *
+     * @param <T>   le type de l'objet
      * @param objet la cible de l'affirmation.
      * @return l'affirmation créée.
      */
@@ -191,6 +175,7 @@ public class Affirmations {
     /**
      * Crée une affirmation concernant une collection.
      *
+     * @param <T>      le type de l'objet
      * @param éléments les cibles de l'affirmation.
      * @return l'affirmation créée.
      */
@@ -201,6 +186,7 @@ public class Affirmations {
     /**
      * Crée une affirmation concernant une collection.
      *
+     * @param <T>      le type de l'objet
      * @param éléments les cibles de l'affirmation.
      * @return l'affirmation créée.
      */
