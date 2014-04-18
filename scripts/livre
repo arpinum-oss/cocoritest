@@ -1,0 +1,2 @@
+#!/bin/sh
+mvn -B release:prepare && mvn release:perform

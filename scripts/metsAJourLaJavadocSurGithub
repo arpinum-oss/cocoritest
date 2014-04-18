@@ -1,0 +1,2 @@
+#!/bin/sh
+mvn clean javadoc:javadoc site -DgenerateProjectInfo=false -DgenerateReports=false
