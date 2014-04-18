@@ -161,6 +161,10 @@ import static fr.arpinum.cocoritest.Outils.*;
 `Affirmations` permet d'accéder à tous les affirmations.
 `Outils` est optionnelle, elle contient, entre autre, le capteur d'exception et l'injecteur.
 
+## Documentation
+
+Une belle [javadoc] est disponible!
+
 ## Licence
 
 Copyright (C) 2013, Arpinum
@@ -178,3 +182,4 @@ Vous devez avoir reçu une copie de la GNU Lesser General Public License en mêm
 [cocoritest-1.2.jar]: http://repo1.maven.org/maven2/fr/arpinum/cocoritest/1.2/cocoritest-1.2.jar
 [l'entrepôt Maven]: http://mvnrepository.com/artifact/fr.arpinum/cocoritest/1.2
 [Etat build]: https://travis-ci.org/arpinum/cocoritest.png?branch=master
+[javadoc]: http://arpinum.github.io/cocoritest/apidocs
