@@ -13,24 +13,21 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.affirmation.booleene;
+package fr.arpinum.cocoritest.interne.affirmation.objet;
 
-/**
- * Représente une affirmation concernant un booléen.
- */
-public interface AffirmationBooleene {
+import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjetAuFeminin;
+import fr.arpinum.cocoritest.affirmation.objet.ConjonctionObjetAuFeminin;
 
-	/**
-	 * Affirme que c'est vrai.
-	 *
-	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
-	 */
-	void estVrai();
+public class ConjonctionObjetAuFemininDeBase<TObjet> implements ConjonctionObjetAuFeminin<TObjet> {
 
-	/**
-	 * Affirme que c'est faux.
-	 *
-	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
-	 */
-	void estFaux();
+	public ConjonctionObjetAuFemininDeBase(AffirmationObjetAuFeminin<TObjet> affirmation) {
+		this.affirmation = affirmation;
+	}
+
+	@Override
+	public AffirmationObjetAuFeminin<TObjet> et() {
+		return affirmation;
+	}
+
+	private final AffirmationObjetAuFeminin<TObjet> affirmation;
 }

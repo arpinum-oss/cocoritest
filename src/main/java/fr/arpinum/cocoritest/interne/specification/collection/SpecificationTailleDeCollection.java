@@ -15,29 +15,29 @@
 
 package fr.arpinum.cocoritest.interne.specification.collection;
 
-import fr.arpinum.cocoritest.specification.Specification;
-
 import java.util.Collection;
+
+import fr.arpinum.cocoritest.specification.Specification;
 
 public class SpecificationTailleDeCollection<E> implements Specification<Collection<E>> {
 
-    public SpecificationTailleDeCollection(int tailleSpécifiée) {
-        this.tailleSpécifiée = tailleSpécifiée;
-    }
+	public SpecificationTailleDeCollection(int tailleSpécifiée) {
+		this.tailleSpécifiée = tailleSpécifiée;
+	}
 
-    @Override
-    public boolean estInsatisfaitePar(Collection<E> éléments) {
-        return éléments == null || éléments.size() != tailleSpécifiée;
-    }
+	@Override
+	public boolean estInsatisfaitePar(Collection<E> éléments) {
+		return éléments == null || éléments.size() != tailleSpécifiée;
+	}
 
-    @Override
-    public String messageInsatisfactionPour(Collection<E> éléments) {
-        if (éléments == null) {
-            return String.format("La collection est <nulle> et ne possède donc pas un nombre d'éléments de <%s>.",
-                    tailleSpécifiée);
-        }
-        return String.format("Les éléments sont au nombre de <%s> au lieu de <%s>.", éléments.size(), tailleSpécifiée);
-    }
+	@Override
+	public String messageInsatisfactionPour(Collection<E> éléments) {
+		if (éléments == null) {
+			return String.format("La collection est <nulle> et ne possède donc pas un nombre d'éléments de <%s>.",
+					tailleSpécifiée);
+		}
+		return String.format("Les éléments sont au nombre de <%s> au lieu de <%s>.", éléments.size(), tailleSpécifiée);
+	}
 
-    private final int tailleSpécifiée;
+	private final int tailleSpécifiée;
 }

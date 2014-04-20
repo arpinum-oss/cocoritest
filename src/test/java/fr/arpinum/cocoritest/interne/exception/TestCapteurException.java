@@ -1,28 +1,29 @@
 package fr.arpinum.cocoritest.interne.exception;
 
-import fr.arpinum.cocoritest.exception.Action;
-import fr.arpinum.cocoritest.exception.CapteurException;
+import static fr.arpinum.cocoritest.Affirmations.*;
+import static fr.arpinum.cocoritest.Outils.*;
+
 import org.junit.Test;
 
-import static fr.arpinum.cocoritest.Affirmations.alors;
-import static fr.arpinum.cocoritest.Outils.créeCapteur;
+import fr.arpinum.cocoritest.exception.Action;
+import fr.arpinum.cocoritest.exception.CapteurException;
 
 public class TestCapteurException {
 
-    @Test
-    public void peutCapturerUneException() {
-        CapteurException capteur = créeCapteur();
+	@Test
+	public void peutCapturerUneException() {
+		CapteurException capteur = créeCapteur();
 
-        Exception exception = capteur.capte(actionLevantUneException());
+		Exception exception = capteur.capte(actionLevantUneException());
 
-        alors().cette(exception).nEstPasNulle();
-        alors().ceci(exception.getMessage()).est("le message");
-        alors().ceci(exception instanceof RuntimeException).estVrai();
-    }
+		alors().cette(exception).nEstPasNulle();
+		alors().ceci(exception.getMessage()).est("le message");
+		alors().ceci(exception instanceof RuntimeException).estVrai();
+	}
 
-    private Action actionLevantUneException() {
-        return () -> {
-            throw new RuntimeException("le message");
-        };
-    }
+	private Action actionLevantUneException() {
+		return () -> {
+			throw new RuntimeException("le message");
+		};
+	}
 }

@@ -13,24 +13,9 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.affirmation.booleene;
+package fr.arpinum.cocoritest.affirmation.objet;
 
-/**
- * Représente une affirmation concernant un booléen.
- */
-public interface AffirmationBooleene {
+public interface ConjonctionObjetAuMasculin<TObjet> {
 
-	/**
-	 * Affirme que c'est vrai.
-	 *
-	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
-	 */
-	void estVrai();
-
-	/**
-	 * Affirme que c'est faux.
-	 *
-	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
-	 */
-	void estFaux();
+	AffirmationObjetAuMasculin<TObjet> et();
 }

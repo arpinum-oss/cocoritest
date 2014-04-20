@@ -15,56 +15,57 @@
 
 package fr.arpinum.cocoritest.exemples;
 
-import fr.arpinum.cocoritest.injection.Injecteur;
+import static fr.arpinum.cocoritest.Affirmations.*;
+import static fr.arpinum.cocoritest.Outils.*;
+
 import org.junit.Test;
 
-import static fr.arpinum.cocoritest.Affirmations.alors;
-import static fr.arpinum.cocoritest.Outils.créeInjecteur;
+import fr.arpinum.cocoritest.injection.Injecteur;
 
 public class TestInjection {
 
-    @Test
-    public void leServicePeutDonnerUnMotDePasseAléatoireSur8Caractères() {
-        ServiceMotDePasse service = new ServiceMotDePasse();
-        Injecteur injecteur = créeInjecteur(service);
-        injecteur.injecte(new DoublureServiceCaractereAleatoire('X'));
+	@Test
+	public void leServicePeutDonnerUnMotDePasseAléatoireSur8Caractères() {
+		ServiceMotDePasse service = new ServiceMotDePasse();
+		Injecteur injecteur = créeInjecteur(service);
+		injecteur.injecte(new DoublureServiceCaractereAleatoire('X'));
 
-        String motDePasse = service.créeMotDePasse();
+		String motDePasse = service.créeMotDePasse();
 
-        alors().le(motDePasse).nEstPasNul();
-        alors().le(motDePasse).est("XXXXXXXX");
-    }
+		alors().le(motDePasse).nEstPasNul();
+		alors().le(motDePasse).est("XXXXXXXX");
+	}
 
-    private static class ServiceMotDePasse {
+	private static class ServiceMotDePasse {
 
-        public String créeMotDePasse() {
-            StringBuilder builder = new StringBuilder(8);
-            for (int i = 0; i < 8; i++) {
-                builder.append(serviceCaractereAleatoire.crée());
-            }
-            return builder.toString();
-        }
+		public String créeMotDePasse() {
+			StringBuilder builder = new StringBuilder(8);
+			for (int i = 0; i < 8; i++) {
+				builder.append(serviceCaractereAleatoire.crée());
+			}
+			return builder.toString();
+		}
 
-        private final ServiceCaractereAleatoire serviceCaractereAleatoire = null;
-    }
+		private final ServiceCaractereAleatoire serviceCaractereAleatoire = null;
+	}
 
-    private static interface ServiceCaractereAleatoire {
+	private static interface ServiceCaractereAleatoire {
 
-        char crée();
-    }
+		char crée();
+	}
 
-    private static class DoublureServiceCaractereAleatoire implements ServiceCaractereAleatoire {
+	private static class DoublureServiceCaractereAleatoire implements ServiceCaractereAleatoire {
 
-        @SuppressWarnings("SameParameterValue")
-        public DoublureServiceCaractereAleatoire(char valeur) {
-            this.valeur = valeur;
-        }
+		@SuppressWarnings("SameParameterValue")
+		public DoublureServiceCaractereAleatoire(char valeur) {
+			this.valeur = valeur;
+		}
 
-        @Override
-        public char crée() {
-            return valeur;
-        }
+		@Override
+		public char crée() {
+			return valeur;
+		}
 
-        private final char valeur;
-    }
+		private final char valeur;
+	}
 }

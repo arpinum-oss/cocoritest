@@ -15,15 +15,16 @@
 
 package fr.arpinum.cocoritest;
 
-import fr.arpinum.cocoritest.interne.extensionlangage.Listes;
-import fr.arpinum.cocoritest.specification.Specification;
-import org.junit.Before;
-import org.junit.Test;
+import static fr.arpinum.cocoritest.Affirmations.*;
 
 import java.util.Collection;
 import java.util.List;
 
-import static fr.arpinum.cocoritest.Affirmations.alors;
+import org.junit.Before;
+import org.junit.Test;
+
+import fr.arpinum.cocoritest.interne.extensionlangage.Listes;
+import fr.arpinum.cocoritest.specification.Specification;
 
 public class TestAffirmations {
 

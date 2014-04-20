@@ -18,38 +18,38 @@ package fr.arpinum.cocoritest.interne.affirmation.booleene;
 import fr.arpinum.cocoritest.affirmation.booleene.AffirmationBooleene;
 import fr.arpinum.cocoritest.affirmation.booleene.AffirmationBooleeneAuFeminin;
 import fr.arpinum.cocoritest.interne.affirmation.Affirmation;
-import fr.arpinum.cocoritest.interne.affirmation.objet.AffirmationObjetDeBase;
+import fr.arpinum.cocoritest.interne.affirmation.objet.AffirmationObjetAuMasculinDeBase;
 
 public class AffirmationBooleeneDeBase extends Affirmation implements AffirmationBooleene,
-        AffirmationBooleeneAuFeminin {
+		AffirmationBooleeneAuFeminin {
 
-    public AffirmationBooleeneDeBase(Boolean valeur) {
-        booléen = valeur;
-    }
+	public AffirmationBooleeneDeBase(Boolean valeur) {
+		booléen = valeur;
+	}
 
-    @Override
-    public void estVrai() {
-        affirmeQueLeBooléenEst(true);
-    }
+	@Override
+	public void estVrai() {
+		affirmeQueLeBooléenEst(true);
+	}
 
-    @Override
-    public void estVraie() {
-        estVrai();
-    }
+	@Override
+	public void estVraie() {
+		estVrai();
+	}
 
-    @Override
-    public void estFaux() {
-        affirmeQueLeBooléenEst(false);
-    }
+	@Override
+	public void estFaux() {
+		affirmeQueLeBooléenEst(false);
+	}
 
-    @Override
-    public void estFausse() {
-        estFaux();
-    }
+	@Override
+	public void estFausse() {
+		estFaux();
+	}
 
-    private void affirmeQueLeBooléenEst(boolean attendue) {
-        new AffirmationObjetDeBase<>(booléen).est(attendue);
-    }
+	private void affirmeQueLeBooléenEst(boolean attendue) {
+		new AffirmationObjetAuMasculinDeBase<>(booléen).est(attendue);
+	}
 
-    private final Boolean booléen;
+	private final Boolean booléen;
 }

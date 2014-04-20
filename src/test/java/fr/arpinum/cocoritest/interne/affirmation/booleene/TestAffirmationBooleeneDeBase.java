@@ -15,67 +15,68 @@
 
 package fr.arpinum.cocoritest.interne.affirmation.booleene;
 
-import fr.arpinum.cocoritest.exception.CapteurException;
+import static fr.arpinum.cocoritest.Affirmations.*;
+import static fr.arpinum.cocoritest.FabriquePourTest.*;
+import static fr.arpinum.cocoritest.Outils.*;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import static fr.arpinum.cocoritest.Affirmations.alors;
-import static fr.arpinum.cocoritest.FabriquePourTest.créeSpécificationException;
-import static fr.arpinum.cocoritest.Outils.créeCapteur;
+import fr.arpinum.cocoritest.exception.CapteurException;
 
 public class TestAffirmationBooleeneDeBase {
 
-    @Before
-    public void avantChaqueTest() {
-        capteur = créeCapteur();
-    }
+	@Before
+	public void avantChaqueTest() {
+		capteur = créeCapteur();
+	}
 
-    @Test
-    public void onPeutAffirmerQueVraiEstVrai() {
-        new AffirmationBooleeneDeBase(true).estVrai();
-        new AffirmationBooleeneDeBase(true).estVraie();
-    }
+	@Test
+	public void onPeutAffirmerQueVraiEstVrai() {
+		new AffirmationBooleeneDeBase(true).estVrai();
+		new AffirmationBooleeneDeBase(true).estVraie();
+	}
 
-    @Test
-    public void onNePeutPasAffirmerQueFauxEstVrai() {
-        Exception exception = capteur.capte(() -> new AffirmationBooleeneDeBase(false).estVrai());
+	@Test
+	public void onNePeutPasAffirmerQueFauxEstVrai() {
+		Exception exception = capteur.capte(() -> new AffirmationBooleeneDeBase(false).estVrai());
 
-        alors().cette(exception).respecte(créeSpécificationException("L'objet est <faux> au lieu de <vrai>."));
-    }
+		alors().cette(exception).respecte(créeSpécificationException("L'objet est <faux> au lieu de <vrai>."));
+	}
 
-    @Test
-    public void onNePeutPasAffirmerAuFémininQueFauxEstVrai() {
-        Exception exception = capteur.capte(() -> new AffirmationBooleeneDeBase(false).estVraie());
+	@Test
+	public void onNePeutPasAffirmerAuFémininQueFauxEstVrai() {
+		Exception exception = capteur.capte(() -> new AffirmationBooleeneDeBase(false).estVraie());
 
-        alors().cette(exception).respecte(créeSpécificationException("L'objet est <faux> au lieu de <vrai>."));
-    }
+		alors().cette(exception).respecte(créeSpécificationException("L'objet est <faux> au lieu de <vrai>."));
+	}
 
-    @Test
-    public void onNePeutPasAffirmerQueNullEstVrai() {
-        Exception exception = capteur.capte(() -> new AffirmationBooleeneDeBase(null).estVrai());
+	@Test
+	public void onNePeutPasAffirmerQueNullEstVrai() {
+		Exception exception = capteur.capte(() -> new AffirmationBooleeneDeBase(null).estVrai());
 
-        alors().cette(exception).respecte(créeSpécificationException("L'objet est <nul> au lieu de <vrai>."));
-    }
+		alors().cette(exception).respecte(créeSpécificationException("L'objet est <nul> au lieu de <vrai>."));
+	}
 
-    @Test
-    public void onPeutAffirmerQueFauxEstFaux() {
-        new AffirmationBooleeneDeBase(false).estFaux();
-        new AffirmationBooleeneDeBase(false).estFausse();
-    }
+	@Test
+	public void onPeutAffirmerQueFauxEstFaux() {
+		new AffirmationBooleeneDeBase(false).estFaux();
+		new AffirmationBooleeneDeBase(false).estFausse();
+	}
 
-    @Test
-    public void onNePeutPasAffirmerQueVraiEstFaux() {
-        Exception exception = capteur.capte(() -> new AffirmationBooleeneDeBase(true).estFaux());
+	@Test
+	public void onNePeutPasAffirmerQueVraiEstFaux() {
+		Exception exception = capteur.capte(() -> new AffirmationBooleeneDeBase(true).estFaux());
 
-        alors().cette(exception).respecte(créeSpécificationException("L'objet est <vrai> au lieu de <faux>."));
-    }
+		alors().cette(exception).respecte(créeSpécificationException("L'objet est <vrai> au lieu de <faux>."));
+	}
 
-    @Test
-    public void onNePeutPasAffirmerAuFémininQueVraiEstFaux() {
-        Exception exception = capteur.capte(() -> new AffirmationBooleeneDeBase(true).estFausse());
+	@Test
+	public void onNePeutPasAffirmerAuFémininQueVraiEstFaux() {
+		Exception exception = capteur.capte(() -> new AffirmationBooleeneDeBase(true).estFausse());
 
-        alors().cette(exception).respecte(créeSpécificationException("L'objet est <vrai> au lieu de <faux>."));
-    }
+		alors().cette(exception).respecte(créeSpécificationException("L'objet est <vrai> au lieu de <faux>."));
+	}
 
-    private CapteurException capteur;
+	private CapteurException capteur;
 }

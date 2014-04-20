@@ -20,50 +20,50 @@ import fr.arpinum.cocoritest.specification.Specification;
 /**
  * Représente une affirmation concernant un objet typé.
  *
- * @param <T> le type de l'objet concerné par l'affirmation.
+ * @param <TObjet> le type de l'objet concerné par l'affirmation.
  */
-public interface AffirmationObjet<T> {
+public interface AffirmationObjetAuMasculin<TObjet> {
 
 	/**
 	 * Affirme que l'objet est celui attendu.
 	 *
 	 * @param objetAttendu l'objet attendu.
-	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation
-	 *          si l'affirmation est erronée.
+	 * @return une conjonction pour chaîner d'autres affirmations
+	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
 	 */
-	void est(T objetAttendu);
+	ConjonctionObjetAuMasculin<TObjet> est(TObjet objetAttendu);
 
 	/**
 	 * Affirme que l'objet n'est pas celui attendu.
 	 *
 	 * @param objetNonAttendu l'objet non attendu.
-	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation
-	 *          si l'affirmation est erronée.
+	 * @return une conjonction pour chaîner d'autres affirmations
+	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
 	 */
-	void nEstPas(T objetNonAttendu);
+	ConjonctionObjetAuMasculin<TObjet> nEstPas(TObjet objetNonAttendu);
 
 	/**
 	 * Affirme que l'objet est nul.
 	 *
-	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation
-	 *          si l'affirmation est erronée.
+	 * @return une conjonction pour chaîner d'autres affirmations
+	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
 	 */
-	void estNul();
+	ConjonctionObjetAuMasculin<TObjet> estNul();
 
 	/**
 	 * Affirme que l'objet n'est pas nul.
 	 *
-	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation
-	 *          si l'affirmation est erronée.
+	 * @return une conjonction pour chaîner d'autres affirmations
+	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
 	 */
-	void nEstPasNul();
+	ConjonctionObjetAuMasculin<TObjet> nEstPasNul();
 
 	/**
 	 * Affirme que l'objet respecte la spécification.
 	 *
 	 * @param spécification la spécification à respecter.
-	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation
-	 *          si l'affirmation est erronée.
+	 * @return une conjonction pour chaîner d'autres affirmations
+	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
 	 */
-	void respecte(Specification<T> spécification);
+	ConjonctionObjetAuMasculin<TObjet> respecte(Specification<TObjet> spécification);
 }

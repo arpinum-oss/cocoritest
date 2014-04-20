@@ -15,35 +15,35 @@
 
 package fr.arpinum.cocoritest.interne.specification;
 
-import fr.arpinum.cocoritest.specification.Specification;
-
 import java.util.Collection;
+
+import fr.arpinum.cocoritest.specification.Specification;
 
 public class SpecificationCombinee<T> implements Specification<T> {
 
-    public SpecificationCombinee(Collection<Specification<T>> spécifications) {
-        this.spécifications = spécifications;
-    }
+	public SpecificationCombinee(Collection<Specification<T>> spécifications) {
+		this.spécifications = spécifications;
+	}
 
-    @Override
-    public boolean estInsatisfaitePar(T objet) {
-        for (Specification<T> spécification : spécifications) {
-            if (spécification.estInsatisfaitePar(objet)) {
-                return true;
-            }
-        }
-        return false;
-    }
+	@Override
+	public boolean estInsatisfaitePar(T objet) {
+		for (Specification<T> spécification : spécifications) {
+			if (spécification.estInsatisfaitePar(objet)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
-    @Override
-    public String messageInsatisfactionPour(T objet) {
-        for (Specification<T> spécification : spécifications) {
-            if (spécification.estInsatisfaitePar(objet)) {
-                return spécification.messageInsatisfactionPour(objet);
-            }
-        }
-        return null;
-    }
+	@Override
+	public String messageInsatisfactionPour(T objet) {
+		for (Specification<T> spécification : spécifications) {
+			if (spécification.estInsatisfaitePar(objet)) {
+				return spécification.messageInsatisfactionPour(objet);
+			}
+		}
+		return null;
+	}
 
-    private final Collection<Specification<T>> spécifications;
+	private final Collection<Specification<T>> spécifications;
 }

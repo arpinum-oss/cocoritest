@@ -15,108 +15,108 @@
 
 package fr.arpinum.cocoritest.interne.injection;
 
-import fr.arpinum.cocoritest.exception.CapteurException;
-import fr.arpinum.cocoritest.injection.Injecteur;
-import org.junit.Before;
-import org.junit.Test;
+import static fr.arpinum.cocoritest.Affirmations.*;
+import static fr.arpinum.cocoritest.Outils.*;
+import static fr.arpinum.cocoritest.interne.injection.ClassesPourTest.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static fr.arpinum.cocoritest.Affirmations.alors;
-import static fr.arpinum.cocoritest.Outils.créeCapteur;
-import static fr.arpinum.cocoritest.Outils.créeInjecteur;
-import static fr.arpinum.cocoritest.interne.injection.ClassesPourTest.*;
+import org.junit.Before;
+import org.junit.Test;
+
+import fr.arpinum.cocoritest.exception.CapteurException;
+import fr.arpinum.cocoritest.injection.Injecteur;
 
 public class TestInjecteurDeBase {
 
-    @Before
-    public void avantChaqueTest() {
-        classe = new Classe();
-        injecteur = créeInjecteur(classe);
-        premièreDépendance = new PremiereDependanceSimple();
-        deuxièmeDépendance = new DeuxiemeDependanceSimple();
-    }
+	@Before
+	public void avantChaqueTest() {
+		classe = new Classe();
+		injecteur = créeInjecteur(classe);
+		premièreDépendance = new PremiereDependanceSimple();
+		deuxièmeDépendance = new DeuxiemeDependanceSimple();
+	}
 
-    @Test
-    public void peutInjecterUneDépendance() {
-        injecteur.injecte(premièreDépendance);
+	@Test
+	public void peutInjecterUneDépendance() {
+		injecteur.injecte(premièreDépendance);
 
-        alors().la(classe.premièreDépendance()).est(premièreDépendance);
-    }
+		alors().la(classe.premièreDépendance()).est(premièreDépendance);
+	}
 
-    @Test
-    public void peutInjecterPlusieursDépendances() {
-        injecteur.injecte(premièreDépendance);
-        injecteur.injecte(deuxièmeDépendance);
+	@Test
+	public void peutInjecterPlusieursDépendances() {
+		injecteur.injecte(premièreDépendance);
+		injecteur.injecte(deuxièmeDépendance);
 
-        alors().la(classe.premièreDépendance()).est(premièreDépendance);
-        alors().la(classe.deuxièmeDépendance()).est(deuxièmeDépendance);
-    }
+		alors().la(classe.premièreDépendance()).est(premièreDépendance);
+		alors().la(classe.deuxièmeDépendance()).est(deuxièmeDépendance);
+	}
 
-    @Test
-    public void peutInjecterPlusieursDépendancesDeFaçonFluide() {
-        injecteur.injecte(premièreDépendance).injecte(deuxièmeDépendance);
+	@Test
+	public void peutInjecterPlusieursDépendancesDeFaçonFluide() {
+		injecteur.injecte(premièreDépendance).injecte(deuxièmeDépendance);
 
-        alors().la(classe.premièreDépendance()).est(premièreDépendance);
-        alors().la(classe.deuxièmeDépendance()).est(deuxièmeDépendance);
-    }
+		alors().la(classe.premièreDépendance()).est(premièreDépendance);
+		alors().la(classe.deuxièmeDépendance()).est(deuxièmeDépendance);
+	}
 
-    @Test
-    public void peutInjecterDeuxDépendancesEnUneSeuleFois() {
-        injecteur.injecte(premièreDépendance, deuxièmeDépendance);
+	@Test
+	public void peutInjecterDeuxDépendancesEnUneSeuleFois() {
+		injecteur.injecte(premièreDépendance, deuxièmeDépendance);
 
-        alors().la(classe.premièreDépendance()).est(premièreDépendance);
-        alors().la(classe.deuxièmeDépendance()).est(deuxièmeDépendance);
-    }
+		alors().la(classe.premièreDépendance()).est(premièreDépendance);
+		alors().la(classe.deuxièmeDépendance()).est(deuxièmeDépendance);
+	}
 
-    @Test
-    public void peutInjecterTroisDépendancesEnUneSeuleFois() {
-        TroisiemeDependanceSimple troisièmeDépendance = new TroisiemeDependanceSimple();
+	@Test
+	public void peutInjecterTroisDépendancesEnUneSeuleFois() {
+		TroisiemeDependanceSimple troisièmeDépendance = new TroisiemeDependanceSimple();
 
-        injecteur.injecte(premièreDépendance, deuxièmeDépendance, troisièmeDépendance);
+		injecteur.injecte(premièreDépendance, deuxièmeDépendance, troisièmeDépendance);
 
-        alors().la(classe.premièreDépendance()).est(premièreDépendance);
-        alors().la(classe.deuxièmeDépendance()).est(deuxièmeDépendance);
-        alors().la(classe.troisièmeDépendance()).est(troisièmeDépendance);
-    }
+		alors().la(classe.premièreDépendance()).est(premièreDépendance);
+		alors().la(classe.deuxièmeDépendance()).est(deuxièmeDépendance);
+		alors().la(classe.troisièmeDépendance()).est(troisièmeDépendance);
+	}
 
-    @Test
-    public void peutInjecterUneDépendanceDansUneSousClasse() {
-        SousClasse sousClasse = new SousClasse();
-        Injecteur autreInjecteur = new InjecteurDeBase(sousClasse);
+	@Test
+	public void peutInjecterUneDépendanceDansUneSousClasse() {
+		SousClasse sousClasse = new SousClasse();
+		Injecteur autreInjecteur = new InjecteurDeBase(sousClasse);
 
-        autreInjecteur.injecte(premièreDépendance);
+		autreInjecteur.injecte(premièreDépendance);
 
-        alors().la(sousClasse.premièreDépendance()).est(premièreDépendance);
-    }
+		alors().la(sousClasse.premièreDépendance()).est(premièreDépendance);
+	}
 
-    @Test
-    public void peutInjecterUneDépendanceDansUneSousSousClasse() {
-        SousSousClasse sousSousClasse = new SousSousClasse();
-        Injecteur autreInjecteur = new InjecteurDeBase(sousSousClasse);
+	@Test
+	public void peutInjecterUneDépendanceDansUneSousSousClasse() {
+		SousSousClasse sousSousClasse = new SousSousClasse();
+		Injecteur autreInjecteur = new InjecteurDeBase(sousSousClasse);
 
-        autreInjecteur.injecte(premièreDépendance);
+		autreInjecteur.injecte(premièreDépendance);
 
-        alors().la(sousSousClasse.premièreDépendance()).est(premièreDépendance);
-    }
+		alors().la(sousSousClasse.premièreDépendance()).est(premièreDépendance);
+	}
 
-    @Test
-    public void uneErreurEstLevéeSiLaDépendanceNePeutPasEtreInjectée() {
-        CapteurException capteur = créeCapteur();
-        final List<String> liste = new ArrayList<>();
+	@Test
+	public void uneErreurEstLevéeSiLaDépendanceNePeutPasEtreInjectée() {
+		CapteurException capteur = créeCapteur();
+		final List<String> liste = new ArrayList<>();
 
-        Exception exception = capteur.capte(() -> {
-            injecteur.injecte(liste);
-        });
+		Exception exception = capteur.capte(() -> {
+			injecteur.injecte(liste);
+		});
 
-        alors().cette(exception).nEstPasNulle();
-        alors().ceci(exception instanceof IllegalArgumentException).estVrai();
-        alors().le(exception.getMessage()).est("Impossible d'assigner la dépendance " + liste);
-    }
+		alors().cette(exception).nEstPasNulle();
+		alors().ceci(exception instanceof IllegalArgumentException).estVrai();
+		alors().le(exception.getMessage()).est("Impossible d'assigner la dépendance " + liste);
+	}
 
-    private Injecteur injecteur;
-    private Classe classe;
-    private PremiereDependanceSimple premièreDépendance;
-    private DeuxiemeDependanceSimple deuxièmeDépendance;
+	private Injecteur injecteur;
+	private Classe classe;
+	private PremiereDependanceSimple premièreDépendance;
+	private DeuxiemeDependanceSimple deuxièmeDépendance;
 }

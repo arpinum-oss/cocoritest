@@ -15,80 +15,80 @@
 
 package fr.arpinum.cocoritest.interne.injection;
 
-import fr.arpinum.cocoritest.injection.Injecteur;
-import fr.arpinum.cocoritest.interne.extensionlangage.Listes;
-
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import fr.arpinum.cocoritest.injection.Injecteur;
+import fr.arpinum.cocoritest.interne.extensionlangage.Listes;
+
 public class InjecteurDeBase implements Injecteur {
 
-    public InjecteurDeBase(Object objet) {
-        this.objet = objet;
-    }
+	public InjecteurDeBase(Object objet) {
+		this.objet = objet;
+	}
 
-    @Override
-    public Injecteur injecte(Object dépendance) {
-        List<Field> champsAssignables = récupèreChampsAssignables(dépendance);
-        if (champsAssignables.size() == 0) {
-            throw new IllegalArgumentException(String.format("Impossible d'assigner la dépendance %s", dépendance));
-        }
-        assigneLesChampsAssignables(dépendance, champsAssignables);
-        return this;
-    }
+	@Override
+	public Injecteur injecte(Object dépendance) {
+		List<Field> champsAssignables = récupèreChampsAssignables(dépendance);
+		if (champsAssignables.size() == 0) {
+			throw new IllegalArgumentException(String.format("Impossible d'assigner la dépendance %s", dépendance));
+		}
+		assigneLesChampsAssignables(dépendance, champsAssignables);
+		return this;
+	}
 
-    @Override
-    public void injecte(Object première, Object secondeDépendance) {
-        injecte(première);
-        injecte(secondeDépendance);
-    }
+	@Override
+	public void injecte(Object première, Object secondeDépendance) {
+		injecte(première);
+		injecte(secondeDépendance);
+	}
 
-    @Override
-    public void injecte(Object premièreDépendance, Object deuxièmeDépendance, Object troisèmeDépendance) {
-        injecte(premièreDépendance, deuxièmeDépendance);
-        injecte(troisèmeDépendance);
-    }
+	@Override
+	public void injecte(Object premièreDépendance, Object deuxièmeDépendance, Object troisèmeDépendance) {
+		injecte(premièreDépendance, deuxièmeDépendance);
+		injecte(troisèmeDépendance);
+	}
 
-    private void assigneLesChampsAssignables(Object dépendance, List<Field> champsAssignables) {
-        for (Field champ : champsAssignables) {
-            champ.setAccessible(true);
-            assigne(dépendance, champ);
-        }
-    }
+	private void assigneLesChampsAssignables(Object dépendance, List<Field> champsAssignables) {
+		for (Field champ : champsAssignables) {
+			champ.setAccessible(true);
+			assigne(dépendance, champ);
+		}
+	}
 
-    private void assigne(Object dépendance, Field champ) {
-        try {
-            champ.set(objet, dépendance);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-    }
+	private void assigne(Object dépendance, Field champ) {
+		try {
+			champ.set(objet, dépendance);
+		} catch (IllegalAccessException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
-    private List<Field> récupèreChampsAssignables(Object dépendance) {
-        return récupèreTousLesChamps().stream().filter(champAssignableDepuis(dépendance)).collect(Collectors.toList());
-    }
+	private List<Field> récupèreChampsAssignables(Object dépendance) {
+		return récupèreTousLesChamps().stream().filter(champAssignableDepuis(dépendance)).collect(Collectors.toList());
+	}
 
-    private Predicate<Field> champAssignableDepuis(Object dépendance) {
-        return (champ) -> champ.getType().isAssignableFrom(dépendance.getClass());
-    }
+	private Predicate<Field> champAssignableDepuis(Object dépendance) {
+		return (champ) -> champ.getType().isAssignableFrom(dépendance.getClass());
+	}
 
-    private List<Field> récupèreTousLesChamps() {
-        return récupèreTousLesChampsPour(objet.getClass());
-    }
+	private List<Field> récupèreTousLesChamps() {
+		return récupèreTousLesChampsPour(objet.getClass());
+	}
 
-    private List<Field> récupèreTousLesChampsPour(Class<?> classe) {
-        List<Field> résultat = récupèreTousLesChampsDéclarés(classe);
-        if (classe.getSuperclass() != null) {
-            résultat.addAll(récupèreTousLesChampsPour(classe.getSuperclass()));
-        }
-        return résultat;
-    }
+	private List<Field> récupèreTousLesChampsPour(Class<?> classe) {
+		List<Field> résultat = récupèreTousLesChampsDéclarés(classe);
+		if (classe.getSuperclass() != null) {
+			résultat.addAll(récupèreTousLesChampsPour(classe.getSuperclass()));
+		}
+		return résultat;
+	}
 
-    private List<Field> récupèreTousLesChampsDéclarés(Class<?> classe) {
-        return Listes.cree(classe.getDeclaredFields());
-    }
+	private List<Field> récupèreTousLesChampsDéclarés(Class<?> classe) {
+		return Listes.cree(classe.getDeclaredFields());
+	}
 
-    private final Object objet;
+	private final Object objet;
 }

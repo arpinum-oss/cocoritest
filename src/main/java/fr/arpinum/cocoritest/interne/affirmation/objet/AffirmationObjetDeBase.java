@@ -15,56 +15,20 @@
 
 package fr.arpinum.cocoritest.interne.affirmation.objet;
 
-import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjet;
-import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjetAuFeminin;
 import fr.arpinum.cocoritest.interne.affirmation.Affirmation;
-import fr.arpinum.cocoritest.interne.specification.objet.SpecificationAutreObjet;
-import fr.arpinum.cocoritest.interne.specification.objet.SpecificationObjet;
 import fr.arpinum.cocoritest.specification.Specification;
 
-public class AffirmationObjetDeBase<T> extends Affirmation implements AffirmationObjet<T>,
-        AffirmationObjetAuFeminin<T> {
+abstract class AffirmationObjetDeBase<TObjet> extends Affirmation {
 
-    public AffirmationObjetDeBase(T objet) {
-        this.objet = objet;
-    }
+	AffirmationObjetDeBase(TObjet objet) {
+		this.objet = objet;
+	}
 
-    @Override
-    public void est(T objetAttendu) {
-        respecte(new SpecificationObjet<>(objetAttendu));
-    }
+	void échoueSiSpécificationInsatisfaite(Specification<TObjet> spécification) {
+		if (spécification.estInsatisfaitePar(objet)) {
+			échoue(spécification.messageInsatisfactionPour(objet));
+		}
+	}
 
-    @Override
-    public void nEstPas(T objetNonAttendu) {
-        respecte(new SpecificationAutreObjet<>(objetNonAttendu));
-    }
-
-    @Override
-    public void estNul() {
-        est(null);
-    }
-
-    @Override
-    public void nEstPasNul() {
-        nEstPas(null);
-    }
-
-    @Override
-    public void estNulle() {
-        estNul();
-    }
-
-    @Override
-    public void nEstPasNulle() {
-        nEstPasNul();
-    }
-
-    @Override
-    public void respecte(Specification<T> spécification) {
-        if (spécification.estInsatisfaitePar(objet)) {
-            échoue(spécification.messageInsatisfactionPour(objet));
-        }
-    }
-
-    private final T objet;
+	private final TObjet objet;
 }

@@ -15,28 +15,29 @@
 
 package fr.arpinum.cocoritest.interne.specification.collection;
 
-import fr.arpinum.cocoritest.specification.Specification;
-
 import java.util.Collection;
+
+import fr.arpinum.cocoritest.specification.Specification;
 
 public class SpecificationElementsDansLaCollection<E> implements Specification<Collection<E>> {
 
-    public SpecificationElementsDansLaCollection(Collection<E> élémentsSpécifiés) {
-        this.élémentsSpécifiés = élémentsSpécifiés;
-    }
+	public SpecificationElementsDansLaCollection(Collection<E> élémentsSpécifiés) {
+		this.élémentsSpécifiés = élémentsSpécifiés;
+	}
 
-    @Override
-    public boolean estInsatisfaitePar(Collection<E> éléments) {
-        return éléments == null || !éléments.containsAll(élémentsSpécifiés);
-    }
+	@Override
+	public boolean estInsatisfaitePar(Collection<E> éléments) {
+		return éléments == null || !éléments.containsAll(élémentsSpécifiés);
+	}
 
-    @Override
-    public String messageInsatisfactionPour(Collection<E> éléments) {
-        if (éléments == null) {
-            return String.format("La collection est <nulle>, <%s> ne sont donc pas présents dedans.", élémentsSpécifiés);
-        }
-        return String.format("Les éléments sont <%s> et ne contiennent pas <%s>.", éléments, élémentsSpécifiés);
-    }
+	@Override
+	public String messageInsatisfactionPour(Collection<E> éléments) {
+		if (éléments == null) {
+			return String.format("La collection est <nulle>, <%s> ne sont donc pas présents dedans.",
+					élémentsSpécifiés);
+		}
+		return String.format("Les éléments sont <%s> et ne contiennent pas <%s>.", éléments, élémentsSpécifiés);
+	}
 
-    private final Collection<E> élémentsSpécifiés;
+	private final Collection<E> élémentsSpécifiés;
 }

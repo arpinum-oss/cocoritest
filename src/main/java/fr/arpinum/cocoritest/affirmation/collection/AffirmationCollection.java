@@ -15,83 +15,83 @@
 
 package fr.arpinum.cocoritest.affirmation.collection;
 
+import java.util.Collection;
+
 import fr.arpinum.cocoritest.interne.extensionlangage.Listes;
 import fr.arpinum.cocoritest.specification.Specification;
-
-import java.util.Collection;
 
 /**
  * Représente une affirmation concernant une collection typée.
  *
- * @param <E> le type des éléments de la collection concernée par l'affirmation.
+ * @param <TElement> le type des éléments de la collection concernée par l'affirmation.
  */
-public interface AffirmationCollection<E> {
+public interface AffirmationCollection<TElement> {
 
-    /**
-     * Affirme que les éléments sont ceux attendus.
-     *
-     * @param élémentsAttendus les éléments attendus.
-     * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
-     */
-    void sont(Collection<E> élémentsAttendus);
+	/**
+	 * Affirme que les éléments sont ceux attendus.
+	 *
+	 * @param élémentsAttendus les éléments attendus.
+	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
+	 */
+	void sont(Collection<TElement> élémentsAttendus);
 
-    /**
-     * Affirme que les éléments sont ceux attendus.
-     *
-     * @param élémentsAttendus les éléments attendus.
-     * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
-     */
-    @SuppressWarnings("unchecked")
-    default void sont(E... élémentsAttendus) {
-        sont(Listes.cree(élémentsAttendus));
-    }
+	/**
+	 * Affirme que les éléments sont ceux attendus.
+	 *
+	 * @param élémentsAttendus les éléments attendus.
+	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
+	 */
+	@SuppressWarnings("unchecked")
+	default void sont(TElement... élémentsAttendus) {
+		sont(Listes.cree(élémentsAttendus));
+	}
 
-    /**
-     * Affirme les éléments sont au nombre voulu.
-     *
-     * @param nombre le nombre voulu d'éléments.
-     * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
-     */
-    void sontAuNombreDe(int nombre);
+	/**
+	 * Affirme les éléments sont au nombre voulu.
+	 *
+	 * @param nombre le nombre voulu d'éléments.
+	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
+	 */
+	void sontAuNombreDe(int nombre);
 
-    /**
-     * Affirme qu'au moins un élément existe.
-     *
-     * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
-     */
-    void existent();
+	/**
+	 * Affirme qu'au moins un élément existe.
+	 *
+	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
+	 */
+	void existent();
 
-    /**
-     * Affirme qu'aucun élément n'existe.
-     *
-     * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
-     */
-    void nExistentPas();
+	/**
+	 * Affirme qu'aucun élément n'existe.
+	 *
+	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
+	 */
+	void nExistentPas();
 
-    /**
-     * Affirme que les éléments ont les éléments attendus.
-     *
-     * @param élémentsAttendus les éléments attendus.
-     * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
-     */
-    void ont(Collection<E> élémentsAttendus);
+	/**
+	 * Affirme que les éléments ont les éléments attendus.
+	 *
+	 * @param élémentsAttendus les éléments attendus.
+	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
+	 */
+	void ont(Collection<TElement> élémentsAttendus);
 
-    /**
-     * Affirme que les éléments ont les éléments attendus.
-     *
-     * @param élémentsAttendus les éléments attendus.
-     * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
-     */
-    @SuppressWarnings("unchecked")
-    default void ont(E... élémentsAttendus) {
-        ont(Listes.cree(élémentsAttendus));
-    }
+	/**
+	 * Affirme que les éléments ont les éléments attendus.
+	 *
+	 * @param élémentsAttendus les éléments attendus.
+	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
+	 */
+	@SuppressWarnings("unchecked")
+	default void ont(TElement... élémentsAttendus) {
+		ont(Listes.cree(élémentsAttendus));
+	}
 
-    /**
-     * Affirme que les éléments respectent la spécification.
-     *
-     * @param spécification la spécification à respecter.
-     * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
-     */
-    void respectent(Specification<Collection<E>> spécification);
+	/**
+	 * Affirme que les éléments respectent la spécification.
+	 *
+	 * @param spécification la spécification à respecter.
+	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
+	 */
+	void respectent(Specification<Collection<TElement>> spécification);
 }

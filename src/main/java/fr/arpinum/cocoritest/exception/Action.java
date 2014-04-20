@@ -21,8 +21,8 @@ package fr.arpinum.cocoritest.exception;
 @FunctionalInterface
 public interface Action {
 
-    /**
-     * Exécute l'action. Permet aux implémentations d'héberger l'ensemble des instructions à exécuter.
-     */
-    void exécute();
+	/**
+	 * Exécute l'action. Permet aux implémentations d'héberger l'ensemble des instructions à exécuter.
+	 */
+	void exécute();
 }

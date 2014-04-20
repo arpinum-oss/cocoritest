@@ -15,6 +15,8 @@
 
 package fr.arpinum.cocoritest.interne.affirmation.collection;
 
+import java.util.Collection;
+
 import fr.arpinum.cocoritest.affirmation.collection.AffirmationCollection;
 import fr.arpinum.cocoritest.interne.affirmation.Affirmation;
 import fr.arpinum.cocoritest.interne.specification.collection.SpecificationCollection;
@@ -23,45 +25,43 @@ import fr.arpinum.cocoritest.interne.specification.collection.SpecificationEleme
 import fr.arpinum.cocoritest.interne.specification.collection.SpecificationTailleDeCollection;
 import fr.arpinum.cocoritest.specification.Specification;
 
-import java.util.Collection;
+public class AffirmationCollectionDeBase<TElement> extends Affirmation implements AffirmationCollection<TElement> {
 
-public class AffirmationCollectionDeBase<E> extends Affirmation implements AffirmationCollection<E> {
+	public AffirmationCollectionDeBase(Collection<TElement> éléments) {
+		this.éléments = éléments;
+	}
 
-    public AffirmationCollectionDeBase(Collection<E> éléments) {
-        this.éléments = éléments;
-    }
+	@Override
+	public void sont(Collection<TElement> élémentsAttendus) {
+		respectent(new SpecificationCollection<>(élémentsAttendus));
+	}
 
-    @Override
-    public void sont(Collection<E> élémentsAttendus) {
-        respectent(new SpecificationCollection<>(élémentsAttendus));
-    }
+	@Override
+	public void sontAuNombreDe(int nombre) {
+		respectent(new SpecificationTailleDeCollection<>(nombre));
+	}
 
-    @Override
-    public void sontAuNombreDe(int nombre) {
-        respectent(new SpecificationTailleDeCollection<>(nombre));
-    }
+	@Override
+	public void existent() {
+		respectent(new SpecificationCollectionNonVide<>());
+	}
 
-    @Override
-    public void existent() {
-        respectent(new SpecificationCollectionNonVide<>());
-    }
+	@Override
+	public void nExistentPas() {
+		sontAuNombreDe(0);
+	}
 
-    @Override
-    public void nExistentPas() {
-        sontAuNombreDe(0);
-    }
+	@Override
+	public void ont(Collection<TElement> élémentsAttendus) {
+		respectent(new SpecificationElementsDansLaCollection<>(élémentsAttendus));
+	}
 
-    @Override
-    public void ont(Collection<E> élémentsAttendus) {
-        respectent(new SpecificationElementsDansLaCollection<>(élémentsAttendus));
-    }
+	@Override
+	public void respectent(Specification<Collection<TElement>> spécification) {
+		if (spécification.estInsatisfaitePar(éléments)) {
+			échoue(spécification.messageInsatisfactionPour(éléments));
+		}
+	}
 
-    @Override
-    public void respectent(Specification<Collection<E>> spécification) {
-        if (spécification.estInsatisfaitePar(éléments)) {
-            échoue(spécification.messageInsatisfactionPour(éléments));
-        }
-    }
-
-    private final Collection<E> éléments;
+	private final Collection<TElement> éléments;
 }
