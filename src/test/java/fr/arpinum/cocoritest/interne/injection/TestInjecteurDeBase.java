@@ -71,17 +71,6 @@ public class TestInjecteurDeBase {
 	}
 
 	@Test
-	public void peutInjecterTroisDépendancesEnUneSeuleFois() {
-		TroisiemeDependanceSimple troisièmeDépendance = new TroisiemeDependanceSimple();
-
-		injecteur.injecte(premièreDépendance, deuxièmeDépendance, troisièmeDépendance);
-
-		alors().la(classe.premièreDépendance()).est(premièreDépendance);
-		alors().la(classe.deuxièmeDépendance()).est(deuxièmeDépendance);
-		alors().la(classe.troisièmeDépendance()).est(troisièmeDépendance);
-	}
-
-	@Test
 	public void peutInjecterUneDépendanceDansUneSousClasse() {
 		SousClasse sousClasse = new SousClasse();
 		Injecteur autreInjecteur = new InjecteurDeBase(sousClasse);

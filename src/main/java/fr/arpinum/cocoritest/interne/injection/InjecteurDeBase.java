@@ -30,32 +30,27 @@ public class InjecteurDeBase implements Injecteur {
 	}
 
 	@Override
-	public Injecteur injecte(Object dépendance) {
-		List<Field> champsAssignables = récupèreChampsAssignables(dépendance);
-		if (champsAssignables.size() == 0) {
-			throw new IllegalArgumentException(String.format("Impossible d'assigner la dépendance %s", dépendance));
-		}
-		assigneLesChampsAssignables(dépendance, champsAssignables);
+	public Injecteur injecte(Object... dépendances) {
+		Listes.cree(dépendances).forEach(this::injecte);
 		return this;
 	}
 
-	@Override
-	public void injecte(Object première, Object secondeDépendance) {
-		injecte(première);
-		injecte(secondeDépendance);
-	}
-
-	@Override
-	public void injecte(Object premièreDépendance, Object deuxièmeDépendance, Object troisèmeDépendance) {
-		injecte(premièreDépendance, deuxièmeDépendance);
-		injecte(troisèmeDépendance);
+	private void injecte(Object dépendance) {
+		List<Field> champsAssignables = récupèreChampsAssignables(dépendance);
+		if (champsAssignables.size() == 0) {
+			throw new IllegalArgumentException(String.format("Impossible d'assigner la dépendance %s",
+					dépendance));
+		}
+		assigneLesChampsAssignables(dépendance, champsAssignables);
 	}
 
 	private void assigneLesChampsAssignables(Object dépendance, List<Field> champsAssignables) {
-		for (Field champ : champsAssignables) {
-			champ.setAccessible(true);
-			assigne(dépendance, champ);
-		}
+		champsAssignables.forEach((champ) -> forceLAssignation(dépendance, champ));
+	}
+
+	private void forceLAssignation(Object dépendance, Field champ) {
+		champ.setAccessible(true);
+		assigne(dépendance, champ);
 	}
 
 	private void assigne(Object dépendance, Field champ) {

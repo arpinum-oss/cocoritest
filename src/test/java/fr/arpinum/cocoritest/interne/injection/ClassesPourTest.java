@@ -28,15 +28,10 @@ public abstract class ClassesPourTest {
 
 	}
 
-	static interface TroisiemeDependance {
-
-	}
-
 	static class Classe {
 
 		private final PremiereDependance premiereDépendance = null;
 		private final DeuxiemeDependance deuxièmeDépendance = null;
-		private final TroisiemeDependance troisièmeDépendance = null;
 
 		public PremiereDependance premièreDépendance() {
 			return premiereDépendance;
@@ -44,10 +39,6 @@ public abstract class ClassesPourTest {
 
 		public DeuxiemeDependance deuxièmeDépendance() {
 			return deuxièmeDépendance;
-		}
-
-		public TroisiemeDependance troisièmeDépendance() {
-			return troisièmeDépendance;
 		}
 	}
 
@@ -64,10 +55,6 @@ public abstract class ClassesPourTest {
 	}
 
 	static class DeuxiemeDependanceSimple implements DeuxiemeDependance {
-
-	}
-
-	static class TroisiemeDependanceSimple implements TroisiemeDependance {
 
 	}
 }
