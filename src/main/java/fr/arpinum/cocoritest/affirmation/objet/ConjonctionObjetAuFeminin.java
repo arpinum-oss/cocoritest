@@ -15,6 +15,11 @@
 
 package fr.arpinum.cocoritest.affirmation.objet;
 
+/**
+ * Représente une conjonction utilisée pour chaîner une affirmation de façon fluide.
+ *
+ * @param <TObjet> le type de l'objet concerné par l'affirmation.
+ */
 public interface ConjonctionObjetAuFeminin<TObjet> {
 
 	AffirmationObjetAuFeminin<TObjet> et();
