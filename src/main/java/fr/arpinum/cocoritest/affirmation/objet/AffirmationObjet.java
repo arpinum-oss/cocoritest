@@ -15,28 +15,43 @@
 
 package fr.arpinum.cocoritest.affirmation.objet;
 
-import fr.arpinum.cocoritest.conjonction.objet.ConjonctionObjetAuFeminin;
+import fr.arpinum.cocoritest.conjonction.objet.ConjonctionObjet;
+import fr.arpinum.cocoritest.specification.Specification;
 
 /**
- * Représente une affirmation concernant un objet typé. L'affirmation est au féminin.
+ * Représente une affirmation concernant un objet typé.
  *
- * @param <TObjet> le type de l'objet concerné par l'affirmation.
+ * @param <TObjet>       le type de l'objet concerné par l'affirmation.
+ * @param <TConjonction> le type de conjonction utilisé pour chaîner les affirmations.
  */
-public interface AffirmationObjetAuFeminin<TObjet> extends AffirmationObjet<TObjet, ConjonctionObjetAuFeminin<TObjet>> {
+public interface AffirmationObjet<TObjet, TConjonction extends ConjonctionObjet<TObjet,
+		? extends AffirmationObjet<TObjet,
+				TConjonction>>> {
 
 	/**
-	 * Affirme que l'objet est nul.
+	 * Affirme que l'objet est celui attendu.
 	 *
+	 * @param objetAttendu l'objet attendu.
 	 * @return une conjonction pour chaîner d'autres affirmations
 	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
 	 */
-	ConjonctionObjetAuFeminin<TObjet> estNulle();
+	TConjonction est(TObjet objetAttendu);
 
 	/**
-	 * Affirme que l'objet n'est pas nul.
+	 * Affirme que l'objet n'est pas celui attendu.
 	 *
+	 * @param objetNonAttendu l'objet non attendu.
 	 * @return une conjonction pour chaîner d'autres affirmations
 	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
 	 */
-	ConjonctionObjetAuFeminin<TObjet> nEstPasNulle();
+	TConjonction nEstPas(TObjet objetNonAttendu);
+
+	/**
+	 * Affirme que l'objet respecte la spécification.
+	 *
+	 * @param spécification la spécification à respecter.
+	 * @return une conjonction pour chaîner d'autres affirmations
+	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
+	 */
+	TConjonction respecte(Specification<TObjet> spécification);
 }

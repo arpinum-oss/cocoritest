@@ -16,12 +16,10 @@
 package fr.arpinum.cocoritest.interne.affirmation.objet;
 
 import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjetAuMasculin;
-import fr.arpinum.cocoritest.affirmation.objet.ConjonctionObjetAuMasculin;
-import fr.arpinum.cocoritest.interne.specification.objet.SpecificationAutreObjet;
-import fr.arpinum.cocoritest.interne.specification.objet.SpecificationObjet;
-import fr.arpinum.cocoritest.specification.Specification;
+import fr.arpinum.cocoritest.conjonction.objet.ConjonctionObjetAuMasculin;
 
-public class AffirmationObjetAuMasculinDeBase<TObjet> extends AffirmationObjetDeBase<TObjet> implements
+public class AffirmationObjetAuMasculinDeBase<TObjet> extends AffirmationObjetDeBase<TObjet,
+		ConjonctionObjetAuMasculin<TObjet>> implements
 		AffirmationObjetAuMasculin<TObjet> {
 
 	public AffirmationObjetAuMasculinDeBase(TObjet objet) {
@@ -34,23 +32,12 @@ public class AffirmationObjetAuMasculinDeBase<TObjet> extends AffirmationObjetDe
 	}
 
 	@Override
-	public ConjonctionObjetAuMasculin<TObjet> est(TObjet objetAttendu) {
-		return respecte(new SpecificationObjet<>(objetAttendu));
-	}
-
-	@Override
 	public ConjonctionObjetAuMasculin<TObjet> nEstPasNul() {
 		return nEstPas(null);
 	}
 
 	@Override
-	public ConjonctionObjetAuMasculin<TObjet> nEstPas(TObjet objetNonAttendu) {
-		return respecte(new SpecificationAutreObjet<>(objetNonAttendu));
-	}
-
-	@Override
-	public ConjonctionObjetAuMasculin<TObjet> respecte(Specification<TObjet> spécification) {
-		échoueSiSpécificationInsatisfaite(spécification);
+	protected ConjonctionObjetAuMasculin<TObjet> créeConjonction() {
 		return new ConjonctionObjetAuMasculinDeBase<>(this);
 	}
 }

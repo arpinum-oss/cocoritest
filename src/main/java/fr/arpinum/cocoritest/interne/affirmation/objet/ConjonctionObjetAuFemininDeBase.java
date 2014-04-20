@@ -16,7 +16,7 @@
 package fr.arpinum.cocoritest.interne.affirmation.objet;
 
 import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjetAuFeminin;
-import fr.arpinum.cocoritest.affirmation.objet.ConjonctionObjetAuFeminin;
+import fr.arpinum.cocoritest.conjonction.objet.ConjonctionObjetAuFeminin;
 
 public class ConjonctionObjetAuFemininDeBase<TObjet> implements ConjonctionObjetAuFeminin<TObjet> {
 

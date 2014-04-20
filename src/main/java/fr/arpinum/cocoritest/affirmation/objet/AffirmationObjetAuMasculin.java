@@ -15,32 +15,15 @@
 
 package fr.arpinum.cocoritest.affirmation.objet;
 
-import fr.arpinum.cocoritest.specification.Specification;
+import fr.arpinum.cocoritest.conjonction.objet.ConjonctionObjetAuMasculin;
 
 /**
  * Représente une affirmation concernant un objet typé.
  *
  * @param <TObjet> le type de l'objet concerné par l'affirmation.
  */
-public interface AffirmationObjetAuMasculin<TObjet> {
-
-	/**
-	 * Affirme que l'objet est celui attendu.
-	 *
-	 * @param objetAttendu l'objet attendu.
-	 * @return une conjonction pour chaîner d'autres affirmations
-	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
-	 */
-	ConjonctionObjetAuMasculin<TObjet> est(TObjet objetAttendu);
-
-	/**
-	 * Affirme que l'objet n'est pas celui attendu.
-	 *
-	 * @param objetNonAttendu l'objet non attendu.
-	 * @return une conjonction pour chaîner d'autres affirmations
-	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
-	 */
-	ConjonctionObjetAuMasculin<TObjet> nEstPas(TObjet objetNonAttendu);
+public interface AffirmationObjetAuMasculin<TObjet> extends AffirmationObjet<TObjet,
+		ConjonctionObjetAuMasculin<TObjet>> {
 
 	/**
 	 * Affirme que l'objet est nul.
@@ -57,13 +40,4 @@ public interface AffirmationObjetAuMasculin<TObjet> {
 	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
 	 */
 	ConjonctionObjetAuMasculin<TObjet> nEstPasNul();
-
-	/**
-	 * Affirme que l'objet respecte la spécification.
-	 *
-	 * @param spécification la spécification à respecter.
-	 * @return une conjonction pour chaîner d'autres affirmations
-	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
-	 */
-	ConjonctionObjetAuMasculin<TObjet> respecte(Specification<TObjet> spécification);
 }

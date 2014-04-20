@@ -13,21 +13,18 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.interne.affirmation.objet;
+package fr.arpinum.cocoritest.conjonction.objet;
 
-import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjetAuMasculin;
-import fr.arpinum.cocoritest.conjonction.objet.ConjonctionObjetAuMasculin;
+import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjet;
 
-public class ConjonctionObjetAuMasculinDeBase<TObjet> implements ConjonctionObjetAuMasculin<TObjet> {
+/**
+ * Représente une conjonction utilisée pour chaîner une affirmation de façon fluide.
+ *
+ * @param <TObjet>       le type de l'objet concerné par l'affirmation.
+ * @param <TAffirmation> le type d'affirmation.
+ */
+public interface ConjonctionObjet<TObjet, TAffirmation extends AffirmationObjet<TObjet,
+		? extends ConjonctionObjet<TObjet, TAffirmation>>> {
 
-	public ConjonctionObjetAuMasculinDeBase(AffirmationObjetAuMasculin<TObjet> affirmation) {
-		this.affirmation = affirmation;
-	}
-
-	@Override
-	public AffirmationObjetAuMasculin<TObjet> et() {
-		return affirmation;
-	}
-
-	private final AffirmationObjetAuMasculin<TObjet> affirmation;
+	TAffirmation et();
 }

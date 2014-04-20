@@ -15,13 +15,35 @@
 
 package fr.arpinum.cocoritest.interne.affirmation.objet;
 
+import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjet;
+import fr.arpinum.cocoritest.conjonction.objet.ConjonctionObjet;
 import fr.arpinum.cocoritest.interne.affirmation.Affirmation;
+import fr.arpinum.cocoritest.interne.specification.objet.SpecificationAutreObjet;
+import fr.arpinum.cocoritest.interne.specification.objet.SpecificationObjet;
 import fr.arpinum.cocoritest.specification.Specification;
 
-abstract class AffirmationObjetDeBase<TObjet> extends Affirmation {
+abstract class AffirmationObjetDeBase<TObjet, TConjonction extends ConjonctionObjet<TObjet,
+		? extends AffirmationObjet<TObjet, TConjonction>>> extends Affirmation implements
+		AffirmationObjet<TObjet, TConjonction> {
 
 	AffirmationObjetDeBase(TObjet objet) {
 		this.objet = objet;
+	}
+
+	@Override
+	public TConjonction est(TObjet objetAttendu) {
+		return respecte(new SpecificationObjet<>(objetAttendu));
+	}
+
+	@Override
+	public TConjonction nEstPas(TObjet objetNonAttendu) {
+		return respecte(new SpecificationAutreObjet<>(objetNonAttendu));
+	}
+
+	@Override
+	public TConjonction respecte(Specification<TObjet> spécification) {
+		échoueSiSpécificationInsatisfaite(spécification);
+		return créeConjonction();
 	}
 
 	void échoueSiSpécificationInsatisfaite(Specification<TObjet> spécification) {
@@ -29,6 +51,8 @@ abstract class AffirmationObjetDeBase<TObjet> extends Affirmation {
 			échoue(spécification.messageInsatisfactionPour(objet));
 		}
 	}
+
+	protected abstract TConjonction créeConjonction();
 
 	private final TObjet objet;
 }
