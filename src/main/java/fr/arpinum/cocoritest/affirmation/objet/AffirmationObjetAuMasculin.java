@@ -15,7 +15,7 @@
 
 package fr.arpinum.cocoritest.affirmation.objet;
 
-import fr.arpinum.cocoritest.conjonction.objet.ConjonctionObjetAuMasculin;
+import fr.arpinum.cocoritest.conjonction.Conjonction;
 
 /**
  * Représente une affirmation concernant un objet typé.
@@ -23,7 +23,7 @@ import fr.arpinum.cocoritest.conjonction.objet.ConjonctionObjetAuMasculin;
  * @param <TObjet> le type de l'objet concerné par l'affirmation.
  */
 public interface AffirmationObjetAuMasculin<TObjet> extends AffirmationObjet<TObjet,
-		ConjonctionObjetAuMasculin<TObjet>> {
+		Conjonction<AffirmationObjetAuMasculin<TObjet>>> {
 
 	/**
 	 * Affirme que l'objet est nul.
@@ -31,7 +31,7 @@ public interface AffirmationObjetAuMasculin<TObjet> extends AffirmationObjet<TOb
 	 * @return une conjonction pour chaîner d'autres affirmations
 	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
 	 */
-	ConjonctionObjetAuMasculin<TObjet> estNul();
+	Conjonction<AffirmationObjetAuMasculin<TObjet>> estNul();
 
 	/**
 	 * Affirme que l'objet n'est pas nul.
@@ -39,5 +39,5 @@ public interface AffirmationObjetAuMasculin<TObjet> extends AffirmationObjet<TOb
 	 * @return une conjonction pour chaîner d'autres affirmations
 	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
 	 */
-	ConjonctionObjetAuMasculin<TObjet> nEstPasNul();
+	Conjonction<AffirmationObjetAuMasculin<TObjet>> nEstPasNul();
 }

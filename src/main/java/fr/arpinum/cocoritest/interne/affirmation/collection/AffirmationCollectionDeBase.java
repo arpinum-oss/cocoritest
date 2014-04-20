@@ -18,7 +18,7 @@ package fr.arpinum.cocoritest.interne.affirmation.collection;
 import java.util.Collection;
 
 import fr.arpinum.cocoritest.affirmation.collection.AffirmationCollection;
-import fr.arpinum.cocoritest.conjonction.collection.ConjonctionCollection;
+import fr.arpinum.cocoritest.conjonction.Conjonction;
 import fr.arpinum.cocoritest.interne.affirmation.Affirmation;
 import fr.arpinum.cocoritest.interne.specification.collection.SpecificationCollection;
 import fr.arpinum.cocoritest.interne.specification.collection.SpecificationCollectionNonVide;
@@ -33,32 +33,32 @@ public class AffirmationCollectionDeBase<TElement> extends Affirmation implement
 	}
 
 	@Override
-	public ConjonctionCollection<TElement> sont(Collection<TElement> élémentsAttendus) {
+	public Conjonction<AffirmationCollection<TElement>> sont(Collection<TElement> élémentsAttendus) {
 		return respectent(new SpecificationCollection<>(élémentsAttendus));
 	}
 
 	@Override
-	public ConjonctionCollection<TElement> sontAuNombreDe(int nombre) {
+	public Conjonction<AffirmationCollection<TElement>> sontAuNombreDe(int nombre) {
 		return respectent(new SpecificationTailleDeCollection<>(nombre));
 	}
 
 	@Override
-	public ConjonctionCollection<TElement> existent() {
+	public Conjonction<AffirmationCollection<TElement>> existent() {
 		return respectent(new SpecificationCollectionNonVide<>());
 	}
 
 	@Override
-	public ConjonctionCollection<TElement> nExistentPas() {
+	public Conjonction<AffirmationCollection<TElement>> nExistentPas() {
 		return sontAuNombreDe(0);
 	}
 
 	@Override
-	public ConjonctionCollection<TElement> ont(Collection<TElement> élémentsAttendus) {
+	public Conjonction<AffirmationCollection<TElement>> ont(Collection<TElement> élémentsAttendus) {
 		return respectent(new SpecificationElementsDansLaCollection<>(élémentsAttendus));
 	}
 
 	@Override
-	public ConjonctionCollection<TElement> respectent(Specification<Collection<TElement>> spécification) {
+	public Conjonction<AffirmationCollection<TElement>> respectent(Specification<Collection<TElement>> spécification) {
 		échoueSiSpécificationInsatisfaite(spécification);
 		return () -> this;
 	}

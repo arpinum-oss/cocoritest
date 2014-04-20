@@ -83,7 +83,7 @@ public class TestAffirmationCollectionDeBase {
 
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionNullePossedeUnQuelconqueNombreDEléments() {
-		List<Object> éléments = élémentsNuls();
+		List<Object> éléments = ELEMENTS_NULS;
 
 		Exception exception = capteur.capte(() -> alors().les(éléments).sontAuNombreDe(10));
 
@@ -107,7 +107,7 @@ public class TestAffirmationCollectionDeBase {
 
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionNulleEstNonVide() {
-		Exception exception = capteur.capte(() -> alors().les(élémentsNuls()).existent());
+		Exception exception = capteur.capte(() -> alors().les(ELEMENTS_NULS).existent());
 
 		String messageAttendu = "La collection est <nulle> et ne possède donc pas d'éléments.";
 		alors().cette(exception).respecte(créeSpécificationException(messageAttendu));
@@ -130,7 +130,7 @@ public class TestAffirmationCollectionDeBase {
 
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionNulleEstVide() {
-		Exception exception = capteur.capte(() -> alors().les(élémentsNuls()).nExistentPas());
+		Exception exception = capteur.capte(() -> alors().les(ELEMENTS_NULS).nExistentPas());
 
 		String messageAttendu = "La collection est <nulle> et ne possède donc pas un nombre d'éléments de <0>.";
 		alors().cette(exception).respecte(créeSpécificationException(messageAttendu));
@@ -162,7 +162,7 @@ public class TestAffirmationCollectionDeBase {
 
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionNulleAUnElément() {
-		Exception exception = capteur.capte(() -> alors().les(élémentsNuls()).ont(13, 12));
+		Exception exception = capteur.capte(() -> alors().les(ELEMENTS_NULS).ont(13, 12));
 
 		String messageAttendu = "La collection est <nulle>, <[13, 12]> ne sont donc pas présents dedans.";
 		alors().cette(exception).respecte(créeSpécificationException(messageAttendu));
@@ -197,9 +197,7 @@ public class TestAffirmationCollectionDeBase {
 				.et().respectent(créeSpécificationSatisfaite());
 	}
 
-	private static List<Object> élémentsNuls() {
-		return null;
-	}
+	private static final List<Object> ELEMENTS_NULS = null;
 
 	private CapteurExceptionDeBase capteur;
 }

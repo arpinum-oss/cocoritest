@@ -16,10 +16,10 @@
 package fr.arpinum.cocoritest.interne.affirmation.objet;
 
 import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjetAuMasculin;
-import fr.arpinum.cocoritest.conjonction.objet.ConjonctionObjetAuMasculin;
+import fr.arpinum.cocoritest.conjonction.Conjonction;
 
 public class AffirmationObjetAuMasculinDeBase<TObjet> extends AffirmationObjetDeBase<TObjet,
-		ConjonctionObjetAuMasculin<TObjet>> implements
+		Conjonction<AffirmationObjetAuMasculin<TObjet>>> implements
 		AffirmationObjetAuMasculin<TObjet> {
 
 	public AffirmationObjetAuMasculinDeBase(TObjet objet) {
@@ -27,17 +27,17 @@ public class AffirmationObjetAuMasculinDeBase<TObjet> extends AffirmationObjetDe
 	}
 
 	@Override
-	public ConjonctionObjetAuMasculin<TObjet> estNul() {
+	public Conjonction<AffirmationObjetAuMasculin<TObjet>> estNul() {
 		return est(null);
 	}
 
 	@Override
-	public ConjonctionObjetAuMasculin<TObjet> nEstPasNul() {
+	public Conjonction<AffirmationObjetAuMasculin<TObjet>> nEstPasNul() {
 		return nEstPas(null);
 	}
 
 	@Override
-	protected ConjonctionObjetAuMasculin<TObjet> créeConjonction() {
+	protected Conjonction<AffirmationObjetAuMasculin<TObjet>> créeConjonction() {
 		return () -> this;
 	}
 }

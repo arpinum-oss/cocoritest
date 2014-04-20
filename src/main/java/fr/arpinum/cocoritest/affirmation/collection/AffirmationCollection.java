@@ -17,7 +17,7 @@ package fr.arpinum.cocoritest.affirmation.collection;
 
 import java.util.Collection;
 
-import fr.arpinum.cocoritest.conjonction.collection.ConjonctionCollection;
+import fr.arpinum.cocoritest.conjonction.Conjonction;
 import fr.arpinum.cocoritest.interne.extensionlangage.Listes;
 import fr.arpinum.cocoritest.specification.Specification;
 
@@ -34,7 +34,7 @@ public interface AffirmationCollection<TElement> {
 	 * @param élémentsAttendus les éléments attendus.
 	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
 	 */
-	ConjonctionCollection<TElement> sont(Collection<TElement> élémentsAttendus);
+	Conjonction<AffirmationCollection<TElement>> sont(Collection<TElement> élémentsAttendus);
 
 	/**
 	 * Affirme que les éléments sont ceux attendus.
@@ -43,7 +43,7 @@ public interface AffirmationCollection<TElement> {
 	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
 	 */
 	@SuppressWarnings("unchecked")
-	default ConjonctionCollection<TElement> sont(TElement... élémentsAttendus) {
+	default Conjonction<AffirmationCollection<TElement>> sont(TElement... élémentsAttendus) {
 		return sont(Listes.cree(élémentsAttendus));
 	}
 
@@ -53,21 +53,21 @@ public interface AffirmationCollection<TElement> {
 	 * @param nombre le nombre voulu d'éléments.
 	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
 	 */
-	ConjonctionCollection<TElement> sontAuNombreDe(int nombre);
+	Conjonction<AffirmationCollection<TElement>> sontAuNombreDe(int nombre);
 
 	/**
 	 * Affirme qu'au moins un élément existe.
 	 *
 	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
 	 */
-	ConjonctionCollection<TElement> existent();
+	Conjonction<AffirmationCollection<TElement>> existent();
 
 	/**
 	 * Affirme qu'aucun élément n'existe.
 	 *
 	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
 	 */
-	ConjonctionCollection<TElement> nExistentPas();
+	Conjonction<AffirmationCollection<TElement>> nExistentPas();
 
 	/**
 	 * Affirme que les éléments ont les éléments attendus.
@@ -75,7 +75,7 @@ public interface AffirmationCollection<TElement> {
 	 * @param élémentsAttendus les éléments attendus.
 	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
 	 */
-	ConjonctionCollection<TElement> ont(Collection<TElement> élémentsAttendus);
+	Conjonction<AffirmationCollection<TElement>> ont(Collection<TElement> élémentsAttendus);
 
 	/**
 	 * Affirme que les éléments ont les éléments attendus.
@@ -84,7 +84,7 @@ public interface AffirmationCollection<TElement> {
 	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
 	 */
 	@SuppressWarnings("unchecked")
-	default ConjonctionCollection<TElement> ont(TElement... élémentsAttendus) {
+	default Conjonction<AffirmationCollection<TElement>> ont(TElement... élémentsAttendus) {
 		return ont(Listes.cree(élémentsAttendus));
 	}
 
@@ -94,5 +94,5 @@ public interface AffirmationCollection<TElement> {
 	 * @param spécification la spécification à respecter.
 	 * @throws fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation si l'affirmation est erronée.
 	 */
-	ConjonctionCollection<TElement> respectent(Specification<Collection<TElement>> spécification);
+	Conjonction<AffirmationCollection<TElement>> respectent(Specification<Collection<TElement>> spécification);
 }

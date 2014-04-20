@@ -15,7 +15,7 @@
 
 package fr.arpinum.cocoritest.affirmation.objet;
 
-import fr.arpinum.cocoritest.conjonction.objet.ConjonctionObjet;
+import fr.arpinum.cocoritest.conjonction.Conjonction;
 import fr.arpinum.cocoritest.specification.Specification;
 
 /**
@@ -24,9 +24,8 @@ import fr.arpinum.cocoritest.specification.Specification;
  * @param <TObjet>       le type de l'objet concerné par l'affirmation.
  * @param <TConjonction> le type de conjonction utilisé pour chaîner les affirmations.
  */
-public interface AffirmationObjet<TObjet, TConjonction extends ConjonctionObjet<TObjet,
-		? extends AffirmationObjet<TObjet,
-				TConjonction>>> {
+public interface AffirmationObjet<TObjet, TConjonction extends Conjonction<? extends AffirmationObjet<TObjet,
+		? extends TConjonction>>> {
 
 	/**
 	 * Affirme que l'objet est celui attendu.

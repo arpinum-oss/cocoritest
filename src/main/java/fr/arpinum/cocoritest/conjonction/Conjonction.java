@@ -13,15 +13,15 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.conjonction.objet;
-
-import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjetAuFeminin;
+package fr.arpinum.cocoritest.conjonction;
 
 /**
- * Représente une conjonction utilisée pour chaîner une affirmation au féminin de façon fluide.
+ * Représente une conjonction utilisée pour chaîner une affirmation de façon fluide.
  *
- * @param <TObjet> le type de l'objet concerné par l'affirmation.
+ * @param <T> le type d'affirmation.
  */
-public interface ConjonctionObjetAuFeminin<TObjet> extends ConjonctionObjet<TObjet, AffirmationObjetAuFeminin<TObjet>> {
+@FunctionalInterface
+public interface Conjonction<T> {
 
+	T et();
 }

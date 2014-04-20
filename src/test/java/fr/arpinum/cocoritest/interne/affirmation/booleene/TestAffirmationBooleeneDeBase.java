@@ -33,20 +33,20 @@ public class TestAffirmationBooleeneDeBase {
 
 	@Test
 	public void onPeutAffirmerQueVraiEstVrai() {
-		alors().le(booléenVrai()).estVrai();
-		alors().la(valeurVraie()).estVraie();
+		alors().le(BOOLEEN_VRAI).estVrai();
+		alors().la(VALEUR_VRAIE).estVraie();
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQueFauxEstVrai() {
-		Exception exception = capteur.capte(() -> alors().le(booléenFaux()).estVrai());
+		Exception exception = capteur.capte(() -> alors().le(BOOLEEN_FAUX).estVrai());
 
 		alors().cette(exception).respecte(créeSpécificationException("L'objet est <faux> au lieu de <vrai>."));
 	}
 
 	@Test
 	public void onNePeutPasAffirmerAuFémininQueFauxEstVrai() {
-		Exception exception = capteur.capte(() -> alors().la(valeurFausse()).estVraie());
+		Exception exception = capteur.capte(() -> alors().la(VALEUR_FAUSSE).estVraie());
 
 		alors().cette(exception).respecte(créeSpécificationException("L'objet est <faux> au lieu de <vrai>."));
 	}
@@ -59,48 +59,33 @@ public class TestAffirmationBooleeneDeBase {
 	}
 
 	private AffirmationBooleeneDeBase alorsLeBooléenNul() {
-		return new AffirmationBooleeneDeBase(booléenNul());
+		return new AffirmationBooleeneDeBase(BOOLEEN_NUL);
 	}
 
 	@Test
 	public void onPeutAffirmerQueFauxEstFaux() {
-		alors().le(booléenFaux()).estFaux();
-		alors().la(valeurFausse()).estFausse();
+		alors().le(BOOLEEN_FAUX).estFaux();
+		alors().la(VALEUR_FAUSSE).estFausse();
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQueVraiEstFaux() {
-		Exception exception = capteur.capte(() -> alors().le(booléenVrai()).estFaux());
+		Exception exception = capteur.capte(() -> alors().le(BOOLEEN_VRAI).estFaux());
 
 		alors().cette(exception).respecte(créeSpécificationException("L'objet est <vrai> au lieu de <faux>."));
 	}
 
 	@Test
 	public void onNePeutPasAffirmerAuFémininQueVraiEstFaux() {
-		Exception exception = capteur.capte(() -> alors().la(valeurVraie()).estFausse());
+		Exception exception = capteur.capte(() -> alors().la(VALEUR_VRAIE).estFausse());
 
 		alors().cette(exception).respecte(créeSpécificationException("L'objet est <vrai> au lieu de <faux>."));
 	}
 
-	private boolean booléenVrai() {
-		return true;
-	}
-
-	private boolean valeurVraie() {
-		return true;
-	}
-
-	private boolean booléenFaux() {
-		return false;
-	}
-
-	private boolean valeurFausse() {
-		return false;
-	}
-
-	private Boolean booléenNul() {
-		return null;
-	}
-
+	private static final boolean BOOLEEN_VRAI = true;
+	private static final boolean VALEUR_VRAIE = true;
+	private static final boolean BOOLEEN_FAUX = false;
+	private static final boolean VALEUR_FAUSSE = false;
+	private static final Boolean BOOLEEN_NUL = null;
 	private CapteurException capteur;
 }

@@ -16,14 +16,14 @@
 package fr.arpinum.cocoritest.interne.affirmation.objet;
 
 import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjet;
-import fr.arpinum.cocoritest.conjonction.objet.ConjonctionObjet;
+import fr.arpinum.cocoritest.conjonction.Conjonction;
 import fr.arpinum.cocoritest.interne.affirmation.Affirmation;
 import fr.arpinum.cocoritest.interne.specification.objet.SpecificationAutreObjet;
 import fr.arpinum.cocoritest.interne.specification.objet.SpecificationObjet;
 import fr.arpinum.cocoritest.specification.Specification;
 
-abstract class AffirmationObjetDeBase<TObjet, TConjonction extends ConjonctionObjet<TObjet,
-		? extends AffirmationObjet<TObjet, TConjonction>>> extends Affirmation implements
+abstract class AffirmationObjetDeBase<TObjet, TConjonction extends Conjonction<? extends AffirmationObjet<TObjet,
+		TConjonction>>> extends Affirmation implements
 		AffirmationObjet<TObjet, TConjonction> {
 
 	AffirmationObjetDeBase(TObjet objet) {
