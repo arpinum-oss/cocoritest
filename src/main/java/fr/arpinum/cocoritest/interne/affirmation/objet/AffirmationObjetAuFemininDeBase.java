@@ -17,7 +17,6 @@ package fr.arpinum.cocoritest.interne.affirmation.objet;
 
 import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjetAuFeminin;
 import fr.arpinum.cocoritest.conjonction.objet.ConjonctionObjetAuFeminin;
-import fr.arpinum.cocoritest.interne.conjonction.objet.ConjonctionObjetAuFemininDeBase;
 
 public class AffirmationObjetAuFemininDeBase<TObjet> extends AffirmationObjetDeBase<TObjet,
 		ConjonctionObjetAuFeminin<TObjet>> implements
@@ -39,6 +38,6 @@ public class AffirmationObjetAuFemininDeBase<TObjet> extends AffirmationObjetDeB
 
 	@Override
 	protected ConjonctionObjetAuFeminin<TObjet> créeConjonction() {
-		return new ConjonctionObjetAuFemininDeBase<>(this);
+		return () -> this;
 	}
 }

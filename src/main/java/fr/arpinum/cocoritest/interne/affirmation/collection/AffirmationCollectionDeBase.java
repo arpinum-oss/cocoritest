@@ -20,7 +20,6 @@ import java.util.Collection;
 import fr.arpinum.cocoritest.affirmation.collection.AffirmationCollection;
 import fr.arpinum.cocoritest.conjonction.collection.ConjonctionCollection;
 import fr.arpinum.cocoritest.interne.affirmation.Affirmation;
-import fr.arpinum.cocoritest.interne.conjonction.collection.ConjonctionCollectionDeBase;
 import fr.arpinum.cocoritest.interne.specification.collection.SpecificationCollection;
 import fr.arpinum.cocoritest.interne.specification.collection.SpecificationCollectionNonVide;
 import fr.arpinum.cocoritest.interne.specification.collection.SpecificationElementsDansLaCollection;
@@ -61,7 +60,7 @@ public class AffirmationCollectionDeBase<TElement> extends Affirmation implement
 	@Override
 	public ConjonctionCollection<TElement> respectent(Specification<Collection<TElement>> spécification) {
 		échoueSiSpécificationInsatisfaite(spécification);
-		return new ConjonctionCollectionDeBase<>(this);
+		return () -> this;
 	}
 
 	private void échoueSiSpécificationInsatisfaite(Specification<Collection<TElement>> spécification) {
