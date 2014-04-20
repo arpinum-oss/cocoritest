@@ -18,7 +18,9 @@ package fr.arpinum.cocoritest.interne.affirmation.collection;
 import java.util.Collection;
 
 import fr.arpinum.cocoritest.affirmation.collection.AffirmationCollection;
+import fr.arpinum.cocoritest.conjonction.collection.ConjonctionCollection;
 import fr.arpinum.cocoritest.interne.affirmation.Affirmation;
+import fr.arpinum.cocoritest.interne.conjonction.collection.ConjonctionCollectionDeBase;
 import fr.arpinum.cocoritest.interne.specification.collection.SpecificationCollection;
 import fr.arpinum.cocoritest.interne.specification.collection.SpecificationCollectionNonVide;
 import fr.arpinum.cocoritest.interne.specification.collection.SpecificationElementsDansLaCollection;
@@ -32,32 +34,37 @@ public class AffirmationCollectionDeBase<TElement> extends Affirmation implement
 	}
 
 	@Override
-	public void sont(Collection<TElement> élémentsAttendus) {
-		respectent(new SpecificationCollection<>(élémentsAttendus));
+	public ConjonctionCollection<TElement> sont(Collection<TElement> élémentsAttendus) {
+		return respectent(new SpecificationCollection<>(élémentsAttendus));
 	}
 
 	@Override
-	public void sontAuNombreDe(int nombre) {
-		respectent(new SpecificationTailleDeCollection<>(nombre));
+	public ConjonctionCollection<TElement> sontAuNombreDe(int nombre) {
+		return respectent(new SpecificationTailleDeCollection<>(nombre));
 	}
 
 	@Override
-	public void existent() {
-		respectent(new SpecificationCollectionNonVide<>());
+	public ConjonctionCollection<TElement> existent() {
+		return respectent(new SpecificationCollectionNonVide<>());
 	}
 
 	@Override
-	public void nExistentPas() {
-		sontAuNombreDe(0);
+	public ConjonctionCollection<TElement> nExistentPas() {
+		return sontAuNombreDe(0);
 	}
 
 	@Override
-	public void ont(Collection<TElement> élémentsAttendus) {
-		respectent(new SpecificationElementsDansLaCollection<>(élémentsAttendus));
+	public ConjonctionCollection<TElement> ont(Collection<TElement> élémentsAttendus) {
+		return respectent(new SpecificationElementsDansLaCollection<>(élémentsAttendus));
 	}
 
 	@Override
-	public void respectent(Specification<Collection<TElement>> spécification) {
+	public ConjonctionCollection<TElement> respectent(Specification<Collection<TElement>> spécification) {
+		échoueSiSpécificationInsatisfaite(spécification);
+		return new ConjonctionCollectionDeBase<>(this);
+	}
+
+	private void échoueSiSpécificationInsatisfaite(Specification<Collection<TElement>> spécification) {
 		if (spécification.estInsatisfaitePar(éléments)) {
 			échoue(spécification.messageInsatisfactionPour(éléments));
 		}

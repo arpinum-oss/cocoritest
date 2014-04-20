@@ -13,21 +13,21 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.interne.affirmation.objet;
+package fr.arpinum.cocoritest.interne.conjonction.collection;
 
-import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjetAuMasculin;
-import fr.arpinum.cocoritest.conjonction.objet.ConjonctionObjetAuMasculin;
+import fr.arpinum.cocoritest.affirmation.collection.AffirmationCollection;
+import fr.arpinum.cocoritest.conjonction.collection.ConjonctionCollection;
 
-public class ConjonctionObjetAuMasculinDeBase<TObjet> implements ConjonctionObjetAuMasculin<TObjet> {
+public class ConjonctionCollectionDeBase<TElement> implements ConjonctionCollection<TElement> {
 
-	public ConjonctionObjetAuMasculinDeBase(AffirmationObjetAuMasculin<TObjet> affirmation) {
+	public ConjonctionCollectionDeBase(AffirmationCollection<TElement> affirmation) {
 		this.affirmation = affirmation;
 	}
 
 	@Override
-	public AffirmationObjetAuMasculin<TObjet> et() {
+	public AffirmationCollection<TElement> et() {
 		return affirmation;
 	}
 
-	private final AffirmationObjetAuMasculin<TObjet> affirmation;
+	private AffirmationCollection<TElement> affirmation;
 }

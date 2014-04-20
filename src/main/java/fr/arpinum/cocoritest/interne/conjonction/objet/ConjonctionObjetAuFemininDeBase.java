@@ -13,32 +13,21 @@
   * pas le cas, consultez http://www.gnu.org/licenses.
  */
 
-package fr.arpinum.cocoritest.interne.affirmation.objet;
+package fr.arpinum.cocoritest.interne.conjonction.objet;
 
 import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjetAuFeminin;
 import fr.arpinum.cocoritest.conjonction.objet.ConjonctionObjetAuFeminin;
-import fr.arpinum.cocoritest.interne.conjonction.objet.ConjonctionObjetAuFemininDeBase;
 
-public class AffirmationObjetAuFemininDeBase<TObjet> extends AffirmationObjetDeBase<TObjet,
-		ConjonctionObjetAuFeminin<TObjet>> implements
-		AffirmationObjetAuFeminin<TObjet> {
+public class ConjonctionObjetAuFemininDeBase<TObjet> implements ConjonctionObjetAuFeminin<TObjet> {
 
-	public AffirmationObjetAuFemininDeBase(TObjet objet) {
-		super(objet);
+	public ConjonctionObjetAuFemininDeBase(AffirmationObjetAuFeminin<TObjet> affirmation) {
+		this.affirmation = affirmation;
 	}
 
 	@Override
-	public ConjonctionObjetAuFeminin<TObjet> estNulle() {
-		return est(null);
+	public AffirmationObjetAuFeminin<TObjet> et() {
+		return affirmation;
 	}
 
-	@Override
-	public ConjonctionObjetAuFeminin<TObjet> nEstPasNulle() {
-		return nEstPas(null);
-	}
-
-	@Override
-	protected ConjonctionObjetAuFeminin<TObjet> créeConjonction() {
-		return new ConjonctionObjetAuFemininDeBase<>(this);
-	}
+	private final AffirmationObjetAuFeminin<TObjet> affirmation;
 }

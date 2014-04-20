@@ -185,6 +185,18 @@ public class TestAffirmationCollectionDeBase {
 		alors().cette(exception).respecte(créeSpécificationException("[1, 2] ne respecte pas la spécification."));
 	}
 
+	@Test
+	public void onPeutAffirmerSurUneCollectionDeManièreFluide() {
+		List<Integer> éléments = Listes.cree(1, 2);
+
+		alors().les(éléments).sontAuNombreDe(2)
+				.et().sont(1, 2)
+				.et().existent()
+				.et().ont(1)
+				.et().sont(Listes.cree(1, 2))
+				.et().respectent(créeSpécificationSatisfaite());
+	}
+
 	private static List<Object> élémentsNuls() {
 		return null;
 	}

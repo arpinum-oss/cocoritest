@@ -17,6 +17,7 @@ package fr.arpinum.cocoritest.interne.affirmation.objet;
 
 import fr.arpinum.cocoritest.affirmation.objet.AffirmationObjetAuMasculin;
 import fr.arpinum.cocoritest.conjonction.objet.ConjonctionObjetAuMasculin;
+import fr.arpinum.cocoritest.interne.conjonction.objet.ConjonctionObjetAuMasculinDeBase;
 
 public class AffirmationObjetAuMasculinDeBase<TObjet> extends AffirmationObjetDeBase<TObjet,
 		ConjonctionObjetAuMasculin<TObjet>> implements
