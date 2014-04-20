@@ -29,9 +29,9 @@ public class TestSpecificationCombinee {
 	public void uneSpécificatonCombinéeALeMessageDInsatisfactionDeLaPremiereInsatisfaiteDeSaCombinaison() {
 		Specification<String> spécificationCréée = combine(Listes.cree(créeContient("a"), créeContient("b")));
 
-		alors().le(spécificationCréée.messageInsatisfactionPour("b")).est("ne contient pas a");
-		alors().le(spécificationCréée.messageInsatisfactionPour("a")).est("ne contient pas b");
-		alors().le(spécificationCréée.messageInsatisfactionPour("e")).est("ne contient pas a");
+		alors().ceci(spécificationCréée.messageInsatisfactionPour("b")).est("ne contient pas a");
+		alors().ceci(spécificationCréée.messageInsatisfactionPour("a")).est("ne contient pas b");
+		alors().ceci(spécificationCréée.messageInsatisfactionPour("e")).est("ne contient pas a");
 	}
 
 	private Specification<String> créeContient(final String chaîneContenue) {

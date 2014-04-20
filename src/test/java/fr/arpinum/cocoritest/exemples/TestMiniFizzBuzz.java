@@ -19,6 +19,7 @@ import static fr.arpinum.cocoritest.Affirmations.*;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -57,13 +58,8 @@ public class TestMiniFizzBuzz {
 	private Specification<Collection<String>> aucunElémentNEstNul() {
 		return new Specification<Collection<String>>() {
 			@Override
-			public boolean estInsatisfaitePar(Collection<String> objet) {
-				for (String s : objet) {
-					if (s == null) {
-						return true;
-					}
-				}
-				return false;
+			public boolean estInsatisfaitePar(Collection<String> chaînes) {
+				return chaînes.stream().anyMatch(Objects::isNull);
 			}
 
 			@Override

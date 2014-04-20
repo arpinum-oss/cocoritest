@@ -32,8 +32,7 @@ public class TestInjection {
 
 		String motDePasse = service.créeMotDePasse();
 
-		alors().le(motDePasse).nEstPasNul();
-		alors().le(motDePasse).est("XXXXXXXX");
+		alors().le(motDePasse).nEstPasNul().et().est("XXXXXXXX");
 	}
 
 	private static class ServiceMotDePasse {

@@ -101,7 +101,7 @@ public class TestInjecteurDeBase {
 
 		alors().cette(exception).nEstPasNulle();
 		alors().ceci(exception instanceof IllegalArgumentException).estVrai();
-		alors().le(exception.getMessage()).est("Impossible d'assigner la dépendance " + liste);
+		alors().ceci(exception.getMessage()).est("Impossible d'assigner la dépendance " + liste);
 	}
 
 	private Injecteur injecteur;
