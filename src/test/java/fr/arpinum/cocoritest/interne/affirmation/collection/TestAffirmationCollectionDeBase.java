@@ -41,8 +41,8 @@ public class TestAffirmationCollectionDeBase {
 		List<Integer> valeursTestées = Listes.cree(1, 2, 3);
 		List<Integer> valeursAttendues = Listes.cree(1, 2, 3);
 
-		new AffirmationCollectionDeBase<>(valeursTestées).sont(valeursAttendues);
-		new AffirmationCollectionDeBase<>(valeursTestées).sont(1, 2, 3);
+		alors().les(valeursTestées).sont(valeursAttendues);
+		alors().les(valeursTestées).sont(1, 2, 3);
 	}
 
 	@Test
@@ -50,8 +50,7 @@ public class TestAffirmationCollectionDeBase {
 		final List<Integer> valeursTestées = Listes.cree(1, 2, 3);
 		final List<Integer> valeursAttendues = Listes.cree(2, 3);
 
-		Exception exception = capteur.capte(() -> new AffirmationCollectionDeBase<>(valeursTestées).sont
-				(valeursAttendues));
+		Exception exception = capteur.capte(() -> alors().les(valeursTestées).sont(valeursAttendues));
 
 		String messageAttendu = "Les éléments sont <[1, 2, 3]> au lieu de <[2, 3]>.";
 		alors().cette(exception).respecte(créeSpécificationException(messageAttendu));
@@ -61,7 +60,7 @@ public class TestAffirmationCollectionDeBase {
 	public void onNePeutPasAffirmerQUneCollectionEstEgaleADesElémentsNonContenus() {
 		final List<Integer> valeursTestées = Listes.cree(1, 2, 3);
 
-		Exception exception = capteur.capte(() -> new AffirmationCollectionDeBase<>(valeursTestées).sont(2, 3));
+		Exception exception = capteur.capte(() -> alors().les(valeursTestées).sont(2, 3));
 
 		String messageAttendu = "Les éléments sont <[1, 2, 3]> au lieu de <[2, 3]>.";
 		alors().cette(exception).respecte(créeSpécificationException(messageAttendu));
@@ -69,13 +68,14 @@ public class TestAffirmationCollectionDeBase {
 
 	@Test
 	public void onPeutAffirmerQuUneCollectionPossèdeUnCertainsNombreDElements() {
-		new AffirmationCollectionDeBase<>(Listes.cree(1, 2)).sontAuNombreDe(2);
+		alors().les(Listes.cree(1, 2)).sontAuNombreDe(2);
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionPossèdeUnNombreErronéDElements() {
-		Exception exception = capteur.capte(() -> new AffirmationCollectionDeBase<>(Listes.cree("a",
-				"b")).sontAuNombreDe(10));
+		List<String> éléments = Listes.cree("a", "b");
+
+		Exception exception = capteur.capte(() -> alors().les(éléments).sontAuNombreDe(10));
 
 		String messageAttendu = "Les éléments sont au nombre de <2> au lieu de <10>.";
 		alors().cette(exception).respecte(créeSpécificationException(messageAttendu));
@@ -83,7 +83,9 @@ public class TestAffirmationCollectionDeBase {
 
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionNullePossedeUnQuelconqueNombreDEléments() {
-		Exception exception = capteur.capte(() -> new AffirmationCollectionDeBase<>(null).sontAuNombreDe(10));
+		List<Object> éléments = élémentsNuls();
+
+		Exception exception = capteur.capte(() -> alors().les(éléments).sontAuNombreDe(10));
 
 		String messageAttendu = "La collection est <nulle> et ne possède donc pas un nombre d'éléments de <10>.";
 		alors().cette(exception).respecte(créeSpécificationException(messageAttendu));
@@ -91,19 +93,21 @@ public class TestAffirmationCollectionDeBase {
 
 	@Test
 	public void onPeutAffirmerQuUneCollectionNonVideEstNonVide() {
-		new AffirmationCollectionDeBase<>(Listes.cree(3)).existent();
+		alors().les(Listes.cree(3)).existent();
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionVideEstNonVide() {
-		Exception exception = capteur.capte(() -> new AffirmationCollectionDeBase<>(new ArrayList<>()).existent());
+		List<Object> éléments = new ArrayList<>();
+
+		Exception exception = capteur.capte(() -> alors().les(éléments).existent());
 
 		alors().cette(exception).respecte(créeSpécificationException("Il n'y a aucun élément."));
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionNulleEstNonVide() {
-		Exception exception = capteur.capte(() -> new AffirmationCollectionDeBase<>(null).existent());
+		Exception exception = capteur.capte(() -> alors().les(élémentsNuls()).existent());
 
 		String messageAttendu = "La collection est <nulle> et ne possède donc pas d'éléments.";
 		alors().cette(exception).respecte(créeSpécificationException(messageAttendu));
@@ -111,12 +115,14 @@ public class TestAffirmationCollectionDeBase {
 
 	@Test
 	public void onPeutAffirmerQuUneCollectionVideEstVide() {
-		new AffirmationCollectionDeBase<>(new ArrayList<>()).nExistentPas();
+		alors().les(new ArrayList<>()).nExistentPas();
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionNonVideEstVide() {
-		Exception exception = capteur.capte(() -> new AffirmationCollectionDeBase<>(Listes.cree(3)).nExistentPas());
+		List<Integer> quelquesEléments = Listes.cree(3);
+
+		Exception exception = capteur.capte(() -> alors().les(quelquesEléments).nExistentPas());
 
 		String messageAttendu = "Les éléments sont au nombre de <1> au lieu de <0>.";
 		alors().cette(exception).respecte(créeSpécificationException(messageAttendu));
@@ -124,7 +130,7 @@ public class TestAffirmationCollectionDeBase {
 
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionNulleEstVide() {
-		Exception exception = capteur.capte(() -> new AffirmationCollectionDeBase<>(null).nExistentPas());
+		Exception exception = capteur.capte(() -> alors().les(élémentsNuls()).nExistentPas());
 
 		String messageAttendu = "La collection est <nulle> et ne possède donc pas un nombre d'éléments de <0>.";
 		alors().cette(exception).respecte(créeSpécificationException(messageAttendu));
@@ -132,17 +138,23 @@ public class TestAffirmationCollectionDeBase {
 
 	@Test
 	public void onPeutAffirmerQuUneCollectionAUnElément() {
-		new AffirmationCollectionDeBase<>(Listes.cree(1, 3, 13)).ont(13);
+		List<Integer> élémentsDont13 = Listes.cree(1, 3, 13);
+
+		alors().les(élémentsDont13).ont(13);
 	}
 
 	@Test
 	public void onPeutAffirmerQuUneCollectionADesEléments() {
-		new AffirmationCollectionDeBase<>(Listes.cree(1, 3, 13)).ont(13, 3);
+		List<Integer> élémentsDont3Et13 = Listes.cree(1, 3, 13);
+
+		alors().les(élémentsDont3Et13).ont(13, 3);
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionAUnElémentQuElleNAPas() {
-		Exception exception = capteur.capte(() -> new AffirmationCollectionDeBase<>(Listes.cree(1, 2)).ont(13, 12));
+		List<Integer> élémentsSans12Ni13 = Listes.cree(1, 2);
+
+		Exception exception = capteur.capte(() -> alors().les(élémentsSans12Ni13).ont(13, 12));
 
 		String messageAttendu = "Les éléments sont <[1, 2]> et ne contiennent pas <[13, 12]>.";
 		alors().cette(exception).respecte(créeSpécificationException(messageAttendu));
@@ -150,7 +162,7 @@ public class TestAffirmationCollectionDeBase {
 
 	@Test
 	public void onNePeutPasAffirmerQuUneCollectionNulleAUnElément() {
-		Exception exception = capteur.capte(() -> new AffirmationCollectionDeBase<>(null).ont(13, 12));
+		Exception exception = capteur.capte(() -> alors().les(élémentsNuls()).ont(13, 12));
 
 		String messageAttendu = "La collection est <nulle>, <[13, 12]> ne sont donc pas présents dedans.";
 		alors().cette(exception).respecte(créeSpécificationException(messageAttendu));
@@ -160,17 +172,21 @@ public class TestAffirmationCollectionDeBase {
 	public void onPeutAffirmerQuUneCollectionRespecteUneSpécification() {
 		Specification<Collection<Integer>> spécification = créeSpécificationSatisfaite();
 
-		new AffirmationCollectionDeBase<>(Listes.cree(1, 2)).respectent(spécification);
+		alors().les(Listes.cree(1, 2)).respectent(spécification);
 	}
 
 	@Test
 	public void onNePeutPasAffirmerATortQuUneCollectionRespecteUneSpécification() {
 		final Specification<Collection<Integer>> spécification = créeSpécificationInsatisfaite();
+		List<Integer> éléments = Listes.cree(1, 2);
 
-		Exception exception = capteur.capte(() -> new AffirmationCollectionDeBase<>(Listes.cree(1,
-				2)).respectent(spécification));
+		Exception exception = capteur.capte(() -> alors().les(éléments).respectent(spécification));
 
 		alors().cette(exception).respecte(créeSpécificationException("[1, 2] ne respecte pas la spécification."));
+	}
+
+	private static List<Object> élémentsNuls() {
+		return null;
 	}
 
 	private CapteurExceptionDeBase capteur;

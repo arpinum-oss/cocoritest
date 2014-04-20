@@ -45,7 +45,7 @@ public class TestAffirmations {
 	public void peutCréerLesDifférentesAffirmationsAuMasculin() {
 		alors().le(résultat).estVrai();
 		alors().le(mensonge).estFaux();
-		alors().le(nombre).est(3);
+		alors().le(nombre).est(3).et().nEstPasNul();
 		alors().le(nombre).nEstPas(4);
 		alors().le(champ).estNul();
 		alors().le(nombre).nEstPasNul();
@@ -56,7 +56,7 @@ public class TestAffirmations {
 	public void peutCréerLesDifférentesAffirmationsAuFéminin() {
 		alors().la(vérité).estVraie();
 		alors().la(trahison).estFausse();
-		alors().la(valeur).est(3);
+		alors().la(valeur).est(3).et().nEstPasNulle();
 		alors().la(valeur).nEstPas(4);
 		alors().la(réponse).estNulle();
 		alors().la(remarque).nEstPasNulle();

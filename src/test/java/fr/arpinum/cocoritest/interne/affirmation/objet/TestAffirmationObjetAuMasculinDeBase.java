@@ -33,24 +33,24 @@ public class TestAffirmationObjetAuMasculinDeBase {
 
 	@Test
 	public void onPeutAffirmerQuUnNombreEstLeMêmeNombre() {
-		creeAffirmation(1).est(1);
+		alors().le(leNombreUn()).est(1);
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQuUnNombreEstUnNombreDifférent() {
-		Exception exception = capteur.capte(() -> creeAffirmation(1).est(2));
+		Exception exception = capteur.capte(() -> alors().le(leNombreUn()).est(2));
 
 		alors().cette(exception).respecte(créeSpécificationException("L'objet est <1> au lieu de <2>."));
 	}
 
 	@Test
 	public void onPeutAffirmerQuUnNombreNEstPasUnNombreDifférent() {
-		creeAffirmation(1).nEstPas(2);
+		alors().le(leNombreUn()).nEstPas(2);
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQuUnNombreNEstPasLeMêmeNombre() {
-		Exception exception = capteur.capte(() -> creeAffirmation(1).nEstPas(1));
+		Exception exception = capteur.capte(() -> alors().le(leNombreUn()).nEstPas(1));
 
 		String messageAttendu = "L'objet est <1> alors que ce n'était pas voulu.";
 		alors().cette(exception).respecte(créeSpécificationException(messageAttendu));
@@ -58,31 +58,31 @@ public class TestAffirmationObjetAuMasculinDeBase {
 
 	@Test
 	public void onNePeutPasAffirmerQuUneChaîneEstUneChaîneDifférente() {
-		Exception exception = capteur.capte(() -> creeAffirmation("toto").est("tutu"));
+		Exception exception = capteur.capte(() -> alors().le(texteToto()).est("tutu"));
 
 		alors().cette(exception).respecte(créeSpécificationException("L'objet est <toto> au lieu de <tutu>."));
 	}
 
 	@Test
 	public void onPeutAffirmerQuUnObjetEstNul() {
-		creeAffirmation(null).estNul();
+		alors().cet(objetNul()).estNul();
 	}
 
 	@Test
 	public void onPeutAffirmerQuUnObjetNEstPasNul() {
-		creeAffirmation("toto").nEstPasNul();
+		alors().le(texteToto()).nEstPasNul();
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQuUnObjetNonNulEstNul() {
-		Exception exception = capteur.capte(() -> creeAffirmation("toto").estNul());
+		Exception exception = capteur.capte(() -> alors().le(texteToto()).estNul());
 
 		alors().cette(exception).respecte(créeSpécificationException("L'objet est <toto> au lieu de <nul>."));
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQuUnObjetNulNEstPasNul() {
-		Exception exception = capteur.capte(() -> creeAffirmation(null).nEstPasNul());
+		Exception exception = capteur.capte(() -> alors().cet(objetNul()).nEstPasNul());
 
 		String messageAttendu = "L'objet est <nul> alors que ce n'était pas voulu.";
 		alors().cette(exception).respecte(créeSpécificationException(messageAttendu));
@@ -92,28 +92,36 @@ public class TestAffirmationObjetAuMasculinDeBase {
 	public void onPeutAffirmerQuUnObjetRespecteUneSpecification() {
 		Specification<Integer> spécification = créeSpécificationSatisfaite();
 
-		creeAffirmation(1).respecte(spécification);
+		alors().le(leNombreUn()).respecte(spécification);
 	}
 
 	@Test
 	public void onNePeutPasAffirmerATortQuUnObjetRespecteUneSpecification() {
 		final Specification<Integer> spécification = créeSpécificationInsatisfaite();
 
-		Exception exception = capteur.capte(() -> creeAffirmation(1).respecte(spécification));
+		Exception exception = capteur.capte(() -> alors().le(leNombreUn()).respecte(spécification));
 
 		alors().cette(exception).respecte(créeSpécificationException("1 ne respecte pas la spécification."));
 	}
 
 	@Test
 	public void onPeutAffirmerSurUnObjetDeManiereFluide() {
-		creeAffirmation("toto").nEstPasNul()
+		alors().le(texteToto()).nEstPasNul()
 				.et().est("toto")
 				.et().respecte(créeSpécificationSatisfaite())
 				.et().nEstPasNul();
 	}
 
-	private static <T> AffirmationObjetAuMasculinDeBase<T> creeAffirmation(T valeur) {
-		return new AffirmationObjetAuMasculinDeBase<>(valeur);
+	private int leNombreUn() {
+		return 1;
+	}
+
+	private String texteToto() {
+		return "toto";
+	}
+
+	private Object objetNul() {
+		return null;
 	}
 
 	private CapteurExceptionDeBase capteur;

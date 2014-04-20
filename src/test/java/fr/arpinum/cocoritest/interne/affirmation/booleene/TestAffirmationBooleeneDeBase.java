@@ -33,49 +33,73 @@ public class TestAffirmationBooleeneDeBase {
 
 	@Test
 	public void onPeutAffirmerQueVraiEstVrai() {
-		new AffirmationBooleeneDeBase(true).estVrai();
-		new AffirmationBooleeneDeBase(true).estVraie();
+		alors().le(booléenVrai()).estVrai();
+		alors().la(valeurVraie()).estVraie();
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQueFauxEstVrai() {
-		Exception exception = capteur.capte(() -> new AffirmationBooleeneDeBase(false).estVrai());
+		Exception exception = capteur.capte(() -> alors().le(booléenFaux()).estVrai());
 
 		alors().cette(exception).respecte(créeSpécificationException("L'objet est <faux> au lieu de <vrai>."));
 	}
 
 	@Test
 	public void onNePeutPasAffirmerAuFémininQueFauxEstVrai() {
-		Exception exception = capteur.capte(() -> new AffirmationBooleeneDeBase(false).estVraie());
+		Exception exception = capteur.capte(() -> alors().la(valeurFausse()).estVraie());
 
 		alors().cette(exception).respecte(créeSpécificationException("L'objet est <faux> au lieu de <vrai>."));
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQueNullEstVrai() {
-		Exception exception = capteur.capte(() -> new AffirmationBooleeneDeBase(null).estVrai());
+		Exception exception = capteur.capte(() -> alorsLeBooléenNul().estVrai());
 
 		alors().cette(exception).respecte(créeSpécificationException("L'objet est <nul> au lieu de <vrai>."));
 	}
 
+	private AffirmationBooleeneDeBase alorsLeBooléenNul() {
+		return new AffirmationBooleeneDeBase(booléenNul());
+	}
+
 	@Test
 	public void onPeutAffirmerQueFauxEstFaux() {
-		new AffirmationBooleeneDeBase(false).estFaux();
-		new AffirmationBooleeneDeBase(false).estFausse();
+		alors().le(booléenFaux()).estFaux();
+		alors().la(valeurFausse()).estFausse();
 	}
 
 	@Test
 	public void onNePeutPasAffirmerQueVraiEstFaux() {
-		Exception exception = capteur.capte(() -> new AffirmationBooleeneDeBase(true).estFaux());
+		Exception exception = capteur.capte(() -> alors().le(booléenVrai()).estFaux());
 
 		alors().cette(exception).respecte(créeSpécificationException("L'objet est <vrai> au lieu de <faux>."));
 	}
 
 	@Test
 	public void onNePeutPasAffirmerAuFémininQueVraiEstFaux() {
-		Exception exception = capteur.capte(() -> new AffirmationBooleeneDeBase(true).estFausse());
+		Exception exception = capteur.capte(() -> alors().la(valeurVraie()).estFausse());
 
 		alors().cette(exception).respecte(créeSpécificationException("L'objet est <vrai> au lieu de <faux>."));
+	}
+
+	private boolean booléenVrai() {
+		return true;
+	}
+
+	private boolean valeurVraie() {
+		return true;
+	}
+
+	private boolean booléenFaux() {
+		return false;
+	}
+
+	private boolean valeurFausse() {
+		return false;
+	}
+
+	private Boolean booléenNul() {
+		return null;
 	}
 
 	private CapteurException capteur;
