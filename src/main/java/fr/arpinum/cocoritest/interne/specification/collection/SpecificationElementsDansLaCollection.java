@@ -26,7 +26,7 @@ public class SpecificationElementsDansLaCollection<E> implements Specification<C
 	}
 
 	@Override
-	public boolean test(Collection<E> éléments) {
+	public boolean estSatisfaitePar(Collection<E> éléments) {
 		return éléments != null && éléments.containsAll(élémentsSpécifiés);
 	}
 

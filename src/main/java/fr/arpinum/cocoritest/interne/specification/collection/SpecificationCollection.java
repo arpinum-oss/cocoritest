@@ -27,7 +27,7 @@ public class SpecificationCollection<E> implements Specification<Collection<E>> 
 	}
 
 	@Override
-	public boolean test(Collection<E> éléments) {
+	public boolean estSatisfaitePar(Collection<E> éléments) {
 		return Collections.egales(collectionSpécifiée, éléments);
 	}
 

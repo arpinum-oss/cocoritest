@@ -64,7 +64,7 @@ public class AffirmationCollectionDeBase<TElement> extends Affirmation implement
 	}
 
 	private void échoueSiSpécificationInsatisfaite(Specification<Collection<TElement>> spécification) {
-		if (!spécification.test(éléments)) {
+		if (!spécification.estSatisfaitePar(éléments)) {
 			échoue(spécification.messageInsatisfactionPour(éléments));
 		}
 	}

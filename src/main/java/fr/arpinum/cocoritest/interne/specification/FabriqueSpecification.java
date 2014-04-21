@@ -15,35 +15,25 @@
 
 package fr.arpinum.cocoritest.interne.specification;
 
-import java.util.Collection;
-
 import fr.arpinum.cocoritest.specification.Specification;
 
-public class SpecificationCombinee<T> implements Specification<T> {
+public class FabriqueSpecification {
 
-	public SpecificationCombinee(Collection<Specification<T>> spécifications) {
-		this.spécifications = spécifications;
-	}
-
-	@Override
-	public boolean test(T objet) {
-		for (Specification<T> spécification : spécifications) {
-			if (!spécification.test(objet)) {
-				return false;
+	public <T> Specification<T> combine(Specification<? super T> spécification,
+										Specification<? super T> autreSpécification) {
+		return new Specification<T>() {
+			@Override
+			public boolean estSatisfaitePar(T objet) {
+				return spécification.estSatisfaitePar(objet) && autreSpécification.estSatisfaitePar(objet);
 			}
-		}
-		return true;
-	}
 
-	@Override
-	public String messageInsatisfactionPour(T objet) {
-		for (Specification<T> spécification : spécifications) {
-			if (!spécification.test(objet)) {
-				return spécification.messageInsatisfactionPour(objet);
+			@Override
+			public String messageInsatisfactionPour(T objet) {
+				if (!spécification.estSatisfaitePar(objet)) {
+					return spécification.messageInsatisfactionPour(objet);
+				}
+				return autreSpécification.messageInsatisfactionPour(objet);
 			}
-		}
-		return null;
+		};
 	}
-
-	private final Collection<Specification<T>> spécifications;
 }

@@ -22,7 +22,7 @@ import fr.arpinum.cocoritest.specification.Specification;
 public class SpecificationCollectionNonVide<E> implements Specification<Collection<E>> {
 
 	@Override
-	public boolean test(Collection<E> éléments) {
+	public boolean estSatisfaitePar(Collection<E> éléments) {
 		return éléments != null && éléments.size() != 0;
 	}
 

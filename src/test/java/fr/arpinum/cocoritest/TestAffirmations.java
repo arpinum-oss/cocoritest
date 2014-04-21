@@ -87,31 +87,11 @@ public class TestAffirmations {
 	}
 
 	private static Specification<Integer> laSpécification() {
-		return new Specification<Integer>() {
-			@Override
-			public boolean test(Integer objet) {
-				return true;
-			}
-
-			@Override
-			public String messageInsatisfactionPour(Integer objet) {
-				return null;
-			}
-		};
+		return (entier) -> true;
 	}
 
 	private static Specification<Collection<Integer>> laSpécificationDeCollection() {
-		return new Specification<Collection<Integer>>() {
-			@Override
-			public boolean test(Collection<Integer> objet) {
-				return true;
-			}
-
-			@Override
-			public String messageInsatisfactionPour(Collection<Integer> objet) {
-				return null;
-			}
-		};
+		return (collection) -> true;
 	}
 
 	@SuppressWarnings("ALL")

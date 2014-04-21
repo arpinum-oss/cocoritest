@@ -15,10 +15,7 @@
 
 package fr.arpinum.cocoritest;
 
-import java.util.List;
-
 import fr.arpinum.cocoritest.interne.affirmation.ExceptionAffirmation;
-import fr.arpinum.cocoritest.interne.extensionlangage.Listes;
 import fr.arpinum.cocoritest.interne.extensionlangage.Objets;
 import fr.arpinum.cocoritest.interne.specification.objet.SpecificationAutreObjet;
 import fr.arpinum.cocoritest.specification.Specification;
@@ -29,21 +26,15 @@ public class FabriquePourTest {
 	}
 
 	public static Specification<Exception> créeSpécificationException(String messageAttendu) {
-		List<Specification<Exception>> specifications = creeSpécificationsException(messageAttendu);
-		return Outils.combine(specifications);
-	}
-
-	private static List<Specification<Exception>> creeSpécificationsException(String messageAttendu) {
-		SpecificationAutreObjet<Exception> nonNulle = new SpecificationAutreObjet<>(null);
-		Specification<Exception> deTypeAffirmation = créeSpécificationObjetDeType(ExceptionAffirmation.class);
-		Specification<Exception> avecMessage = créeSpécificationMessageException(messageAttendu);
-		return Listes.cree(nonNulle, deTypeAffirmation, avecMessage);
+		return new SpecificationAutreObjet<>((Exception) null)
+				.et(créeSpécificationObjetDeType(ExceptionAffirmation.class))
+				.et(créeSpécificationMessageException(messageAttendu));
 	}
 
 	private static Specification<Exception> créeSpécificationMessageException(final String messageAttendu) {
 		return new Specification<Exception>() {
 			@Override
-			public boolean test(Exception objet) {
+			public boolean estSatisfaitePar(Exception objet) {
 				return !Objets.différents(objet.getMessage(), messageAttendu);
 			}
 
@@ -57,7 +48,7 @@ public class FabriquePourTest {
 	private static Specification<Exception> créeSpécificationObjetDeType(final Class<?> classe) {
 		return new Specification<Exception>() {
 			@Override
-			public boolean test(Exception objet) {
+			public boolean estSatisfaitePar(Exception objet) {
 				return objet.getClass().equals(classe);
 			}
 

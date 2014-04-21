@@ -25,7 +25,7 @@ public class SpecificationObjet<T> implements Specification<T> {
 	}
 
 	@Override
-	public boolean test(T objet) {
+	public boolean estSatisfaitePar(T objet) {
 		return !Objets.différents(objetSpécifié, objet);
 	}
 

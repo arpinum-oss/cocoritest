@@ -15,9 +15,10 @@
 
 package fr.arpinum.cocoritest.specification;
 
-import java.util.function.Predicate;
+import java.util.Objects;
 
 import fr.arpinum.cocoritest.interne.extensionlangage.Objets;
+import fr.arpinum.cocoritest.interne.specification.FabriqueSpecification;
 
 /**
  * Représente une spécification d'un objet.
@@ -25,7 +26,15 @@ import fr.arpinum.cocoritest.interne.extensionlangage.Objets;
  * @param <T> le type d'objet concerné.
  */
 @FunctionalInterface
-public interface Specification<T> extends Predicate<T> {
+public interface Specification<T> {
+
+	/**
+	 * Informe si la spécification n'est pas satisfaite par l'objet.
+	 *
+	 * @param objet l'objet sur lequel est vérifiée l'insatisfaction de la spécification.
+	 * @return true si la spécification n'est pas satisfaite par l'objet, faux sinon.
+	 */
+	boolean estSatisfaitePar(T objet);
 
 	/**
 	 * Le message décrivant pourquoi la spécification n'est pas satisfaite par l'objet.
@@ -35,5 +44,17 @@ public interface Specification<T> extends Predicate<T> {
 	 */
 	default String messageInsatisfactionPour(T objet) {
 		return Objets.enChaîne(objet) + " ne respecte pas la spécification.";
+	}
+
+	/**
+	 * Combine la spécification avec une autre. La spécification combinée est satisfaite si les deux spécifications de
+	 * la combinaison le sont pour l'objet.
+	 * Le message d'insatisfaction est celui de la première spécification de la combinaison qui n'est pas satisfaite.
+	 *
+	 * @return la spécification combinée.
+	 */
+	default Specification<T> et(Specification<? super T> autreSpécification) {
+		Objects.requireNonNull(autreSpécification, "L'autre spécification ne doit pas être nulle.");
+		return new FabriqueSpecification().combine(this, autreSpécification);
 	}
 }
