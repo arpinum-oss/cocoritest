@@ -3,7 +3,7 @@
 > Mal nommer les choses c'est ajouter au malheur du monde.
 > <cite>(Albert Camus)</cite>
 
-**Cocoritest** est une api Java permettant d'écrire des affirmations de test unitaire dans une syntaxe proche du **français**. 
+**Cocoritest** est une api **Java 8** permettant d'écrire des affirmations de test unitaire dans une syntaxe proche du **français**.
 
 Elle s'inspire des excellents et complets [Hamcrest] ou [FEST] et n'a pas pour prétention d'être une quelconque alternative. Toutefois, **Cocoritest** convient parfaitement pour s'exercer en TDD sur des katas.
 
@@ -11,8 +11,12 @@ Avec **Cocoritest** vous pouvez :
 * affirmer sur des booléens,
 * affirmer sur des objets,
 * affirmer sur des collections,
+* chaîner les affirmations de façon fluide,
 * capturer des exceptions pour affirmer dessus,
-* injecter des dépendances à un objet.
+* injecter des dépendances à un objet,
+* frimer dans les diners mondains.
+
+Il est possible de consulter le [journal des modifications] pour se tenir au courant des nouveautés.
 
 ## Exemples
 *(certains caractères qui font la richesse du français sont mal gérés par le moteur de rendu de code utilisé par Github... une fée vient de s'éteindre quelque part dans le monde...)*
@@ -81,27 +85,29 @@ private boolean égalitéEntre(Object gauche, Object droite) {
 }
 ```
 
+### Chaîner les affirmations
+
+```java
+@Test
+public void unBooléenVraiEnChaîneEstEnFrancais() {
+    String chaîne = Objets.enChaîne(true);
+
+    alors().la(chaîne).nEstPasNulle().et().est("vrai");
+}
+```
+
 ### Affirmations sur une exception
 
 ```java
 @Test
 public void peutCapturerUneException() {
-	CapteurException capteur = new CapteurException();
+	CapteurException capteur = Outils.créeCapteur();
 
-	Exception exception = capteur.capte(actionLevantUneException());
+	Exception exception = capteur.capte(() -> throw new RuntimeException("le message"));
 
 	alors().cette(exception).nEstPasNulle();
 	alors().ceci(exception.getMessage()).est("le message");
 	alors().ceci(exception instanceof RuntimeException).estVrai();
-}
-
-private Action actionLevantUneException() {
-	return new Action() {
-		@Override
-		public void exécute() throws Exception {
-			throw new RuntimeException("le message");
-		}
-	};
 }
 ```
 
@@ -137,7 +143,7 @@ L'exemple complet ici : [TestInjection.java]
 
 ## Utilisation
 
-Télécharger la dépendance ici : [cocoritest-1.2.jar].
+Télécharger la dépendance ici : [cocoritest-2.1.jar].
 
 Ou ajouter **Cocoritest** dans les dépendances d'un pom.xml :
 
@@ -145,7 +151,7 @@ Ou ajouter **Cocoritest** dans les dépendances d'un pom.xml :
 <dependency>
 	<groupId>fr.arpinum</groupId>
 	<artifactId>cocoritest</artifactId>
-	<version>1.2</version>
+	<version>2.1</version>
 	<scope>test</scope>
 </dependency>
 ```
@@ -160,6 +166,10 @@ import static fr.arpinum.cocoritest.Outils.*;
 ```
 `Affirmations` permet d'accéder à tous les affirmations.
 `Outils` est optionnelle, elle contient, entre autre, le capteur d'exception et l'injecteur.
+
+## Archéologie ##
+
+La dernière version disponible en **Java 6** est la **1.2**. Voici un lien vers le [README 1.2].
 
 ## Documentation
 
@@ -181,7 +191,9 @@ Vous devez avoir reçu une copie de la GNU Lesser General Public License en mêm
 [FEST]: https://code.google.com/p/fest/
 [http://www.gnu.org/licenses/lgpl.html]: http://www.gnu.org/licenses/lgpl.html
 [TestInjection.java]: src/test/java/fr/arpinum/cocoritest/exemples/TestInjection.java
-[cocoritest-1.2.jar]: http://repo1.maven.org/maven2/fr/arpinum/cocoritest/1.2/cocoritest-1.2.jar
-[l'entrepôt Maven]: http://mvnrepository.com/artifact/fr.arpinum/cocoritest/1.2
+[cocoritest-2.1.jar]: http://repo1.maven.org/maven2/fr/arpinum/cocoritest/2.1/cocoritest-2.1.jar
+[l'entrepôt Maven]: http://mvnrepository.com/artifact/fr.arpinum/cocoritest/2.1
 [Etat build]: https://travis-ci.org/arpinum/cocoritest.png?branch=master
 [javadoc]: http://arpinum.github.io/cocoritest/apidocs
+[README 1.2]: https://github.com/arpinum/cocoritest/blob/derniere-version-jdk6/README.md
+[journal des modifications]: https://github.com/arpinum/cocoritest/blob/master/documentation/journalDesModifications.md
