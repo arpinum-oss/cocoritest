@@ -51,6 +51,7 @@ public interface Specification<T> {
 	 * la combinaison le sont pour l'objet.
 	 * Le message d'insatisfaction est celui de la première spécification de la combinaison qui n'est pas satisfaite.
 	 *
+	 * @param autreSpécification l'autre spécification à combiner.
 	 * @return la spécification combinée.
 	 */
 	default Specification<T> et(Specification<? super T> autreSpécification) {
