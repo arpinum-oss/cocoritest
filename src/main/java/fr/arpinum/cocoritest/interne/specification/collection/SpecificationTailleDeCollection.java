@@ -26,8 +26,8 @@ public class SpecificationTailleDeCollection<E> implements Specification<Collect
 	}
 
 	@Override
-	public boolean estInsatisfaitePar(Collection<E> éléments) {
-		return éléments == null || éléments.size() != tailleSpécifiée;
+	public boolean test(Collection<E> éléments) {
+		return éléments != null && éléments.size() == tailleSpécifiée;
 	}
 
 	@Override

@@ -89,8 +89,8 @@ public class TestAffirmations {
 	private static Specification<Integer> laSpécification() {
 		return new Specification<Integer>() {
 			@Override
-			public boolean estInsatisfaitePar(Integer objet) {
-				return false;
+			public boolean test(Integer objet) {
+				return true;
 			}
 
 			@Override
@@ -103,8 +103,8 @@ public class TestAffirmations {
 	private static Specification<Collection<Integer>> laSpécificationDeCollection() {
 		return new Specification<Collection<Integer>>() {
 			@Override
-			public boolean estInsatisfaitePar(Collection<Integer> objet) {
-				return false;
+			public boolean test(Collection<Integer> objet) {
+				return true;
 			}
 
 			@Override

@@ -58,8 +58,8 @@ public class TestMiniFizzBuzz {
 	private Specification<Collection<String>> aucunElémentNEstNul() {
 		return new Specification<Collection<String>>() {
 			@Override
-			public boolean estInsatisfaitePar(Collection<String> chaînes) {
-				return chaînes.stream().anyMatch(Objects::isNull);
+			public boolean test(Collection<String> chaînes) {
+				return !chaînes.stream().anyMatch(Objects::isNull);
 			}
 
 			@Override

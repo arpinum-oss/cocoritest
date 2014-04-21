@@ -59,7 +59,7 @@ public class TestAffirmationObjetAuFemininDeBase {
 	public void onPeutAffirmerSurUnObjetDeManiereFluide() {
 		alors().la(CHAINE_TOTO).nEstPasNulle()
 				.et().est("toto")
-				.et().respecte(créeSpécificationSatisfaite())
+				.et().respecte((chaîne) -> true)
 				.et().nEstPasNulle();
 	}
 

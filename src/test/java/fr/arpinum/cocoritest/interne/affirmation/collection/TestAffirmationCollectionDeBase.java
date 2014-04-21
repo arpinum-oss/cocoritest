@@ -19,7 +19,6 @@ import static fr.arpinum.cocoritest.Affirmations.*;
 import static fr.arpinum.cocoritest.FabriquePourTest.*;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.junit.Before;
@@ -27,7 +26,6 @@ import org.junit.Test;
 
 import fr.arpinum.cocoritest.interne.exception.CapteurExceptionDeBase;
 import fr.arpinum.cocoritest.interne.extensionlangage.Listes;
-import fr.arpinum.cocoritest.specification.Specification;
 
 public class TestAffirmationCollectionDeBase {
 
@@ -170,17 +168,14 @@ public class TestAffirmationCollectionDeBase {
 
 	@Test
 	public void onPeutAffirmerQuUneCollectionRespecteUneSpécification() {
-		Specification<Collection<Integer>> spécification = créeSpécificationSatisfaite();
-
-		alors().les(Listes.cree(1, 2)).respectent(spécification);
+		alors().les(Listes.cree(1, 2)).respectent((liste) -> true);
 	}
 
 	@Test
 	public void onNePeutPasAffirmerATortQuUneCollectionRespecteUneSpécification() {
-		final Specification<Collection<Integer>> spécification = créeSpécificationInsatisfaite();
 		List<Integer> éléments = Listes.cree(1, 2);
 
-		Exception exception = capteur.capte(() -> alors().les(éléments).respectent(spécification));
+		Exception exception = capteur.capte(() -> alors().les(éléments).respectent((liste) -> false));
 
 		alors().cette(exception).respecte(créeSpécificationException("[1, 2] ne respecte pas la spécification."));
 	}
@@ -194,7 +189,7 @@ public class TestAffirmationCollectionDeBase {
 				.et().existent()
 				.et().ont(1)
 				.et().sont(Listes.cree(1, 2))
-				.et().respectent(créeSpécificationSatisfaite());
+				.et().respectent((liste) -> true);
 	}
 
 	private static final List<Object> ELEMENTS_NULS = null;

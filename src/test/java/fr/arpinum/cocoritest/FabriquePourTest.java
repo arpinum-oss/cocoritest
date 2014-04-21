@@ -43,8 +43,8 @@ public class FabriquePourTest {
 	private static Specification<Exception> créeSpécificationMessageException(final String messageAttendu) {
 		return new Specification<Exception>() {
 			@Override
-			public boolean estInsatisfaitePar(Exception objet) {
-				return Objets.différents(objet.getMessage(), messageAttendu);
+			public boolean test(Exception objet) {
+				return !Objets.différents(objet.getMessage(), messageAttendu);
 			}
 
 			@Override
@@ -57,41 +57,13 @@ public class FabriquePourTest {
 	private static Specification<Exception> créeSpécificationObjetDeType(final Class<?> classe) {
 		return new Specification<Exception>() {
 			@Override
-			public boolean estInsatisfaitePar(Exception objet) {
-				return !objet.getClass().equals(classe);
+			public boolean test(Exception objet) {
+				return objet.getClass().equals(classe);
 			}
 
 			@Override
 			public String messageInsatisfactionPour(Exception objet) {
 				return String.format("Le type est <%s> au lieu de <%s>", objet.getClass(), classe);
-			}
-		};
-	}
-
-	public static <T> Specification<T> créeSpécificationSatisfaite() {
-		return new Specification<T>() {
-			@Override
-			public boolean estInsatisfaitePar(T objet) {
-				return false;
-			}
-
-			@Override
-			public String messageInsatisfactionPour(T objet) {
-				return "non utilisé";
-			}
-		};
-	}
-
-	public static <T> Specification<T> créeSpécificationInsatisfaite() {
-		return new Specification<T>() {
-			@Override
-			public boolean estInsatisfaitePar(T objet) {
-				return true;
-			}
-
-			@Override
-			public String messageInsatisfactionPour(T objet) {
-				return objet + " ne respecte pas la spécification.";
 			}
 		};
 	}

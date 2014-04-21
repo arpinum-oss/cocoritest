@@ -21,8 +21,8 @@ public class TestSpecificationCombinee {
 	public void uneSpécificationCombinéeEstInsatisfaiteSiUneSpécificationDeSaCombinaisonEstInsatisfaite() {
 		Specification<String> spécificationCréée = combine(Listes.cree(créeContient("a"), créeContient("b")));
 
-		alors().ceci(spécificationCréée.estInsatisfaitePar("aaeeeeaa")).estVrai();
-		alors().ceci(spécificationCréée.estInsatisfaitePar("bbeeeebb")).estVrai();
+		alors().ceci(!spécificationCréée.test("aaeeeeaa")).estVrai();
+		alors().ceci(!spécificationCréée.test("bbeeeebb")).estVrai();
 	}
 
 	@Test
@@ -37,8 +37,8 @@ public class TestSpecificationCombinee {
 	private Specification<String> créeContient(final String chaîneContenue) {
 		return new Specification<String>() {
 			@Override
-			public boolean estInsatisfaitePar(String chaîne) {
-				return !chaîne.contains(chaîneContenue);
+			public boolean test(String chaîne) {
+				return chaîne.contains(chaîneContenue);
 			}
 
 			@Override

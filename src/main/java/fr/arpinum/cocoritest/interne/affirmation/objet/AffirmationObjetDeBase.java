@@ -47,7 +47,7 @@ abstract class AffirmationObjetDeBase<TObjet, TConjonction extends Conjonction<?
 	}
 
 	void échoueSiSpécificationInsatisfaite(Specification<TObjet> spécification) {
-		if (spécification.estInsatisfaitePar(objet)) {
+		if (!spécification.test(objet)) {
 			échoue(spécification.messageInsatisfactionPour(objet));
 		}
 	}

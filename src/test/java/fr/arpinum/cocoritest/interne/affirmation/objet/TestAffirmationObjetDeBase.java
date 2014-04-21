@@ -22,7 +22,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fr.arpinum.cocoritest.interne.exception.CapteurExceptionDeBase;
-import fr.arpinum.cocoritest.specification.Specification;
 
 public class TestAffirmationObjetDeBase {
 
@@ -65,16 +64,12 @@ public class TestAffirmationObjetDeBase {
 
 	@Test
 	public void onPeutAffirmerQuUnObjetRespecteUneSpecification() {
-		Specification<Integer> spécification = créeSpécificationSatisfaite();
-
-		alors().le(NOMBRE_UN).respecte(spécification);
+		alors().le(NOMBRE_UN).respecte((entier) -> true);
 	}
 
 	@Test
 	public void onNePeutPasAffirmerATortQuUnObjetRespecteUneSpecification() {
-		final Specification<Integer> spécification = créeSpécificationInsatisfaite();
-
-		Exception exception = capteur.capte(() -> alors().le(NOMBRE_UN).respecte(spécification));
+		Exception exception = capteur.capte(() -> alors().le(NOMBRE_UN).respecte((entier) -> false));
 
 		alors().cette(exception).respecte(créeSpécificationException("1 ne respecte pas la spécification."));
 	}

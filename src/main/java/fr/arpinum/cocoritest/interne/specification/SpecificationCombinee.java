@@ -26,19 +26,19 @@ public class SpecificationCombinee<T> implements Specification<T> {
 	}
 
 	@Override
-	public boolean estInsatisfaitePar(T objet) {
+	public boolean test(T objet) {
 		for (Specification<T> spécification : spécifications) {
-			if (spécification.estInsatisfaitePar(objet)) {
-				return true;
+			if (!spécification.test(objet)) {
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 
 	@Override
 	public String messageInsatisfactionPour(T objet) {
 		for (Specification<T> spécification : spécifications) {
-			if (spécification.estInsatisfaitePar(objet)) {
+			if (!spécification.test(objet)) {
 				return spécification.messageInsatisfactionPour(objet);
 			}
 		}

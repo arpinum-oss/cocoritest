@@ -22,8 +22,8 @@ import fr.arpinum.cocoritest.specification.Specification;
 public class SpecificationCollectionNonVide<E> implements Specification<Collection<E>> {
 
 	@Override
-	public boolean estInsatisfaitePar(Collection<E> éléments) {
-		return éléments == null || éléments.size() == 0;
+	public boolean test(Collection<E> éléments) {
+		return éléments != null && éléments.size() != 0;
 	}
 
 	@Override
