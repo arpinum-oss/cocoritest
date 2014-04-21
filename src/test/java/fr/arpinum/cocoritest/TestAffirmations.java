@@ -6,7 +6,7 @@
  * soit (à votre gré) toute version ultérieure.
  *
  * Cocoritest est distribué dans l'espoir qu'il sera utile, mais SANS AUCUNE GARANTIE ; pas même la garantie
- * implicite de COMMERCIABILISABILITÉ ni d'ADÉQUATION à UN OBJECTIF PARTICULIER. Consultez la GNU Lesser General
+ * implicite de COMMERCIABILISABILITE ni d'ADEQUATION à UN OBJECTIF PARTICULIER. Consultez la GNU Lesser General
  * Public License pour plus de détails.
  *
  * Vous devez avoir reçu une copie de la GNU Lesser General Public License en même temps que Cocoritest ; si ce n'est
@@ -20,7 +20,6 @@ import static fr.arpinum.cocoritest.Affirmations.*;
 import java.util.Collection;
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import fr.arpinum.cocoritest.interne.extensionlangage.Listes;
@@ -28,70 +27,63 @@ import fr.arpinum.cocoritest.specification.Specification;
 
 public class TestAffirmations {
 
-	@Before
-	public void avantChaqueTest() {
-		résultat = état = vérité = estimation = true;
-		mensonge = trahison = false;
-		nombre = valeur = 3;
-		adverbe = annonce = "tellement";
-		nombres = Listes.cree(1, 5, 12);
-		valeurs = Listes.cree();
-		données = new Object[]{};
-		réponse = champ = null;
-		remarque = new Object();
-	}
-
 	@Test
 	public void peutCréerLesDifférentesAffirmationsAuMasculin() {
-		alors().le(résultat).estVrai();
-		alors().le(mensonge).estFaux();
-		alors().le(nombre).est(3).et().nEstPasNul();
-		alors().le(nombre).nEstPas(4);
-		alors().le(champ).estNul();
-		alors().le(nombre).nEstPasNul();
-		alors().le(nombre).respecte(laSpécification());
+		alors().le(RESULTAT).estVrai();
+		alors().le(RESULTAT_BOOLEAN).estVrai();
+		alors().le(MENSONGE).estFaux();
+		alors().le(NOMBRE).est(3).et().nEstPasNul();
+		alors().le(NOMBRE).nEstPas(4);
+		alors().le(CHAMP).estNul();
+		alors().le(NOMBRE).nEstPasNul();
+		alors().le(NOMBRE).respecte(laSpécification());
 	}
 
 	@Test
 	public void peutCréerLesDifférentesAffirmationsAuFéminin() {
-		alors().la(vérité).estVraie();
-		alors().la(trahison).estFausse();
-		alors().la(valeur).est(3).et().nEstPasNulle();
-		alors().la(valeur).nEstPas(4);
-		alors().la(réponse).estNulle();
-		alors().la(remarque).nEstPasNulle();
-		alors().la(valeur).respecte(laSpécification());
+		alors().la(VERITE).estVraie();
+		alors().la(VERITE_BOOLEAN).estVraie();
+		alors().la(TRAHISON).estFausse();
+		alors().la(VALEUR).est(3).et().nEstPasNulle();
+		alors().la(VALEUR).nEstPas(4);
+		alors().la(REPONSE).estNulle();
+		alors().la(REMARQUE).nEstPasNulle();
+		alors().la(VALEUR).respecte(laSpécification());
 	}
 
 	@Test
 	public void peutCréerLesDifférentesAffirmationsPourLesMotsCommençantParUneVoyelle() {
-		alors().cet(état).estVrai();
-		alors().cette(estimation).estVraie();
-		alors().cet(adverbe).est("tellement");
-		alors().cette(annonce).est("tellement");
+		alors().cet(ETAT).estVrai();
+		alors().cet(ETAT_BOOLEAN).estVrai();
+		alors().cette(ESTIMATION).estVraie();
+		alors().cette(ESTIMATION_BOOLEAN).estVraie();
+		alors().cet(ADVERBE).est("tellement");
+		alors().cette(ANNONCE).est("tellement");
 	}
 
 	@Test
 	public void peutCréerDesAffirmationsAuMasculinPourDesInstructionsEntieres() {
 		alors().ceci(new ClasseInterne().getRésultat()).estVrai();
+		alors().ceci(Boolean.TRUE).estVrai();
 		alors().ceci(new ClasseInterne().getMessage()).est("message");
 	}
 
 	@Test
 	public void peutConstrureLesDifférentesAffirmationsAuPluriel() {
-		alors().les(nombres).sont(Listes.cree(1, 5, 12));
-		alors().les(nombres).sont(1, 5, 12);
-		alors().les(nombres).sontAuNombreDe(3);
-		alors().les(nombres).ont(1, 12).et().ont(5);
-		alors().les(nombres).ont(Listes.cree(1, 12));
-		alors().les(nombres).existent();
-		alors().les(valeurs).nExistentPas();
-		alors().les(nombres).respectent(laSpécificationDeCollection());
+		alors().les(NOMBRES).sont(Listes.cree(1, 5, 12));
+		alors().les(NOMBRES).sont(1, 5, 12);
+		alors().les(NOMBRES).sontAuNombreDe(3);
+		alors().les(NOMBRES).ont(1, 12).et().ont(5);
+		alors().les(NOMBRES).ont(Listes.cree(1, 12));
+		alors().les(NOMBRES).existent();
+		alors().les(VALEURS).nExistentPas();
+		alors().les(NOMBRES).respectent(laSpécificationDeCollection());
 	}
 
 	@Test
 	public void peutCréerLesAffirmationsAuPlurielPourUnTableau() {
-		alors().les(données).nExistentPas();
+		alors().les(DONNEES_ABSENTES).nExistentPas();
+		alors().les(DONNEES_PRESENTES).existent();
 	}
 
 	private static Specification<Integer> laSpécification() {
@@ -134,20 +126,25 @@ public class TestAffirmations {
 		}
 	}
 
-	private boolean résultat;
-	private boolean état;
-	private boolean mensonge;
-	private boolean vérité;
-	private boolean estimation;
-	private boolean trahison;
-	private int nombre;
-	private String adverbe;
-	private int valeur;
-	private String annonce;
-	private List<Integer> nombres;
-	private List<String> valeurs;
-	private Object[] données;
-	private Object réponse;
-	private Object remarque;
-	private Object champ;
+	private static final boolean RESULTAT = true;
+	private static final Boolean RESULTAT_BOOLEAN = true;
+	private static final boolean ETAT = true;
+	private static final Boolean ETAT_BOOLEAN = true;
+	private static final boolean VERITE = true;
+	private static final Boolean VERITE_BOOLEAN = true;
+	private static final boolean ESTIMATION = true;
+	private static final Boolean ESTIMATION_BOOLEAN = true;
+	private static final boolean MENSONGE = false;
+	private static final boolean TRAHISON = false;
+	private static final int NOMBRE = 3;
+	private static final int VALEUR = 3;
+	private static final String ADVERBE = "tellement";
+	private static final String ANNONCE = "tellement";
+	private static final List<Integer> NOMBRES = Listes.cree(1, 5, 12);
+	private static final List<String> VALEURS = Listes.cree();
+	private static final Object[] DONNEES_ABSENTES = new Object[]{};
+	private static final Object[] DONNEES_PRESENTES = new Object[]{1};
+	private static final Object REPONSE = null;
+	private static final Object REMARQUE = new Object();
+	private static final Object CHAMP = null;
 }

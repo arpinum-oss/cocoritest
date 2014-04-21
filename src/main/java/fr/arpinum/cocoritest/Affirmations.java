@@ -56,7 +56,7 @@ public class Affirmations {
 	 * @param booléen la cible de l'affirmation.
 	 * @return l'affirmation créée.
 	 */
-	public AffirmationBooleene le(boolean booléen) {
+	public AffirmationBooleene le(Boolean booléen) {
 		return new AffirmationBooleeneDeBase(booléen);
 	}
 
@@ -69,7 +69,7 @@ public class Affirmations {
 	 * @param booléen la cible de l'affirmation.
 	 * @return l'affirmation créée.
 	 */
-	public AffirmationBooleene cet(boolean booléen) {
+	public AffirmationBooleene cet(Boolean booléen) {
 		return le(booléen);
 	}
 
@@ -82,7 +82,7 @@ public class Affirmations {
 	 * @param booléen la cible de l'affirmation.
 	 * @return l'affirmation créée.
 	 */
-	public AffirmationBooleene ceci(boolean booléen) {
+	public AffirmationBooleene ceci(Boolean booléen) {
 		return le(booléen);
 	}
 
@@ -92,7 +92,7 @@ public class Affirmations {
 	 * @param booléen la cible de l'affirmation.
 	 * @return l'affirmation créée.
 	 */
-	public AffirmationBooleeneAuFeminin la(boolean booléen) {
+	public AffirmationBooleeneAuFeminin la(Boolean booléen) {
 		return new AffirmationBooleeneDeBase(booléen);
 	}
 
@@ -106,7 +106,7 @@ public class Affirmations {
 	 * @param booléen la cible de l'affirmation.
 	 * @return l'affirmation créée.
 	 */
-	public AffirmationBooleeneAuFeminin cette(boolean booléen) {
+	public AffirmationBooleeneAuFeminin cette(Boolean booléen) {
 		return la(booléen);
 	}
 
