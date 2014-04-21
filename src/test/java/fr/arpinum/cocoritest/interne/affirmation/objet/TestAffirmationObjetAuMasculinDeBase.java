@@ -22,45 +22,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fr.arpinum.cocoritest.interne.exception.CapteurExceptionDeBase;
-import fr.arpinum.cocoritest.specification.Specification;
 
 public class TestAffirmationObjetAuMasculinDeBase {
 
 	@Before
 	public void avantChaqueTest() {
 		capteur = new CapteurExceptionDeBase();
-	}
-
-	@Test
-	public void onPeutAffirmerQuUnNombreEstLeMêmeNombre() {
-		alors().le(NOMBRE_UN).est(1);
-	}
-
-	@Test
-	public void onNePeutPasAffirmerQuUnNombreEstUnNombreDifférent() {
-		Exception exception = capteur.capte(() -> alors().le(NOMBRE_UN).est(2));
-
-		alors().cette(exception).respecte(créeSpécificationException("L'objet est <1> au lieu de <2>."));
-	}
-
-	@Test
-	public void onPeutAffirmerQuUnNombreNEstPasUnNombreDifférent() {
-		alors().le(NOMBRE_UN).nEstPas(2);
-	}
-
-	@Test
-	public void onNePeutPasAffirmerQuUnNombreNEstPasLeMêmeNombre() {
-		Exception exception = capteur.capte(() -> alors().le(NOMBRE_UN).nEstPas(1));
-
-		String messageAttendu = "L'objet est <1> alors que ce n'était pas voulu.";
-		alors().cette(exception).respecte(créeSpécificationException(messageAttendu));
-	}
-
-	@Test
-	public void onNePeutPasAffirmerQuUneChaîneEstUneChaîneDifférente() {
-		Exception exception = capteur.capte(() -> alors().le(TEXTE_TOTO).est("tutu"));
-
-		alors().cette(exception).respecte(créeSpécificationException("L'objet est <toto> au lieu de <tutu>."));
 	}
 
 	@Test
@@ -89,22 +56,6 @@ public class TestAffirmationObjetAuMasculinDeBase {
 	}
 
 	@Test
-	public void onPeutAffirmerQuUnObjetRespecteUneSpecification() {
-		Specification<Integer> spécification = créeSpécificationSatisfaite();
-
-		alors().le(NOMBRE_UN).respecte(spécification);
-	}
-
-	@Test
-	public void onNePeutPasAffirmerATortQuUnObjetRespecteUneSpecification() {
-		final Specification<Integer> spécification = créeSpécificationInsatisfaite();
-
-		Exception exception = capteur.capte(() -> alors().le(NOMBRE_UN).respecte(spécification));
-
-		alors().cette(exception).respecte(créeSpécificationException("1 ne respecte pas la spécification."));
-	}
-
-	@Test
 	public void onPeutAffirmerSurUnObjetDeManiereFluide() {
 		alors().le(TEXTE_TOTO).nEstPasNul()
 				.et().est("toto")
@@ -112,7 +63,6 @@ public class TestAffirmationObjetAuMasculinDeBase {
 				.et().nEstPasNul();
 	}
 
-	private static final int NOMBRE_UN = 1;
 	private static final String TEXTE_TOTO = "toto";
 	private static final Object OBJET_NUL = null;
 	private CapteurExceptionDeBase capteur;
