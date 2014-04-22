@@ -156,6 +156,12 @@ Ou ajouter **Cocoritest** dans les dépendances d'un pom.xml :
 </dependency>
 ```
 
+Ou dans un build.gradle :
+
+```
+testCompile 'fr.arpinum:cocoritest:2.1'
+```
+
 Ou consulter la configuration des autres gestionnaires de dépendances sur [l'entrepôt Maven].
 
 Ajouter **Cocoritest** au niveau des imports Java :
@@ -191,8 +197,8 @@ Vous devez avoir reçu une copie de la GNU Lesser General Public License en mêm
 [FEST]: https://code.google.com/p/fest/
 [http://www.gnu.org/licenses/lgpl.html]: http://www.gnu.org/licenses/lgpl.html
 [TestInjection.java]: src/test/java/fr/arpinum/cocoritest/exemples/TestInjection.java
-[cocoritest-2.1.jar]: http://repo1.maven.org/maven2/fr/arpinum/cocoritest/2.1/cocoritest-2.1.jar
-[l'entrepôt Maven]: http://mvnrepository.com/artifact/fr.arpinum/cocoritest/2.1
+[cocoritest-2.1.jar]: http://search.maven.org/remotecontent?filepath=fr/arpinum/cocoritest/2.1/cocoritest-2.1.jar
+[l'entrepôt Maven]: http://search.maven.org/#artifactdetails%7Cfr.arpinum%7Ccocoritest%7C2.1%7Cjar
 [Etat build]: https://travis-ci.org/arpinum/cocoritest.png?branch=master
 [javadoc]: http://arpinum.github.io/cocoritest/apidocs
 [README 1.2]: https://github.com/arpinum/cocoritest/blob/derniere-version-jdk6/README.md
