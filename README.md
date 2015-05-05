@@ -53,8 +53,8 @@ D'une façon général en français nous disons *j'ai acheté des bonbons à mes
 @Test
 public void peutCréerUneListe() {
     List<String> éléments = Listes.crée("a", "b");
- 
-    alors().les(éléments).sontAuNombreDe(2); 
+
+    alors().les(éléments).sontAuNombreDe(2);
     alors().les(éléments).sont("a", "b");
 }
 ```
@@ -115,7 +115,7 @@ Les affirmations sur l'exception capturée se font en fin de test. **Cocoritest*
 
 ### Injecter des dépendances de test
 
-Utiliser de l'injection de dépendance dans le code de production est très courant. Certains frameworks peuvent fonctionner directement sur les champs et les objets n'exposent donc aucun accesseur pour modifier les dépendances. De fait, il est très difficile d'utiliser des doublures (mocks ou stubs) dans les tests. 
+Utiliser de l'injection de dépendance dans le code de production est très courant. Certains frameworks peuvent fonctionner directement sur les champs et les objets n'exposent donc aucun accesseur pour modifier les dépendances. De fait, il est très difficile d'utiliser des doublures (mocks ou stubs) dans les tests.
 
 Quelques solutions existent avec leurs avantages et inconvénients :
 
@@ -200,6 +200,6 @@ Vous devez avoir reçu une copie de la GNU Lesser General Public License en mêm
 [cocoritest-2.1.jar]: http://search.maven.org/remotecontent?filepath=fr/arpinum/cocoritest/2.1/cocoritest-2.1.jar
 [l'entrepôt Maven]: http://search.maven.org/#artifactdetails%7Cfr.arpinum%7Ccocoritest%7C2.1%7Cjar
 [Etat build]: https://travis-ci.org/arpinum/cocoritest.png?branch=master
-[javadoc]: http://arpinum.github.io/cocoritest/apidocs
-[README 1.2]: https://github.com/arpinum/cocoritest/blob/derniere-version-jdk6/README.md
-[journal des modifications]: https://github.com/arpinum/cocoritest/blob/master/documentation/journalDesModifications.md
+[javadoc]: http://arpinum-oss.github.io/cocoritest/apidocs
+[README 1.2]: https://github.com/arpinum-oss/cocoritest/blob/derniere-version-jdk6/README.md
+[journal des modifications]: https://github.com/arpinum-oss/cocoritest/blob/master/documentation/journalDesModifications.md

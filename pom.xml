@@ -25,7 +25,7 @@
     <description>Cocoritest est une api Java permettant d'écrire des affirmations de test unitaire dans une syntaxe
         proche du français
     </description>
-    <url>http://github.com/arpinum/cocoritest</url>
+    <url>http://github.com/arpinum-oss/cocoritest</url>
 
     <properties>
         <github.global.server>github</github.global.server>
@@ -84,9 +84,9 @@
     </build>
 
     <scm>
-        <connection>scm:git:git://github.com/arpinum/cocoritest.git</connection>
-        <developerConnection>scm:git:git@github.com:arpinum/cocoritest.git</developerConnection>
-        <url>https://github.com/arpinum/cocoritest</url>
+        <connection>scm:git:git://github.com/arpinum-oss/cocoritest.git</connection>
+        <developerConnection>scm:git:git@github.com:arpinum-oss/cocoritest.git</developerConnection>
+        <url>https://github.com/arpinum-oss/cocoritest</url>
     </scm>
 
     <ciManagement>
