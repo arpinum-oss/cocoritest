@@ -1,4 +1,4 @@
-# Cocoritest [![Etat build]](https://travis-ci.org/arpinum/cocoritest)
+# Cocoritest [![Etat build]](https://travis-ci.org/arpinum-oss/cocoritest)
 
 > Mal nommer les choses c'est ajouter au malheur du monde.
 > <cite>(Albert Camus)</cite>
@@ -185,7 +185,7 @@ Seules les classes manipulées par l'utilisateur sont documentées. Le package `
 
 ## Licence
 
-Copyright (C) 2013, Arpinum
+Copyright (C) 2015, Arpinum
 
 **Cocoritest** est un logiciel libre ; vous pouvez le redistribuer ou le modifier suivant les termes de la GNU Lesser General Public License telle que publiée par la Free Software Foundation ; soit la version 3 de la licence, soit (à votre gré) toute version ultérieure.
 
@@ -199,7 +199,7 @@ Vous devez avoir reçu une copie de la GNU Lesser General Public License en mêm
 [TestInjection.java]: src/test/java/fr/arpinum/cocoritest/exemples/TestInjection.java
 [cocoritest-2.1.jar]: http://search.maven.org/remotecontent?filepath=fr/arpinum/cocoritest/2.1/cocoritest-2.1.jar
 [l'entrepôt Maven]: http://search.maven.org/#artifactdetails%7Cfr.arpinum%7Ccocoritest%7C2.1%7Cjar
-[Etat build]: https://travis-ci.org/arpinum/cocoritest.png?branch=master
+[Etat build]: https://travis-ci.org/arpinum-oss/cocoritest.png?branch=master
 [javadoc]: http://arpinum-oss.github.io/cocoritest/apidocs
 [README 1.2]: https://github.com/arpinum-oss/cocoritest/blob/derniere-version-jdk6/README.md
 [journal des modifications]: https://github.com/arpinum-oss/cocoritest/blob/master/documentation/journalDesModifications.md
