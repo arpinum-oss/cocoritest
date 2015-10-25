@@ -19,7 +19,6 @@ Avec **Cocoritest** vous pouvez :
 Il est possible de consulter le [journal des modifications] pour se tenir au courant des nouveautés.
 
 ## Exemples
-*(certains caractères qui font la richesse du français sont mal gérés par le moteur de rendu de code utilisé par Github... une fée vient de s'éteindre quelque part dans le monde...)*
 
 ### Affirmations sur un objet
 
